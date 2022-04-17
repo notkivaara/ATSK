@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cobalogin;
+package atsk;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -11,12 +11,12 @@ import javax.swing.ImageIcon;
  *
  * @author ACER
  */
-public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
+public class Popup_Ubah_Barang extends javax.swing.JFrame {
 
     /**
      * Creates new form Popup_Tambah_Barang
      */
-    public Popup_Ubah_Pengeluaran() {
+    public Popup_Ubah_Barang() {
         initComponents();
     }
 
@@ -35,22 +35,19 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodePengeluaran = new javax.swing.JTextField();
+        txt_kodeBarang = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txt_namaPengeluaran = new javax.swing.JTextField();
+        txt_namaBarang = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txt_tanggalBayar = new javax.swing.JTextField();
+        txt_harga = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_bulan = new javax.swing.JTextField();
+        txt_stok = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_tahun = new javax.swing.JTextField();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        txt_total = new javax.swing.JTextField();
+        txt_return = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
@@ -64,7 +61,7 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Ubah Pengeluaran.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Ubah Barang.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -87,13 +84,13 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Kode Pengeluaran");
+        jLabel6.setText("Kode Barang");
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodePengeluaran.setBackground(new java.awt.Color(255, 255, 255));
-        txt_kodePengeluaran.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel9.add(txt_kodePengeluaran);
+        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
+        txt_kodeBarang.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel9.add(txt_kodeBarang);
 
         jPanel8.add(jPanel9);
 
@@ -101,13 +98,13 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Nama Pengeluaran");
+        jLabel7.setText("Nama Barang");
         jLabel7.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaPengeluaran.setBackground(new java.awt.Color(255, 255, 255));
-        txt_namaPengeluaran.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel10.add(txt_namaPengeluaran);
+        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
+        txt_namaBarang.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel10.add(txt_namaBarang);
 
         jPanel8.add(jPanel10);
 
@@ -115,13 +112,13 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Tanggal Bayar");
+        jLabel8.setText("Harga");
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel11.add(jLabel8);
 
-        txt_tanggalBayar.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tanggalBayar.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel11.add(txt_tanggalBayar);
+        txt_harga.setBackground(new java.awt.Color(255, 255, 255));
+        txt_harga.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel11.add(txt_harga);
 
         jPanel8.add(jPanel11);
 
@@ -129,13 +126,13 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Bulan");
+        jLabel9.setText("Stok");
         jLabel9.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel12.add(jLabel9);
 
-        txt_bulan.setBackground(new java.awt.Color(255, 255, 255));
-        txt_bulan.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel12.add(txt_bulan);
+        txt_stok.setBackground(new java.awt.Color(255, 255, 255));
+        txt_stok.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel12.add(txt_stok);
 
         jPanel8.add(jPanel12);
 
@@ -143,31 +140,17 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Tahun");
+        jLabel10.setText("Return");
         jLabel10.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel13.add(jLabel10);
 
-        txt_tahun.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tahun.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel13.add(txt_tahun);
+        txt_return.setBackground(new java.awt.Color(255, 255, 255));
+        txt_return.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel13.add(txt_return);
 
         jPanel8.add(jPanel13);
 
-        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Total");
-        jLabel11.setPreferredSize(new java.awt.Dimension(200, 25));
-        jPanel14.add(jLabel11);
-
-        txt_total.setBackground(new java.awt.Color(255, 255, 255));
-        txt_total.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel14.add(txt_total);
-
-        jPanel8.add(jPanel14);
-
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 240));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 200));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
@@ -213,9 +196,9 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel2.add(btn_simpan);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 450, 37));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 450, 37));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,23 +273,21 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Popup_Ubah_Pengeluaran().setVisible(true);
+                new Popup_Ubah_Barang().setVisible(true);
             }
         });
     }
@@ -316,7 +297,6 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JLabel btn_simpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -326,16 +306,14 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_bulan;
-    private javax.swing.JTextField txt_kodePengeluaran;
-    private javax.swing.JTextField txt_namaPengeluaran;
-    private javax.swing.JTextField txt_tahun;
-    private javax.swing.JTextField txt_tanggalBayar;
-    private javax.swing.JTextField txt_total;
+    private javax.swing.JTextField txt_harga;
+    private javax.swing.JTextField txt_kodeBarang;
+    private javax.swing.JTextField txt_namaBarang;
+    private javax.swing.JTextField txt_return;
+    private javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables
 }

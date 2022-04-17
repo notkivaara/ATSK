@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cobalogin;
+package atsk;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -11,12 +11,12 @@ import javax.swing.ImageIcon;
  *
  * @author ACER
  */
-public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
+public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
 
     /**
      * Creates new form Popup_Tambah_Barang
      */
-    public Popup_Tambah_Pengeluaran() {
+    public Popup_Ubah_Pengeluaran() {
         initComponents();
     }
 
@@ -53,7 +53,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         txt_total = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
-        btn_tambah = new javax.swing.JLabel();
+        btn_simpan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,7 +64,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Tambah Pengeluaran.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Ubah Pengeluaran.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -121,11 +121,6 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
 
         txt_tanggalBayar.setBackground(new java.awt.Color(255, 255, 255));
         txt_tanggalBayar.setPreferredSize(new java.awt.Dimension(200, 34));
-        txt_tanggalBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_tanggalBayarActionPerformed(evt);
-            }
-        });
         jPanel11.add(txt_tanggalBayar);
 
         jPanel8.add(jPanel11);
@@ -199,24 +194,24 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel2.add(btn_batal);
 
-        btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
-        btn_tambah.setPreferredSize(new java.awt.Dimension(193, 37));
-        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_simpan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan.png"))); // NOI18N
+        btn_simpan.setPreferredSize(new java.awt.Dimension(193, 37));
+        btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseEntered(evt);
+                btn_simpanMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseExited(evt);
+                btn_simpanMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_tambahMousePressed(evt);
+                btn_simpanMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseReleased(evt);
+                btn_simpanMouseReleased(evt);
             }
         });
-        jPanel2.add(btn_tambah);
+        jPanel2.add(btn_simpan);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 450, 37));
 
@@ -249,38 +244,34 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         btn_batal.setIcon(new ImageIcon(iconBatalHover));
     }//GEN-LAST:event_btn_batalMouseReleased
 
-    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
+    private void btn_simpanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseEntered
         // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-    }//GEN-LAST:event_btn_tambahMouseEntered
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan hover.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
+    }//GEN-LAST:event_btn_simpanMouseEntered
 
-    private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
+    private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
         // TODO add your handling code here:
-        Image iconTambahPress = new ImageIcon(this.getClass().getResource("/img/button tambah popup press.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahPress));
-    }//GEN-LAST:event_btn_tambahMousePressed
+        Image iconSimpanPress = new ImageIcon(this.getClass().getResource("/img/button simpan press.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconSimpanPress));
+    }//GEN-LAST:event_btn_simpanMousePressed
 
-    private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
+    private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
         // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-    }//GEN-LAST:event_btn_tambahMouseReleased
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan hover.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
+    }//GEN-LAST:event_btn_simpanMouseReleased
 
-    private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
+    private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
         // TODO add your handling code here:
-        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/button tambah popup.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahDefault));
-    }//GEN-LAST:event_btn_tambahMouseExited
+        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/button simpan.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
+    }//GEN-LAST:event_btn_simpanMouseExited
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btn_batalMouseClicked
-
-    private void txt_tanggalBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tanggalBayarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_tanggalBayarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,18 +290,14 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -319,14 +306,14 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Popup_Tambah_Pengeluaran().setVisible(true);
+                new Popup_Ubah_Pengeluaran().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_batal;
-    private javax.swing.JLabel btn_tambah;
+    private javax.swing.JLabel btn_simpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
