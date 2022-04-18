@@ -6,11 +6,14 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,9 +24,41 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     /**
      * Creates new form TampilanBarang
      */
+    
+    
     public Tampilan_Pengeluaran() {
         initComponents();
+        table();
 
+    }
+    public void table(){
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Pengeluaran");
+        tbl.addColumn("Nama Pengeluaran");
+        tbl.addColumn("Tanggal Bayar");
+        tbl.addColumn("Bulan");
+        tbl.addColumn("Tahun");
+        tbl.addColumn("total");
+        
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select pengeluaran.*, transaksi_pengeluaran.* "
+                    + "from pengeluaran join transaksi_pengeluaran on pengeluaran.kd_pengeluaran = transaksi_pengeluaran.kd_pengeluaran;");
+            while(rs.next()){
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_pengeluaran"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_bayar"),
+                    rs.getString("bln"),
+                    rs.getString("tahun"),
+                    rs.getString("total")         
+                });
+                pengeluaranTable.setModel(tbl);
+            }
+            
+        } catch (Exception e) {
+            
+        }
     }
 
     /**
@@ -55,7 +90,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         txt_cari = new javax.swing.JTextField();
         btn_cari = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
+        javax.swing.JTable pengeluaranTable = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
@@ -196,7 +231,6 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setForeground(new java.awt.Color(204, 204, 204));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setText("Cari Berdasarkan Nama Pengeluaran");
@@ -258,9 +292,8 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        pengeluaranTable.setAutoCreateRowSorter(true);
+        pengeluaranTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -288,11 +321,10 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
                 "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
             }
         ));
-        jTable2.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable2.setRowHeight(40);
-        jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
-        jScrollPane2.setViewportView(jTable2);
+        pengeluaranTable.setGridColor(new java.awt.Color(204, 204, 204));
+        pengeluaranTable.setRowHeight(40);
+        pengeluaranTable.setSelectionBackground(new java.awt.Color(216, 225, 238));
+        jScrollPane2.setViewportView(pengeluaranTable);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 540));
 

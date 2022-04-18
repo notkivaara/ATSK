@@ -6,7 +6,13 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -66,7 +72,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login(1080).png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 194, 540, -1));
 
-        txt_username.setBackground(new java.awt.Color(255, 255, 255));
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusGained(evt);
@@ -77,7 +82,6 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 420, 60));
 
-        txt_password.setBackground(new java.awt.Color(255, 255, 255));
         txt_password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_passwordFocusGained(evt);
@@ -91,6 +95,9 @@ public class Login extends javax.swing.JFrame {
         btn_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Login.png"))); // NOI18N
         btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_loginMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_loginMouseEntered(evt);
             }
@@ -156,19 +163,45 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         Image iconLoginDefault = new ImageIcon(this.getClass().getResource("/img/button login.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginDefault));
+        
     }//GEN-LAST:event_btn_loginMouseExited
 
     private void btn_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMousePressed
         // TODO add your handling code here:
         Image iconLoginPress = new ImageIcon(this.getClass().getResource("/img/button login press.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginPress));
+        
     }//GEN-LAST:event_btn_loginMousePressed
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         // TODO add your handling code here:
         Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginHover));
+       
     }//GEN-LAST:event_btn_loginMouseReleased
+
+    private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
+        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
+        btn_login.setIcon(new ImageIcon(iconLoginHover));  
+        try {
+            String sql =  "SELECT * from akun where username ='"+txt_username.getText()
+                   +"'and password ='"+txt_password.getText()+"'";
+
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                Tampilan_Barang brg = new Tampilan_Barang();
+                brg.setVisible(true);
+                this.setVisible(false);
+                String role = rs.getString("role");
+                JOptionPane.showMessageDialog(null,"Login Berhasil");
+            }
+     
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btn_loginMouseClicked
 
     /**
      * @param args the command line arguments

@@ -5,7 +5,10 @@
 package atsk;
 
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +21,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
      */
     public Popup_Tambah_Pengeluaran() {
         initComponents();
+        
+    }
+    public void autoNumber(){
+        
     }
 
     /**
@@ -86,12 +93,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Pengeluaran");
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodePengeluaran.setBackground(new java.awt.Color(255, 255, 255));
         txt_kodePengeluaran.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel9.add(txt_kodePengeluaran);
 
@@ -100,12 +105,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nama Pengeluaran");
         jLabel7.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaPengeluaran.setBackground(new java.awt.Color(255, 255, 255));
         txt_namaPengeluaran.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel10.add(txt_namaPengeluaran);
 
@@ -114,12 +117,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tanggal Bayar");
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel11.add(jLabel8);
 
-        txt_tanggalBayar.setBackground(new java.awt.Color(255, 255, 255));
         txt_tanggalBayar.setPreferredSize(new java.awt.Dimension(200, 34));
         txt_tanggalBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,12 +134,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Bulan");
         jLabel9.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel12.add(jLabel9);
 
-        txt_bulan.setBackground(new java.awt.Color(255, 255, 255));
         txt_bulan.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel12.add(txt_bulan);
 
@@ -147,12 +146,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Tahun");
         jLabel10.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel13.add(jLabel10);
 
-        txt_tahun.setBackground(new java.awt.Color(255, 255, 255));
         txt_tahun.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel13.add(txt_tahun);
 
@@ -161,12 +158,10 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Total");
         jLabel11.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel14.add(jLabel11);
 
-        txt_total.setBackground(new java.awt.Color(255, 255, 255));
         txt_total.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel14.add(txt_total);
 
@@ -203,6 +198,9 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
         btn_tambah.setPreferredSize(new java.awt.Dimension(193, 37));
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -281,6 +279,41 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
     private void txt_tanggalBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_tanggalBayarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_tanggalBayarActionPerformed
+
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        // TODO add your handling code here:\
+        String kd_pengeluaran = txt_kodePengeluaran.getText();
+        String nama = txt_namaPengeluaran.getText();
+        String tanggal = txt_tanggalBayar.getText();
+        String bulan = txt_bulan.getText();
+        String tahun = txt_tahun.getText();
+        String total = txt_total.getText();
+        
+        try {
+            String sql = "INSERT INTO pengeluaran (kd_pengeluaran,nama) values ('"
+                    +kd_pengeluaran+ "','"
+                    + nama+ "');";
+            String sqll = "INSERT INTO transaksi_pengeluaran(kd_pengeluaran,tgl_bayar,bln,tahun,total)"
+                    + "values  ('"
+                    + kd_pengeluaran+"','"
+                    + tanggal+"','"
+                    + bulan+"','"
+                    + tahun+"','"
+                    + total
+                    + "')";
+            Connection c = (Connection) Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            PreparedStatement pstl = c.prepareStatement(sqll);            
+            pst.execute();
+            pstl.execute();
+            
+            JOptionPane.showMessageDialog(null,"Berhasil menambah pengeluaran");
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btn_tambahMouseClicked
 
     /**
      * @param args the command line arguments
