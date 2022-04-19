@@ -229,25 +229,25 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
 
     private void btn_simpanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseEntered
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan hover.png")).getImage();
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/Button simpan hover.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
     }//GEN-LAST:event_btn_simpanMouseEntered
 
     private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
         // TODO add your handling code here:
-        Image iconSimpanPress = new ImageIcon(this.getClass().getResource("/img/button simpan press.png")).getImage();
+        Image iconSimpanPress = new ImageIcon(this.getClass().getResource("/img/Button simpan press.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanPress));
     }//GEN-LAST:event_btn_simpanMousePressed
 
     private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan hover.png")).getImage();
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/Button simpan hover.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
     }//GEN-LAST:event_btn_simpanMouseReleased
 
     private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
         // TODO add your handling code here:
-        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/button simpan.png")).getImage();
+        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/Button simpan.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
     }//GEN-LAST:event_btn_simpanMouseExited
 
@@ -281,6 +281,102 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Popup_Ubah_Pemasok.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

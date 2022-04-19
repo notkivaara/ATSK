@@ -6,13 +6,7 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,13 +30,18 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
+        jColorChooser2 = new javax.swing.JColorChooser();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_username = new textfield.TextField();
         txt_password = new textfield.PasswordField();
+        jPanel6 = new javax.swing.JPanel();
         btn_login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,14 +63,23 @@ public class Login extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(540, 720));
         jPanel4.setLayout(new java.awt.GridLayout(0, 1));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(540, 720));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login(1080).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 194, 540, -1));
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 110));
 
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 540, 110));
+
+        txt_username.setBackground(new java.awt.Color(255, 255, 255));
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusGained(evt);
@@ -82,6 +90,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 420, 60));
 
+        txt_password.setBackground(new java.awt.Color(255, 255, 255));
         txt_password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_passwordFocusGained(evt);
@@ -92,9 +101,16 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 420, 60));
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
         btn_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Login.png"))); // NOI18N
+        btn_login.setPreferredSize(new java.awt.Dimension(420, 40));
         btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_loginMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_loginMouseClicked(evt);
             }
@@ -107,13 +123,14 @@ public class Login extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_loginMousePressed(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_loginMouseReleased(evt);
-            }
         });
-        jPanel1.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 420, 40));
+        jPanel6.add(btn_login);
 
-        jPanel4.add(jPanel1);
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 540, 40));
+
+        jPanel2.add(jPanel1);
+
+        jPanel4.add(jPanel2);
 
         getContentPane().add(jPanel4);
 
@@ -163,44 +180,26 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         Image iconLoginDefault = new ImageIcon(this.getClass().getResource("/img/button login.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginDefault));
-        
     }//GEN-LAST:event_btn_loginMouseExited
 
     private void btn_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMousePressed
         // TODO add your handling code here:
         Image iconLoginPress = new ImageIcon(this.getClass().getResource("/img/button login press.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginPress));
-        
     }//GEN-LAST:event_btn_loginMousePressed
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         // TODO add your handling code here:
         Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginHover));
-       
     }//GEN-LAST:event_btn_loginMouseReleased
 
     private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
-        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
-        btn_login.setIcon(new ImageIcon(iconLoginHover));  
-        try {
-            String sql =  "SELECT * from akun where username ='"+txt_username.getText()
-                   +"'and password ='"+txt_password.getText()+"'";
-
-            Connection conn = (Connection) Config.configDB();
-            PreparedStatement pst = conn.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery(sql);
-            if (rs.next()) {
-                Tampilan_Barang brg = new Tampilan_Barang();
-                brg.setVisible(true);
-                this.setVisible(false);
-                String role = rs.getString("role");
-                JOptionPane.showMessageDialog(null,"Login Berhasil");
-            }
-     
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+        // TODO add your handling code here:
+        Tampilan_Barang barang = new Tampilan_Barang();
+        barang.show();
+        
+        dispose();
     }//GEN-LAST:event_btn_loginMouseClicked
 
     /**
@@ -243,11 +242,16 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_login;
+    private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private textfield.PasswordField txt_password;
     private textfield.TextField txt_username;
     // End of variables declaration//GEN-END:variables

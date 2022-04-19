@@ -16,13 +16,14 @@ import javax.swing.JTable;
  *
  * @author ACER
  */
-public class Tampilan_Barang extends javax.swing.JFrame {
+public class Tampilan_Karyawan extends javax.swing.JFrame {
 
     /**
      * Creates new form TampilanBarang
      */
-    public Tampilan_Barang() {
+    public Tampilan_Karyawan() {
         initComponents();
+        jTable2.getTableHeader().setBackground(Color.yellow);
 
     }
 
@@ -35,7 +36,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,22 +55,11 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         txt_cari = new javax.swing.JTextField();
         btn_cari = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
         btn_ubah = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,7 +80,18 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 128, 105));
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.PAGE_AXIS));
 
-        btn_barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barang_aktif.png"))); // NOI18N
+        btn_barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barang.png"))); // NOI18N
+        btn_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_barangMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_barangMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_barangMouseExited(evt);
+            }
+        });
         jPanel3.add(btn_barang);
 
         btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
@@ -155,18 +155,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         });
         jPanel3.add(btn_laporan);
 
-        btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
-        btn_karyawan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_karyawanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_karyawanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_karyawanMouseExited(evt);
-            }
-        });
+        btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan_aktif.png"))); // NOI18N
         jPanel3.add(btn_karyawan);
 
         btn_pengaturan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengaturan.png"))); // NOI18N
@@ -200,8 +189,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
         txt_cari.setBackground(new java.awt.Color(255, 255, 255));
-        txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_cari.setForeground(new java.awt.Color(0, 0, 0));
+        txt_cari.setForeground(new java.awt.Color(204, 204, 204));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -210,6 +198,11 @@ public class Tampilan_Barang extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_cariFocusLost(evt);
+            }
+        });
+        txt_cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cariActionPerformed(evt);
             }
         });
 
@@ -260,30 +253,30 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Barang", "Nama Barang", "Harga Beli", "Harga Jual", "Satuan", "Stok", "Return"
+                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
@@ -324,6 +317,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
         btn_hapus.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_hapusMouseEntered(evt);
             }
@@ -332,9 +328,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_hapusMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
             }
         });
         jPanel7.add(btn_hapus);
@@ -369,29 +362,21 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_transaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseEntered
+    private void txt_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cariActionPerformed
         // TODO add your handling code here:
-        Image iconTransaksiHover = new ImageIcon(this.getClass().getResource("/img/transaksi_hover.png")).getImage();
-        btn_transaksi.setIcon(new ImageIcon(iconTransaksiHover));
-    }//GEN-LAST:event_btn_transaksiMouseEntered
+    }//GEN-LAST:event_txt_cariActionPerformed
 
-    private void btn_transaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseExited
+    private void btn_barangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseEntered
         // TODO add your handling code here:
-        Image iconTransaksiDefault = new ImageIcon(this.getClass().getResource("/img/transaksi.png")).getImage();
-        btn_transaksi.setIcon(new ImageIcon(iconTransaksiDefault));
-    }//GEN-LAST:event_btn_transaksiMouseExited
+        Image iconBarangHover = new ImageIcon(this.getClass().getResource("/img/barang_hover.png")).getImage();
+        btn_barang.setIcon(new ImageIcon(iconBarangHover));
+    }//GEN-LAST:event_btn_barangMouseEntered
 
-    private void btn_pengeluaranMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseEntered
+    private void btn_barangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseExited
         // TODO add your handling code here:
-        Image iconPengeluaranHover = new ImageIcon(this.getClass().getResource("/img/pengeluaran_hover.png")).getImage();
-        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranHover));
-    }//GEN-LAST:event_btn_pengeluaranMouseEntered
-
-    private void btn_pengeluaranMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseExited
-        // TODO add your handling code here:
-        Image iconPengeluaranDefault = new ImageIcon(this.getClass().getResource("/img/pengeluaran.png")).getImage();
-        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranDefault));
-    }//GEN-LAST:event_btn_pengeluaranMouseExited
+        Image iconBarangDefault = new ImageIcon(this.getClass().getResource("/img/barang.png")).getImage();
+        btn_barang.setIcon(new ImageIcon(iconBarangDefault));
+    }//GEN-LAST:event_btn_barangMouseExited
 
     private void btn_pemasokMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseEntered
         // TODO add your handling code here:
@@ -428,18 +413,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         Image iconLaporanDefault = new ImageIcon(this.getClass().getResource("/img/laporan.png")).getImage();
         btn_laporan.setIcon(new ImageIcon(iconLaporanDefault));
     }//GEN-LAST:event_btn_laporanMouseExited
-
-    private void btn_karyawanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseEntered
-        // TODO add your handling code here:
-        Image iconKaryawanHover = new ImageIcon(this.getClass().getResource("/img/karyawan_hover.png")).getImage();
-        btn_karyawan.setIcon(new ImageIcon(iconKaryawanHover));
-    }//GEN-LAST:event_btn_karyawanMouseEntered
-
-    private void btn_karyawanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseExited
-        // TODO add your handling code here:
-        Image iconKaryawanDefault = new ImageIcon(this.getClass().getResource("/img/karyawan.png")).getImage();
-        btn_karyawan.setIcon(new ImageIcon(iconKaryawanDefault));
-    }//GEN-LAST:event_btn_karyawanMouseExited
 
     private void btn_pengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseEntered
         // TODO add your handling code here:
@@ -549,13 +522,25 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_cari.setIcon(new ImageIcon(iconCarihHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
-    private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
+    private void btn_transaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseExited
         // TODO add your handling code here:
-        Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
-        pengeluaran.show();
+        Image iconTransaksiDefault = new ImageIcon(this.getClass().getResource("/img/transaksi.png")).getImage();
+        btn_transaksi.setIcon(new ImageIcon(iconTransaksiDefault));
+    }//GEN-LAST:event_btn_transaksiMouseExited
+
+    private void btn_transaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseEntered
+        // TODO add your handling code here:
+        Image iconTransaksiHover = new ImageIcon(this.getClass().getResource("/img/transaksi_hover.png")).getImage();
+        btn_transaksi.setIcon(new ImageIcon(iconTransaksiHover));
+    }//GEN-LAST:event_btn_transaksiMouseEntered
+
+    private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Barang barang = new Tampilan_Barang();
+        barang.show();
 
         dispose();
-    }//GEN-LAST:event_btn_pengeluaranMouseClicked
+    }//GEN-LAST:event_btn_barangMouseClicked
 
     private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
         // TODO add your handling code here:
@@ -567,7 +552,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
     private void txt_cariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariFocusGained
         // TODO add your handling code here:
-        if (txt_cari.getText().equals("Cari Berdasarkan Nama Barang")) {
+        if (txt_cari.getText().equals("Cari Berdasarkan Nama Karyawan")) {
             txt_cari.setText("");
             txt_cari.setForeground(new Color(0, 0, 0));
         }
@@ -576,37 +561,48 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private void txt_cariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariFocusLost
         // TODO add your handling code here:
         if (txt_cari.getText().equals("")) {
-            txt_cari.setText("Cari Berdasarkan Nama Barang");
+            txt_cari.setText("Cari Berdasarkan Nama Karyawan");
             txt_cari.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_txt_cariFocusLost
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         // TODO add your handling code here:
-
-        Popup_Tambah_Barang tambahBarang = new Popup_Tambah_Barang();
-        tambahBarang.setVisible(true);
-        tambahBarang.pack();
-        tambahBarang.setLocationRelativeTo(null);
-        tambahBarang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Popup_Tambah_Karyawan tambahKaryawan = new Popup_Tambah_Karyawan();
+        tambahKaryawan.setVisible(true);
+        tambahKaryawan.pack();
+        tambahKaryawan.setLocationRelativeTo(null);
+        tambahKaryawan.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btn_tambahMouseClicked
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
-        Popup_Ubah_Barang ubahBarang = new Popup_Ubah_Barang();
-        ubahBarang.setVisible(true);
-        ubahBarang.pack();
-        ubahBarang.setLocationRelativeTo(null);
-        ubahBarang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Popup_Ubah_Karyawan ubahKaryawan = new Popup_Ubah_Karyawan();
+        ubahKaryawan.setVisible(true);
+        ubahKaryawan.pack();
+        ubahKaryawan.setLocationRelativeTo(null);
+        ubahKaryawan.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btn_ubahMouseClicked
 
-    private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
+    private void btn_pengeluaranMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseEntered
         // TODO add your handling code here:
-        Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
-        karyawan.show();
+        Image iconPengeluaranHover = new ImageIcon(this.getClass().getResource("/img/pengeluaran_hover.png")).getImage();
+        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranHover));
+    }//GEN-LAST:event_btn_pengeluaranMouseEntered
+
+    private void btn_pengeluaranMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseExited
+        // TODO add your handling code here:
+        Image iconPengeluaranDefault = new ImageIcon(this.getClass().getResource("/img/pengeluaran.png")).getImage();
+        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranDefault));
+    }//GEN-LAST:event_btn_pengeluaranMouseExited
+
+    private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
+        pengeluaran.show();
         
         dispose();
-    }//GEN-LAST:event_btn_karyawanMouseClicked
+    }//GEN-LAST:event_btn_pengeluaranMouseClicked
 
     /**
      * @param args the command line arguments
@@ -625,21 +621,51 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tampilan_Barang().setVisible(true);
+                new Tampilan_Karyawan().setVisible(true);
             }
         });
     }
@@ -662,11 +688,11 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JTable jTable2;
     private atsk.panelRound panelRound1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables

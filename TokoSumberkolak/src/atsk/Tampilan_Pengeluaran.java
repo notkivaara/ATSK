@@ -6,14 +6,11 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,41 +21,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     /**
      * Creates new form TampilanBarang
      */
-    
-    
     public Tampilan_Pengeluaran() {
         initComponents();
-        table();
 
-    }
-    public void table(){
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Pengeluaran");
-        tbl.addColumn("Nama Pengeluaran");
-        tbl.addColumn("Tanggal Bayar");
-        tbl.addColumn("Bulan");
-        tbl.addColumn("Tahun");
-        tbl.addColumn("total");
-        
-        try {
-            Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select pengeluaran.*, transaksi_pengeluaran.* "
-                    + "from pengeluaran join transaksi_pengeluaran on pengeluaran.kd_pengeluaran = transaksi_pengeluaran.kd_pengeluaran;");
-            while(rs.next()){
-                tbl.addRow(new Object[]{
-                    rs.getString("kd_pengeluaran"),
-                    rs.getString("nama"),
-                    rs.getString("tgl_bayar"),
-                    rs.getString("bln"),
-                    rs.getString("tahun"),
-                    rs.getString("total")         
-                });
-                pengeluaranTable.setModel(tbl);
-            }
-            
-        } catch (Exception e) {
-            
-        }
     }
 
     /**
@@ -90,7 +55,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         txt_cari = new javax.swing.JTextField();
         btn_cari = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable pengeluaranTable = new javax.swing.JTable();
+        javax.swing.JTable jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
@@ -192,6 +157,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
         btn_karyawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_karyawanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_karyawanMouseEntered(evt);
             }
@@ -231,9 +199,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
+        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setForeground(new java.awt.Color(204, 204, 204));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_cari.setText("Cari Berdasarkan Nama Pengeluaran");
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -292,39 +260,41 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        pengeluaranTable.setAutoCreateRowSorter(true);
-        pengeluaranTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setAutoCreateRowSorter(true);
+        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
+                "Kode Pengeluaran", "Kode Detail Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
             }
         ));
-        pengeluaranTable.setGridColor(new java.awt.Color(204, 204, 204));
-        pengeluaranTable.setRowHeight(40);
-        pengeluaranTable.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jScrollPane2.setViewportView(pengeluaranTable);
+        jTable2.setGridColor(new java.awt.Color(204, 204, 204));
+        jTable2.setRowHeight(40);
+        jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
+        jTable2.setShowHorizontalLines(true);
+        jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 540));
 
@@ -553,7 +523,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
     private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
         // TODO add your handling code here:
-       Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
+        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
         btn_cari.setIcon(new ImageIcon(iconCarihHover));
     }//GEN-LAST:event_btn_cariMouseEntered
 
@@ -636,6 +606,14 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         ubahPengeluaran.setLocationRelativeTo(null);
         ubahPengeluaran.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btn_ubahMouseClicked
+
+    private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
+        karyawan.show();
+
+        dispose();
+    }//GEN-LAST:event_btn_karyawanMouseClicked
 
     /**
      * @param args the command line arguments

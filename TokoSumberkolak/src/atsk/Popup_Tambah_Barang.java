@@ -41,12 +41,18 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_namaBarang = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txt_harga = new javax.swing.JTextField();
+        txt_hargaBeli = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_stok = new javax.swing.JTextField();
+        txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        txt_satuan = new javax.swing.JTextField();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_stok = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         txt_return = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
@@ -83,10 +89,12 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Barang");
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel9.add(jLabel6);
 
+        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel9.add(txt_kodeBarang);
 
@@ -95,10 +103,12 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nama Barang");
         jLabel7.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel10.add(jLabel7);
 
+        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -107,40 +117,74 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel8.setText("Harga");
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Harga Beli");
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel11.add(jLabel8);
 
-        txt_harga.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel11.add(txt_harga);
+        txt_hargaBeli.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hargaBeli.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel11.add(txt_hargaBeli);
 
         jPanel8.add(jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel9.setText("Stok");
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Harga Jual");
         jLabel9.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel12.add(jLabel9);
 
-        txt_stok.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel12.add(txt_stok);
+        txt_hargaJual.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hargaJual.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel12.add(txt_hargaJual);
 
         jPanel8.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel10.setText("Return");
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Satuan");
         jLabel10.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel13.add(jLabel10);
 
-        txt_return.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel13.add(txt_return);
+        txt_satuan.setBackground(new java.awt.Color(255, 255, 255));
+        txt_satuan.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel13.add(txt_satuan);
 
         jPanel8.add(jPanel13);
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 200));
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Stok");
+        jLabel11.setPreferredSize(new java.awt.Dimension(200, 25));
+        jPanel14.add(jLabel11);
+
+        txt_stok.setBackground(new java.awt.Color(255, 255, 255));
+        txt_stok.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel14.add(txt_stok);
+
+        jPanel8.add(jPanel14);
+
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Return");
+        jLabel12.setPreferredSize(new java.awt.Dimension(200, 25));
+        jPanel15.add(jLabel12);
+
+        txt_return.setBackground(new java.awt.Color(255, 255, 255));
+        txt_return.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel15.add(txt_return);
+
+        jPanel8.add(jPanel15);
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 280));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
@@ -171,9 +215,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
         btn_tambah.setPreferredSize(new java.awt.Dimension(193, 37));
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -189,9 +230,9 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         });
         jPanel2.add(btn_tambah);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 450, 37));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 450, 37));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,7 +265,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         // TODO add your handling code here:
         Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
         btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-        
     }//GEN-LAST:event_btn_tambahMouseEntered
 
     private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
@@ -247,12 +287,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
-        
+        dispose();
     }//GEN-LAST:event_btn_batalMouseClicked
-
-    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
-        String kd = txt_kodeBarang.getText();
-    }//GEN-LAST:event_btn_tambahMouseClicked
 
     /**
      * @param args the command line arguments
@@ -294,6 +330,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -303,14 +341,18 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_harga;
+    private javax.swing.JTextField txt_hargaBeli;
+    private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;
     private javax.swing.JTextField txt_namaBarang;
     private javax.swing.JTextField txt_return;
+    private javax.swing.JTextField txt_satuan;
     private javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables
 }

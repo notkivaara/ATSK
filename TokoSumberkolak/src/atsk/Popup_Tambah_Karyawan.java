@@ -11,12 +11,12 @@ import javax.swing.ImageIcon;
  *
  * @author ACER
  */
-public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
+public class Popup_Tambah_Karyawan extends javax.swing.JFrame {
 
     /**
      * Creates new form Popup_Tambah_Barang
      */
-    public Popup_Tambah_Pengeluaran() {
+    public Popup_Tambah_Karyawan() {
         initComponents();
     }
 
@@ -35,31 +35,24 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txt_kodeAkun = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txt_namaPengeluaran = new javax.swing.JTextField();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        txt_namaPengeluaran1 = new javax.swing.JTextField();
+        txt_namaKaryawan = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txt_username = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_bulan = new javax.swing.JTextField();
+        txt_password = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_tahun = new javax.swing.JTextField();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        txt_total = new javax.swing.JTextField();
+        txt_Role = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_tambah = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(450, 430));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -68,7 +61,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Tambah Pengeluaran.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Tambah Karyawan.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -91,15 +84,13 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Kode Pengeluaran");
+        jLabel6.setText("Kode Akun");
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel9.add(jLabel6);
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(200, 35));
-        jPanel9.add(jComboBox1);
+        txt_kodeAkun.setBackground(new java.awt.Color(255, 255, 255));
+        txt_kodeAkun.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel9.add(txt_kodeAkun);
 
         jPanel8.add(jPanel9);
 
@@ -107,41 +98,27 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Kode Detail Pengeluaran");
+        jLabel7.setText("Nama Karyawan");
         jLabel7.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaPengeluaran.setBackground(new java.awt.Color(255, 255, 255));
-        txt_namaPengeluaran.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel10.add(txt_namaPengeluaran);
+        txt_namaKaryawan.setBackground(new java.awt.Color(255, 255, 255));
+        txt_namaKaryawan.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel10.add(txt_namaKaryawan);
 
         jPanel8.add(jPanel10);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Nama Pengeluaran");
-        jLabel12.setPreferredSize(new java.awt.Dimension(200, 25));
-        jPanel15.add(jLabel12);
-
-        txt_namaPengeluaran1.setBackground(new java.awt.Color(255, 255, 255));
-        txt_namaPengeluaran1.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel15.add(txt_namaPengeluaran1);
-
-        jPanel8.add(jPanel15);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Tanggal Bayar");
+        jLabel8.setText("Username");
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel11.add(jLabel8);
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setPreferredSize(new java.awt.Dimension(200, 35));
-        jPanel11.add(jDateChooser1);
+        txt_username.setBackground(new java.awt.Color(255, 255, 255));
+        txt_username.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel11.add(txt_username);
 
         jPanel8.add(jPanel11);
 
@@ -149,13 +126,13 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Bulan");
+        jLabel9.setText("Password");
         jLabel9.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel12.add(jLabel9);
 
-        txt_bulan.setBackground(new java.awt.Color(255, 255, 255));
-        txt_bulan.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel12.add(txt_bulan);
+        txt_password.setBackground(new java.awt.Color(255, 255, 255));
+        txt_password.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel12.add(txt_password);
 
         jPanel8.add(jPanel12);
 
@@ -163,31 +140,17 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Tahun");
+        jLabel10.setText("Role");
         jLabel10.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel13.add(jLabel10);
 
-        txt_tahun.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tahun.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel13.add(txt_tahun);
+        txt_Role.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Role.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel13.add(txt_Role);
 
         jPanel8.add(jPanel13);
 
-        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Total");
-        jLabel11.setPreferredSize(new java.awt.Dimension(200, 25));
-        jPanel14.add(jLabel11);
-
-        txt_total.setBackground(new java.awt.Color(255, 255, 255));
-        txt_total.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel14.add(txt_total);
-
-        jPanel8.add(jPanel14);
-
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 280));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 200));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
@@ -233,9 +196,9 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel2.add(btn_tambah);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 450, 37));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 450, 37));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -310,14 +273,134 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Popup_Tambah_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Karyawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -330,7 +413,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Popup_Tambah_Pengeluaran().setVisible(true);
+                new Popup_Tambah_Karyawan().setVisible(true);
             }
         });
     }
@@ -338,12 +421,8 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_tambah;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -353,16 +432,14 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_bulan;
-    private javax.swing.JTextField txt_namaPengeluaran;
-    private javax.swing.JTextField txt_namaPengeluaran1;
-    private javax.swing.JTextField txt_tahun;
-    private javax.swing.JTextField txt_total;
+    private javax.swing.JTextField txt_Role;
+    private javax.swing.JTextField txt_kodeAkun;
+    private javax.swing.JTextField txt_namaKaryawan;
+    private javax.swing.JTextField txt_password;
+    private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }

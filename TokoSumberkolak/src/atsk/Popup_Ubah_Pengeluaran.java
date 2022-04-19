@@ -35,13 +35,16 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodePengeluaran = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txt_namaPengeluaran = new javax.swing.JTextField();
+        jPanel15 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        txt_namaPengeluaran1 = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txt_tanggalBayar = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txt_bulan = new javax.swing.JTextField();
@@ -91,9 +94,15 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodePengeluaran.setBackground(new java.awt.Color(255, 255, 255));
-        txt_kodePengeluaran.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel9.add(txt_kodePengeluaran);
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setPreferredSize(new java.awt.Dimension(200, 35));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jComboBox1);
 
         jPanel8.add(jPanel9);
 
@@ -101,7 +110,7 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Nama Pengeluaran");
+        jLabel7.setText("Kode Detail Pengeluaran");
         jLabel7.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel10.add(jLabel7);
 
@@ -111,6 +120,20 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
 
         jPanel8.add(jPanel10);
 
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Nama Pengeluaran");
+        jLabel12.setPreferredSize(new java.awt.Dimension(200, 25));
+        jPanel15.add(jLabel12);
+
+        txt_namaPengeluaran1.setBackground(new java.awt.Color(255, 255, 255));
+        txt_namaPengeluaran1.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel15.add(txt_namaPengeluaran1);
+
+        jPanel8.add(jPanel15);
+
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
@@ -119,9 +142,9 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel11.add(jLabel8);
 
-        txt_tanggalBayar.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tanggalBayar.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel11.add(txt_tanggalBayar);
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setPreferredSize(new java.awt.Dimension(200, 35));
+        jPanel11.add(jDateChooser1);
 
         jPanel8.add(jPanel11);
 
@@ -167,7 +190,7 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
 
         jPanel8.add(jPanel14);
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 240));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 280));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
@@ -213,9 +236,9 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel2.add(btn_simpan);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 450, 37));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 450, 37));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -273,6 +296,10 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_batalMouseClicked
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,9 +341,12 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_simpan;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -327,15 +357,15 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField txt_bulan;
-    private javax.swing.JTextField txt_kodePengeluaran;
     private javax.swing.JTextField txt_namaPengeluaran;
+    private javax.swing.JTextField txt_namaPengeluaran1;
     private javax.swing.JTextField txt_tahun;
-    private javax.swing.JTextField txt_tanggalBayar;
     private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }

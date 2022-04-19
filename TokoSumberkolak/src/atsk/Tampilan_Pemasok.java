@@ -157,6 +157,9 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
 
         btn_karyawan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/karyawan.png"))); // NOI18N
         btn_karyawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_karyawanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_karyawanMouseEntered(evt);
             }
@@ -589,12 +592,20 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
-        Popup_Ubah_Pemasok ubahPemasok = new Popup_Ubah_Pemasok();
+        Popup_Ubah_Karyawan ubahPemasok = new Popup_Ubah_Karyawan();
         ubahPemasok.setVisible(true);
         ubahPemasok.pack();
         ubahPemasok.setLocationRelativeTo(null);
         ubahPemasok.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btn_ubahMouseClicked
+
+    private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
+        karyawan.show();
+
+        dispose();
+    }//GEN-LAST:event_btn_karyawanMouseClicked
 
     /**
      * @param args the command line arguments
