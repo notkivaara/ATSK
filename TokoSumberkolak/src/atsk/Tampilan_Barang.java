@@ -6,11 +6,20 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,8 +32,41 @@ public class Tampilan_Barang extends javax.swing.JFrame {
      */
     public Tampilan_Barang() {
         initComponents();
+        table();
 
     }
+     public void table(){
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Barang");
+        tbl.addColumn("Nama Barang");
+        tbl.addColumn("Harga Beli");
+        tbl.addColumn("Harga Jual");
+        tbl.addColumn("Satuan");
+        tbl.addColumn("Stock");
+        tbl.addColumn("Return");
+       // Disini Terakhir nulis
+       
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select * from barang");
+            
+            while(rs.next()){
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_brg"),
+                    rs.getString("nama_brg"),
+                    rs.getString("hrg_beli_brg"),
+                    rs.getString("hrg_jual_brg"),
+                    rs.getString("satuan"),
+                    rs.getString("stock"),
+                    rs.getString("retur")
+                });
+                jTable2.setModel(tbl);
+                
+                
+            }
+        } catch (Exception e) {
+        }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +97,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         txt_cari = new javax.swing.JTextField();
         btn_cari = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
@@ -199,9 +241,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_cari.setForeground(new java.awt.Color(0, 0, 0));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -257,7 +297,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -283,13 +322,12 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode Barang", "Nama Barang", "Harga Beli", "Harga Jual", "Satuan", "Stok", "Return"
+                "KodeBarang", "Nama Barang", "Harga Beli", "Harga Jual", "Satuan", "Stok", "Return"
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 540));
@@ -302,9 +340,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
         btn_tambah.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseReleased(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseClicked(evt);
             }
@@ -317,6 +352,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_tambahMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseReleased(evt);
+            }
         });
         jPanel7.add(btn_tambah);
 
@@ -324,6 +362,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
         btn_hapus.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_hapusMouseEntered(evt);
             }
@@ -608,6 +649,44 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
+    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
+        // TODO add your handling code here:
+    
+            
+       
+        try {
+            Connection c = (Connection) Config.configDB();
+            String sql1 = "Select * from barang";
+            
+            PreparedStatement pstl = c.prepareStatement(sql1);
+            String kodeItem;
+            
+            String sql = "Delete From barang where kd_brg ='"+kodeItem+"'";
+            
+            PreparedStatement pst = c.prepareStatement(sql);
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null,"Berhasil Menghapus barang");
+            table();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        
+//        DefaultTableModel tblModel = (DefaultTableModel) jTable2.getModel();
+//        if (jTable2.getSelectedRowCount()==1) {
+////            jika satu row terpilih
+//              tblModel.removeRow(jTable2.getSelectedRow());
+//        } else {
+//            if(jTable2.getRowCount()==0){
+//                JOptionPane.showMessageDialog(null,"Tabel kosong");
+//            }else{
+////                jika table ada tapi baris yang dipilih lebih dari 1
+//                JOptionPane.showMessageDialog(null,"Pilih 1 baris saja");
+//            }
+//        }
+    }//GEN-LAST:event_btn_hapusMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -667,6 +746,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTable jTable2;
     private atsk.panelRound panelRound1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
