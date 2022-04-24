@@ -302,7 +302,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
 
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(800, 42));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 0));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 33, 0));
 
         btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N

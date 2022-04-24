@@ -57,9 +57,9 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         javax.swing.JTable jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
-        btn_hapus = new javax.swing.JLabel();
-        btn_ubah = new javax.swing.JLabel();
         btn_tambah = new javax.swing.JLabel();
+        btn_ubah = new javax.swing.JLabel();
+        btn_hapus = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -275,30 +275,30 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Kode Pemasok", "Nama Pemasok", "Nama Barang", "Alamat", "No. Telpon"
+                "Kode Pemasok", "Nama Pemasok", "Alamat", "No. Telpon"
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
@@ -311,25 +311,28 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
 
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(800, 42));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 0));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 33, 0));
 
-        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
-        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
+        btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
+        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseEntered(evt);
+                btn_tambahMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseExited(evt);
+                btn_tambahMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_hapusMousePressed(evt);
+                btn_tambahMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseReleased(evt);
             }
         });
-        jPanel7.add(btn_hapus);
+        jPanel7.add(btn_tambah);
 
         btn_ubah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Ubah.png"))); // NOI18N
@@ -352,26 +355,23 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         });
         jPanel7.add(btn_ubah);
 
-        btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
-        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseClicked(evt);
+        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
+        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseEntered(evt);
+                btn_hapusMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseExited(evt);
+                btn_hapusMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_tambahMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseReleased(evt);
+                btn_hapusMousePressed(evt);
             }
         });
-        jPanel7.add(btn_tambah);
+        jPanel7.add(btn_hapus);
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 840, 42));
 
@@ -604,7 +604,7 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
-        Popup_Ubah_Karyawan ubahPemasok = new Popup_Ubah_Karyawan();
+        Popup_Ubah_Pemasok ubahPemasok = new Popup_Ubah_Pemasok();
         ubahPemasok.setVisible(true);
         ubahPemasok.pack();
         ubahPemasok.setLocationRelativeTo(null);

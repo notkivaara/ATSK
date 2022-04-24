@@ -40,9 +40,6 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txt_namaBarang = new javax.swing.JTextField();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        txt_hargaBeli = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txt_hargaJual = new javax.swing.JTextField();
@@ -55,7 +52,7 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         btn_simpan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(470, 340));
+        setMinimumSize(new java.awt.Dimension(470, 300));
         setUndecorated(true);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -132,22 +129,6 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
 
         jPanel8.add(jPanel10);
 
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setPreferredSize(new java.awt.Dimension(428, 34));
-        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Nama Barang");
-        jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
-        jPanel11.add(jLabel8);
-
-        txt_hargaBeli.setBackground(new java.awt.Color(255, 255, 255));
-        txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel11.add(txt_hargaBeli);
-
-        jPanel8.add(jPanel11);
-
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -180,7 +161,7 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
 
         jPanel8.add(jPanel13);
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 200));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 160));
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
@@ -239,9 +220,9 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         });
         jPanel3.add(btn_simpan);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 470, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 470, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 340));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -414,18 +395,15 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;
     private javax.swing.JTextField txt_namaBarang;
