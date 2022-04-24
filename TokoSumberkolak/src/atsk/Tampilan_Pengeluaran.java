@@ -58,8 +58,8 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         javax.swing.JTable jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
-        btn_hapus = new javax.swing.JLabel();
         btn_ubah = new javax.swing.JLabel();
+        btn_hapus = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -107,6 +107,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
         btn_transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_transaksiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_transaksiMouseEntered(evt);
             }
@@ -135,6 +138,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         btn_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/riwayat.png"))); // NOI18N
         btn_riwayat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_riwayatMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_riwayatMouseEntered(evt);
             }
@@ -146,6 +152,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         btn_laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan.png"))); // NOI18N
         btn_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_laporanMouseEntered(evt);
             }
@@ -171,6 +180,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         btn_pengaturan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengaturan.png"))); // NOI18N
         btn_pengaturan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pengaturanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_pengaturanMouseEntered(evt);
             }
@@ -188,18 +200,20 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setOpaque(false);
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.setRoundBottomLeft(6);
-        panelRound1.setRoundBottomRight(6);
-        panelRound1.setRoundTopLeft(6);
-        panelRound1.setRoundTopRight(6);
+        panelRound1.setPreferredSize(new java.awt.Dimension(650, 49));
+        panelRound1.setRoundBottomLeft(3);
+        panelRound1.setRoundBottomRight(3);
+        panelRound1.setRoundTopLeft(3);
+        panelRound1.setRoundTopRight(3);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
         txt_cari.setBackground(new java.awt.Color(255, 255, 255));
+        txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_cari.setForeground(new java.awt.Color(204, 204, 204));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
@@ -232,14 +246,13 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel6.add(panelRound1);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
-        btn_cari.setPreferredSize(new java.awt.Dimension(136, 49));
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btn_cariMouseReleased(evt);
@@ -304,7 +317,6 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
-        btn_tambah.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseClicked(evt);
@@ -324,28 +336,8 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel7.add(btn_tambah);
 
-        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
-        btn_hapus.setPreferredSize(new java.awt.Dimension(244, 42));
-        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_hapusMousePressed(evt);
-            }
-        });
-        jPanel7.add(btn_hapus);
-
         btn_ubah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Ubah.png"))); // NOI18N
-        btn_ubah.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_ubah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ubahMouseClicked(evt);
@@ -364,6 +356,24 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             }
         });
         jPanel7.add(btn_ubah);
+
+        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
+        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_hapusMousePressed(evt);
+            }
+        });
+        jPanel7.add(btn_hapus);
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 840, 42));
 
@@ -614,6 +624,38 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
+
+    private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
+        pengaturan.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_pengaturanMouseClicked
+
+    private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
+        // TODO add your handling code here:
+        Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
+        riwayatBeli.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_riwayatMouseClicked
+
+    private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
+        // TODO add your handling code here:
+        Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
+        transaksiBeli.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_transaksiMouseClicked
+
+    private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Laporan laporan = new Tampilan_Laporan();
+        laporan.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_laporanMouseClicked
 
     /**
      * @param args the command line arguments

@@ -6,20 +6,11 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,41 +23,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
      */
     public Tampilan_Barang() {
         initComponents();
-        table();
 
     }
-     public void table(){
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Harga Beli");
-        tbl.addColumn("Harga Jual");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Return");
-       // Disini Terakhir nulis
-       
-        try {
-            Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select * from barang");
-            
-            while(rs.next()){
-                tbl.addRow(new Object[]{
-                    rs.getString("kd_brg"),
-                    rs.getString("nama_brg"),
-                    rs.getString("hrg_beli_brg"),
-                    rs.getString("hrg_jual_brg"),
-                    rs.getString("satuan"),
-                    rs.getString("stock"),
-                    rs.getString("retur")
-                });
-                jTable2.setModel(tbl);
-                
-                
-            }
-        } catch (Exception e) {
-        }
-     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,11 +55,11 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         txt_cari = new javax.swing.JTextField();
         btn_cari = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        javax.swing.JTable jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
-        btn_hapus = new javax.swing.JLabel();
         btn_ubah = new javax.swing.JLabel();
+        btn_hapus = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -138,6 +96,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
         btn_transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_transaksiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_transaksiMouseEntered(evt);
             }
@@ -177,6 +138,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         btn_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/riwayat.png"))); // NOI18N
         btn_riwayat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_riwayatMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_riwayatMouseEntered(evt);
             }
@@ -188,6 +152,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         btn_laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan.png"))); // NOI18N
         btn_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_laporanMouseEntered(evt);
             }
@@ -213,6 +180,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         btn_pengaturan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengaturan.png"))); // NOI18N
         btn_pengaturan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pengaturanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_pengaturanMouseEntered(evt);
             }
@@ -230,18 +200,20 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setOpaque(false);
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.setRoundBottomLeft(6);
-        panelRound1.setRoundBottomRight(6);
-        panelRound1.setRoundTopLeft(6);
-        panelRound1.setRoundTopRight(6);
+        panelRound1.setRoundBottomLeft(3);
+        panelRound1.setRoundBottomRight(3);
+        panelRound1.setRoundTopLeft(3);
+        panelRound1.setRoundTopRight(3);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
+        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_cari.setForeground(new java.awt.Color(0, 0, 0));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -275,11 +247,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
-        btn_cari.setPreferredSize(new java.awt.Dimension(136, 49));
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_cariMouseReleased(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
             }
@@ -289,6 +257,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_cariMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_cariMouseReleased(evt);
+            }
         });
         jPanel6.add(btn_cari);
 
@@ -297,48 +268,50 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
+        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "KodeBarang", "Nama Barang", "Harga Beli", "Harga Jual", "Satuan", "Stok", "Return"
+                "Kode Barang", "Nama Barang", "Kategori", "Tanggal Penambahan", "Harga Beli", "Harga Jual", "Satuan", "Stok", "Return"
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
+        jTable2.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 540));
 
         jPanel7.setOpaque(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(800, 42));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 0));
+        jPanel7.setPreferredSize(new java.awt.Dimension(800, 52));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 33, 0));
 
         btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
-        btn_tambah.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseClicked(evt);
@@ -358,31 +331,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         });
         jPanel7.add(btn_tambah);
 
-        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
-        btn_hapus.setPreferredSize(new java.awt.Dimension(244, 42));
-        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_hapusMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
-            }
-        });
-        jPanel7.add(btn_hapus);
-
         btn_ubah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Ubah.png"))); // NOI18N
-        btn_ubah.setPreferredSize(new java.awt.Dimension(244, 42));
         btn_ubah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ubahMouseClicked(evt);
@@ -401,6 +351,24 @@ public class Tampilan_Barang extends javax.swing.JFrame {
             }
         });
         jPanel7.add(btn_ubah);
+
+        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
+        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_hapusMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
+            }
+        });
+        jPanel7.add(btn_hapus);
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 840, 42));
 
@@ -649,43 +617,37 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
-    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
+    private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
         // TODO add your handling code here:
-    
-            
-       
-        try {
-            Connection c = (Connection) Config.configDB();
-            String sql1 = "Select * from barang";
-            
-            PreparedStatement pstl = c.prepareStatement(sql1);
-            String kodeItem;
-            
-            String sql = "Delete From barang where kd_brg ='"+kodeItem+"'";
-            
-            PreparedStatement pst = c.prepareStatement(sql);
-            
-            pst.execute();
-            
-            JOptionPane.showMessageDialog(null,"Berhasil Menghapus barang");
-            table();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+        Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
+        pengaturan.show();
         
-//        DefaultTableModel tblModel = (DefaultTableModel) jTable2.getModel();
-//        if (jTable2.getSelectedRowCount()==1) {
-////            jika satu row terpilih
-//              tblModel.removeRow(jTable2.getSelectedRow());
-//        } else {
-//            if(jTable2.getRowCount()==0){
-//                JOptionPane.showMessageDialog(null,"Tabel kosong");
-//            }else{
-////                jika table ada tapi baris yang dipilih lebih dari 1
-//                JOptionPane.showMessageDialog(null,"Pilih 1 baris saja");
-//            }
-//        }
-    }//GEN-LAST:event_btn_hapusMouseClicked
+        dispose();
+    }//GEN-LAST:event_btn_pengaturanMouseClicked
+
+    private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
+        // TODO add your handling code here:
+        Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
+        riwayatBeli.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_riwayatMouseClicked
+
+    private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
+        // TODO add your handling code here:
+        Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
+        transaksiBeli.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_transaksiMouseClicked
+
+    private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Laporan laporan = new Tampilan_Laporan();
+        laporan.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_laporanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -746,7 +708,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTable jTable2;
     private atsk.panelRound panelRound1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables

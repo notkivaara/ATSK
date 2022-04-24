@@ -4,14 +4,9 @@
  */
 package atsk;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ACER
@@ -21,23 +16,9 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
     /**
      * Creates new form Popup_Tambah_Barang
      */
+    int x,y;
     public Popup_Ubah_Pemasok() {
         initComponents();
-        
-        try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/toko_sumberkolak","root","");
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM supplier WHERE kd_supplier =");
-            while(rs.next()){
-                txt_kodePemasok.setText(rs.getString("kd_supplier"));
-                txt_namaPemasok.setText(rs.getString("nama"));
-                txt_alamat.setText(rs.getString("alamat"));
-                txt_noTelpon.setText(rs.getString("telp"));
-            }
-        }
-        catch (SQLException ex){
-            Logger.getLogger(Tampilan_Pemasok.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
 
     /**
@@ -55,25 +36,41 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodePemasok = new javax.swing.JTextField();
+        txt_kodeBarang = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txt_namaPemasok = new javax.swing.JTextField();
+        txt_namaBarang = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_hargaBeli = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_alamat = new javax.swing.JTextField();
+        txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_noTelpon = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        txt_satuan = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
+        btn_bersihkan = new javax.swing.JLabel();
         btn_simpan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(470, 340));
+        setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(470, 460));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -85,9 +82,9 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,65 +96,96 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Pemasok");
-        jLabel6.setPreferredSize(new java.awt.Dimension(200, 25));
+        jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodePemasok.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel9.add(txt_kodePemasok);
+        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
+        txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_kodeBarangActionPerformed(evt);
+            }
+        });
+        jPanel9.add(txt_kodeBarang);
 
         jPanel8.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nama Pemasok");
-        jLabel7.setPreferredSize(new java.awt.Dimension(200, 25));
+        jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaPemasok.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel10.add(txt_namaPemasok);
+        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
+        txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel10.add(txt_namaBarang);
 
         jPanel8.add(jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Nama Barang");
+        jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
+        jPanel11.add(jLabel8);
+
+        txt_hargaBeli.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel11.add(txt_hargaBeli);
+
         jPanel8.add(jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Alamat");
-        jLabel9.setPreferredSize(new java.awt.Dimension(200, 25));
+        jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_alamat.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel12.add(txt_alamat);
+        txt_hargaJual.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel12.add(txt_hargaJual);
 
         jPanel8.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel13.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("No. Telpon");
-        jLabel10.setPreferredSize(new java.awt.Dimension(200, 25));
+        jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_noTelpon.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel13.add(txt_noTelpon);
+        txt_satuan.setBackground(new java.awt.Color(255, 255, 255));
+        txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(txt_satuan);
 
         jPanel8.add(jPanel13);
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 450, 200));
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 200));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
-        btn_batal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button batal.png"))); // NOI18N
-        btn_batal.setPreferredSize(new java.awt.Dimension(193, 37));
+        btn_batal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button batal popup.png"))); // NOI18N
         btn_batal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_batalMouseClicked(evt);
@@ -175,11 +203,26 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
                 btn_batalMouseReleased(evt);
             }
         });
-        jPanel2.add(btn_batal);
+        jPanel3.add(btn_batal);
 
-        btn_simpan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan.png"))); // NOI18N
-        btn_simpan.setPreferredSize(new java.awt.Dimension(193, 37));
+        btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
+        btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseReleased(evt);
+            }
+        });
+        jPanel3.add(btn_bersihkan);
+
+        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan popup.png"))); // NOI18N
         btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_simpanMouseEntered(evt);
@@ -194,88 +237,108 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
                 btn_simpanMouseReleased(evt);
             }
         });
-        jPanel2.add(btn_simpan);
+        jPanel3.add(btn_simpan);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 450, 37));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 470, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_batalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseEntered
         // TODO add your handling code here:
-        Image iconBatalHover = new ImageIcon(this.getClass().getResource("/img/button batal hover.png")).getImage();
+        Image iconBatalHover = new ImageIcon(this.getClass().getResource("/img/button batal popup hover.png")).getImage();
         btn_batal.setIcon(new ImageIcon(iconBatalHover));
     }//GEN-LAST:event_btn_batalMouseEntered
 
     private void btn_batalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseExited
         // TODO add your handling code here:
-        Image iconBatalDefault = new ImageIcon(this.getClass().getResource("/img/button batal.png")).getImage();
+        Image iconBatalDefault = new ImageIcon(this.getClass().getResource("/img/button batal popup.png")).getImage();
         btn_batal.setIcon(new ImageIcon(iconBatalDefault));
     }//GEN-LAST:event_btn_batalMouseExited
 
     private void btn_batalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMousePressed
         // TODO add your handling code here:
-        Image iconBatalPress = new ImageIcon(this.getClass().getResource("/img/button batal press.png")).getImage();
-        btn_batal.setIcon(new ImageIcon(iconBatalPress));
+        Image iconBatalPressed = new ImageIcon(this.getClass().getResource("/img/button batal popup press.png")).getImage();
+        btn_batal.setIcon(new ImageIcon(iconBatalPressed));
     }//GEN-LAST:event_btn_batalMousePressed
 
     private void btn_batalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseReleased
         // TODO add your handling code here:
-        Image iconBatalHover = new ImageIcon(this.getClass().getResource("/img/button batal hover.png")).getImage();
+        Image iconBatalHover = new ImageIcon(this.getClass().getResource("/img/button batal popup hover.png")).getImage();
         btn_batal.setIcon(new ImageIcon(iconBatalHover));
     }//GEN-LAST:event_btn_batalMouseReleased
 
+    private void btn_bersihkanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseEntered
+        // TODO add your handling code here:
+        Image iconBersihkanHover = new ImageIcon(this.getClass().getResource("/img/button bersihkan popup hover.png")).getImage();
+        btn_bersihkan.setIcon(new ImageIcon(iconBersihkanHover));
+    }//GEN-LAST:event_btn_bersihkanMouseEntered
+
+    private void btn_bersihkanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseExited
+        // TODO add your handling code here:
+        Image iconBersihkanDefault = new ImageIcon(this.getClass().getResource("/img/button bersihkan popup.png")).getImage();
+        btn_bersihkan.setIcon(new ImageIcon(iconBersihkanDefault));
+    }//GEN-LAST:event_btn_bersihkanMouseExited
+
+    private void btn_bersihkanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMousePressed
+        // TODO add your handling code here:
+        Image iconBersihkanPressed = new ImageIcon(this.getClass().getResource("/img/button bersihkan popup press.png")).getImage();
+        btn_bersihkan.setIcon(new ImageIcon(iconBersihkanPressed));
+    }//GEN-LAST:event_btn_bersihkanMousePressed
+
+    private void btn_bersihkanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseReleased
+        // TODO add your handling code here:
+        Image iconBersihkanHover = new ImageIcon(this.getClass().getResource("/img/button bersihkan popup hover.png")).getImage();
+        btn_bersihkan.setIcon(new ImageIcon(iconBersihkanHover));
+    }//GEN-LAST:event_btn_bersihkanMouseReleased
+
     private void btn_simpanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseEntered
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/Button simpan hover.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
-        
-        try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/toko_sumberkolak","root","");
-            String kodepemasok=txt_kodePemasok.getText();
-            String namapemasok=txt_namaPemasok.getText();
-            String alamat=txt_alamat.getText();
-            String notelepon=txt_noTelpon.getText();
-            try {
-            PreparedStatement ps = con.prepareStatement("UPDATE supplier SET nama ='"+nama+"', alamat = '"+alamat+"', telp ='"+telp+"'");
-            ps.execute();
-            JOptionPane.showMessageDialog(null,"Data barang berhasil diedit");
-            Tampilan_Pemasok.tampilkansupplier();
-            dispose();
-            }
-            catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Masukkan angka dengan benar");
-            }
-        }
-        catch (SQLException ex){
-            Logger.getLogger(Tampilan_Pemasok.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconTambahHover));
     }//GEN-LAST:event_btn_simpanMouseEntered
+
+    private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
+        // TODO add your handling code here:
+        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/button simpan popup.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
+    }//GEN-LAST:event_btn_simpanMouseExited
 
     private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
         // TODO add your handling code here:
-        Image iconSimpanPress = new ImageIcon(this.getClass().getResource("/img/Button simpan press.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanPress));
+        Image iconSimpanPressed = new ImageIcon(this.getClass().getResource("/img/button simpan popup press.png")).getImage();
+        btn_simpan.setIcon(new ImageIcon(iconSimpanPressed));
     }//GEN-LAST:event_btn_simpanMousePressed
 
     private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/Button simpan hover.png")).getImage();
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
     }//GEN-LAST:event_btn_simpanMouseReleased
-
-    private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
-        // TODO add your handling code here:
-        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/Button simpan.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
-    }//GEN-LAST:event_btn_simpanMouseExited
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btn_batalMouseClicked
+
+    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        int xx = evt.getXOnScreen();
+        int yy = evt.getYOnScreen();
+        this.setLocation(xx-x, yy-y);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments
@@ -334,102 +397,6 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -441,24 +408,27 @@ public class Popup_Ubah_Pemasok extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_batal;
+    private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_simpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_alamat;
-    private javax.swing.JTextField txt_kodePemasok;
-    private javax.swing.JTextField txt_namaPemasok;
-    private javax.swing.JTextField txt_noTelpon;
+    private javax.swing.JTextField txt_hargaBeli;
+    private javax.swing.JTextField txt_hargaJual;
+    private javax.swing.JTextField txt_kodeBarang;
+    private javax.swing.JTextField txt_namaBarang;
+    private javax.swing.JTextField txt_satuan;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,7 +49,17 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         btn_karyawan = new javax.swing.JLabel();
         btn_pengaturan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        btn_logout = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        passwordField1 = new textfield.PasswordField();
+        jPanel10 = new javax.swing.JPanel();
+        passwordField2 = new textfield.PasswordField();
+        btn_konfirmasi = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -97,6 +107,9 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
 
         btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
         btn_transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_transaksiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_transaksiMouseEntered(evt);
             }
@@ -106,7 +119,18 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         });
         jPanel3.add(btn_transaksi);
 
-        btn_pengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengeluaran_aktif.png"))); // NOI18N
+        btn_pengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengeluaran.png"))); // NOI18N
+        btn_pengeluaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pengeluaranMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_pengeluaranMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_pengeluaranMouseExited(evt);
+            }
+        });
         jPanel3.add(btn_pengeluaran);
 
         btn_pemasok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pemasok.png"))); // NOI18N
@@ -125,6 +149,9 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
 
         btn_riwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/riwayat.png"))); // NOI18N
         btn_riwayat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_riwayatMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_riwayatMouseEntered(evt);
             }
@@ -136,6 +163,9 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
 
         btn_laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laporan.png"))); // NOI18N
         btn_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_laporanMouseEntered(evt);
             }
@@ -159,15 +189,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         });
         jPanel3.add(btn_karyawan);
 
-        btn_pengaturan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengaturan.png"))); // NOI18N
-        btn_pengaturan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_pengaturanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_pengaturanMouseExited(evt);
-            }
-        });
+        btn_pengaturan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengaturan_aktif.png"))); // NOI18N
         jPanel3.add(btn_pengaturan);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 88, 240, 630));
@@ -177,9 +199,115 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Logout.png"))); // NOI18N
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 840, -1));
+        jPanel8.setOpaque(false);
+        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 22));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setOpaque(false);
+        jPanel6.setPreferredSize(new java.awt.Dimension(840, 42));
+        jPanel6.setRequestFocusEnabled(false);
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 22, 0));
+
+        btn_logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Logout.png"))); // NOI18N
+        btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_logoutMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_logoutMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_logoutMouseReleased(evt);
+            }
+        });
+        jPanel6.add(btn_logout);
+
+        jPanel8.add(jPanel6);
+
+        jPanel7.setOpaque(false);
+        jPanel7.setPreferredSize(new java.awt.Dimension(840, 270));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 9));
+
+        jLabel2.setBackground(new java.awt.Color(245, 246, 250));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Icon User.png"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(840, 207));
+        jPanel7.add(jLabel2);
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(245, 246, 250));
+        jTextField1.setFont(new java.awt.Font("Arial", 1, 27)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("Jeki");
+        jTextField1.setBorder(null);
+        jTextField1.setPreferredSize(new java.awt.Dimension(840, 50));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jTextField1);
+
+        jPanel8.add(jPanel7);
+
+        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 360));
+
+        jPanel9.setOpaque(false);
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
+
+        passwordField1.setBackground(new java.awt.Color(245, 246, 250));
+        passwordField1.setPreferredSize(new java.awt.Dimension(495, 55));
+        passwordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordField1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(passwordField1);
+
+        jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 840, -1));
+
+        jPanel10.setOpaque(false);
+        jPanel10.setPreferredSize(new java.awt.Dimension(840, 55));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 50));
+
+        passwordField2.setBackground(new java.awt.Color(245, 246, 250));
+        passwordField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        passwordField2.setMargin(new java.awt.Insets(75, 6, 2, 6));
+        passwordField2.setPreferredSize(new java.awt.Dimension(495, 55));
+        passwordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordField2ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(passwordField2);
+
+        jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, 110));
+
+        btn_konfirmasi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_konfirmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Konfirmasi Setting.png"))); // NOI18N
+        btn_konfirmasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMouseReleased(evt);
+            }
+        });
+        jPanel5.add(btn_konfirmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 495, 42));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
 
@@ -247,18 +375,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         btn_karyawan.setIcon(new ImageIcon(iconKaryawanDefault));
     }//GEN-LAST:event_btn_karyawanMouseExited
 
-    private void btn_pengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseEntered
-        // TODO add your handling code here:
-        Image iconPengaturanHover = new ImageIcon(this.getClass().getResource("/img/pengaturan_hover.png")).getImage();
-        btn_pengaturan.setIcon(new ImageIcon(iconPengaturanHover));
-    }//GEN-LAST:event_btn_pengaturanMouseEntered
-
-    private void btn_pengaturanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseExited
-        // TODO add your handling code here:
-        Image iconPengaturanDefault = new ImageIcon(this.getClass().getResource("/img/pengaturan.png")).getImage();
-        btn_pengaturan.setIcon(new ImageIcon(iconPengaturanDefault));
-    }//GEN-LAST:event_btn_pengaturanMouseExited
-
     private void btn_transaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseExited
         // TODO add your handling code here:
         Image iconTransaksiDefault = new ImageIcon(this.getClass().getResource("/img/transaksi.png")).getImage();
@@ -294,6 +410,118 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void passwordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordField1ActionPerformed
+
+    private void passwordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordField2ActionPerformed
+
+    private void btn_konfirmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseEntered
+        // TODO add your handling code here:
+        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting hover.png")).getImage();
+        btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiHover));
+    }//GEN-LAST:event_btn_konfirmasiMouseEntered
+
+    private void btn_konfirmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseExited
+        // TODO add your handling code here:
+        Image iconKonfirmasiDefault = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting.png")).getImage();
+        btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiDefault));
+    }//GEN-LAST:event_btn_konfirmasiMouseExited
+
+    private void btn_konfirmasiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMousePressed
+        // TODO add your handling code here:
+        Image iconKonfirmasiPressed = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting press.png")).getImage();
+        btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiPressed));
+    }//GEN-LAST:event_btn_konfirmasiMousePressed
+
+    private void btn_konfirmasiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseReleased
+        // TODO add your handling code here:
+        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting hover.png")).getImage();
+        btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiHover));
+    }//GEN-LAST:event_btn_konfirmasiMouseReleased
+
+    private void btn_logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseEntered
+        // TODO add your handling code here:
+        Image iconLogoutHover = new ImageIcon(this.getClass().getResource("/img/button logout hover.png")).getImage();
+        btn_logout.setIcon(new ImageIcon(iconLogoutHover));
+    }//GEN-LAST:event_btn_logoutMouseEntered
+
+    private void btn_logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseExited
+        // TODO add your handling code here:
+        Image iconLogoutDefault = new ImageIcon(this.getClass().getResource("/img/button logout.png")).getImage();
+        btn_logout.setIcon(new ImageIcon(iconLogoutDefault));
+    }//GEN-LAST:event_btn_logoutMouseExited
+
+    private void btn_logoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMousePressed
+        // TODO add your handling code here:
+        Image iconLogoutPressed = new ImageIcon(this.getClass().getResource("/img/button logout press.png")).getImage();
+        btn_logout.setIcon(new ImageIcon(iconLogoutPressed));
+    }//GEN-LAST:event_btn_logoutMousePressed
+
+    private void btn_logoutMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseReleased
+        // TODO add your handling code here:
+        Image iconLogoutHover = new ImageIcon(this.getClass().getResource("/img/button logout hover.png")).getImage();
+        btn_logout.setIcon(new ImageIcon(iconLogoutHover));
+    }//GEN-LAST:event_btn_logoutMouseReleased
+
+    private void btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Login login = new Tampilan_Login();
+        login.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_logoutMouseClicked
+
+    private void btn_pengeluaranMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseEntered
+        // TODO add your handling code here:
+        Image iconPengeluaranHover = new ImageIcon(this.getClass().getResource("/img/pengeluaran_hover.png")).getImage();
+        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranHover));
+    }//GEN-LAST:event_btn_pengeluaranMouseEntered
+
+    private void btn_pengeluaranMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseExited
+        // TODO add your handling code here:
+        Image iconPengeluaranDefault = new ImageIcon(this.getClass().getResource("/img/pengeluaran.png")).getImage();
+        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranDefault));
+    }//GEN-LAST:event_btn_pengeluaranMouseExited
+
+    private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
+        pengeluaran.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_pengeluaranMouseClicked
+
+    private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
+        // TODO add your handling code here:
+        Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
+        riwayatBeli.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_riwayatMouseClicked
+
+    private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
+        // TODO add your handling code here:
+        Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
+        transaksiBeli.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_transaksiMouseClicked
+
+    private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
+        // TODO add your handling code here:
+        Tampilan_Laporan laporan = new Tampilan_Laporan();
+        laporan.show();
+        
+        dispose();
+    }//GEN-LAST:event_btn_laporanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -364,18 +592,28 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_karyawan;
+    private javax.swing.JLabel btn_konfirmasi;
     private javax.swing.JLabel btn_laporan;
+    private javax.swing.JLabel btn_logout;
     private javax.swing.JLabel btn_pemasok;
     private javax.swing.JLabel btn_pengaturan;
     private javax.swing.JLabel btn_pengeluaran;
     private javax.swing.JLabel btn_riwayat;
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField1;
+    private textfield.PasswordField passwordField1;
+    private textfield.PasswordField passwordField2;
     // End of variables declaration//GEN-END:variables
 }
