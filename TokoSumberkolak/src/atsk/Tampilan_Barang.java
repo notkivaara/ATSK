@@ -645,7 +645,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
-        Popup_Ubah_Barang ubahBarang = new Popup_Ubah_Barang();
+        Popup_Ubah_Barang.txt_kodeBarang ubahBarang = new Popup_Ubah_Barang.txt_kodeBarang();
         ubahBarang.setVisible(true);
         ubahBarang.pack();
         ubahBarang.setLocationRelativeTo(null);

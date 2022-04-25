@@ -26,40 +26,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     int x,y;
     public Popup_Tambah_Barang() {
         initComponents();
-        autonumber();
-    }
-
-    private void autonumber(){
         txt_kodeBarang.setBackground(Color.gray);
         txt_kodeBarang.setEditable(false);
-        try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String NoFaktur = r.getString("kd_brg").substring(2);
-                String TR = "" +(Integer.parseInt(NoFaktur)+1);
-                String Nol = "";
-
-                if(TR.length()==1)
-                {Nol = "000";}
-                else if(TR.length()==2)
-                {Nol = "00";}
-                else if(TR.length()==3)
-                {Nol = "0";}
-                else if(TR.length()==4)
-                {Nol = "";}
-                txt_kodeBarang.setText("KD" + Nol + TR);
-            } else {
-                txt_kodeBarang.setText("KD0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -186,8 +156,13 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel16.add(jLabel13);
 
         kategoriCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", " " }));
+        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
         kategoriCombo.setPreferredSize(new java.awt.Dimension(198, 34));
+        kategoriCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kategoriComboActionPerformed(evt);
+            }
+        });
         jPanel16.add(kategoriCombo);
 
         jPanel8.add(jPanel16);
@@ -230,7 +205,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel13.add(jLabel10);
 
         satuanCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        satuanCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pcs", "pack", " " }));
+        satuanCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pcs", "pack", "1 kg", "1/2 kg", "1/4 kg", "1 ons", "1 liter", "1/2 liter", "1/4 liter", " " }));
         satuanCombo.setMinimumSize(new java.awt.Dimension(18, 34));
         satuanCombo.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel13.add(satuanCombo);
@@ -484,6 +459,152 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_return.setText("");
                 
     }//GEN-LAST:event_btn_bersihkanMouseClicked
+
+    private void kategoriComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriComboActionPerformed
+        // TODO add your handling code here:
+        
+        if (kategoriCombo.getSelectedItem()=="Alat Mandi") {
+           try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("kd_brg").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("AM" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("AM0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else if(kategoriCombo.getSelectedItem()=="Makanan Ringan"){
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("kd_brg").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("MR" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("MR0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else if(kategoriCombo.getSelectedItem()== "Alat Cuci"){
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("kd_brg").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("AC" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("AC0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else if(kategoriCombo.getSelectedItem()== "Alat Makan"){
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("kd_brg").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("AM" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("AM0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else{
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("kd_brg").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("SM" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("SM0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }
+    }//GEN-LAST:event_kategoriComboActionPerformed
 
     /**
      * @param args the command line arguments
