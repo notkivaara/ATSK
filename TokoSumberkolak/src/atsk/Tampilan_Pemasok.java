@@ -6,11 +6,21 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,13 +28,42 @@ import javax.swing.JTable;
  */
 public class Tampilan_Pemasok extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TampilanBarang
-     */
+    static DefaultTableModel model;
+    static String selectedSupplierID;
+    static String namapemasok;
+    
     public Tampilan_Pemasok() {
         initComponents();
-
+        table();
+        this.selectedSupplierID = null;
+        
     }
+     public void table(){
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Pemasok");
+        tbl.addColumn("Nama Pemasok");
+        tbl.addColumn("Alamat");
+        tbl.addColumn("No Telepon");
+       // Disini Terakhir nulis
+       
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select * from supplier");
+            
+            while(rs.next()){
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_supplier"),
+                    rs.getString("nama"),
+                    rs.getString("alamat"),
+                    rs.getString("telp")
+                });
+                jTable2.setModel(tbl);
+                
+                
+            }
+        } catch (Exception e) {
+        }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +94,7 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         txt_cari = new javax.swing.JTextField();
         btn_cari = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
         btn_ubah = new javax.swing.JLabel();
@@ -213,17 +252,21 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_cari.setForeground(new java.awt.Color(204, 204, 204));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_cariFocusLost(evt);
+            }
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_cariFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_cariFocusLost(evt);
+        });
+        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cariKeyReleased(evt);
             }
         });
 
@@ -251,7 +294,18 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
         btn_cari.setAlignmentX(0.5F);
         btn_cari.setPreferredSize(new java.awt.Dimension(136, 50));
+        btn_cari.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btn_cariFocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btn_cariFocusGained(evt);
+            }
+        });
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cariMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
             }
@@ -265,6 +319,11 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
                 btn_cariMouseReleased(evt);
             }
         });
+        btn_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btn_cariKeyReleased(evt);
+            }
+        });
         jPanel6.add(btn_cari);
 
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 840, 50));
@@ -272,7 +331,6 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -304,7 +362,11 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 540));
@@ -358,8 +420,8 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
         btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_hapusMouseEntered(evt);
@@ -369,6 +431,9 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_hapusMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
             }
         });
         jPanel7.add(btn_hapus);
@@ -609,6 +674,7 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         ubahPemasok.pack();
         ubahPemasok.setLocationRelativeTo(null);
         ubahPemasok.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
     }//GEN-LAST:event_btn_ubahMouseClicked
 
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
@@ -650,6 +716,86 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
+
+    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
+         try {
+            int row = jTable2.getSelectedRow();
+            String kodepemasok = jTable2.getModel().getValueAt(row, 0).toString() ;
+            
+            Connection c = (Connection) Config.configDB();
+           
+            String sql = "Delete From supplier where kd_supplier ='"+kodepemasok+"'";
+            
+            PreparedStatement pst = c.prepareStatement(sql);
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null,"Berhasil Menghapus Pemasok");
+            table();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }//GEN-LAST:event_btn_hapusMouseClicked
+
+    private void btn_cariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cariMouseClicked
+
+    private void btn_cariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_cariFocusGained
+        if(txt_cari.getText().equals("Cari Berdasarkan Nama")) {
+            txt_cari.setText("");
+            txt_cari.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_btn_cariFocusGained
+
+    private void btn_cariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_cariFocusLost
+        if(txt_cari.getText().equals("")) {
+            txt_cari.setText("Cari Berdasarkan Nama");
+            txt_cari.setForeground(new Color(153, 153, 153));
+        } else {
+            txt_cari.setForeground(new Color(0, 0, 0));
+        }
+    }//GEN-LAST:event_btn_cariFocusLost
+
+    private void btn_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_cariKeyReleased
+       String [] judul = {"Kode Pemasok","Nama Peemasok","Alamat","telp"};
+        model = new DefaultTableModel(judul,0);
+        jTable2.setModel(model);
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/toko_sumberkolak","root","");
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM supplier WHERE CONCAT (kd_supplier) LIKE '%"+btn_cari.getText()+"%'");
+            while(rs.next()){
+                String data [] = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)};
+                model.addRow(data);
+            }
+        }
+        catch (SQLException ex){
+            Logger.getLogger(Tampilan_Karyawan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_cariKeyReleased
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+       int row = jTable2.getSelectedRow();
+        String supplier = jTable2.getValueAt(row, 0).toString();
+        this.selectedSupplierID = supplier;
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+         String [] judul = {"Kode Pemasok","Nama Peemasok","Alamat","telp"};
+        model = new DefaultTableModel(judul,0);
+        jTable2.setModel(model);
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/toko_sumberkolak","root","");
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM supplier WHERE CONCAT (kd_supplier) LIKE '%"+btn_cari.getText()+"%'");
+            while(rs.next()){
+                String data [] = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)};
+                model.addRow(data);
+            }
+        }
+        catch (SQLException ex){
+            Logger.getLogger(Tampilan_Karyawan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_cariKeyReleased
 
     /**
      * @param args the command line arguments
@@ -724,6 +870,7 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTable jTable2;
     private atsk.panelRound panelRound1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables

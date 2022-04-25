@@ -5,7 +5,11 @@
 package atsk;
 
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,16 +40,16 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodeBarang = new javax.swing.JTextField();
+        txt_kodepemasok = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txt_namaBarang = new javax.swing.JTextField();
+        txt_namapemasok = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_hargaJual = new javax.swing.JTextField();
+        txt_alamat = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_satuan = new javax.swing.JTextField();
+        txt_notelpon = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
@@ -97,19 +101,17 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Pemasok");
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
-        txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
+        txt_kodepemasok.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_kodepemasok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_kodeBarangActionPerformed(evt);
+                txt_kodepemasokActionPerformed(evt);
             }
         });
-        jPanel9.add(txt_kodeBarang);
+        jPanel9.add(txt_kodepemasok);
 
         jPanel8.add(jPanel9);
 
@@ -118,14 +120,12 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nama Pemasok");
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
-        txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel10.add(txt_namaBarang);
+        txt_namapemasok.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel10.add(txt_namapemasok);
 
         jPanel8.add(jPanel10);
 
@@ -134,14 +134,12 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Alamat");
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setBackground(new java.awt.Color(255, 255, 255));
-        txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel12.add(txt_hargaJual);
+        txt_alamat.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel12.add(txt_alamat);
 
         jPanel8.add(jPanel12);
 
@@ -150,14 +148,12 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("No. Telpon");
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_satuan.setBackground(new java.awt.Color(255, 255, 255));
-        txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(txt_satuan);
+        txt_notelpon.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(txt_notelpon);
 
         jPanel8.add(jPanel13);
 
@@ -205,6 +201,9 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -304,9 +303,9 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_batalMouseClicked
 
-    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+    private void txt_kodepemasokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodepemasokActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+    }//GEN-LAST:event_txt_kodepemasokActionPerformed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
@@ -320,6 +319,32 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
         int yy = evt.getYOnScreen();
         this.setLocation(xx-x, yy-y);
     }//GEN-LAST:event_formMouseDragged
+
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        String kode_pemasok = txt_kodepemasok.getText();
+        String nama = txt_namapemasok.getText();
+        String alamat = txt_alamat.getText();
+        String telp = txt_notelpon.getText();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String waktu = timestamp.toString();
+        
+        
+        try {
+            String sql = "insert into supplier values('"+ kode_pemasok+"','"+ nama+"','"+ alamat+"','"+ telp+"')";
+            Connection c = (Connection)Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.execute();
+            
+            
+            JOptionPane.showMessageDialog(null,"Berhasil Menambahkan pemasok");
+            
+            this.setVisible(false);
+            Tampilan_Pemasok TB = new Tampilan_Pemasok();
+            TB.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+    }//GEN-LAST:event_btn_tambahMouseClicked
 
     /**
      * @param args the command line arguments
@@ -436,9 +461,9 @@ public class Popup_Tambah_Pemasok extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_hargaJual;
-    private javax.swing.JTextField txt_kodeBarang;
-    private javax.swing.JTextField txt_namaBarang;
-    private javax.swing.JTextField txt_satuan;
+    private javax.swing.JTextField txt_alamat;
+    private javax.swing.JTextField txt_kodepemasok;
+    private javax.swing.JTextField txt_namapemasok;
+    private javax.swing.JTextField txt_notelpon;
     // End of variables declaration//GEN-END:variables
 }
