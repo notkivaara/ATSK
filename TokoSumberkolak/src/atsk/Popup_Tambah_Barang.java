@@ -4,9 +4,12 @@
  */
 package atsk;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -23,8 +26,40 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     int x,y;
     public Popup_Tambah_Barang() {
         initComponents();
+        autonumber();
     }
 
+    private void autonumber(){
+        txt_kodeBarang.setBackground(Color.gray);
+        txt_kodeBarang.setEditable(false);
+        try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM barang ORDER BY kd_brg DESC;";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoFaktur = r.getString("kd_brg").substring(2);
+                String TR = "" +(Integer.parseInt(NoFaktur)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("KD" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("KD0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -431,7 +466,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
             
             this.setVisible(false);
             Tampilan_Barang TB = new Tampilan_Barang();
-            TB.setVisible(true);
+            TB.table();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
@@ -439,7 +474,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
     private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
         // TODO add your handling code here:
-        txt_kodeBarang.setText("");
         txt_namaBarang.setText("");
         txt_hargaBeli.setText("");
         kategoriCombo.setSelectedItem("Alat Mandi");
