@@ -5,7 +5,11 @@
 package atsk;
 
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,7 +46,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_namaBarang = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        kategoriCombo = new javax.swing.JComboBox<>();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_hargaBeli = new javax.swing.JTextField();
@@ -51,7 +55,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        satuanCombo = new javax.swing.JComboBox<>();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_stok = new javax.swing.JTextField();
@@ -109,12 +113,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Barang");
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,12 +132,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Kode Detail Pengeluaran");
+        jLabel7.setText("Nama Barang");
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -146,17 +146,14 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Kategori");
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel16.add(jComboBox1);
+        kategoriCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", " " }));
+        kategoriCombo.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel16.add(kategoriCombo);
 
         jPanel8.add(jPanel16);
 
@@ -165,12 +162,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Harga Beli");
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
-        txt_hargaBeli.setBackground(new java.awt.Color(255, 255, 255));
         txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(txt_hargaBeli);
 
@@ -181,12 +176,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Harga Jual");
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setBackground(new java.awt.Color(255, 255, 255));
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -197,18 +190,15 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Satuan");
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setMinimumSize(new java.awt.Dimension(18, 34));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(jComboBox2);
+        satuanCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        satuanCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pcs", "pack", " " }));
+        satuanCombo.setMinimumSize(new java.awt.Dimension(18, 34));
+        satuanCombo.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(satuanCombo);
 
         jPanel8.add(jPanel13);
 
@@ -217,12 +207,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Stok");
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
-        txt_stok.setBackground(new java.awt.Color(255, 255, 255));
         txt_stok.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel14.add(txt_stok);
 
@@ -233,12 +221,10 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Return");
         jLabel12.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel15.add(jLabel12);
 
-        txt_return.setBackground(new java.awt.Color(255, 255, 255));
         txt_return.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel15.add(txt_return);
 
@@ -271,6 +257,9 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
         btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
         btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_bersihkanMouseEntered(evt);
             }
@@ -288,6 +277,9 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -404,6 +396,61 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         y = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        // TODO add your handling code here:
+        
+        String kode_barang = txt_kodeBarang.getText();
+        String nama = txt_namaBarang.getText();
+        String kategori = kategoriCombo.getSelectedItem().toString();
+        String harga_beli = txt_hargaBeli.getText();
+        String harga_jual = txt_hargaJual.getText();
+        String satuan = satuanCombo.getSelectedItem().toString();
+        String stock = txt_stok.getText();
+        String retur = txt_return.getText();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String waktu = timestamp.toString();
+        
+        
+        try {
+            String sql = "insert into barang values('"
+                    + kode_barang +"','"
+                    + nama+"','"
+                    + kategori+"','"
+                    + harga_beli+"','"
+                    + harga_jual+"','"
+                    + satuan+"','"
+                    + stock+"','"
+                    + retur+"','" 
+                    + waktu+"')";
+            Connection c = (Connection)Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.execute();
+            
+            
+            JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang");
+            
+            this.setVisible(false);
+            Tampilan_Barang TB = new Tampilan_Barang();
+            TB.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+    }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
+        // TODO add your handling code here:
+        txt_kodeBarang.setText("");
+        txt_namaBarang.setText("");
+        txt_hargaBeli.setText("");
+        kategoriCombo.setSelectedItem("Alat Mandi");
+        txt_hargaBeli.setText("");
+        txt_hargaJual.setText("");
+        satuanCombo.setSelectedItem("pcs");
+        txt_stok.setText("");
+        txt_return.setText("");
+                
+    }//GEN-LAST:event_btn_bersihkanMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -446,8 +493,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_tambah;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -469,6 +514,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JComboBox<String> kategoriCombo;
+    private javax.swing.JComboBox<String> satuanCombo;
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;
