@@ -72,7 +72,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         panelRound2.setRoundTopRight(6);
         panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Laporan Bulanan.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(800, 30));
@@ -81,7 +80,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -113,7 +111,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
         panelRound2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 760, 260));
@@ -122,7 +119,7 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        bulan.setBackground(new java.awt.Color(255, 255, 255));
+        bulan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         bulan.setBorder(null);
         bulan.setMinimumSize(new java.awt.Dimension(96, 60));
         bulan.setPreferredSize(new java.awt.Dimension(200, 42));
@@ -145,7 +142,7 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jLabel3.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel7.add(jLabel3);
 
-        txt_pendapatanKotor1.setBackground(new java.awt.Color(255, 255, 255));
+        txt_pendapatanKotor1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_pendapatanKotor1.setPreferredSize(new java.awt.Dimension(274, 42));
         jPanel7.add(txt_pendapatanKotor1);
 
@@ -157,7 +154,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel8.add(jLabel6);
 
-        txt_pendapatanKotor3.setBackground(new java.awt.Color(255, 255, 255));
         txt_pendapatanKotor3.setPreferredSize(new java.awt.Dimension(274, 42));
         jPanel8.add(txt_pendapatanKotor3);
 
@@ -173,7 +169,7 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jLabel4.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel9.add(jLabel4);
 
-        txt_pendapatanKotor2.setBackground(new java.awt.Color(255, 255, 255));
+        txt_pendapatanKotor2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_pendapatanKotor2.setPreferredSize(new java.awt.Dimension(274, 42));
         txt_pendapatanKotor2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +188,7 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         jLabel5.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel10.add(jLabel5);
 
-        txt_pendapatanKotor.setBackground(new java.awt.Color(255, 255, 255));
+        txt_pendapatanKotor.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_pendapatanKotor.setPreferredSize(new java.awt.Dimension(274, 42));
         txt_pendapatanKotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,7 +202,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         btn_cetak.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Cetak.png"))); // NOI18N
         btn_cetak.setMinimumSize(new java.awt.Dimension(124, 22));
-        btn_cetak.setPreferredSize(new java.awt.Dimension(124, 42));
         btn_cetak.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btn_cetakMouseReleased(evt);

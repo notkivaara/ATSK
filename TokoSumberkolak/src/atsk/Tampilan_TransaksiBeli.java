@@ -59,7 +59,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
         jPanel8 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -79,6 +79,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         panelRound3 = new atsk.panelRound();
         jLabel3 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         btn_cari = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -247,7 +248,6 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         panelRound1.setRoundTopRight(6);
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("No. Telpon");
         jLabel10.setPreferredSize(new java.awt.Dimension(200, 42));
         panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 318, -1, -1));
@@ -256,12 +256,11 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Beli");
         jLabel6.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel4.add(jLabel6);
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField1.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel4.add(jTextField1);
 
@@ -271,17 +270,12 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Kode Pemasok");
         jLabel7.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel7.add(jLabel7);
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel7.add(jComboBox1);
+        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel7.add(comboBoxSuggestion2);
 
         panelRound1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 642, 34));
 
@@ -289,7 +283,6 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Tanggal");
         jLabel12.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel8.add(jLabel12);
@@ -304,12 +297,11 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Total Harga");
         jLabel13.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel9.add(jLabel13);
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField4.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel9.add(jTextField4);
 
@@ -319,12 +311,11 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Kembali");
         jLabel14.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel10.add(jLabel14);
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField5.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel10.add(jTextField5);
 
@@ -334,12 +325,11 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Tunai");
         jLabel15.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel11.add(jLabel15);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField6.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel11.add(jTextField6);
 
@@ -367,7 +357,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -397,9 +387,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
+        jTable2.setRequestFocusEnabled(false);
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 800, 260));
@@ -408,18 +398,16 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelRound3.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound3.setPreferredSize(new java.awt.Dimension(650, 49));
-        panelRound3.setRoundBottomLeft(3);
-        panelRound3.setRoundBottomRight(3);
-        panelRound3.setRoundTopLeft(3);
-        panelRound3.setRoundTopRight(3);
+        panelRound3.setPreferredSize(new java.awt.Dimension(485, 49));
+        panelRound3.setRoundBottomLeft(10);
+        panelRound3.setRoundBottomRight(10);
+        panelRound3.setRoundTopLeft(10);
+        panelRound3.setRoundTopRight(10);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_cari.setForeground(new java.awt.Color(0, 0, 0));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -439,7 +427,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,6 +438,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         );
 
         jPanel12.add(panelRound3);
+
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(150, 49));
+        jPanel12.add(comboBoxSuggestion1);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
@@ -763,7 +755,8 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private javax.swing.JLabel btn_riwayatJual;
     private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel btn_transaksi;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -221,19 +221,17 @@ public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 840, 45));
 
         tgl_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
+        tgl_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel5.add(tgl_riwayatBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 42));
 
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Jumlah Transaksi :");
         jPanel4.add(jLabel3);
 
-        txt_jumlahTransaksi.setBackground(new java.awt.Color(255, 255, 255));
-        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        txt_jumlahTransaksi.setForeground(new java.awt.Color(0, 0, 0));
+        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_jumlahTransaksi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_jumlahTransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txt_jumlahTransaksi.setMinimumSize(new java.awt.Dimension(96, 42));
@@ -250,7 +248,7 @@ public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         tb_riwayatBeli.setAutoCreateRowSorter(true);
-        tb_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
+        tb_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tb_riwayatBeli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -280,9 +278,9 @@ public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
             }
         ));
         tb_riwayatBeli.setGridColor(new java.awt.Color(204, 204, 204));
+        tb_riwayatBeli.setRequestFocusEnabled(false);
         tb_riwayatBeli.setRowHeight(40);
         tb_riwayatBeli.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        tb_riwayatBeli.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(tb_riwayatBeli);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 800, 560));

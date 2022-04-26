@@ -58,6 +58,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         panelRound3 = new atsk.panelRound();
         jLabel3 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         btn_cari = new javax.swing.JLabel();
         panelRound1 = new atsk.panelRound();
         jPanel4 = new javax.swing.JPanel();
@@ -263,7 +264,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -294,9 +295,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
         jTable2.setPreferredSize(new java.awt.Dimension(840, 840));
+        jTable2.setRequestFocusEnabled(false);
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 522, 180));
@@ -305,18 +306,16 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelRound3.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound3.setPreferredSize(new java.awt.Dimension(650, 49));
-        panelRound3.setRoundBottomLeft(3);
-        panelRound3.setRoundBottomRight(3);
-        panelRound3.setRoundTopLeft(3);
-        panelRound3.setRoundTopRight(3);
+        panelRound3.setPreferredSize(new java.awt.Dimension(485, 49));
+        panelRound3.setRoundBottomLeft(10);
+        panelRound3.setRoundBottomRight(10);
+        panelRound3.setRoundTopLeft(10);
+        panelRound3.setRoundTopRight(10);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_cari.setForeground(new java.awt.Color(0, 0, 0));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -335,8 +334,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
             .addGroup(panelRound3Layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,6 +346,10 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         );
 
         jPanel12.add(panelRound3);
+
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(150, 49));
+        jPanel12.add(comboBoxSuggestion1);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
@@ -379,14 +382,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Kode Transaksi");
         jLabel2.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel4.add(jLabel2);
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setPreferredSize(new java.awt.Dimension(150, 34));
         jPanel4.add(jTextField1);
 
@@ -395,14 +395,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Kode Barang");
         jLabel4.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel7.add(jLabel4);
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         jTextField2.setPreferredSize(new java.awt.Dimension(150, 34));
         jPanel7.add(jTextField2);
 
@@ -411,14 +408,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Nama Barang");
         jLabel5.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel8.add(jLabel5);
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
         jTextField3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
         jTextField3.setPreferredSize(new java.awt.Dimension(150, 34));
         jPanel8.add(jTextField3);
 
@@ -427,14 +421,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Harga");
         jLabel6.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel9.add(jLabel6);
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
         jTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
         jTextField4.setPreferredSize(new java.awt.Dimension(150, 34));
         jPanel9.add(jTextField4);
 
@@ -443,14 +434,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Kuantitas");
         jLabel7.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel10.add(jLabel7);
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
         jTextField5.setPreferredSize(new java.awt.Dimension(150, 34));
         jPanel10.add(jTextField5);
 
@@ -502,7 +490,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_tambahkan)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 340, 270));
@@ -531,7 +519,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jScrollPane3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable3.setAutoCreateRowSorter(true);
-        jTable3.setBackground(new java.awt.Color(255, 255, 255));
+        jTable3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -560,11 +548,12 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Stok", "Harga"
             }
         ));
+        jTable3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable3.setGridColor(new java.awt.Color(204, 204, 204));
         jTable3.setPreferredSize(new java.awt.Dimension(840, 840));
+        jTable3.setRequestFocusEnabled(false);
         jTable3.setRowHeight(40);
         jTable3.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable3.setShowHorizontalLines(true);
         jScrollPane3.setViewportView(jTable3);
 
         jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 452, 270));
@@ -599,14 +588,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Total");
         jLabel8.setPreferredSize(new java.awt.Dimension(100, 34));
         jPanel11.add(jLabel8);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
         jTextField6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
         jTextField6.setPreferredSize(new java.awt.Dimension(130, 34));
         jPanel11.add(jTextField6);
 
@@ -615,7 +601,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Tanggal");
         jLabel10.setPreferredSize(new java.awt.Dimension(100, 34));
         jPanel13.add(jLabel10);
@@ -628,14 +613,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Kembalian");
         jLabel12.setPreferredSize(new java.awt.Dimension(100, 34));
         jPanel15.add(jLabel12);
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
         jTextField9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
         jTextField9.setPreferredSize(new java.awt.Dimension(130, 34));
         jPanel15.add(jTextField9);
 
@@ -644,14 +626,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Tunai");
         jLabel11.setPreferredSize(new java.awt.Dimension(100, 34));
         jPanel14.add(jLabel11);
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
         jTextField8.setPreferredSize(new java.awt.Dimension(130, 34));
         jPanel14.add(jTextField8);
 
@@ -680,7 +659,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(panelRound6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 260, 180));
@@ -1090,6 +1069,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private javax.swing.JLabel btn_tambahkan;
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel btn_transaksiBeli;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -204,17 +204,15 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setPreferredSize(new java.awt.Dimension(650, 49));
-        panelRound1.setRoundBottomLeft(3);
-        panelRound1.setRoundBottomRight(3);
-        panelRound1.setRoundTopLeft(3);
-        panelRound1.setRoundTopRight(3);
+        panelRound1.setRoundBottomLeft(10);
+        panelRound1.setRoundBottomRight(10);
+        panelRound1.setRoundTopLeft(10);
+        panelRound1.setRoundTopRight(10);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setBackground(new java.awt.Color(255, 255, 255));
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_cari.setForeground(new java.awt.Color(204, 204, 204));
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -274,7 +272,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -304,9 +302,9 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
+        jTable2.setRequestFocusEnabled(false);
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jTable2.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(jTable2);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 540));

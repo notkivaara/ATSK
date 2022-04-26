@@ -5,13 +5,7 @@
 package atsk;
 
 import java.awt.Image;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,7 +73,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         txt_namaBarang = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        kategoriCombo = new javax.swing.JComboBox<>();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_hargaBeli = new javax.swing.JTextField();
@@ -88,7 +82,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        satuanCombo = new javax.swing.JComboBox<>();
+        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_stok = new javax.swing.JTextField();
@@ -150,6 +144,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
+        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +164,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
+        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -199,6 +195,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
+        txt_hargaBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(txt_hargaBeli);
 
@@ -213,6 +210,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
+        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -227,11 +225,9 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        satuanCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        satuanCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        satuanCombo.setMinimumSize(new java.awt.Dimension(198, 34));
-        satuanCombo.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(satuanCombo);
+        comboBoxSuggestion2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(comboBoxSuggestion2);
 
         jPanel8.add(jPanel13);
 
@@ -244,12 +240,8 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
+        txt_stok.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_stok.setPreferredSize(new java.awt.Dimension(198, 34));
-        txt_stok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_stokActionPerformed(evt);
-            }
-        });
         jPanel14.add(txt_stok);
 
         jPanel8.add(jPanel14);
@@ -263,6 +255,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel12.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel15.add(jLabel12);
 
+        txt_return.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_return.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel15.add(txt_return);
 
@@ -428,10 +421,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         this.setLocation(xx-x, yy-y);
     }//GEN-LAST:event_formMouseDragged
 
-    private void txt_stokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stokActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_stokActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -478,6 +467,8 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_simpan;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -499,12 +490,15 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+<<<<<<< HEAD
     public javax.swing.JComboBox<String> kategoriCombo;
     private javax.swing.JComboBox<String> satuanCombo;
+=======
+>>>>>>> 09c2a132d3524528e7f330a40be4575f76ee59cd
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
-    public javax.swing.JTextField txt_kodeBarang;
-    public javax.swing.JTextField txt_namaBarang;
+    private javax.swing.JTextField txt_kodeBarang;
+    private javax.swing.JTextField txt_namaBarang;
     private javax.swing.JTextField txt_return;
     private javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables

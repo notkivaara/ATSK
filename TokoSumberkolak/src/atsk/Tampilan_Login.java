@@ -19,6 +19,7 @@ public class Tampilan_Login extends javax.swing.JFrame {
      */
     public Tampilan_Login() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -79,7 +80,7 @@ public class Tampilan_Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 540, 110));
 
-        txt_username.setBackground(new java.awt.Color(255, 255, 255));
+        txt_username.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusGained(evt);
@@ -90,7 +91,7 @@ public class Tampilan_Login extends javax.swing.JFrame {
         });
         jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 420, 60));
 
-        txt_password.setBackground(new java.awt.Color(255, 255, 255));
+        txt_password.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_passwordFocusGained(evt);
