@@ -244,7 +244,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(245, 246, 250));
         jTextField1.setFont(new java.awt.Font("Arial", 1, 27)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Jeki");
         jTextField1.setBorder(null);
