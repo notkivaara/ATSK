@@ -36,7 +36,7 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txt_namaBarang = new javax.swing.JTextField();
@@ -106,17 +106,12 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Barang");
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel9.add(jComboBox1);
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel9.add(comboBoxSuggestion1);
 
         jPanel8.add(jPanel9);
 
@@ -125,12 +120,10 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Kode Detail Pengeluaran");
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -141,12 +134,10 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Nama Pengeluaran");
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,13 +153,11 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tanggal Bayar");
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
         jDateChooser1.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(jDateChooser1);
 
@@ -179,12 +168,10 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Bulan");
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setBackground(new java.awt.Color(255, 255, 255));
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -195,12 +182,10 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Tahun");
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_satuan.setBackground(new java.awt.Color(255, 255, 255));
         txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel13.add(txt_satuan);
 
@@ -211,12 +196,10 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Total");
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
-        txt_stok.setBackground(new java.awt.Color(255, 255, 255));
         txt_stok.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel14.add(txt_stok);
 
@@ -436,7 +419,7 @@ public class Popup_Ubah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_tambah;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -59,7 +59,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
         jPanel8 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -273,10 +273,8 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel7.add(jLabel7);
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel7.add(jComboBox1);
+        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(200, 34));
+        jPanel7.add(comboBoxSuggestion2);
 
         panelRound1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 642, 34));
 
@@ -752,7 +750,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel btn_transaksi;
     private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

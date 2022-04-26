@@ -42,7 +42,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_namaBarang = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_hargaBeli = new javax.swing.JTextField();
@@ -51,7 +51,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_stok = new javax.swing.JTextField();
@@ -146,10 +146,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel16.add(jComboBox1);
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel16.add(comboBoxSuggestion1);
 
         jPanel8.add(jPanel16);
 
@@ -190,11 +188,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setMinimumSize(new java.awt.Dimension(18, 34));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(jComboBox2);
+        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(comboBoxSuggestion2);
 
         jPanel8.add(jPanel13);
 
@@ -428,8 +423,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_tambah;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

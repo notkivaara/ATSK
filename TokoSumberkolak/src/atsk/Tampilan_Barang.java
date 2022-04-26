@@ -24,10 +24,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
      */
     public Tampilan_Barang() {
         initComponents();
-        jTable2.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-//        jTable2.getTableHeader().setOpaque(false);
-        jTable2.getTableHeader().setBackground(new Color(32, 135, 203));
-        jTable2.getTableHeader().setForeground(new Color(255, 255, 255));
 
     }
 
@@ -294,6 +290,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
             }
         ));
         jTable2.setGridColor(new java.awt.Color(204, 204, 204));
+        jTable2.setRequestFocusEnabled(false);
         jTable2.setRowHeight(40);
         jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
         jTable2.getTableHeader().setReorderingAllowed(false);
