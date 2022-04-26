@@ -113,6 +113,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
+        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +133,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
+        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -146,6 +148,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel16.add(comboBoxSuggestion1);
 
@@ -160,6 +163,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
+        txt_hargaBeli.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(txt_hargaBeli);
 
@@ -174,6 +178,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
+        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -188,6 +193,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
+        comboBoxSuggestion2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel13.add(comboBoxSuggestion2);
 
@@ -202,6 +208,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
+        txt_stok.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_stok.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel14.add(txt_stok);
 
@@ -216,6 +223,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel12.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel15.add(jLabel12);
 
+        txt_return.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_return.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel15.add(txt_return);
 

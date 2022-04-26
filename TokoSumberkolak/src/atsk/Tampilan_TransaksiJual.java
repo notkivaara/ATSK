@@ -264,6 +264,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -333,8 +334,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
             .addGroup(panelRound3Layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,6 +347,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
 
         jPanel12.add(panelRound3);
 
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(150, 49));
         jPanel12.add(comboBoxSuggestion1);
 
@@ -517,6 +519,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jScrollPane3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable3.setAutoCreateRowSorter(true);
+        jTable3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

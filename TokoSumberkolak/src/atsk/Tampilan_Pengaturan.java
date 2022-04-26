@@ -263,6 +263,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
         passwordField1.setBackground(new java.awt.Color(245, 246, 250));
+        passwordField1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         passwordField1.setPreferredSize(new java.awt.Dimension(495, 55));
         passwordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +280,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
 
         passwordField2.setBackground(new java.awt.Color(245, 246, 250));
         passwordField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        passwordField2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         passwordField2.setMargin(new java.awt.Insets(75, 6, 2, 6));
         passwordField2.setPreferredSize(new java.awt.Dimension(495, 55));
         passwordField2.addActionListener(new java.awt.event.ActionListener() {

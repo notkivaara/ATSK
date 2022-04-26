@@ -201,7 +201,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
 
-        txt_cari.setForeground(new java.awt.Color(204, 204, 204));
+        txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {

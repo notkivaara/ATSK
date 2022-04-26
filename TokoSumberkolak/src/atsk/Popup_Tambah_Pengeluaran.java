@@ -110,6 +110,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         comboBoxSuggestion1.setMinimumSize(new java.awt.Dimension(198, 34));
         comboBoxSuggestion1.setName(""); // NOI18N
         comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
@@ -126,6 +127,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
+        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -140,6 +142,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
+        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +163,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel11.add(jLabel8);
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jDateChooser1.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(jDateChooser1);
 
@@ -174,6 +178,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
+        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -188,6 +193,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
+        txt_satuan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel13.add(txt_satuan);
 
@@ -202,6 +208,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
+        txt_stok.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_stok.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel14.add(txt_stok);
 

@@ -100,12 +100,11 @@ public class Popup_Ubah_Karyawan extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Kode Akun");
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodeBarang.setBackground(new java.awt.Color(255, 255, 255));
+        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,12 +120,11 @@ public class Popup_Ubah_Karyawan extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Nama Karyawan");
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaBarang.setBackground(new java.awt.Color(255, 255, 255));
+        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -137,12 +135,11 @@ public class Popup_Ubah_Karyawan extends javax.swing.JFrame {
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Username");
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
-        txt_hargaBeli.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hargaBeli.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(txt_hargaBeli);
 
@@ -153,12 +150,11 @@ public class Popup_Ubah_Karyawan extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Password");
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setBackground(new java.awt.Color(255, 255, 255));
+        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -169,12 +165,11 @@ public class Popup_Ubah_Karyawan extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Jabatan");
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_satuan.setBackground(new java.awt.Color(255, 255, 255));
+        txt_satuan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel13.add(txt_satuan);
 

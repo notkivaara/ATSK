@@ -265,6 +265,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
+        bulan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         bulan.setBorder(null);
         bulan.setMinimumSize(new java.awt.Dimension(96, 60));
         bulan.setPreferredSize(new java.awt.Dimension(200, 42));
@@ -287,6 +288,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel3.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel7.add(jLabel3);
 
+        txt_pendapatanKotor1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_pendapatanKotor1.setPreferredSize(new java.awt.Dimension(274, 42));
         jPanel7.add(txt_pendapatanKotor1);
 
@@ -313,6 +315,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel4.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel9.add(jLabel4);
 
+        txt_pendapatanKotor2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_pendapatanKotor2.setPreferredSize(new java.awt.Dimension(274, 42));
         txt_pendapatanKotor2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,6 +334,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel5.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel10.add(jLabel5);
 
+        txt_pendapatanKotor.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_pendapatanKotor.setPreferredSize(new java.awt.Dimension(274, 42));
         txt_pendapatanKotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

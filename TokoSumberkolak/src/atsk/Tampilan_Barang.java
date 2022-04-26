@@ -234,6 +234,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         jPanel6.add(panelRound1);
 
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(150, 49));
         jPanel6.add(comboBoxSuggestion1);
 

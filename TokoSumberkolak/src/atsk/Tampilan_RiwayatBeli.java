@@ -221,6 +221,7 @@ public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 840, 45));
 
         tgl_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
+        tgl_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel5.add(tgl_riwayatBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 42));
 
         jPanel4.setOpaque(false);
@@ -230,7 +231,7 @@ public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
         jLabel3.setText("Jumlah Transaksi :");
         jPanel4.add(jLabel3);
 
-        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_jumlahTransaksi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_jumlahTransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txt_jumlahTransaksi.setMinimumSize(new java.awt.Dimension(96, 42));

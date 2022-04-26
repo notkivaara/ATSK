@@ -260,6 +260,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel4.add(jLabel6);
 
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField1.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel4.add(jTextField1);
 
@@ -300,6 +301,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel9.add(jLabel13);
 
+        jTextField4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField4.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel9.add(jTextField4);
 
@@ -313,6 +315,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel14.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel10.add(jLabel14);
 
+        jTextField5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField5.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel10.add(jTextField5);
 
@@ -326,6 +329,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel15.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel11.add(jLabel15);
 
+        jTextField6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTextField6.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel11.add(jTextField6);
 
@@ -353,6 +357,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -434,6 +439,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
 
         jPanel12.add(panelRound3);
 
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(150, 49));
         jPanel12.add(comboBoxSuggestion1);
 
