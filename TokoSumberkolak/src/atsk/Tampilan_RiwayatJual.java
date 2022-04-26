@@ -231,7 +231,7 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         jLabel3.setText("Jumlah Transaksi :");
         jPanel4.add(jLabel3);
 
-        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txt_jumlahTransaksi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_jumlahTransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txt_jumlahTransaksi.setMinimumSize(new java.awt.Dimension(96, 42));
@@ -248,6 +248,7 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         tb_riwayatJual.setAutoCreateRowSorter(true);
+        tb_riwayatJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tb_riwayatJual.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

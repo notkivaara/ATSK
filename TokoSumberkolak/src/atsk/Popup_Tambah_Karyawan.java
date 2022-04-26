@@ -104,7 +104,7 @@ public class Popup_Tambah_Karyawan extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +124,7 @@ public class Popup_Tambah_Karyawan extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel10.add(txt_namaBarang);
 
@@ -139,7 +139,7 @@ public class Popup_Tambah_Karyawan extends javax.swing.JFrame {
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
-        txt_hargaBeli.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_hargaBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel11.add(txt_hargaBeli);
 
@@ -154,7 +154,7 @@ public class Popup_Tambah_Karyawan extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel12.add(txt_hargaJual);
 
@@ -169,7 +169,7 @@ public class Popup_Tambah_Karyawan extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_satuan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txt_satuan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel13.add(txt_satuan);
 

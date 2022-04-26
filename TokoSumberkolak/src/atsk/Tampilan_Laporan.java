@@ -225,6 +225,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jTable2.setAutoCreateRowSorter(true);
+        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -370,9 +371,11 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jPanel5.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 800, 620));
 
         jYearChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jYearChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jYearChooser1.setOpaque(false);
         jPanel5.add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 80, 42));
 
+        jMonthChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jMonthChooser1.setOpaque(false);
         jPanel5.add(jMonthChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 42));
         jMonthChooser1.getAccessibleContext().setAccessibleName("");
