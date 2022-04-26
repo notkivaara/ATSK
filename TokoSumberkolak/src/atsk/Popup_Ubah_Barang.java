@@ -25,36 +25,36 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     int x,y;
     public Popup_Ubah_Barang() {
         initComponents();
-        fill();
+//        fill();
         
     }
-    public void fill(){
-        Tampilan_Barang tb = new Tampilan_Barang();
-       
-        
-           try{
-           int row = tb.barangTable.getSelectedRow();
-           Connection c = (Connection)Config.configDB();
-           ResultSet rs = c.createStatement().executeQuery("SELECT * FROM barang WHERE kd_brg ='"+tb.barangTable.getValueAt(row,0).toString()+"'");
-            while(rs.next()){
-                txt_kodeBarang.setText(rs.getString("kd_brg")) ;
-                txt_namaBarang.setText(rs.getString("nama_brg"));
-                kategoriCombo.setSelectedItem(rs.getString("kategori"));
-                txt_hargaBeli.setText(rs.getString("hrg_bel_brg"));
-                txt_hargaJual.setText(rs.getString("hrg_jual_brg"));
-                satuanCombo.setSelectedItem(rs.getString("satuan"));
-                txt_stok.setText(rs.getString("stock"));
-                txt_return.setText(rs.getString("retur"));
-            }
-            
-            
-        }
-        catch (Exception e){
-            
-            JOptionPane.showMessageDialog(null,e.getMessage());
-            
-        } 
-    }
+//    public void fill(){
+//        Tampilan_Barang tb = new Tampilan_Barang();
+//       
+//        
+//           try{
+//           int row = tb.barangTable.getSelectedRow();
+//           Connection c = (Connection)Config.configDB();
+//           ResultSet rs = c.createStatement().executeQuery("SELECT * FROM barang WHERE kd_brg ='"+tb.barangTable.getValueAt(row,0).toString()+"'");
+//            while(rs.next()){
+//                txt_kodeBarang.setText(rs.getString("kd_brg")) ;
+//                txt_namaBarang.setText(rs.getString("nama_brg"));
+//                kategoriCombo.setSelectedItem(rs.getString("kategori"));
+//                txt_hargaBeli.setText(rs.getString("hrg_bel_brg"));
+//                txt_hargaJual.setText(rs.getString("hrg_jual_brg"));
+//                satuanCombo.setSelectedItem(rs.getString("satuan"));
+//                txt_stok.setText(rs.getString("stock"));
+//                txt_return.setText(rs.getString("retur"));
+//            }
+//            
+//            
+//        }
+//        catch (Exception e){
+//            
+//            JOptionPane.showMessageDialog(null,e.getMessage());
+//            
+//        } 
+//    }
     
 
 
@@ -184,7 +184,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel16.add(jLabel13);
 
         kategoriCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
         kategoriCombo.setPreferredSize(new java.awt.Dimension(198, 34));
         jPanel16.add(kategoriCombo);
 
@@ -499,7 +499,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JComboBox<String> kategoriCombo;
+    public javax.swing.JComboBox<String> kategoriCombo;
     private javax.swing.JComboBox<String> satuanCombo;
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
