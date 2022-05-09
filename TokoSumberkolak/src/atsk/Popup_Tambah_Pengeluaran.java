@@ -36,10 +36,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        txt_namaBarang = new javax.swing.JTextField();
+        txt_namaBarang1 = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txt_kodeBarang = new javax.swing.JTextField();
@@ -77,7 +74,6 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(470, 460));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -97,8 +93,6 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 70));
-
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
@@ -106,32 +100,15 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("Kode Barang");
+        jLabel6.setText("Kode Pengeluaran");
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion1.setMinimumSize(new java.awt.Dimension(198, 34));
-        comboBoxSuggestion1.setName(""); // NOI18N
-        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel9.add(comboBoxSuggestion1);
+        txt_namaBarang1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_namaBarang1.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel9.add(txt_namaBarang1);
 
         jPanel8.add(jPanel9);
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setPreferredSize(new java.awt.Dimension(428, 34));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setText("Kode Detail Pengeluaran");
-        jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
-        jPanel10.add(jLabel7);
-
-        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel10.add(txt_namaBarang);
-
-        jPanel8.add(jPanel10);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
         jPanel16.setPreferredSize(new java.awt.Dimension(428, 34));
@@ -214,8 +191,6 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
 
         jPanel8.add(jPanel14);
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 280));
-
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
@@ -273,9 +248,25 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel3.add(btn_tambah);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 470, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -420,18 +411,15 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_tambah;
-    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -443,7 +431,7 @@ public class Popup_Tambah_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;
-    private javax.swing.JTextField txt_namaBarang;
+    private javax.swing.JTextField txt_namaBarang1;
     private javax.swing.JTextField txt_satuan;
     private javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables

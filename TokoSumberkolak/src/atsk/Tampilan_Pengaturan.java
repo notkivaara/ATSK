@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import textfield.TextPrompt;
 
 /**
  *
@@ -23,6 +24,9 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
      */
     public Tampilan_Pengaturan() {
         initComponents();
+        TextPrompt passwordOld = new TextPrompt("Masukkan Password Lama", txt_passwordOld);
+        TextPrompt passwordNew = new TextPrompt("Masukkan Password Baru", txt_passwordNew);
+        TextPrompt passwordNew2 = new TextPrompt("Masukkan Kembali Password Baru", txt_passwordNew2);
 
     }
 
@@ -56,9 +60,11 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        passwordField1 = new textfield.PasswordField();
+        txt_passwordNew2 = new textfield.PasswordField();
         jPanel10 = new javax.swing.JPanel();
-        passwordField2 = new textfield.PasswordField();
+        txt_passwordNew = new textfield.PasswordField();
+        jPanel11 = new javax.swing.JPanel();
+        txt_passwordOld = new textfield.PasswordField();
         btn_konfirmasi = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -197,10 +203,8 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setOpaque(false);
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 22));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setOpaque(false);
@@ -229,8 +233,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         });
         jPanel6.add(btn_logout);
 
-        jPanel8.add(jPanel6);
-
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(840, 270));
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 9));
@@ -255,42 +257,57 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         });
         jPanel7.add(jTextField1);
 
-        jPanel8.add(jPanel7);
-
-        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 360));
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jPanel9.setOpaque(false);
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
-        passwordField1.setBackground(new java.awt.Color(245, 246, 250));
-        passwordField1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        passwordField1.setPreferredSize(new java.awt.Dimension(495, 55));
-        passwordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordField1ActionPerformed(evt);
-            }
-        });
-        jPanel9.add(passwordField1);
-
-        jPanel5.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 840, -1));
+        txt_passwordNew2.setBackground(new java.awt.Color(245, 246, 250));
+        txt_passwordNew2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_passwordNew2.setOpaque(false);
+        txt_passwordNew2.setPreferredSize(new java.awt.Dimension(495, 52));
+        txt_passwordNew2.setShowAndHide(true);
+        jPanel9.add(txt_passwordNew2);
 
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(840, 55));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 50));
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
-        passwordField2.setBackground(new java.awt.Color(245, 246, 250));
-        passwordField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        passwordField2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        passwordField2.setMargin(new java.awt.Insets(75, 6, 2, 6));
-        passwordField2.setPreferredSize(new java.awt.Dimension(495, 55));
-        passwordField2.addActionListener(new java.awt.event.ActionListener() {
+        txt_passwordNew.setBackground(new java.awt.Color(245, 246, 250));
+        txt_passwordNew.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_passwordNew.setOpaque(false);
+        txt_passwordNew.setPreferredSize(new java.awt.Dimension(495, 52));
+        txt_passwordNew.setShowAndHide(true);
+        txt_passwordNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordField2ActionPerformed(evt);
+                txt_passwordNewActionPerformed(evt);
             }
         });
-        jPanel10.add(passwordField2);
+        jPanel10.add(txt_passwordNew);
 
-        jPanel5.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, 110));
+        jPanel11.setOpaque(false);
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
+
+        txt_passwordOld.setBackground(new java.awt.Color(245, 246, 250));
+        txt_passwordOld.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_passwordOld.setOpaque(false);
+        txt_passwordOld.setPreferredSize(new java.awt.Dimension(495, 52));
+        txt_passwordOld.setShowAndHide(true);
+        jPanel11.add(txt_passwordOld);
 
         btn_konfirmasi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_konfirmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Konfirmasi Setting.png"))); // NOI18N
@@ -308,7 +325,32 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
                 btn_konfirmasiMouseReleased(evt);
             }
         });
-        jPanel5.add(btn_konfirmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 495, 42));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(btn_konfirmasi))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btn_konfirmasi))
+        );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
 
@@ -416,14 +458,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void passwordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordField1ActionPerformed
-
-    private void passwordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordField2ActionPerformed
-
     private void btn_konfirmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseEntered
         // TODO add your handling code here:
         Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting hover.png")).getImage();
@@ -524,6 +558,10 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
 
+    private void txt_passwordNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordNewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_passwordNewActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -605,6 +643,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -614,7 +653,8 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField jTextField1;
-    private textfield.PasswordField passwordField1;
-    private textfield.PasswordField passwordField2;
+    private textfield.PasswordField txt_passwordNew;
+    private textfield.PasswordField txt_passwordNew2;
+    private textfield.PasswordField txt_passwordOld;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package atsk;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import textfield.TextPrompt;
 
 /**
  *
@@ -19,7 +20,8 @@ public class Tampilan_Login extends javax.swing.JFrame {
      */
     public Tampilan_Login() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+        TextPrompt username = new TextPrompt("Username", txt_username);
+        TextPrompt password = new TextPrompt("Password", txt_password);
     }
 
     /**
@@ -80,26 +82,11 @@ public class Tampilan_Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 540, 110));
 
-        txt_username.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_usernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_usernameFocusLost(evt);
-            }
-        });
+        txt_username.setFont(new java.awt.Font("Arial", 0, 18));
         jPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 420, 60));
 
-        txt_password.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txt_password.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_passwordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_passwordFocusLost(evt);
-            }
-        });
+        txt_password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_password.setShowAndHide(true);
         jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 420, 60));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -138,38 +125,6 @@ public class Tampilan_Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1102, 731));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusGained
-        // TODO add your handling code here:
-        if (txt_username.getText().equals("Username")) {
-            txt_username.setText("");
-            txt_username.setForeground(new Color(0, 0, 0));
-        }
-    }//GEN-LAST:event_txt_usernameFocusGained
-
-    private void txt_usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_usernameFocusLost
-        // TODO add your handling code here:
-        if (txt_username.getText().equals("")) {
-            txt_username.setText("Username");
-            txt_username.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txt_usernameFocusLost
-
-    private void txt_passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_passwordFocusGained
-        // TODO add your handling code here:
-        if (txt_password.getText().equals("Password")) {
-            txt_password.setText("");
-            txt_password.setForeground(new Color(0, 0, 0));
-        }
-    }//GEN-LAST:event_txt_passwordFocusGained
-
-    private void txt_passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_passwordFocusLost
-        // TODO add your handling code here:
-        if (txt_password.getText().equals("")) {
-            txt_password.setText("Password");
-            txt_password.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txt_passwordFocusLost
 
     private void btn_loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseEntered
         // TODO add your handling code here:

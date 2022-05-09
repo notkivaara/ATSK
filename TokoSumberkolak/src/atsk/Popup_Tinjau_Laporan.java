@@ -19,6 +19,7 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
     int x,y;
     public Popup_Tinjau_Laporan() {
         initComponents();
+        tb_pengeluaran.fixTable(jScrollPane1);
     }
 
     /**
@@ -32,8 +33,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
 
         panelRound2 = new atsk.panelRound();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         bulan = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -51,6 +50,9 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         txt_pendapatanKotor = new javax.swing.JTextField();
         btn_cetak = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
+        panelShadow2 = new main.PanelShadow();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_pengeluaran = new javaswingdev.swing.table.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -66,54 +68,15 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         });
 
         panelRound2.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound2.setPreferredSize(new java.awt.Dimension(800, 632));
         panelRound2.setRoundBottomLeft(6);
         panelRound2.setRoundBottomRight(6);
         panelRound2.setRoundTopLeft(6);
         panelRound2.setRoundTopRight(6);
-        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Laporan Bulanan.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(800, 30));
-        panelRound2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
-
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        jTable2.setAutoCreateRowSorter(true);
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Kode Pengeluaran", "Kode Detail Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
-            }
-        ));
-        jTable2.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable2.setRowHeight(40);
-        jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jScrollPane2.setViewportView(jTable2);
-
-        panelRound2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 760, 260));
 
         jPanel6.setMinimumSize(new java.awt.Dimension(96, 100));
         jPanel6.setOpaque(false);
@@ -130,9 +93,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
             }
         });
         jPanel6.add(bulan);
-
-        panelRound2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 800, 35));
-        panelRound2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 755, 10));
 
         jPanel7.setOpaque(false);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -159,8 +119,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
 
         jPanel7.add(jPanel8);
 
-        panelRound2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 800, 42));
-
         jPanel9.setOpaque(false);
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
@@ -177,8 +135,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
             }
         });
         jPanel9.add(txt_pendapatanKotor2);
-
-        panelRound2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 800, 42));
 
         jPanel10.setOpaque(false);
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -197,8 +153,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         });
         jPanel10.add(txt_pendapatanKotor);
 
-        panelRound2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 800, 42));
-
         btn_cetak.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Cetak.png"))); // NOI18N
         btn_cetak.setMinimumSize(new java.awt.Dimension(124, 22));
@@ -216,7 +170,6 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
                 btn_cetakMousePressed(evt);
             }
         });
-        panelRound2.add(btn_cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 610, -1, -1));
 
         btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btn_cancel.png"))); // NOI18N
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,7 +183,75 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
                 btn_cancelMouseExited(evt);
             }
         });
-        panelRound2.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+
+        panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow2.setShadowOpacity(1.0F);
+        panelShadow2.setShadowSize(5);
+        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(730, 240));
+
+        tb_pengeluaran.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
+            }
+        ));
+        tb_pengeluaran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        tb_pengeluaran.setPreferredSize(new java.awt.Dimension(780, 530));
+        jScrollPane1.setViewportView(tb_pengeluaran);
+
+        panelShadow2.add(jScrollPane1);
+
+        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
+        panelRound2.setLayout(panelRound2Layout);
+        panelRound2Layout.setHorizontalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(760, 760, 760)
+                .addComponent(btn_cancel))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(650, 650, 650)
+                .addComponent(btn_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelRound2Layout.setVerticalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btn_cancel)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,7 +261,7 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
         );
 
         pack();
@@ -361,9 +382,11 @@ public class Popup_Tinjau_Laporan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private atsk.panelRound panelRound2;
+    private main.PanelShadow panelShadow2;
+    private javaswingdev.swing.table.Table tb_pengeluaran;
     private javax.swing.JTextField txt_pendapatanKotor;
     private javax.swing.JTextField txt_pendapatanKotor1;
     private javax.swing.JTextField txt_pendapatanKotor2;

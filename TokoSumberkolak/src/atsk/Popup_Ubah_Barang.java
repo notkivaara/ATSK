@@ -19,38 +19,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     int x,y;
     public Popup_Ubah_Barang() {
         initComponents();
-//        fill();
-        
     }
-//    public void fill(){
-//        Tampilan_Barang tb = new Tampilan_Barang();
-//       
-//        
-//           try{
-//           int row = tb.barangTable.getSelectedRow();
-//           Connection c = (Connection)Config.configDB();
-//           ResultSet rs = c.createStatement().executeQuery("SELECT * FROM barang WHERE kd_brg ='"+tb.barangTable.getValueAt(row,0).toString()+"'");
-//            while(rs.next()){
-//                txt_kodeBarang.setText(rs.getString("kd_brg")) ;
-//                txt_namaBarang.setText(rs.getString("nama_brg"));
-//                kategoriCombo.setSelectedItem(rs.getString("kategori"));
-//                txt_hargaBeli.setText(rs.getString("hrg_bel_brg"));
-//                txt_hargaJual.setText(rs.getString("hrg_jual_brg"));
-//                satuanCombo.setSelectedItem(rs.getString("satuan"));
-//                txt_stok.setText(rs.getString("stock"));
-//                txt_return.setText(rs.getString("retur"));
-//            }
-//            
-//            
-//        }
-//        catch (Exception e){
-//            
-//            JOptionPane.showMessageDialog(null,e.getMessage());
-//            
-//        } 
-//    }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,10 +148,9 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        kategoriCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
-        kategoriCombo.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel16.add(kategoriCombo);
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel16.add(comboBoxSuggestion1);
 
         jPanel8.add(jPanel16);
 
@@ -490,11 +458,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-<<<<<<< HEAD
-    public javax.swing.JComboBox<String> kategoriCombo;
-    private javax.swing.JComboBox<String> satuanCombo;
-=======
->>>>>>> 09c2a132d3524528e7f330a40be4575f76ee59cd
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;

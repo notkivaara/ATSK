@@ -23,6 +23,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
      */
     public Tampilan_Laporan() {
         initComponents();
+        tb_pengeluaran.fixTable(jScrollPane1);
 
     }
 
@@ -49,10 +50,8 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         btn_karyawan = new javax.swing.JLabel();
         btn_pengaturan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        panelRound2 = new atsk.panelRound();
+        panelShadow1 = new main.PanelShadow();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         bulan = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -69,8 +68,12 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txt_pendapatanKotor = new javax.swing.JTextField();
         btn_tinjau = new javax.swing.JLabel();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        panelShadow2 = new main.PanelShadow();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_pengeluaran = new javaswingdev.swing.table.Table();
+        panelShadow3 = new main.PanelShadow();
         jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
+        jYearChooser1 = new com.toedter.calendar.JYearChooser();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -208,65 +211,23 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound2.setRoundBottomLeft(6);
-        panelRound2.setRoundBottomRight(6);
-        panelRound2.setRoundTopLeft(6);
-        panelRound2.setRoundTopRight(6);
-        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow1.setShadowOpacity(1.0F);
+        panelShadow1.setShadowSize(5);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Laporan Bulanan.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(800, 30));
-        panelRound2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 19, -1, -1));
-
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        jTable2.setAutoCreateRowSorter(true);
-        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Kode Pengeluaran", "Kode Detail Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
-            }
-        ));
-        jTable2.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable2.setRequestFocusEnabled(false);
-        jTable2.setRowHeight(40);
-        jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jScrollPane2.setViewportView(jTable2);
-
-        panelRound2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 760, 260));
 
         jPanel6.setMinimumSize(new java.awt.Dimension(96, 100));
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         bulan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bulan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        bulan.setText("BULAN/TAHUN");
         bulan.setBorder(null);
         bulan.setMinimumSize(new java.awt.Dimension(96, 60));
         bulan.setPreferredSize(new java.awt.Dimension(200, 42));
@@ -277,9 +238,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
             }
         });
         jPanel6.add(bulan);
-
-        panelRound2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 55, 800, 35));
-        panelRound2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 96, 755, 10));
 
         jPanel7.setOpaque(false);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -306,8 +264,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
 
         jPanel7.add(jPanel8);
 
-        panelRound2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 800, 42));
-
         jPanel9.setOpaque(false);
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
@@ -325,8 +281,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         });
         jPanel9.add(txt_pendapatanKotor2);
 
-        panelRound2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 800, 42));
-
         jPanel10.setOpaque(false);
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
@@ -343,8 +297,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
             }
         });
         jPanel10.add(txt_pendapatanKotor);
-
-        panelRound2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 800, 42));
 
         btn_tinjau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_tinjau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tinjau.png"))); // NOI18N
@@ -366,19 +318,114 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                 btn_tinjauMouseReleased(evt);
             }
         });
-        panelRound2.add(btn_tinjau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, -1, -1));
 
-        jPanel5.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 800, 620));
+        panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow2.setShadowOpacity(1.0F);
+        panelShadow2.setShadowSize(5);
+        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(730, 240));
+
+        tb_pengeluaran.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
+            }
+        ));
+        tb_pengeluaran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        tb_pengeluaran.setPreferredSize(new java.awt.Dimension(780, 530));
+        jScrollPane1.setViewportView(tb_pengeluaran);
+
+        panelShadow2.add(jScrollPane1);
+
+        javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
+        panelShadow1.setLayout(panelShadow1Layout);
+        panelShadow1Layout.setHorizontalGroup(
+            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow1Layout.createSequentialGroup()
+                .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_tinjau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+            .addGroup(panelShadow1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelShadow1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelShadow1Layout.setVerticalGroup(
+            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_tinjau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow3.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow3.setShadowOpacity(1.0F);
+        panelShadow3.setShadowSize(5);
+        panelShadow3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 6));
+
+        jMonthChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jMonthChooser1.setOpaque(false);
+        jMonthChooser1.setPreferredSize(new java.awt.Dimension(141, 42));
+        panelShadow3.add(jMonthChooser1);
+        jMonthChooser1.getAccessibleContext().setAccessibleName("");
 
         jYearChooser1.setBackground(new java.awt.Color(255, 255, 255));
         jYearChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jYearChooser1.setOpaque(false);
-        jPanel5.add(jYearChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 80, 42));
+        jYearChooser1.setPreferredSize(new java.awt.Dimension(63, 42));
+        panelShadow3.add(jYearChooser1);
 
-        jMonthChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jMonthChooser1.setOpaque(false);
-        jPanel5.add(jMonthChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 42));
-        jMonthChooser1.getAccessibleContext().setAccessibleName("");
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
 
@@ -637,10 +684,13 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
-    private atsk.panelRound panelRound2;
+    private main.PanelShadow panelShadow1;
+    private main.PanelShadow panelShadow2;
+    private main.PanelShadow panelShadow3;
+    private javaswingdev.swing.table.Table tb_pengeluaran;
     private javax.swing.JTextField txt_pendapatanKotor;
     private javax.swing.JTextField txt_pendapatanKotor1;
     private javax.swing.JTextField txt_pendapatanKotor2;

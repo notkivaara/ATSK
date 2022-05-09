@@ -23,6 +23,7 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
      */
     public Tampilan_RiwayatJual() {
         initComponents();
+        tb_RiwayatJual.fixTable(jScrollPane1);
 
     }
 
@@ -35,6 +36,8 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        javax.swing.JTable tb_riwayatJual = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -49,15 +52,56 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         btn_pengaturan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        panelRound2 = new atsk.panelRound();
+        panelShadow5 = new main.PanelShadow();
         btn_riwayatBeli = new javax.swing.JLabel();
         btn_riwayatJual = new javax.swing.JLabel();
-        tgl_riwayatBeli = new com.toedter.calendar.JDateChooser();
+        panelShadow2 = new main.PanelShadow();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_RiwayatJual = new javaswingdev.swing.table.Table();
+        panelShadow3 = new main.PanelShadow();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txt_jumlahTransaksi = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable tb_riwayatJual = new javax.swing.JTable();
+        panelShadow1 = new main.PanelShadow();
+        tgl_riwayatBeli = new com.toedter.calendar.JDateChooser();
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        tb_riwayatJual.setAutoCreateRowSorter(true);
+        tb_riwayatJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tb_riwayatJual.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Kode Transaksi", "Tanggal", "Harga Total", "Tunai", "Kembali"
+            }
+        ));
+        tb_riwayatJual.setGridColor(new java.awt.Color(204, 204, 204));
+        tb_riwayatJual.setRequestFocusEnabled(false);
+        tb_riwayatJual.setRowHeight(40);
+        tb_riwayatJual.setSelectionBackground(new java.awt.Color(216, 225, 238));
+        jScrollPane2.setViewportView(tb_riwayatJual);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -184,21 +228,20 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
 
-        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound2.setPreferredSize(new java.awt.Dimension(800, 50));
-        panelRound2.setRoundBottomLeft(6);
-        panelRound2.setRoundBottomRight(6);
-        panelRound2.setRoundTopLeft(6);
-        panelRound2.setRoundTopRight(6);
-        panelRound2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
+        panelShadow5.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow5.setPreferredSize(new java.awt.Dimension(800, 44));
+        panelShadow5.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow5.setShadowOpacity(0.5F);
+        panelShadow5.setShadowSize(1);
+        panelShadow5.setShadowType(main.ShadowType.BOT);
+        panelShadow5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
 
         btn_riwayatBeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Riwayat Beli.png"))); // NOI18N
-        btn_riwayatBeli.setPreferredSize(new java.awt.Dimension(364, 50));
+        btn_riwayatBeli.setName(""); // NOI18N
         btn_riwayatBeli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_riwayatBeliMouseClicked(evt);
@@ -210,24 +253,48 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
                 btn_riwayatBeliMouseExited(evt);
             }
         });
-        panelRound2.add(btn_riwayatBeli);
+        panelShadow5.add(btn_riwayatBeli);
 
         btn_riwayatJual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Riwayat Jual aktif.png"))); // NOI18N
-        btn_riwayatJual.setPreferredSize(new java.awt.Dimension(364, 50));
-        panelRound2.add(btn_riwayatJual);
+        panelShadow5.add(btn_riwayatJual);
 
-        jPanel6.add(panelRound2);
+        jPanel6.add(panelShadow5);
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 840, 45));
+        panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow2.setShadowOpacity(1.0F);
+        panelShadow2.setShadowSize(5);
+        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        tgl_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
-        tgl_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jPanel5.add(tgl_riwayatBeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, 42));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 530));
+
+        tb_RiwayatJual.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kode Transaksi", "Tanggal", "Harga Total", "Tunai", "Kembali"
+            }
+        ));
+        tb_RiwayatJual.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        tb_RiwayatJual.setPreferredSize(new java.awt.Dimension(780, 530));
+        jScrollPane1.setViewportView(tb_RiwayatJual);
+
+        panelShadow2.add(jScrollPane1);
+
+        panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow3.setMinimumSize(new java.awt.Dimension(356, 54));
+        panelShadow3.setPreferredSize(new java.awt.Dimension(800, 54));
+        panelShadow3.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow3.setShadowOpacity(1.0F);
+        panelShadow3.setShadowSize(5);
+        panelShadow3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
 
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel3.setText("Jumlah Transaksi :");
         jPanel4.add(jLabel3);
 
@@ -235,7 +302,7 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         txt_jumlahTransaksi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_jumlahTransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txt_jumlahTransaksi.setMinimumSize(new java.awt.Dimension(96, 42));
-        txt_jumlahTransaksi.setPreferredSize(new java.awt.Dimension(96, 42));
+        txt_jumlahTransaksi.setPreferredSize(new java.awt.Dimension(90, 42));
         txt_jumlahTransaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_jumlahTransaksiActionPerformed(evt);
@@ -243,47 +310,51 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         });
         jPanel4.add(txt_jumlahTransaksi);
 
-        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 330, 42));
+        panelShadow3.add(jPanel4);
 
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow1.setMinimumSize(new java.awt.Dimension(356, 54));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(800, 54));
+        panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow1.setShadowOpacity(1.0F);
+        panelShadow1.setShadowSize(5);
+        panelShadow1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
 
-        tb_riwayatJual.setAutoCreateRowSorter(true);
-        tb_riwayatJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        tb_riwayatJual.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Kode Transaksi", "Tanggal", "Harga Total", "Tunai", "Kembali"
-            }
-        ));
-        tb_riwayatJual.setGridColor(new java.awt.Color(204, 204, 204));
-        tb_riwayatJual.setRequestFocusEnabled(false);
-        tb_riwayatJual.setRowHeight(40);
-        tb_riwayatJual.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jScrollPane2.setViewportView(tb_riwayatJual);
+        tgl_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
+        tgl_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tgl_riwayatBeli.setPreferredSize(new java.awt.Dimension(260, 42));
+        panelShadow1.add(tgl_riwayatBeli);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 800, 560));
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panelShadow2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
 
@@ -524,8 +595,13 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private atsk.panelRound panelRound2;
+    private main.PanelShadow panelShadow1;
+    private main.PanelShadow panelShadow2;
+    private main.PanelShadow panelShadow3;
+    private main.PanelShadow panelShadow5;
+    private javaswingdev.swing.table.Table tb_RiwayatJual;
     private com.toedter.calendar.JDateChooser tgl_riwayatBeli;
     private javax.swing.JTextField txt_jumlahTransaksi;
     // End of variables declaration//GEN-END:variables

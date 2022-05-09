@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import textfield.TextPrompt;
 
 /**
  *
@@ -23,6 +24,8 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
      */
     public Tampilan_TransaksiBeli() {
         initComponents();
+        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
+        tb_barang.fixTable(jScrollPane1);
 
     }
 
@@ -49,11 +52,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         btn_pengaturan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        panelRound2 = new atsk.panelRound();
+        panelShadow5 = new main.PanelShadow();
         jLabel4 = new javax.swing.JLabel();
         btn_riwayatJual = new javax.swing.JLabel();
-        panelRound1 = new atsk.panelRound();
-        jLabel10 = new javax.swing.JLabel();
+        panelShadow4 = new main.PanelShadow();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -73,14 +75,16 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         btn_tambah = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable2 = new javax.swing.JTable();
-        jPanel12 = new javax.swing.JPanel();
-        panelRound3 = new atsk.panelRound();
+        jPanel13 = new javax.swing.JPanel();
+        panelShadow1 = new main.PanelShadow();
         jLabel3 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
+        panelShadow3 = new main.PanelShadow();
         comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         btn_cari = new javax.swing.JLabel();
+        panelShadow2 = new main.PanelShadow();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_barang = new javaswingdev.swing.table.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -207,21 +211,20 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
 
-        panelRound2.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound2.setPreferredSize(new java.awt.Dimension(800, 42));
-        panelRound2.setRoundBottomLeft(6);
-        panelRound2.setRoundBottomRight(6);
-        panelRound2.setRoundTopLeft(6);
-        panelRound2.setRoundTopRight(6);
-        panelRound2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
+        panelShadow5.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow5.setPreferredSize(new java.awt.Dimension(800, 44));
+        panelShadow5.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow5.setShadowOpacity(0.5F);
+        panelShadow5.setShadowSize(1);
+        panelShadow5.setShadowType(main.ShadowType.BOT);
+        panelShadow5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Transaksi Beli aktif.png"))); // NOI18N
-        panelRound2.add(jLabel4);
+        panelShadow5.add(jLabel4);
 
         btn_riwayatJual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Transaksi Jual.png"))); // NOI18N
         btn_riwayatJual.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,22 +238,14 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                 btn_riwayatJualMouseExited(evt);
             }
         });
-        panelRound2.add(btn_riwayatJual);
+        panelShadow5.add(btn_riwayatJual);
 
-        jPanel6.add(panelRound2);
+        jPanel6.add(panelShadow5);
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 840, 42));
-
-        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.setRoundBottomLeft(6);
-        panelRound1.setRoundBottomRight(6);
-        panelRound1.setRoundTopLeft(6);
-        panelRound1.setRoundTopRight(6);
-        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setText("No. Telpon");
-        jLabel10.setPreferredSize(new java.awt.Dimension(200, 42));
-        panelRound1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 318, -1, -1));
+        panelShadow4.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow4.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow4.setShadowOpacity(1.0F);
+        panelShadow4.setShadowSize(5);
 
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -260,11 +255,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel4.add(jLabel6);
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField1.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel4.add(jTextField1);
-
-        panelRound1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 642, 34));
 
         jPanel7.setOpaque(false);
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -274,10 +267,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel7.add(jLabel7);
 
+        comboBoxSuggestion2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel7.add(comboBoxSuggestion2);
-
-        panelRound1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 642, 34));
 
         jPanel8.setOpaque(false);
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -288,10 +280,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel8.add(jLabel12);
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jDateChooser1.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel8.add(jDateChooser1);
-
-        panelRound1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 642, -1));
 
         jPanel9.setOpaque(false);
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -301,11 +292,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel9.add(jLabel13);
 
-        jTextField4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField4.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel9.add(jTextField4);
-
-        panelRound1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 642, -1));
 
         jPanel10.setOpaque(false);
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -315,11 +304,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel14.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel10.add(jLabel14);
 
-        jTextField5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField5.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel10.add(jTextField5);
-
-        panelRound1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 642, -1));
 
         jPanel11.setOpaque(false);
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -329,19 +316,52 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel15.setPreferredSize(new java.awt.Dimension(397, 34));
         jPanel11.add(jLabel15);
 
-        jTextField6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField6.setPreferredSize(new java.awt.Dimension(200, 34));
         jPanel11.add(jTextField6);
 
-        panelRound1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 642, -1));
-
-        jPanel5.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 642, 280));
+        javax.swing.GroupLayout panelShadow4Layout = new javax.swing.GroupLayout(panelShadow4);
+        panelShadow4.setLayout(panelShadow4Layout);
+        panelShadow4Layout.setHorizontalGroup(
+            panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelShadow4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        panelShadow4Layout.setVerticalGroup(
+            panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow4Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(219, Short.MAX_VALUE))
+            .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelShadow4Layout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(18, Short.MAX_VALUE)))
+        );
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah Beli.png"))); // NOI18N
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseReleased(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -351,58 +371,20 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_tambahMousePressed(evt);
             }
-        });
-        jPanel5.add(btn_tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, -1));
-
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        jTable2.setAutoCreateRowSorter(true);
-        jTable2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Kode Barang", "Nama Barang", "Harga Beli", "Harga Jual", "Satuan", "Stok", "Return"
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseReleased(evt);
             }
-        ));
-        jTable2.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable2.setRequestFocusEnabled(false);
-        jTable2.setRowHeight(40);
-        jTable2.setSelectionBackground(new java.awt.Color(216, 225, 238));
-        jScrollPane2.setViewportView(jTable2);
+        });
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 800, 260));
+        jPanel13.setOpaque(false);
+        jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
-        jPanel12.setOpaque(false);
-        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
-
-        panelRound3.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound3.setPreferredSize(new java.awt.Dimension(485, 49));
-        panelRound3.setRoundBottomLeft(10);
-        panelRound3.setRoundBottomRight(10);
-        panelRound3.setRoundTopLeft(10);
-        panelRound3.setRoundTopRight(10);
+        panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(485, 52));
+        panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow1.setShadowOpacity(0.5F);
+        panelShadow1.setShadowSize(1);
+        panelShadow1.setShadowType(main.ShadowType.BOT);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
@@ -410,45 +392,46 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
-        txt_cari.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_cariFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_cariFocusLost(evt);
-            }
-        });
+        txt_cari.setPreferredSize(new java.awt.Dimension(370, 49));
 
-        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
-        panelRound3.setLayout(panelRound3Layout);
-        panelRound3Layout.setHorizontalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
+        panelShadow1.setLayout(panelShadow1Layout);
+        panelShadow1Layout.setHorizontalGroup(
+            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 53, Short.MAX_VALUE))
         );
-        panelRound3Layout.setVerticalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelShadow1Layout.setVerticalGroup(
+            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelRound3Layout.createSequentialGroup()
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelShadow1Layout.createSequentialGroup()
+                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
-        jPanel12.add(panelRound3);
+        jPanel13.add(panelShadow1);
 
+        panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow3.setPreferredSize(new java.awt.Dimension(150, 52));
+        panelShadow3.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow3.setShadowOpacity(0.5F);
+        panelShadow3.setShadowSize(1);
+        panelShadow3.setShadowType(main.ShadowType.BOT);
+        panelShadow3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        comboBoxSuggestion1.setBorder(null);
         comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(150, 49));
-        jPanel12.add(comboBoxSuggestion1);
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(145, 49));
+        panelShadow3.add(comboBoxSuggestion1);
+
+        jPanel13.add(panelShadow3);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_cariMouseReleased(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
             }
@@ -458,10 +441,65 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_cariMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_cariMouseReleased(evt);
+            }
         });
-        jPanel12.add(btn_cari);
+        jPanel13.add(btn_cari);
 
-        jPanel5.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 840, -1));
+        panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow2.setShadowOpacity(1.0F);
+        panelShadow2.setShadowSize(5);
+        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 240));
+        jScrollPane1.setRequestFocusEnabled(false);
+
+        tb_barang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kode Barang", "Nama Barang", "Kategori", "Tanggal Penambahan", "Harga Beli", "Harga Jual", "Stok", "Return"
+            }
+        ));
+        tb_barang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        tb_barang.setPreferredSize(new java.awt.Dimension(780, 530));
+        jScrollPane1.setViewportView(tb_barang);
+
+        panelShadow2.add(jScrollPane1);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(btn_tambah))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_tambah)
+                    .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
 
@@ -601,46 +639,6 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_riwayatJualMouseClicked
 
-    private void txt_cariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariFocusGained
-        // TODO add your handling code here:
-        if (txt_cari.getText().equals("Cari Berdasarkan Nama Barang")) {
-            txt_cari.setText("");
-            txt_cari.setForeground(new Color(0, 0, 0));
-        }
-    }//GEN-LAST:event_txt_cariFocusGained
-
-    private void txt_cariFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariFocusLost
-        // TODO add your handling code here:
-        if (txt_cari.getText().equals("")) {
-            txt_cari.setText("Cari Berdasarkan Nama Barang");
-            txt_cari.setForeground(new Color(204, 204, 204));
-        }
-    }//GEN-LAST:event_txt_cariFocusLost
-
-    private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
-        // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
-    }//GEN-LAST:event_btn_cariMouseReleased
-
-    private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
-        // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
-    }//GEN-LAST:event_btn_cariMouseEntered
-
-    private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
-        // TODO add your handling code here:
-        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
-    }//GEN-LAST:event_btn_cariMouseExited
-
-    private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
-        // TODO add your handling code here:
-        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihPress));
-    }//GEN-LAST:event_btn_cariMousePressed
-
     private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
         // TODO add your handling code here:
         Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button tambah beli hover.png")).getImage();
@@ -692,6 +690,30 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
+
+    private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
+        // TODO add your handling code here:
+        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+    }//GEN-LAST:event_btn_cariMouseEntered
+
+    private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
+        // TODO add your handling code here:
+        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
+    }//GEN-LAST:event_btn_cariMouseExited
+
+    private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
+        // TODO add your handling code here:
+        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihPress));
+    }//GEN-LAST:event_btn_cariMousePressed
+
+    private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
+        // TODO add your handling code here:
+        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+    }//GEN-LAST:event_btn_cariMouseReleased
 
     /**
      * @param args the command line arguments
@@ -759,7 +781,6 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -771,7 +792,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -780,14 +801,17 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private atsk.panelRound panelRound1;
-    private atsk.panelRound panelRound2;
-    private atsk.panelRound panelRound3;
+    private main.PanelShadow panelShadow1;
+    private main.PanelShadow panelShadow2;
+    private main.PanelShadow panelShadow3;
+    private main.PanelShadow panelShadow4;
+    private main.PanelShadow panelShadow5;
+    private javaswingdev.swing.table.Table tb_barang;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }
