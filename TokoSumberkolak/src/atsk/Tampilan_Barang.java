@@ -75,6 +75,44 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         }
        
         }
+     public void search(){
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode barang");
+        tbl.addColumn("Nama barang");
+        tbl.addColumn("Kategori");
+        tbl.addColumn("Harga Beli");
+        tbl.addColumn("Harga Jual");
+        tbl.addColumn("Satuan");
+        tbl.addColumn("Stock");
+        tbl.addColumn("Return");
+        tbl.addColumn("Waktu Penambahan");
+
+        String cari = txt_cari.getText();
+        try {
+            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%"+ cari +"%';";
+            Connection c = (Connection) Config.configDB();
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_brg"),
+                    rs.getString("nama_brg"),
+                    rs.getString("kategori"),
+                    rs.getString("hrg_beli_brg"),
+                    rs.getString("hrg_jual_brg"),
+                    rs.getString("satuan"),
+                    rs.getString("stock"),
+                    rs.getString("retur"),
+                    rs.getString("waktu_penambahan"),
+                  });
+                barangTable.setModel(tbl);
+            }
+
+        } catch (Exception e) {
+            
+        }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -296,6 +334,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cariMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
             }
@@ -741,6 +782,25 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btn_hapusMouseClicked
+
+    private void btn_cariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseClicked
+        // TODO add your handling code here:
+        String cari = txt_cari.getText();
+
+        try {
+            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%"+ cari +"%';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                search();
+            } else {
+                JOptionPane.showMessageDialog(null, "Barang tidak Ditemukan");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btn_cariMouseClicked
 
     /**
      * @param args the command line arguments
