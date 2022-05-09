@@ -4,8 +4,14 @@
  */
 package atsk;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +25,55 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     int x,y;
     public Popup_Ubah_Barang() {
         initComponents();
+        txt_kodeBarang.setBackground(Color.gray);
+        txt_kodeBarang.setEditable(false);
+    }
+    
+    public static String kodeLama;
+
+    public static void setKodeLama(String kodeLama) {
+        Popup_Ubah_Barang.kodeLama = kodeLama;
+    }
+    
+    
+     public void simpan(){
+        
+        
+        Tampilan_Barang TB = new Tampilan_Barang();
+        int row = TB.barangTable.getSelectedRow();
+        
+        
+//        String kodeLama = TB.barangTable.getModel().getValueAt(row, 0).toString() 
+        System.out.println(kodeLama);
+        String kodeBarang = txt_kodeBarang.getText();
+        String namaBarang = txt_namaBarang.getText();
+        String kategoriBarang = kategoriCombo.getSelectedItem().toString();
+        String hargaBeli = txt_hargaBeli.getText();
+        String hargaJual = txt_hargaJual.getText();
+        String satuan = satuanCombo.getSelectedItem().toString();
+        String stok = txt_stok.getText();
+        String retur = txt_return.getText();
+        
+        try {
+            String sql = "Update barang set kd_brg='"+kodeBarang+"'"
+                    + ",nama_brg = '"+ namaBarang
+                    +"',kategori ='"+ kategoriBarang
+                    +"',hrg_beli_brg = '"+ hargaBeli
+                    +"',hrg_jual_brg = '"+ hargaJual
+                    +"',satuan= '"+ satuan
+                    +"',stock = '"+ stok
+                    +"',retur ='"+ retur
+                    +"' WHERE kd_brg = '" +kodeLama+"'";
+                   
+            Connection c = (Connection) Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
     }
 
     /**
@@ -42,7 +97,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         txt_namaBarang = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
+        kategoriCombo = new combo_suggestion.ComboBoxSuggestion();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_hargaBeli = new javax.swing.JTextField();
@@ -51,7 +106,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
+        satuanCombo = new combo_suggestion.ComboBoxSuggestion();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_stok = new javax.swing.JTextField();
@@ -148,9 +203,15 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel16.add(comboBoxSuggestion1);
+        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
+        kategoriCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        kategoriCombo.setPreferredSize(new java.awt.Dimension(198, 34));
+        kategoriCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kategoriComboActionPerformed(evt);
+            }
+        });
+        jPanel16.add(kategoriCombo);
 
         jPanel8.add(jPanel16);
 
@@ -193,9 +254,10 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        comboBoxSuggestion2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(comboBoxSuggestion2);
+        satuanCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "pcs", "pack", "1 kg", "1/2 kg", "1/4 kg", "1 ons", "1 liter", "1/2 liter", "1/4 liter" }));
+        satuanCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        satuanCombo.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(satuanCombo);
 
         jPanel8.add(jPanel13);
 
@@ -273,6 +335,9 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
 
         btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan popup.png"))); // NOI18N
         btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_simpanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_simpanMouseEntered(evt);
             }
@@ -389,6 +454,156 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         this.setLocation(xx-x, yy-y);
     }//GEN-LAST:event_formMouseDragged
 
+    private void btn_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseClicked
+        // TODO add your handling code here:
+        simpan();
+    }//GEN-LAST:event_btn_simpanMouseClicked
+
+    private void kategoriComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriComboActionPerformed
+        // TODO add your handling code here:
+         if (kategoriCombo.getSelectedItem()=="Alat Mandi") {
+           try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%AI%'";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("max").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("AI" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("AI0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else if(kategoriCombo.getSelectedItem()=="Makanan Ringan"){
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%MR%'";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("max").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("MR" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("MR0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else if(kategoriCombo.getSelectedItem()== "Alat Cuci"){
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%AC%'";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("max").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("AC" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("AC0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else if(kategoriCombo.getSelectedItem()== "Alat Makan"){
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%AM%'";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("max").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("AM" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("AM0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }else{
+            try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%SE%'";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoBarang = r.getString("max").substring(2);
+                String TR = "" +(Integer.parseInt(NoBarang)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kodeBarang.setText("SE" + Nol + TR);
+            } else {
+                txt_kodeBarang.setText("SE0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        }
+    }//GEN-LAST:event_kategoriComboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -435,8 +650,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_simpan;
-    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
-    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -458,11 +671,13 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_hargaBeli;
-    private javax.swing.JTextField txt_hargaJual;
-    private javax.swing.JTextField txt_kodeBarang;
-    private javax.swing.JTextField txt_namaBarang;
-    private javax.swing.JTextField txt_return;
-    private javax.swing.JTextField txt_stok;
+    public combo_suggestion.ComboBoxSuggestion kategoriCombo;
+    public combo_suggestion.ComboBoxSuggestion satuanCombo;
+    public javax.swing.JTextField txt_hargaBeli;
+    public javax.swing.JTextField txt_hargaJual;
+    public javax.swing.JTextField txt_kodeBarang;
+    public javax.swing.JTextField txt_namaBarang;
+    public javax.swing.JTextField txt_return;
+    public javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables
 }
