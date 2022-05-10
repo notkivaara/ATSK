@@ -4,6 +4,7 @@
  */
 package atsk;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -11,14 +12,15 @@ import javax.swing.ImageIcon;
  *
  * @author ACER
  */
-public class Popup_Ubah_Barang extends javax.swing.JFrame {
+public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
 
     /**
      * Creates new form Popup_Tambah_Barang
      */
     int x,y;
-    public Popup_Ubah_Barang() {
+    public Popup_Tambah_Barang_Shadow() {
         initComponents();
+        setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -30,6 +32,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelShadow1 = new main.PanelShadow();
         jPanel1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -61,7 +64,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
-        btn_simpan = new javax.swing.JLabel();
+        btn_tambah = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(470, 460));
@@ -76,16 +79,20 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
                 formMousePressed(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(480, 470));
+        panelShadow1.setShadowOpacity(0.3F);
+        panelShadow1.setShadowSize(5);
+        panelShadow1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(470, 460));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Ubah Barang.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Tambah Barang.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -100,12 +107,9 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 70));
-
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -125,7 +129,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel9);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -140,7 +143,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel10);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -155,7 +157,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel16);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -170,7 +171,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -185,7 +185,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -200,7 +199,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel13);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -215,7 +213,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel14);
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -228,8 +225,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel15.add(txt_return);
 
         jPanel8.add(jPanel15);
-
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 320));
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
@@ -271,33 +266,78 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         });
         jPanel3.add(btn_bersihkan);
 
-        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan popup.png"))); // NOI18N
-        btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
+        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseEntered(evt);
+                btn_tambahMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseExited(evt);
+                btn_tambahMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_simpanMousePressed(evt);
+                btn_tambahMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseReleased(evt);
+                btn_tambahMouseReleased(evt);
             }
         });
-        jPanel3.add(btn_simpan);
+        jPanel3.add(btn_tambah);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 470, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
+        panelShadow1.add(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        int xx = evt.getXOnScreen();
+        int yy = evt.getYOnScreen();
+        this.setLocation(xx-x, yy-y);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
     private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_kodeBarangActionPerformed
+
+    private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_batalMouseClicked
 
     private void btn_batalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseEntered
         // TODO add your handling code here:
@@ -347,47 +387,29 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         btn_bersihkan.setIcon(new ImageIcon(iconBersihkanHover));
     }//GEN-LAST:event_btn_bersihkanMouseReleased
 
-    private void btn_simpanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseEntered
+    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
-    }//GEN-LAST:event_btn_simpanMouseEntered
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
+    }//GEN-LAST:event_btn_tambahMouseEntered
 
-    private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
+    private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
         // TODO add your handling code here:
-        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/button simpan popup.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
-    }//GEN-LAST:event_btn_simpanMouseExited
+        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/button tambah popup.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahDefault));
+    }//GEN-LAST:event_btn_tambahMouseExited
 
-    private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
+    private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
         // TODO add your handling code here:
-        Image iconSimpanPressed = new ImageIcon(this.getClass().getResource("/img/button simpan popup press.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanPressed));
-    }//GEN-LAST:event_btn_simpanMousePressed
+        Image iconTambahPressed = new ImageIcon(this.getClass().getResource("/img/button tambah popup press.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahPressed));
+    }//GEN-LAST:event_btn_tambahMousePressed
 
-    private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
+    private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
-    }//GEN-LAST:event_btn_simpanMouseReleased
-
-    private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_btn_batalMouseClicked
-
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        // TODO add your handling code here:
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_formMousePressed
-
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        // TODO add your handling code here:
-        int xx = evt.getXOnScreen();
-        int yy = evt.getYOnScreen();
-        this.setLocation(xx-x, yy-y);
-    }//GEN-LAST:event_formMouseDragged
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
+    }//GEN-LAST:event_btn_tambahMouseReleased
 
     /**
      * @param args the command line arguments
@@ -406,13 +428,13 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Barang_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Barang_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Barang_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Tambah_Barang_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -426,7 +448,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Popup_Ubah_Barang().setVisible(true);
+                new Popup_Tambah_Barang_Shadow().setVisible(true);
             }
         });
     }
@@ -434,7 +456,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
-    private javax.swing.JLabel btn_simpan;
+    private javax.swing.JLabel btn_tambah;
     private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
     private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private javax.swing.JLabel jLabel1;
@@ -458,6 +480,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private main.PanelShadow panelShadow1;
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;

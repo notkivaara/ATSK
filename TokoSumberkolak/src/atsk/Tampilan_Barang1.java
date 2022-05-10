@@ -5,7 +5,9 @@
 package atsk;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.plaf.TableUI;
@@ -17,17 +19,16 @@ import textfield.TextPrompt;
  *
  * @author ACER
  */
-public class Tampilan_Pengeluaran extends javax.swing.JFrame {
+public class Tampilan_Barang1 extends javax.swing.JFrame {
 
     /**
      * Creates new form TampilanBarang
      */
-    public Tampilan_Pengeluaran() {
+    public Tampilan_Barang1() {
         initComponents();
-        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Pengeluaran", txt_cari);
-        tb_pengeluaran.fixTable(jScrollPane1);
+        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
+        tb_barang.fixTable(jScrollPane1);
         cancel_search.setVisible(false);
-
     }
 
     /**
@@ -39,7 +40,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
+        evaluatorArc2D1 = new org.jdesktop.swing.animation.timing.evaluators.EvaluatorArc2D();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,30 +54,21 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_karyawan = new javax.swing.JLabel();
         btn_pengaturan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        panel_search = new main.PanelShadow();
+        icon_search = new javax.swing.JLabel();
+        txt_cari = new javax.swing.JTextField();
+        cancel_search = new javax.swing.JLabel();
+        panelShadow3 = new main.PanelShadow();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
+        btn_cari = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         btn_tambah = new javax.swing.JLabel();
         btn_ubah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        panelShadow1 = new main.PanelShadow();
-        jLabel4 = new javax.swing.JLabel();
-        txt_cari = new javax.swing.JTextField();
-        cancel_search = new javax.swing.JLabel();
-        btn_cari = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_pengeluaran = new javaswingdev.swing.table.Table();
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        tb_barang = new javaswingdev.swing.table.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,18 +89,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 128, 105));
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.PAGE_AXIS));
 
-        btn_barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barang.png"))); // NOI18N
-        btn_barang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_barangMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_barangMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_barangMouseExited(evt);
-            }
-        });
+        btn_barang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barang_aktif.png"))); // NOI18N
         jPanel3.add(btn_barang);
 
         btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/transaksi.png"))); // NOI18N
@@ -125,7 +106,18 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         });
         jPanel3.add(btn_transaksi);
 
-        btn_pengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengeluaran_aktif.png"))); // NOI18N
+        btn_pengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pengeluaran.png"))); // NOI18N
+        btn_pengeluaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pengeluaranMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_pengeluaranMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_pengeluaranMouseExited(evt);
+            }
+        });
         jPanel3.add(btn_pengeluaran);
 
         btn_pemasok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pemasok.png"))); // NOI18N
@@ -204,8 +196,103 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
 
+        jPanel6.setOpaque(false);
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
+
+        panel_search.setBackground(new java.awt.Color(255, 255, 255));
+        panel_search.setPreferredSize(new java.awt.Dimension(485, 52));
+        panel_search.setShadowColor(new java.awt.Color(209, 223, 245));
+        panel_search.setShadowOpacity(0.5F);
+        panel_search.setShadowSize(1);
+        panel_search.setShadowType(main.ShadowType.BOT);
+
+        icon_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
+
+        txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_cari.setBorder(null);
+        txt_cari.setPreferredSize(new java.awt.Dimension(375, 49));
+        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cariKeyReleased(evt);
+            }
+        });
+
+        cancel_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cancel_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancel_search.png"))); // NOI18N
+        cancel_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_searchLayout = new javax.swing.GroupLayout(panel_search);
+        panel_search.setLayout(panel_searchLayout);
+        panel_searchLayout.setHorizontalGroup(
+            panel_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_searchLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(icon_search)
+                .addGap(10, 10, 10)
+                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
+        );
+        panel_searchLayout.setVerticalGroup(
+            panel_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_searchLayout.createSequentialGroup()
+                .addGroup(panel_searchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cancel_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(icon_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel6.add(panel_search);
+
+        panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow3.setPreferredSize(new java.awt.Dimension(150, 52));
+        panelShadow3.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow3.setShadowOpacity(0.5F);
+        panelShadow3.setShadowSize(1);
+        panelShadow3.setShadowType(main.ShadowType.BOT);
+        panelShadow3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        comboBoxSuggestion1.setBorder(null);
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(145, 49));
+        panelShadow3.add(comboBoxSuggestion1);
+
+        jPanel6.add(panelShadow3);
+
+        btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
+        btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_cariMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_cariMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_cariMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_cariMouseReleased(evt);
+            }
+        });
+        jPanel6.add(btn_cari);
+
         jPanel7.setOpaque(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(800, 42));
+        jPanel7.setPreferredSize(new java.awt.Dimension(800, 52));
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 33, 0));
 
         btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -253,9 +340,6 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
         btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_hapusMouseEntered(evt);
             }
@@ -265,88 +349,11 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_hapusMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
+            }
         });
         jPanel7.add(btn_hapus);
-
-        jPanel8.setOpaque(false);
-        jPanel8.setPreferredSize(new java.awt.Dimension(831, 60));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
-
-        panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow1.setPreferredSize(new java.awt.Dimension(650, 52));
-        panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
-        panelShadow1.setShadowOpacity(0.5F);
-        panelShadow1.setShadowSize(1);
-        panelShadow1.setShadowType(main.ShadowType.BOT);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
-
-        txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_cari.setBorder(null);
-        txt_cari.setPreferredSize(new java.awt.Dimension(370, 49));
-        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_cariKeyReleased(evt);
-            }
-        });
-
-        cancel_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cancel_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancel_search.png"))); // NOI18N
-        cancel_search.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancel_searchMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancel_searchMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancel_searchMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
-        panelShadow1.setLayout(panelShadow1Layout);
-        panelShadow1Layout.setHorizontalGroup(
-            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelShadow1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4)
-                .addGap(10, 10, 10)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-        panelShadow1Layout.setVerticalGroup(
-            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelShadow1Layout.createSequentialGroup()
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
-            .addComponent(cancel_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel8.add(panelShadow1);
-
-        btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
-        btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_cariMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_cariMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_cariMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_cariMouseReleased(evt);
-            }
-        });
-        jPanel8.add(btn_cari);
 
         panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
@@ -357,17 +364,27 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jScrollPane1.setBorder(null);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 530));
 
-        tb_pengeluaran.setModel(new javax.swing.table.DefaultTableModel(
+        tb_barang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
+                "Kode Barang", "Nama Barang", "Kategori", "Tanggal Penambahan", "Harga Beli", "Harga Jual", "Stok", "Return"
             }
         ));
-        tb_pengeluaran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_pengeluaran.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_pengeluaran);
+        tb_barang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        tb_barang.setPreferredSize(new java.awt.Dimension(780, 530));
+        jScrollPane1.setViewportView(tb_barang);
+        if (tb_barang.getColumnModel().getColumnCount() > 0) {
+            tb_barang.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tb_barang.getColumnModel().getColumn(1).setPreferredWidth(80);
+            tb_barang.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tb_barang.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tb_barang.getColumnModel().getColumn(4).setPreferredWidth(80);
+            tb_barang.getColumnModel().getColumn(5).setPreferredWidth(80);
+            tb_barang.getColumnModel().getColumn(6).setPreferredWidth(50);
+            tb_barang.getColumnModel().getColumn(7).setPreferredWidth(50);
+        }
 
         panelShadow2.add(jScrollPane1);
 
@@ -375,26 +392,21 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(20, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(568, 568, 568)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(85, 85, 85)
-                    .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(85, Short.MAX_VALUE)))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
@@ -403,17 +415,29 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_barangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseEntered
+    private void btn_transaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseEntered
         // TODO add your handling code here:
-        Image iconBarangHover = new ImageIcon(this.getClass().getResource("/img/barang_hover.png")).getImage();
-        btn_barang.setIcon(new ImageIcon(iconBarangHover));
-    }//GEN-LAST:event_btn_barangMouseEntered
+        Image iconTransaksiHover = new ImageIcon(this.getClass().getResource("/img/transaksi_hover.png")).getImage();
+        btn_transaksi.setIcon(new ImageIcon(iconTransaksiHover));
+    }//GEN-LAST:event_btn_transaksiMouseEntered
 
-    private void btn_barangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseExited
+    private void btn_transaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseExited
         // TODO add your handling code here:
-        Image iconBarangDefault = new ImageIcon(this.getClass().getResource("/img/barang.png")).getImage();
-        btn_barang.setIcon(new ImageIcon(iconBarangDefault));
-    }//GEN-LAST:event_btn_barangMouseExited
+        Image iconTransaksiDefault = new ImageIcon(this.getClass().getResource("/img/transaksi.png")).getImage();
+        btn_transaksi.setIcon(new ImageIcon(iconTransaksiDefault));
+    }//GEN-LAST:event_btn_transaksiMouseExited
+
+    private void btn_pengeluaranMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseEntered
+        // TODO add your handling code here:
+        Image iconPengeluaranHover = new ImageIcon(this.getClass().getResource("/img/pengeluaran_hover.png")).getImage();
+        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranHover));
+    }//GEN-LAST:event_btn_pengeluaranMouseEntered
+
+    private void btn_pengeluaranMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseExited
+        // TODO add your handling code here:
+        Image iconPengeluaranDefault = new ImageIcon(this.getClass().getResource("/img/pengeluaran.png")).getImage();
+        btn_pengeluaran.setIcon(new ImageIcon(iconPengeluaranDefault));
+    }//GEN-LAST:event_btn_pengeluaranMouseExited
 
     private void btn_pemasokMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseEntered
         // TODO add your handling code here:
@@ -475,97 +499,13 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_pengaturan.setIcon(new ImageIcon(iconPengaturanDefault));
     }//GEN-LAST:event_btn_pengaturanMouseExited
 
-    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
+    private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
         // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button Tambah hover.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-    }//GEN-LAST:event_btn_tambahMouseEntered
-
-    private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
-        // TODO add your handling code here:
-        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/Button Tambah.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahDefault));
-    }//GEN-LAST:event_btn_tambahMouseExited
-
-    private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
-        // TODO add your handling code here:
-        Image iconTambahPress = new ImageIcon(this.getClass().getResource("/img/Button Tambah press.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahPress));
-    }//GEN-LAST:event_btn_tambahMousePressed
-
-    private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
-        // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button Tambah hover.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-    }//GEN-LAST:event_btn_tambahMouseReleased
-
-    private void btn_hapusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseEntered
-        // TODO add your handling code here:
-        Image iconHapusHover = new ImageIcon(this.getClass().getResource("/img/Button hapus Hover.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusHover));
-    }//GEN-LAST:event_btn_hapusMouseEntered
-
-    private void btn_hapusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseExited
-        // TODO add your handling code here:
-        Image iconHapusDefault = new ImageIcon(this.getClass().getResource("/img/Button hapus.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusDefault));
-    }//GEN-LAST:event_btn_hapusMouseExited
-
-    private void btn_hapusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMousePressed
-        // TODO add your handling code here:
-        Image iconHapusPress = new ImageIcon(this.getClass().getResource("/img/Button hapus Press.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusPress));
-    }//GEN-LAST:event_btn_hapusMousePressed
-
-    private void btn_hapusMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseReleased
-        // TODO add your handling code here:
-        Image iconHapusHover = new ImageIcon(this.getClass().getResource("/img/Button hapus Hover.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusHover));
-    }//GEN-LAST:event_btn_hapusMouseReleased
-
-    private void btn_ubahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseEntered
-        // TODO add your handling code here:
-        Image iconUbahHover = new ImageIcon(this.getClass().getResource("/img/Button Ubah Hover.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahHover));
-    }//GEN-LAST:event_btn_ubahMouseEntered
-
-    private void btn_ubahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseExited
-        // TODO add your handling code here:
-        Image iconUbahDefault = new ImageIcon(this.getClass().getResource("/img/Button Ubah.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahDefault));
-    }//GEN-LAST:event_btn_ubahMouseExited
-
-    private void btn_ubahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMousePressed
-        // TODO add your handling code here:
-        Image iconUbahPress = new ImageIcon(this.getClass().getResource("/img/Button Ubah Press.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahPress));
-    }//GEN-LAST:event_btn_ubahMousePressed
-
-    private void btn_ubahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseReleased
-        // TODO add your handling code here:
-        Image iconUbahHover = new ImageIcon(this.getClass().getResource("/img/Button Ubah Hover.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahHover));
-    }//GEN-LAST:event_btn_ubahMouseReleased
-
-    private void btn_transaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseExited
-        // TODO add your handling code here:
-        Image iconTransaksiDefault = new ImageIcon(this.getClass().getResource("/img/transaksi.png")).getImage();
-        btn_transaksi.setIcon(new ImageIcon(iconTransaksiDefault));
-    }//GEN-LAST:event_btn_transaksiMouseExited
-
-    private void btn_transaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseEntered
-        // TODO add your handling code here:
-        Image iconTransaksiHover = new ImageIcon(this.getClass().getResource("/img/transaksi_hover.png")).getImage();
-        btn_transaksi.setIcon(new ImageIcon(iconTransaksiHover));
-    }//GEN-LAST:event_btn_transaksiMouseEntered
-
-    private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
-        // TODO add your handling code here:
-        Tampilan_Barang barang = new Tampilan_Barang();
-        barang.show();
+        Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
+        pengeluaran.show();
 
         dispose();
-    }//GEN-LAST:event_btn_barangMouseClicked
+    }//GEN-LAST:event_btn_pengeluaranMouseClicked
 
     private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
         // TODO add your handling code here:
@@ -575,29 +515,11 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_pemasokMouseClicked
 
-    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
-        // TODO add your handling code here:
-        Popup_Tambah_Pengeluaran_Shadow tambahPengeluaran = new Popup_Tambah_Pengeluaran_Shadow();
-        tambahPengeluaran.setVisible(true);
-        tambahPengeluaran.pack();
-        tambahPengeluaran.setLocationRelativeTo(null);
-        tambahPengeluaran.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_btn_tambahMouseClicked
-
-    private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
-        // TODO add your handling code here:
-        Popup_Ubah_Pengeluaran_Shadow ubahPengeluaran = new Popup_Ubah_Pengeluaran_Shadow();
-        ubahPengeluaran.setVisible(true);
-        ubahPengeluaran.pack();
-        ubahPengeluaran.setLocationRelativeTo(null);
-        ubahPengeluaran.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_btn_ubahMouseClicked
-
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
         // TODO add your handling code here:
         Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
         karyawan.show();
-
+        
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
@@ -633,23 +555,96 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
 
-    private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
+    private void btn_hapusMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseReleased
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
-    }//GEN-LAST:event_btn_cariMouseEntered
+        Image iconHapusHover = new ImageIcon(this.getClass().getResource("/img/Button hapus Hover.png")).getImage();
+        btn_hapus.setIcon(new ImageIcon(iconHapusHover));
+    }//GEN-LAST:event_btn_hapusMouseReleased
 
-    private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
+    private void btn_hapusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMousePressed
         // TODO add your handling code here:
-        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
-    }//GEN-LAST:event_btn_cariMouseExited
+        Image iconHapusPress = new ImageIcon(this.getClass().getResource("/img/Button hapus Press.png")).getImage();
+        btn_hapus.setIcon(new ImageIcon(iconHapusPress));
+    }//GEN-LAST:event_btn_hapusMousePressed
 
-    private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
+    private void btn_hapusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseExited
         // TODO add your handling code here:
-        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihPress));
-    }//GEN-LAST:event_btn_cariMousePressed
+        Image iconHapusDefault = new ImageIcon(this.getClass().getResource("/img/Button hapus.png")).getImage();
+        btn_hapus.setIcon(new ImageIcon(iconHapusDefault));
+    }//GEN-LAST:event_btn_hapusMouseExited
+
+    private void btn_hapusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseEntered
+        // TODO add your handling code here:
+        Image iconHapusHover = new ImageIcon(this.getClass().getResource("/img/Button hapus Hover.png")).getImage();
+        btn_hapus.setIcon(new ImageIcon(iconHapusHover));
+    }//GEN-LAST:event_btn_hapusMouseEntered
+
+    private void btn_ubahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseReleased
+        // TODO add your handling code here:
+        Image iconUbahHover = new ImageIcon(this.getClass().getResource("/img/Button Ubah Hover.png")).getImage();
+        btn_ubah.setIcon(new ImageIcon(iconUbahHover));
+    }//GEN-LAST:event_btn_ubahMouseReleased
+
+    private void btn_ubahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMousePressed
+        // TODO add your handling code here:
+        Image iconUbahPress = new ImageIcon(this.getClass().getResource("/img/Button Ubah Press.png")).getImage();
+        btn_ubah.setIcon(new ImageIcon(iconUbahPress));
+    }//GEN-LAST:event_btn_ubahMousePressed
+
+    private void btn_ubahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseExited
+        // TODO add your handling code here:
+        Image iconUbahDefault = new ImageIcon(this.getClass().getResource("/img/Button Ubah.png")).getImage();
+        btn_ubah.setIcon(new ImageIcon(iconUbahDefault));
+    }//GEN-LAST:event_btn_ubahMouseExited
+
+    private void btn_ubahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseEntered
+        // TODO add your handling code here:
+        Image iconUbahHover = new ImageIcon(this.getClass().getResource("/img/Button Ubah Hover.png")).getImage();
+        btn_ubah.setIcon(new ImageIcon(iconUbahHover));
+    }//GEN-LAST:event_btn_ubahMouseEntered
+
+    private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
+        // TODO add your handling code here:
+        Popup_Ubah_Barang ubahBarang = new Popup_Ubah_Barang();
+        ubahBarang.setVisible(true);
+        ubahBarang.pack();
+        ubahBarang.setLocationRelativeTo(null);
+        ubahBarang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_btn_ubahMouseClicked
+
+    private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
+        // TODO add your handling code here:
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button Tambah hover.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
+    }//GEN-LAST:event_btn_tambahMouseReleased
+
+    private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
+        // TODO add your handling code here:
+        Image iconTambahPress = new ImageIcon(this.getClass().getResource("/img/Button Tambah press.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahPress));
+    }//GEN-LAST:event_btn_tambahMousePressed
+
+    private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
+        // TODO add your handling code here:
+        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/Button Tambah.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahDefault));
+    }//GEN-LAST:event_btn_tambahMouseExited
+
+    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
+        // TODO add your handling code here:
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button Tambah hover.png")).getImage();
+        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
+    }//GEN-LAST:event_btn_tambahMouseEntered
+
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        // TODO add your handling code here:
+
+        Popup_Tambah_Barang tambahBarang = new Popup_Tambah_Barang();
+        tambahBarang.setVisible(true);
+        tambahBarang.pack();
+        tambahBarang.setLocationRelativeTo(null);
+        tambahBarang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_btn_tambahMouseClicked
 
     private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
         // TODO add your handling code here:
@@ -657,11 +652,38 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_cari.setIcon(new ImageIcon(iconCarihHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
+    private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
+        // TODO add your handling code here:
+        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihPress));
+    }//GEN-LAST:event_btn_cariMousePressed
+
+    private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
+        // TODO add your handling code here:
+        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
+    }//GEN-LAST:event_btn_cariMouseExited
+
+    private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
+        // TODO add your handling code here:
+        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+    }//GEN-LAST:event_btn_cariMouseEntered
+
     private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
         // TODO add your handling code here:
         txt_cari.setText("");
         cancel_search.setVisible(false);
     }//GEN-LAST:event_cancel_searchMouseClicked
+
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+        // TODO add your handling code here:
+        if(txt_cari.getText().equals("")) {
+            cancel_search.setVisible(false);
+        } else {
+            cancel_search.setVisible(true);
+        }
+    }//GEN-LAST:event_txt_cariKeyReleased
 
     private void cancel_searchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseEntered
         // TODO add your handling code here:
@@ -674,15 +696,6 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         Image iconCancelSearch = new ImageIcon(this.getClass().getResource("/img/cancel_search.png")).getImage();
         cancel_search.setIcon(new ImageIcon(iconCancelSearch));
     }//GEN-LAST:event_cancel_searchMouseExited
-
-    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
-        // TODO add your handling code here:
-        if(txt_cari.getText().equals("")) {
-            cancel_search.setVisible(false);
-        } else {
-            cancel_search.setVisible(true);
-        }
-    }//GEN-LAST:event_txt_cariKeyReleased
 
     /**
      * @param args the command line arguments
@@ -701,22 +714,14 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Pengeluaran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -729,7 +734,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tampilan_Pengeluaran().setVisible(true);
+                new Tampilan_Barang1().setVisible(true);
             }
         });
     }
@@ -748,19 +753,21 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel btn_ubah;
     private javax.swing.JLabel cancel_search;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
+    private org.jdesktop.swing.animation.timing.evaluators.EvaluatorArc2D evaluatorArc2D1;
+    private javax.swing.JLabel icon_search;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    private javaswingdev.swing.table.Table tb_pengeluaran;
+    private main.PanelShadow panelShadow3;
+    private main.PanelShadow panel_search;
+    private javaswingdev.swing.table.Table tb_barang;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

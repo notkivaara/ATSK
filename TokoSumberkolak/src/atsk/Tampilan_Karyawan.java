@@ -26,6 +26,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Karyawan", txt_cari);
         tb_karyawan.fixTable(jScrollPane1);
+        cancel_search.setVisible(false);
 
     }
 
@@ -62,6 +63,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         panelShadow1 = new main.PanelShadow();
         jLabel4 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
+        cancel_search = new javax.swing.JLabel();
         btn_cari = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,9 +199,6 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseReleased(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseClicked(evt);
             }
@@ -211,6 +210,9 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_tambahMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseReleased(evt);
             }
         });
         jPanel7.add(btn_tambah);
@@ -295,16 +297,38 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
         txt_cari.setPreferredSize(new java.awt.Dimension(370, 49));
+        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cariKeyReleased(evt);
+            }
+        });
+
+        cancel_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cancel_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancel_search.png"))); // NOI18N
+        cancel_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
         panelShadow1Layout.setHorizontalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadow1Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 53, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addGap(10, 10, 10)
+                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelShadow1Layout.setVerticalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,6 +336,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
+            .addComponent(cancel_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel8.add(panelShadow1);
@@ -527,7 +552,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         // TODO add your handling code here:
-        Popup_Tambah_Karyawan tambahKaryawan = new Popup_Tambah_Karyawan();
+        Popup_Tambah_Karyawan_Shadow tambahKaryawan = new Popup_Tambah_Karyawan_Shadow();
         tambahKaryawan.setVisible(true);
         tambahKaryawan.pack();
         tambahKaryawan.setLocationRelativeTo(null);
@@ -536,7 +561,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
-        Popup_Ubah_Karyawan ubahKaryawan = new Popup_Ubah_Karyawan();
+        Popup_Ubah_Karyawan_Shadow ubahKaryawan = new Popup_Ubah_Karyawan_Shadow();
         ubahKaryawan.setVisible(true);
         ubahKaryawan.pack();
         ubahKaryawan.setLocationRelativeTo(null);
@@ -619,6 +644,33 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         btn_cari.setIcon(new ImageIcon(iconCarihHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
+    private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
+        // TODO add your handling code here:
+        txt_cari.setText("");
+        cancel_search.setVisible(false);
+    }//GEN-LAST:event_cancel_searchMouseClicked
+
+    private void cancel_searchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseEntered
+        // TODO add your handling code here:
+        Image iconCancelSearchHover = new ImageIcon(this.getClass().getResource("/img/cancel_search_hover.png")).getImage();
+        cancel_search.setIcon(new ImageIcon(iconCancelSearchHover));
+    }//GEN-LAST:event_cancel_searchMouseEntered
+
+    private void cancel_searchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseExited
+        // TODO add your handling code here:
+        Image iconCancelSearch = new ImageIcon(this.getClass().getResource("/img/cancel_search.png")).getImage();
+        cancel_search.setIcon(new ImageIcon(iconCancelSearch));
+    }//GEN-LAST:event_cancel_searchMouseExited
+
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+        // TODO add your handling code here:
+        if(txt_cari.getText().equals("")) {
+            cancel_search.setVisible(false);
+        } else {
+            cancel_search.setVisible(true);
+        }
+    }//GEN-LAST:event_txt_cariKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +750,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel btn_ubah;
+    private javax.swing.JLabel cancel_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

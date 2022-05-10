@@ -591,7 +591,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
 
     private void btn_tinjauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tinjauMouseClicked
         // TODO add your handling code here:
-        Popup_Tinjau_Laporan tinjauLaporan = new Popup_Tinjau_Laporan();
+        Popup_Tinjau_Laporan_Shadow tinjauLaporan = new Popup_Tinjau_Laporan_Shadow();
         tinjauLaporan.setVisible(true);
         tinjauLaporan.pack();
         tinjauLaporan.setLocationRelativeTo(null);

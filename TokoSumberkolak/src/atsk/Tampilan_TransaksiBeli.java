@@ -26,6 +26,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
         tb_barang.fixTable(jScrollPane1);
+        cancel_search.setVisible(false);
 
     }
 
@@ -79,6 +80,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         panelShadow1 = new main.PanelShadow();
         jLabel3 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
+        cancel_search = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         btn_cari = new javax.swing.JLabel();
@@ -392,23 +394,47 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         txt_cari.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_cari.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_cari.setBorder(null);
-        txt_cari.setPreferredSize(new java.awt.Dimension(370, 49));
+        txt_cari.setPreferredSize(new java.awt.Dimension(387, 49));
+        txt_cari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cariKeyReleased(evt);
+            }
+        });
+
+        cancel_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cancel_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancel_search.png"))); // NOI18N
+        cancel_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel_searchMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
         panelShadow1Layout.setHorizontalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadow1Layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3)
+                .addGap(10, 10, 10)
                 .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 53, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelShadow1Layout.setVerticalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelShadow1Layout.createSequentialGroup()
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cancel_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
@@ -479,12 +505,12 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
             .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(btn_tambah))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(btn_tambah))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,6 +741,33 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         btn_cari.setIcon(new ImageIcon(iconCarihHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
+    private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
+        // TODO add your handling code here:
+        txt_cari.setText("");
+        cancel_search.setVisible(false);
+    }//GEN-LAST:event_cancel_searchMouseClicked
+
+    private void cancel_searchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseEntered
+        // TODO add your handling code here:
+        Image iconCancelSearchHover = new ImageIcon(this.getClass().getResource("/img/cancel_search_hover.png")).getImage();
+        cancel_search.setIcon(new ImageIcon(iconCancelSearchHover));
+    }//GEN-LAST:event_cancel_searchMouseEntered
+
+    private void cancel_searchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseExited
+        // TODO add your handling code here:
+        Image iconCancelSearch = new ImageIcon(this.getClass().getResource("/img/cancel_search.png")).getImage();
+        cancel_search.setIcon(new ImageIcon(iconCancelSearch));
+    }//GEN-LAST:event_cancel_searchMouseExited
+
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+        // TODO add your handling code here:
+        if(txt_cari.getText().equals("")) {
+            cancel_search.setVisible(false);
+        } else {
+            cancel_search.setVisible(true);
+        }
+    }//GEN-LAST:event_txt_cariKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -777,6 +830,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private javax.swing.JLabel btn_riwayatJual;
     private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel btn_transaksi;
+    private javax.swing.JLabel cancel_search;
     private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
     private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private com.toedter.calendar.JDateChooser jDateChooser1;

@@ -4,6 +4,7 @@
  */
 package atsk;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -11,14 +12,15 @@ import javax.swing.ImageIcon;
  *
  * @author ACER
  */
-public class Popup_Ubah_Barang extends javax.swing.JFrame {
+public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
 
     /**
      * Creates new form Popup_Tambah_Barang
      */
     int x,y;
-    public Popup_Ubah_Barang() {
+    public Popup_Ubah_Pengeluaran_Shadow() {
         initComponents();
+        setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -30,41 +32,36 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelShadow1 = new main.PanelShadow();
         jPanel1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodeBarang = new javax.swing.JTextField();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        txt_namaBarang = new javax.swing.JTextField();
+        txt_kodePengeluaran = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
+        txt_namaPengeluaran = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        txt_hargaBeli = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
+        txt_satuan = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_stok = new javax.swing.JTextField();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        txt_return = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
-        btn_simpan = new javax.swing.JLabel();
+        btn_tambah = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(470, 460));
+        setMinimumSize(new java.awt.Dimension(470, 420));
         setUndecorated(true);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -76,16 +73,21 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
                 formMousePressed(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(480, 400));
+        panelShadow1.setShadowOpacity(0.3F);
+        panelShadow1.setShadowSize(5);
+        panelShadow1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(470, 460));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setMinimumSize(new java.awt.Dimension(470, 420));
+        jPanel1.setPreferredSize(new java.awt.Dimension(470, 373));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Ubah Barang.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/txt Ubah Pengeluaran.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -100,81 +102,66 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 70));
-
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("Kode Barang");
+        jLabel6.setText("Kode Pengeluaran");
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
+        txt_kodePengeluaran.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_kodePengeluaran.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_kodePengeluaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_kodeBarangActionPerformed(evt);
+                txt_kodePengeluaranActionPerformed(evt);
             }
         });
-        jPanel9.add(txt_kodeBarang);
+        jPanel9.add(txt_kodePengeluaran);
 
         jPanel8.add(jPanel9);
 
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setPreferredSize(new java.awt.Dimension(428, 34));
-        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setText("Nama Barang");
-        jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
-        jPanel10.add(jLabel7);
-
-        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel10.add(txt_namaBarang);
-
-        jPanel8.add(jPanel10);
-
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel16.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel13.setText("Kategori");
+        jLabel13.setText("Nama Pengeluaran");
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel16.add(comboBoxSuggestion1);
+        txt_namaPengeluaran.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_namaPengeluaran.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_namaPengeluaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_namaPengeluaranActionPerformed(evt);
+            }
+        });
+        jPanel16.add(txt_namaPengeluaran);
 
         jPanel8.add(jPanel16);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel8.setText("Harga Beli");
+        jLabel8.setText("Tanggal Bayar");
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
-        txt_hargaBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_hargaBeli.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel11.add(txt_hargaBeli);
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jDateChooser1.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel11.add(jDateChooser1);
 
         jPanel8.add(jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel9.setText("Harga Jual");
+        jLabel9.setText("Bulan");
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
@@ -185,26 +172,24 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel8.add(jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel10.setText("Satuan");
+        jLabel10.setText("Tahun");
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        comboBoxSuggestion2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(comboBoxSuggestion2);
+        txt_satuan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(txt_satuan);
 
         jPanel8.add(jPanel13);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setPreferredSize(new java.awt.Dimension(428, 34));
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel11.setText("Stok");
+        jLabel11.setText("Total");
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
@@ -213,23 +198,6 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         jPanel14.add(txt_stok);
 
         jPanel8.add(jPanel14);
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setPreferredSize(new java.awt.Dimension(428, 34));
-        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel12.setText("Return");
-        jLabel12.setPreferredSize(new java.awt.Dimension(230, 25));
-        jPanel15.add(jLabel12);
-
-        txt_return.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_return.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel15.add(txt_return);
-
-        jPanel8.add(jPanel15);
-
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 320));
 
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
@@ -271,33 +239,87 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         });
         jPanel3.add(btn_bersihkan);
 
-        btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan popup.png"))); // NOI18N
-        btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan popup.png"))); // NOI18N
+        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseEntered(evt);
+                btn_tambahMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseExited(evt);
+                btn_tambahMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_simpanMousePressed(evt);
+                btn_tambahMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_simpanMouseReleased(evt);
+                btn_tambahMouseReleased(evt);
             }
         });
-        jPanel3.add(btn_simpan);
+        jPanel3.add(btn_tambah);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 470, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
+        panelShadow1.add(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        int xx = evt.getXOnScreen();
+        int yy = evt.getYOnScreen();
+        this.setLocation(xx-x, yy-y);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void txt_kodePengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodePengeluaranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kodePengeluaranActionPerformed
+
+    private void txt_namaPengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_namaPengeluaranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_namaPengeluaranActionPerformed
+
+    private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btn_batalMouseClicked
 
     private void btn_batalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseEntered
         // TODO add your handling code here:
@@ -347,47 +369,29 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         btn_bersihkan.setIcon(new ImageIcon(iconBersihkanHover));
     }//GEN-LAST:event_btn_bersihkanMouseReleased
 
-    private void btn_simpanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseEntered
+    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
         // TODO add your handling code here:
         Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
-    }//GEN-LAST:event_btn_simpanMouseEntered
+        btn_tambah.setIcon(new ImageIcon(iconSimpanHover));
+    }//GEN-LAST:event_btn_tambahMouseEntered
 
-    private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
+    private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
         // TODO add your handling code here:
         Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/button simpan popup.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
-    }//GEN-LAST:event_btn_simpanMouseExited
+        btn_tambah.setIcon(new ImageIcon(iconSimpanDefault));
+    }//GEN-LAST:event_btn_tambahMouseExited
 
-    private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
+    private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
         // TODO add your handling code here:
         Image iconSimpanPressed = new ImageIcon(this.getClass().getResource("/img/button simpan popup press.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanPressed));
-    }//GEN-LAST:event_btn_simpanMousePressed
+        btn_tambah.setIcon(new ImageIcon(iconSimpanPressed));
+    }//GEN-LAST:event_btn_tambahMousePressed
 
-    private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
+    private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
         // TODO add your handling code here:
         Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
-        btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
-    }//GEN-LAST:event_btn_simpanMouseReleased
-
-    private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_btn_batalMouseClicked
-
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        // TODO add your handling code here:
-        x = evt.getX();
-        y = evt.getY();
-    }//GEN-LAST:event_formMousePressed
-
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        // TODO add your handling code here:
-        int xx = evt.getXOnScreen();
-        int yy = evt.getYOnScreen();
-        this.setLocation(xx-x, yy-y);
-    }//GEN-LAST:event_formMouseDragged
+        btn_tambah.setIcon(new ImageIcon(iconSimpanHover));
+    }//GEN-LAST:event_btn_tambahMouseReleased
 
     /**
      * @param args the command line arguments
@@ -406,14 +410,38 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Popup_Ubah_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Popup_Ubah_Pengeluaran_Shadow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -426,7 +454,7 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Popup_Ubah_Barang().setVisible(true);
+                new Popup_Ubah_Pengeluaran_Shadow().setVisible(true);
             }
         });
     }
@@ -434,35 +462,30 @@ public class Popup_Ubah_Barang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
-    private javax.swing.JLabel btn_simpan;
-    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
-    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
+    private javax.swing.JLabel btn_tambah;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField txt_hargaBeli;
+    private main.PanelShadow panelShadow1;
     private javax.swing.JTextField txt_hargaJual;
-    private javax.swing.JTextField txt_kodeBarang;
-    private javax.swing.JTextField txt_namaBarang;
-    private javax.swing.JTextField txt_return;
+    private javax.swing.JTextField txt_kodePengeluaran;
+    private javax.swing.JTextField txt_namaPengeluaran;
+    private javax.swing.JTextField txt_satuan;
     private javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables
 }

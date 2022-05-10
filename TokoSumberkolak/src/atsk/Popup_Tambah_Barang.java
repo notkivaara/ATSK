@@ -6,13 +6,7 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Timestamp;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,46 +20,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     int x,y;
     public Popup_Tambah_Barang() {
         initComponents();
-        txt_kodeBarang.setBackground(Color.gray);
-        txt_kodeBarang.setEditable(false);
-    }
-    
-    public void tambah(){
-        String kode_barang = txt_kodeBarang.getText();
-        String nama = txt_namaBarang.getText();
-        String kategori = kategoriCombo.getSelectedItem().toString();
-        String harga_beli = txt_hargaBeli.getText();
-        String harga_jual = txt_hargaJual.getText();
-        String satuan = satuanCombo.getSelectedItem().toString();
-        String stock = txt_stok.getText();
-        String retur = txt_return.getText();
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String waktu = timestamp.toString();
-        
-        
-        try {
-            String sql = "insert into barang values('"
-                    + kode_barang +"','"
-                    + nama+"','"
-                    + kategori+"','"
-                    + harga_beli+"','"
-                    + harga_jual+"','"
-                    + satuan+"','"
-                    + stock+"','"
-                    + retur+"','" 
-                    + waktu+"')";
-            Connection c = (Connection)Config.configDB();
-            PreparedStatement pst = c.prepareStatement(sql);
-            pst.execute();
-            
-            
-            JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang");
-            
-            this.setVisible(false);
-            Tampilan_Barang TB = new Tampilan_Barang();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,e.getMessage());
-        }
+        setBackground(new Color(0,0,0,0));
     }
 
     /**
@@ -89,7 +44,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_namaBarang = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        kategoriCombo = new combo_suggestion.ComboBoxSuggestion();
+        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         txt_hargaBeli = new javax.swing.JTextField();
@@ -98,7 +53,7 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         txt_hargaJual = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        satuanCombo = new combo_suggestion.ComboBoxSuggestion();
+        comboBoxSuggestion2 = new combo_suggestion.ComboBoxSuggestion();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txt_stok = new javax.swing.JTextField();
@@ -123,11 +78,9 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
                 formMousePressed(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(470, 460));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -146,8 +99,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
-
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 70));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -195,21 +146,9 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        kategoriCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
-        kategoriCombo.setToolTipText("");
-        kategoriCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        kategoriCombo.setPreferredSize(new java.awt.Dimension(198, 34));
-        kategoriCombo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kategoriComboMouseClicked(evt);
-            }
-        });
-        kategoriCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kategoriComboActionPerformed(evt);
-            }
-        });
-        jPanel16.add(kategoriCombo);
+        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel16.add(comboBoxSuggestion1);
 
         jPanel8.add(jPanel16);
 
@@ -252,10 +191,9 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        satuanCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "pcs", "pack", "1 kg", "1/2 kg", "1/4 kg", "1 ons", "1 liter", "1/2 liter", "1/4 liter" }));
-        satuanCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        satuanCombo.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(satuanCombo);
+        comboBoxSuggestion2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        comboBoxSuggestion2.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(comboBoxSuggestion2);
 
         jPanel8.add(jPanel13);
 
@@ -289,8 +227,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
         jPanel8.add(jPanel15);
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 470, 320));
-
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
@@ -316,9 +252,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
         btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
         btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_bersihkanMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_bersihkanMouseEntered(evt);
             }
@@ -336,9 +269,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -354,9 +284,34 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         });
         jPanel3.add(btn_tambah);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 470, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -455,173 +410,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
         y = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
-    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
-        // TODO add your handling code here:
-        tambah();
-    }//GEN-LAST:event_btn_tambahMouseClicked
-
-    private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
-        // TODO add your handling code here:
-         txt_namaBarang.setText("");
-        txt_hargaBeli.setText("");
-        kategoriCombo.setSelectedItem("Alat Mandi");
-        txt_hargaBeli.setText("");
-        txt_hargaJual.setText("");
-        satuanCombo.setSelectedItem("pcs");
-        txt_stok.setText("");
-        txt_return.setText("");
-    }//GEN-LAST:event_btn_bersihkanMouseClicked
-
-    private void kategoriComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kategoriComboMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_kategoriComboMouseClicked
-
-    private void kategoriComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriComboActionPerformed
-        // TODO add your handling code here:
-        if (kategoriCombo.getSelectedItem()=="Alat Mandi") {
-           try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%AI%'";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String NoBarang = r.getString("max").substring(2);
-                String TR = "" +(Integer.parseInt(NoBarang)+1);
-                String Nol = "";
-
-                if(TR.length()==1)
-                {Nol = "000";}
-                else if(TR.length()==2)
-                {Nol = "00";}
-                else if(TR.length()==3)
-                {Nol = "0";}
-                else if(TR.length()==4)
-                {Nol = "";}
-                txt_kodeBarang.setText("AI" + Nol + TR);
-            } else {
-                txt_kodeBarang.setText("AI0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        }else if(kategoriCombo.getSelectedItem()=="Makanan Ringan"){
-            try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%MR%'";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String NoBarang = r.getString("max").substring(2);
-                String TR = "" +(Integer.parseInt(NoBarang)+1);
-                String Nol = "";
-
-                if(TR.length()==1)
-                {Nol = "000";}
-                else if(TR.length()==2)
-                {Nol = "00";}
-                else if(TR.length()==3)
-                {Nol = "0";}
-                else if(TR.length()==4)
-                {Nol = "";}
-                txt_kodeBarang.setText("MR" + Nol + TR);
-            } else {
-                txt_kodeBarang.setText("MR0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        }else if(kategoriCombo.getSelectedItem()== "Alat Cuci"){
-            try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%AC%'";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String NoBarang = r.getString("max").substring(2);
-                String TR = "" +(Integer.parseInt(NoBarang)+1);
-                String Nol = "";
-
-                if(TR.length()==1)
-                {Nol = "000";}
-                else if(TR.length()==2)
-                {Nol = "00";}
-                else if(TR.length()==3)
-                {Nol = "0";}
-                else if(TR.length()==4)
-                {Nol = "";}
-                txt_kodeBarang.setText("AC" + Nol + TR);
-            } else {
-                txt_kodeBarang.setText("AC0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        }else if(kategoriCombo.getSelectedItem()== "Alat Makan"){
-            try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%AM%'";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String NoBarang = r.getString("max").substring(2);
-                String TR = "" +(Integer.parseInt(NoBarang)+1);
-                String Nol = "";
-
-                if(TR.length()==1)
-                {Nol = "000";}
-                else if(TR.length()==2)
-                {Nol = "00";}
-                else if(TR.length()==3)
-                {Nol = "0";}
-                else if(TR.length()==4)
-                {Nol = "";}
-                txt_kodeBarang.setText("AM" + Nol + TR);
-            } else {
-                txt_kodeBarang.setText("AM0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        }else{
-            try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT MAX(kd_brg) as max FROM barang where kd_brg like '%SE%'";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String NoBarang = r.getString("max").substring(2);
-                String TR = "" +(Integer.parseInt(NoBarang)+1);
-                String Nol = "";
-
-                if(TR.length()==1)
-                {Nol = "000";}
-                else if(TR.length()==2)
-                {Nol = "00";}
-                else if(TR.length()==3)
-                {Nol = "0";}
-                else if(TR.length()==4)
-                {Nol = "";}
-                txt_kodeBarang.setText("SE" + Nol + TR);
-            } else {
-                txt_kodeBarang.setText("SE0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-        }
-    }//GEN-LAST:event_kategoriComboActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -664,6 +452,8 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_tambah;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
+    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -685,8 +475,6 @@ public class Popup_Tambah_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private combo_suggestion.ComboBoxSuggestion kategoriCombo;
-    private combo_suggestion.ComboBoxSuggestion satuanCombo;
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;
