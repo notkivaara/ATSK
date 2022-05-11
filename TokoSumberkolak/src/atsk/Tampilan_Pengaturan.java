@@ -24,7 +24,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
      */
     public Tampilan_Pengaturan() {
         initComponents();
-        TextPrompt passwordOld = new TextPrompt("Masukkan Password Lama", txt_passwordOld);
+//        TextPrompt passwordOld = new TextPrompt("Masukkan Password Lama", txt_passwordOld);
         TextPrompt passwordNew = new TextPrompt("Masukkan Password Baru", txt_passwordNew);
         TextPrompt passwordNew2 = new TextPrompt("Masukkan Kembali Password Baru", txt_passwordNew2);
 
@@ -63,8 +63,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         txt_passwordNew2 = new textfield.PasswordField();
         jPanel10 = new javax.swing.JPanel();
         txt_passwordNew = new textfield.PasswordField();
-        jPanel11 = new javax.swing.JPanel();
-        txt_passwordOld = new textfield.PasswordField();
         btn_konfirmasi = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -269,7 +267,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(44, 44, 44)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -299,16 +297,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         });
         jPanel10.add(txt_passwordNew);
 
-        jPanel11.setOpaque(false);
-        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
-
-        txt_passwordOld.setBackground(new java.awt.Color(245, 246, 250));
-        txt_passwordOld.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_passwordOld.setOpaque(false);
-        txt_passwordOld.setPreferredSize(new java.awt.Dimension(495, 52));
-        txt_passwordOld.setShowAndHide(true);
-        jPanel11.add(txt_passwordOld);
-
         btn_konfirmasi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_konfirmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Konfirmasi Setting.png"))); // NOI18N
         btn_konfirmasi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -331,7 +319,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -342,13 +329,11 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(40, 40, 40)
                 .addComponent(btn_konfirmasi))
         );
 
@@ -643,7 +628,6 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -655,6 +639,5 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private textfield.PasswordField txt_passwordNew;
     private textfield.PasswordField txt_passwordNew2;
-    private textfield.PasswordField txt_passwordOld;
     // End of variables declaration//GEN-END:variables
 }
