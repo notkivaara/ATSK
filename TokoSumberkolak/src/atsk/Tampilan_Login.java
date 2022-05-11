@@ -152,9 +152,13 @@ public class Tampilan_Login extends javax.swing.JFrame {
 
     private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
         // TODO add your handling code here:
+        Tampilan_TransaksiJual_kasir jual = new Tampilan_TransaksiJual_kasir();
         Tampilan_Barang barang = new Tampilan_Barang();
+        if (txt_username.getText().equals("admin") && txt_password.getText().equals("123")) {
         barang.show();
-        
+        } else if (txt_username.getText().equals("kasir") && txt_password.getText().equals("123")){
+            jual.show();
+        }
         dispose();
     }//GEN-LAST:event_btn_loginMouseClicked
 
