@@ -25,7 +25,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     public Tampilan_Karyawan() {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Karyawan", txt_cari);
-        tb_karyawan.fixTable(jScrollPane1);
+        table1.fixTable(jScrollPane2);
         cancel_search.setVisible(false);
 
     }
@@ -57,8 +57,8 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         btn_ubah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_karyawan = new javaswingdev.swing.table.Table();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
         jPanel8 = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
         jLabel4 = new javax.swing.JLabel();
@@ -262,10 +262,10 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 530));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 530));
 
-        tb_karyawan.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -273,18 +273,17 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
                 "Kode Akun", "Nama Karyawan", "Username", "Jabatan"
             }
         ));
-        tb_karyawan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_karyawan.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_karyawan);
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(table1);
 
-        panelShadow2.add(jScrollPane1);
+        panelShadow2.add(jScrollPane2);
 
         jPanel8.setOpaque(false);
         jPanel8.setPreferredSize(new java.awt.Dimension(831, 60));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow1.setPreferredSize(new java.awt.Dimension(650, 52));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(725, 52));
         panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow1.setShadowOpacity(0.5F);
         panelShadow1.setShadowSize(1);
@@ -325,10 +324,9 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel4)
                 .addGap(10, 10, 10)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelShadow1Layout.setVerticalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,7 +340,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         jPanel8.add(panelShadow1);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
+        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
@@ -622,26 +620,26 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
 
     private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseEntered
 
     private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
         // TODO add your handling code here:
-        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
+        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshDefault));
     }//GEN-LAST:event_btn_cariMouseExited
 
     private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
         // TODO add your handling code here:
-        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihPress));
+        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshPress));
     }//GEN-LAST:event_btn_cariMousePressed
 
     private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
     private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
@@ -759,10 +757,10 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    private javaswingdev.swing.table.Table tb_karyawan;
+    private javaswingdev.swing.table.Table table1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

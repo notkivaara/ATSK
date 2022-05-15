@@ -31,105 +31,105 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     public Tampilan_Barang() {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        barangTable.fixTable(jScrollPane1);
+        table1.fixTable(jScrollPane2);
         cancel_search.setVisible(false);
         table();
     }
     
 
     public static void table() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Kategori");
-        tbl.addColumn("Harga Beli");
-        tbl.addColumn("Harga Jual");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Return");
-        tbl.addColumn("Waktu Penambahan");
-        // Disini Terakhir nulis
-
-        try {
-            Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select * from barang");
-
-            while (rs.next()) {
-                tbl.addRow(new Object[]{
-                    rs.getString("kd_brg"),
-                    rs.getString("nama_brg"),
-                    rs.getString("kategori"),
-                    rs.getString("hrg_beli_brg"),
-                    rs.getString("hrg_jual_brg"),
-                    rs.getString("satuan"),
-                    rs.getString("stock"),
-                    rs.getString("retur"),
-                    rs.getString("waktu_penambahan"),});
-                barangTable.setModel(tbl);
-
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Kategori");
+//        tbl.addColumn("Harga Beli");
+//        tbl.addColumn("Harga Jual");
+//        tbl.addColumn("Satuan");
+//        tbl.addColumn("Stock");
+//        tbl.addColumn("Return");
+//        tbl.addColumn("Waktu Penambahan");
+//        // Disini Terakhir nulis
+//
+//        try {
+//            Statement st = (Statement) Config.configDB().createStatement();
+//            ResultSet rs = st.executeQuery("Select * from barang");
+//
+//            while (rs.next()) {
+//                tbl.addRow(new Object[]{
+//                    rs.getString("kd_brg"),
+//                    rs.getString("nama_brg"),
+//                    rs.getString("kategori"),
+//                    rs.getString("hrg_beli_brg"),
+//                    rs.getString("hrg_jual_brg"),
+//                    rs.getString("satuan"),
+//                    rs.getString("stock"),
+//                    rs.getString("retur"),
+//                    rs.getString("waktu_penambahan"),});
+//                barangTable.setModel(tbl);
+//
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
 
     }
 
     public void search() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode barang");
-        tbl.addColumn("Nama barang");
-        tbl.addColumn("Kategori");
-        tbl.addColumn("Harga Beli");
-        tbl.addColumn("Harga Jual");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Return");
-        tbl.addColumn("Waktu Penambahan");
-
-        String cari = txt_cari.getText();
-        String kategori = kategoriComboSearch.getSelectedItem().toString();
-        try {
-            if (kategori == "Kategori") {
-                String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
-                Connection c = (Connection) Config.configDB();
-                Statement st = c.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    tbl.addRow(new Object[]{
-                        rs.getString("kd_brg"),
-                        rs.getString("nama_brg"),
-                        rs.getString("kategori"),
-                        rs.getString("hrg_beli_brg"),
-                        rs.getString("hrg_jual_brg"),
-                        rs.getString("satuan"),
-                        rs.getString("stock"),
-                        rs.getString("retur"),
-                        rs.getString("waktu_penambahan"),});
-                    barangTable.setModel(tbl);
-                }
-            } else {
-                String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%' AND kategori = '" + kategori + "'";
-                Connection c = (Connection) Config.configDB();
-                Statement st = c.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    tbl.addRow(new Object[]{
-                        rs.getString("kd_brg"),
-                        rs.getString("nama_brg"),
-                        rs.getString("kategori"),
-                        rs.getString("hrg_beli_brg"),
-                        rs.getString("hrg_jual_brg"),
-                        rs.getString("satuan"),
-                        rs.getString("stock"),
-                        rs.getString("retur"),
-                        rs.getString("waktu_penambahan"),});
-                    barangTable.setModel(tbl);
-                }
-
-            }
-
-        } catch (Exception e) {
-        }
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode barang");
+//        tbl.addColumn("Nama barang");
+//        tbl.addColumn("Kategori");
+//        tbl.addColumn("Harga Beli");
+//        tbl.addColumn("Harga Jual");
+//        tbl.addColumn("Satuan");
+//        tbl.addColumn("Stock");
+//        tbl.addColumn("Return");
+//        tbl.addColumn("Waktu Penambahan");
+//
+//        String cari = txt_cari.getText();
+//        String kategori = kategoriComboSearch.getSelectedItem().toString();
+//        try {
+//            if (kategori == "Kategori") {
+//                String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
+//                Connection c = (Connection) Config.configDB();
+//                Statement st = c.createStatement();
+//                ResultSet rs = st.executeQuery(sql);
+//                while (rs.next()) {
+//                    tbl.addRow(new Object[]{
+//                        rs.getString("kd_brg"),
+//                        rs.getString("nama_brg"),
+//                        rs.getString("kategori"),
+//                        rs.getString("hrg_beli_brg"),
+//                        rs.getString("hrg_jual_brg"),
+//                        rs.getString("satuan"),
+//                        rs.getString("stock"),
+//                        rs.getString("retur"),
+//                        rs.getString("waktu_penambahan"),});
+//                    barangTable.setModel(tbl);
+//                }
+//            } else {
+//                String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%' AND kategori = '" + kategori + "'";
+//                Connection c = (Connection) Config.configDB();
+//                Statement st = c.createStatement();
+//                ResultSet rs = st.executeQuery(sql);
+//                while (rs.next()) {
+//                    tbl.addRow(new Object[]{
+//                        rs.getString("kd_brg"),
+//                        rs.getString("nama_brg"),
+//                        rs.getString("kategori"),
+//                        rs.getString("hrg_beli_brg"),
+//                        rs.getString("hrg_jual_brg"),
+//                        rs.getString("satuan"),
+//                        rs.getString("stock"),
+//                        rs.getString("retur"),
+//                        rs.getString("waktu_penambahan"),});
+//                    barangTable.setModel(tbl);
+//                }
+//
+//            }
+//
+//        } catch (Exception e) {
+//        }
     }
 
     /**
@@ -168,8 +168,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_ubah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        barangTable = new javaswingdev.swing.table.Table();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -301,7 +301,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow1.setPreferredSize(new java.awt.Dimension(485, 52));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(560, 52));
         panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow1.setShadowOpacity(0.5F);
         panelShadow1.setShadowSize(1);
@@ -342,10 +342,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3)
                 .addGap(10, 10, 10)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelShadow1Layout.setVerticalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +374,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         jPanel6.add(panelShadow3);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
+        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_cariMouseClicked(evt);
@@ -465,10 +464,10 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 530));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 530));
 
-        barangTable.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -476,21 +475,10 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Kategori", "Tanggal Penambahan", "Harga Beli", "Harga Jual", "Stok", "Return"
             }
         ));
-        barangTable.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        barangTable.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(barangTable);
-        if (barangTable.getColumnModel().getColumnCount() > 0) {
-            barangTable.getColumnModel().getColumn(0).setPreferredWidth(80);
-            barangTable.getColumnModel().getColumn(1).setPreferredWidth(80);
-            barangTable.getColumnModel().getColumn(2).setPreferredWidth(50);
-            barangTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            barangTable.getColumnModel().getColumn(4).setPreferredWidth(80);
-            barangTable.getColumnModel().getColumn(5).setPreferredWidth(80);
-            barangTable.getColumnModel().getColumn(6).setPreferredWidth(50);
-            barangTable.getColumnModel().getColumn(7).setPreferredWidth(50);
-        }
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(table1);
 
-        panelShadow2.add(jScrollPane1);
+        panelShadow2.add(jScrollPane2);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -752,26 +740,26 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
     private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
     private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
         // TODO add your handling code here:
-        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihPress));
+        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshPress));
     }//GEN-LAST:event_btn_cariMousePressed
 
     private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
         // TODO add your handling code here:
-        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
+        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshDefault));
     }//GEN-LAST:event_btn_cariMouseExited
 
     private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseEntered
 
     private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
@@ -847,7 +835,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javaswingdev.swing.table.Table barangTable;
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_cari;
     private javax.swing.JLabel btn_hapus;
@@ -870,11 +857,12 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private combo_suggestion.ComboBoxSuggestion kategoriComboSearch;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
+    private javaswingdev.swing.table.Table table1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

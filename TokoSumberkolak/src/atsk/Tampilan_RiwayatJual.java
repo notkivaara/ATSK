@@ -23,7 +23,7 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
      */
     public Tampilan_RiwayatJual() {
         initComponents();
-        tb_RiwayatJual.fixTable(jScrollPane1);
+        table1.fixTable(jScrollPane3);
 
     }
 
@@ -56,8 +56,8 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         btn_riwayatBeli = new javax.swing.JLabel();
         btn_riwayatJual = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_RiwayatJual = new javaswingdev.swing.table.Table();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
         panelShadow3 = new main.PanelShadow();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -266,10 +266,10 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 530));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(770, 530));
 
-        tb_RiwayatJual.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -277,11 +277,10 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
                 "Kode Transaksi", "Tanggal", "Harga Total", "Tunai", "Kembali"
             }
         ));
-        tb_RiwayatJual.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_RiwayatJual.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_RiwayatJual);
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane3.setViewportView(table1);
 
-        panelShadow2.add(jScrollPane1);
+        panelShadow2.add(jScrollPane3);
 
         panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow3.setMinimumSize(new java.awt.Dimension(356, 54));
@@ -595,13 +594,13 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
     private main.PanelShadow panelShadow5;
-    private javaswingdev.swing.table.Table tb_RiwayatJual;
+    private javaswingdev.swing.table.Table table1;
     private com.toedter.calendar.JDateChooser tgl_riwayatBeli;
     private javax.swing.JTextField txt_jumlahTransaksi;
     // End of variables declaration//GEN-END:variables

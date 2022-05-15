@@ -21,8 +21,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     public Tampilan_TransaksiJual() {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        tb_barang.fixTable(jScrollPane4);
-        tb_daftar.fixTable(jScrollPane1);
+        table2.fixTable(jScrollPane3);
+        table1.fixTable(jScrollPane1);
         cancel_search.setVisible(false);
 
     }
@@ -91,14 +91,14 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         btn_konfirmasi = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_daftar = new javaswingdev.swing.table.Table();
+        table1 = new javaswingdev.swing.table.Table();
         panelShadow1 = new main.PanelShadow();
         jLabel13 = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         jLabel14 = new javax.swing.JLabel();
         panelShadow4 = new main.PanelShadow();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tb_barang = new javaswingdev.swing.table.Table();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table2 = new javaswingdev.swing.table.Table();
         jPanel19 = new javax.swing.JPanel();
         panelShadow6 = new main.PanelShadow();
         jLabel15 = new javax.swing.JLabel();
@@ -395,21 +395,14 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         panelShadow8.setLayout(panelShadow8Layout);
         panelShadow8Layout.setHorizontalGroup(
             panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelShadow8Layout.createSequentialGroup()
-                .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelShadow8Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btn_tambahkan))
-                    .addGroup(panelShadow8Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(28, 28, 28)
+                .addComponent(btn_tambahkan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelShadow8Layout.setVerticalGroup(
@@ -425,7 +418,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_tambahkan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -568,11 +561,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(502, 165));
-        jScrollPane1.setRequestFocusEnabled(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(502, 174));
 
-        tb_daftar.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -580,9 +571,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 "Kode Transaksi", "Kode Barang", "Nama Barang", "Kuantitas", "Subtotal"
             }
         ));
-        tb_daftar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_daftar.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_daftar);
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane1.setViewportView(table1);
 
         panelShadow2.add(jScrollPane1);
 
@@ -624,9 +614,10 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         panelShadow3.setLayout(panelShadow3Layout);
         panelShadow3Layout.setHorizontalGroup(
             panelShadow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow3Layout.createSequentialGroup()
+            .addGroup(panelShadow3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelShadow3Layout.setVerticalGroup(
             panelShadow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -640,11 +631,10 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         panelShadow4.setShadowSize(5);
         panelShadow4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane4.setBorder(null);
-        jScrollPane4.setPreferredSize(new java.awt.Dimension(422, 250));
-        jScrollPane4.setRequestFocusEnabled(false);
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(422, 254));
 
-        tb_barang.setModel(new javax.swing.table.DefaultTableModel(
+        table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -652,17 +642,16 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Stok", "Satuan", "Harga"
             }
         ));
-        tb_barang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_barang.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane4.setViewportView(tb_barang);
+        table2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane3.setViewportView(table2);
 
-        panelShadow4.add(jScrollPane4);
+        panelShadow4.add(jScrollPane3);
 
         jPanel19.setOpaque(false);
         jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelShadow6.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow6.setPreferredSize(new java.awt.Dimension(485, 52));
+        panelShadow6.setPreferredSize(new java.awt.Dimension(570, 52));
         panelShadow6.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow6.setShadowOpacity(0.5F);
         panelShadow6.setShadowSize(1);
@@ -703,10 +692,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel15)
                 .addGap(10, 10, 10)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelShadow6Layout.setVerticalGroup(
             panelShadow6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -735,7 +723,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel19.add(panelShadow7);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
+        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
@@ -772,7 +760,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                                         .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(panelShadow8, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(panelShadow8, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(panelShadow2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
@@ -1025,26 +1013,26 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
 
     private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseEntered
 
     private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
         // TODO add your handling code here:
-        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
+        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshDefault));
     }//GEN-LAST:event_btn_cariMouseExited
 
     private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
         // TODO add your handling code here:
-        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihPress));
+        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshPress));
     }//GEN-LAST:event_btn_cariMousePressed
 
     private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
     private void btn_tambahkanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahkanMouseReleased
@@ -1218,7 +1206,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1236,8 +1224,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private main.PanelShadow panelShadow7;
     private main.PanelShadow panelShadow8;
     private main.PanelShadow panelShadow9;
-    private javaswingdev.swing.table.Table tb_barang;
-    private javaswingdev.swing.table.Table tb_daftar;
+    private javaswingdev.swing.table.Table table1;
+    private javaswingdev.swing.table.Table table2;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

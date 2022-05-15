@@ -20,7 +20,7 @@ public class Popup_Tinjau_Laporan_Shadow extends javax.swing.JFrame {
     int x,y;
     public Popup_Tinjau_Laporan_Shadow() {
         initComponents();
-        tb_pengeluaran.fixTable(jScrollPane1);
+        table1.fixTable(jScrollPane2);
         setBackground(new Color(0,0,0,0));
     }
 
@@ -54,8 +54,8 @@ public class Popup_Tinjau_Laporan_Shadow extends javax.swing.JFrame {
         btn_cetak = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_pengeluaran = new javaswingdev.swing.table.Table();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -199,22 +199,21 @@ public class Popup_Tinjau_Laporan_Shadow extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(730, 240));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(730, 240));
 
-        tb_pengeluaran.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
+                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Bulan", "Tahun", "Total"
             }
         ));
-        tb_pengeluaran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_pengeluaran.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_pengeluaran);
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(table1);
 
-        panelShadow2.add(jScrollPane1);
+        panelShadow2.add(jScrollPane2);
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
@@ -394,12 +393,12 @@ public class Popup_Tinjau_Laporan_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private atsk.panelRound panelRound2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    private javaswingdev.swing.table.Table tb_pengeluaran;
+    private javaswingdev.swing.table.Table table1;
     private javax.swing.JTextField txt_pendapatanKotor;
     private javax.swing.JTextField txt_pendapatanKotor1;
     private javax.swing.JTextField txt_pendapatanKotor2;

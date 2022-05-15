@@ -25,7 +25,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     public Tampilan_TransaksiBeli() {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        tb_barang.fixTable(jScrollPane1);
+        table1.fixTable(jScrollPane2);
         cancel_search.setVisible(false);
 
     }
@@ -85,8 +85,8 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
         btn_cari = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_barang = new javaswingdev.swing.table.Table();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -382,7 +382,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow1.setPreferredSize(new java.awt.Dimension(485, 52));
+        panelShadow1.setPreferredSize(new java.awt.Dimension(560, 52));
         panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow1.setShadowOpacity(0.5F);
         panelShadow1.setShadowSize(1);
@@ -423,10 +423,9 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3)
                 .addGap(10, 10, 10)
-                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
-                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelShadow1Layout.setVerticalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -456,7 +455,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jPanel13.add(panelShadow3);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button cari.png"))); // NOI18N
+        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
@@ -479,11 +478,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(770, 240));
-        jScrollPane1.setRequestFocusEnabled(false);
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 240));
 
-        tb_barang.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -491,11 +489,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Kategori", "Tanggal Penambahan", "Harga Beli", "Harga Jual", "Stok", "Return"
             }
         ));
-        tb_barang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_barang.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_barang);
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(table1);
 
-        panelShadow2.add(jScrollPane1);
+        panelShadow2.add(jScrollPane2);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -719,26 +716,26 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
 
     private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseEntered
 
     private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
         // TODO add your handling code here:
-        Image iconCarihDefault = new ImageIcon(this.getClass().getResource("/img/Button cari.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihDefault));
+        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshDefault));
     }//GEN-LAST:event_btn_cariMouseExited
 
     private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
         // TODO add your handling code here:
-        Image iconCarihPress = new ImageIcon(this.getClass().getResource("/img/Button cari press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihPress));
+        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshPress));
     }//GEN-LAST:event_btn_cariMousePressed
 
     private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
         // TODO add your handling code here:
-        Image iconCarihHover = new ImageIcon(this.getClass().getResource("/img/Button cari hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconCarihHover));
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
     }//GEN-LAST:event_btn_cariMouseReleased
 
     private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
@@ -855,7 +852,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -865,7 +862,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private main.PanelShadow panelShadow3;
     private main.PanelShadow panelShadow4;
     private main.PanelShadow panelShadow5;
-    private javaswingdev.swing.table.Table tb_barang;
+    private javaswingdev.swing.table.Table table1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

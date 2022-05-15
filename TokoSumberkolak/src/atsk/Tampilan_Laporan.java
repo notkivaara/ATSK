@@ -23,7 +23,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
      */
     public Tampilan_Laporan() {
         initComponents();
-        tb_pengeluaran.fixTable(jScrollPane1);
+        table1.fixTable(jScrollPane2);
 
     }
 
@@ -69,8 +69,8 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         txt_pendapatanKotor = new javax.swing.JTextField();
         btn_tinjau = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_pengeluaran = new javaswingdev.swing.table.Table();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javaswingdev.swing.table.Table();
         panelShadow3 = new main.PanelShadow();
         jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
@@ -325,22 +325,21 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         panelShadow2.setShadowSize(5);
         panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(730, 240));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(730, 240));
 
-        tb_pengeluaran.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Tahun", "Total"
+                "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Bulan", "Tahun", "Total"
             }
         ));
-        tb_pengeluaran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        tb_pengeluaran.setPreferredSize(new java.awt.Dimension(780, 530));
-        jScrollPane1.setViewportView(tb_pengeluaran);
+        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(table1);
 
-        panelShadow2.add(jScrollPane1);
+        panelShadow2.add(jScrollPane2);
 
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
@@ -402,7 +401,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jMonthChooser1.getAccessibleContext().setAccessibleName("");
 
         jYearChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jYearChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jYearChooser1.setOpaque(false);
         jYearChooser1.setPreferredSize(new java.awt.Dimension(63, 42));
         panelShadow3.add(jYearChooser1);
@@ -684,13 +682,13 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
-    private javaswingdev.swing.table.Table tb_pengeluaran;
+    private javaswingdev.swing.table.Table table1;
     private javax.swing.JTextField txt_pendapatanKotor;
     private javax.swing.JTextField txt_pendapatanKotor1;
     private javax.swing.JTextField txt_pendapatanKotor2;
