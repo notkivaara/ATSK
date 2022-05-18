@@ -115,7 +115,7 @@
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/txt Tambah Barang.png"/>
+                      <Image iconType="3" name="/img/txt Ubah Barang.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -165,6 +165,9 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_kodeBarangActionPerformed"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -200,6 +203,9 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -226,8 +232,17 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="combo_suggestion.ComboBoxSuggestion" name="comboBoxSuggestion1">
+                    <Component class="combo_suggestion.ComboBoxSuggestion" name="kategoriCombo">
                       <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="5">
+                            <StringItem index="0" value="Alat Mandi"/>
+                            <StringItem index="1" value="Makanan Ringan"/>
+                            <StringItem index="2" value="Alat Cuci"/>
+                            <StringItem index="3" value="Alat Makan"/>
+                            <StringItem index="4" value="Sembako"/>
+                          </StringArray>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="18" style="0"/>
                         </Property>
@@ -235,6 +250,12 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kategoriComboActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -270,6 +291,9 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -305,6 +329,9 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -331,8 +358,22 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="combo_suggestion.ComboBoxSuggestion" name="comboBoxSuggestion2">
+                    <Component class="combo_suggestion.ComboBoxSuggestion" name="satuanCombo">
                       <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="10">
+                            <StringItem index="0" value="pcs"/>
+                            <StringItem index="1" value="pack"/>
+                            <StringItem index="2" value="1 kg"/>
+                            <StringItem index="3" value="1/2 kg"/>
+                            <StringItem index="4" value="1/4 kg"/>
+                            <StringItem index="5" value="1 ons"/>
+                            <StringItem index="6" value="1 liter"/>
+                            <StringItem index="7" value="1/2 liter"/>
+                            <StringItem index="8" value="1/4 liter"/>
+                            <StringItem index="9" value=" "/>
+                          </StringArray>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="18" style="0"/>
                         </Property>
@@ -340,6 +381,9 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -375,6 +419,9 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -410,6 +457,9 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -459,6 +509,7 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_simpanMouseClicked"/>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_simpanMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_simpanMouseExited"/>
                     <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_simpanMousePressed"/>

@@ -6,11 +6,17 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import textfield.TextPrompt;
 
 /**
@@ -25,8 +31,39 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     public Tampilan_Pengeluaran() {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Pengeluaran", txt_cari);
-        table1.fixTable(jScrollPane2);
+        pengeluaranTable.fixTable(jScrollPane2);
         cancel_search.setVisible(false);
+        table();
+
+    }
+   public void table() {
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Pengeluaran");
+        tbl.addColumn("Nama Pengeluaran");
+        tbl.addColumn("Tanggal Bayar");
+        tbl.addColumn("Bulan");
+        tbl.addColumn("Tahun");
+        tbl.addColumn("Total");
+        // Disini Terakhir nulis
+
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select * from pengeluaran");
+
+            while (rs.next()) {
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_pengeluaran"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_bayar"),
+                    rs.getString("bulan"),
+                    rs.getString("tahun"),
+                    rs.getString("total"),});
+                pengeluaranTable.setModel(tbl);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
 
     }
 
@@ -65,7 +102,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_cari = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new javaswingdev.swing.table.Table();
+        pengeluaranTable = new javaswingdev.swing.table.Table();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -356,7 +393,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jScrollPane2.setBorder(null);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 530));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        pengeluaranTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -364,8 +401,8 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
                 "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Bulan", "Tahun", "Total"
             }
         ));
-        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jScrollPane2.setViewportView(table1);
+        pengeluaranTable.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(pengeluaranTable);
 
         panelShadow2.add(jScrollPane2);
 
@@ -584,11 +621,32 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
+        try {
+           int row = pengeluaranTable.getSelectedRow();
+        String kodePengeluaran = pengeluaranTable.getModel().getValueAt(row, 0).toString() ;
+        String namaPengeluaran = pengeluaranTable.getModel().getValueAt(row,1).toString();
+        String tanggalBayar = pengeluaranTable.getModel().getValueAt(row,2).toString();
+        String bulan = pengeluaranTable.getModel().getValueAt(row, 3).toString() ;
+        String tahun = pengeluaranTable.getModel().getValueAt(row, 4).toString() ;
+        String total = pengeluaranTable.getModel().getValueAt(row, 5).toString() ;
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tanggalBayar);
+        
         Popup_Ubah_Pengeluaran_Shadow ubahPengeluaran = new Popup_Ubah_Pengeluaran_Shadow();
+        ubahPengeluaran.txt_kdPengeluaran.setText(kodePengeluaran);
+        ubahPengeluaran.txt_namaPengeluaran.setText(namaPengeluaran);
+        ubahPengeluaran.date_tanggalBayar.setDate(date);
+        ubahPengeluaran.bulanCombo.setSelectedItem(bulan);
+        ubahPengeluaran.txt_tahun.setText(tahun);
+        ubahPengeluaran.txt_total.setText(total);
         ubahPengeluaran.setVisible(true);
         ubahPengeluaran.pack();
         ubahPengeluaran.setLocationRelativeTo(null);
         ubahPengeluaran.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        } catch (Exception e) {
+        }
+        
+       
+        
     }//GEN-LAST:event_btn_ubahMouseClicked
 
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
@@ -758,7 +816,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    private javaswingdev.swing.table.Table table1;
+    private javaswingdev.swing.table.Table pengeluaranTable;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }
