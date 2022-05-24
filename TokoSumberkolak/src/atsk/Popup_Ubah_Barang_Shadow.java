@@ -37,6 +37,7 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
     public void simpan(){
        
         String kodeBarang = txt_kodeBarang.getText();
+        String kodeBarcode = txt_kodeBarcode.getText();
         String namaBarang = txt_namaBarang.getText();
         String kategoriBarang = kategoriCombo.getSelectedItem().toString();
         String hargaBeli = txt_hargaBeli.getText();
@@ -47,14 +48,15 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
         
         try {
             String sql = "Update barang set kd_brg='"+kodeBarang+"'"
-                    + ",nama_brg = '"+ namaBarang
-                    +"',kategori ='"+ kategoriBarang
-                    +"',hrg_beli_brg = '"+ hargaBeli
-                    +"',hrg_jual_brg = '"+ hargaJual
-                    +"',satuan= '"+ satuan
-                    +"',stock = '"+ stok
-                    +"',retur ='"+ retur
-                    +"' WHERE kd_brg = '" +kodeLama+"'";
+                    +",kd_barcode = '"+ kodeBarcode+"'"
+                    +",nama_brg = '"+ namaBarang+"'"
+                    +",kategori ='"+ kategoriBarang+"'"
+                    +",hrg_beli_brg = '"+ hargaBeli+"'"
+                    +",hrg_jual_brg = '"+ hargaJual+"'"
+                    +",satuan= '"+ satuan+"'"
+                    +",stock = '"+ stok+"'"
+                    +",retur ='"+ retur+"'"
+                    +" WHERE kd_brg = '" +kodeLama+"'";
                    
             Connection c = (Connection) Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
@@ -83,6 +85,9 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txt_kodeBarang = new javax.swing.JTextField();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        txt_kodeBarcode = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txt_namaBarang = new javax.swing.JTextField();
@@ -170,6 +175,25 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
         jPanel9.add(txt_kodeBarang);
 
         jPanel8.add(jPanel9);
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel14.setText("Kode Barcode");
+        jLabel14.setPreferredSize(new java.awt.Dimension(230, 25));
+        jPanel17.add(jLabel14);
+
+        txt_kodeBarcode.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_kodeBarcode.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_kodeBarcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_kodeBarcodeActionPerformed(evt);
+            }
+        });
+        jPanel17.add(txt_kodeBarcode);
+
+        jPanel8.add(jPanel17);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -276,6 +300,24 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
 
         jPanel8.add(jPanel15);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelShadow1.add(jPanel1);
+
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 22, 0));
 
@@ -301,6 +343,9 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
 
         btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
         btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_bersihkanMouseEntered(evt);
             }
@@ -336,25 +381,7 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
         });
         jPanel3.add(btn_simpan);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        panelShadow1.add(jPanel1);
+        panelShadow1.add(jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -364,7 +391,7 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelShadow1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
 
         pack();
@@ -615,6 +642,24 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_kategoriComboActionPerformed
 
+    private void txt_kodeBarcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarcodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kodeBarcodeActionPerformed
+
+    private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
+        // TODO add your handling code here:
+        txt_kodeBarcode.setText("");
+        txt_namaBarang.setText("");
+        txt_hargaBeli.setText("");
+        kategoriCombo.setSelectedItem("Alat Mandi");
+        txt_hargaBeli.setText("");
+        txt_hargaJual.setText("");
+        satuanCombo.setSelectedItem("pcs");
+        txt_stok.setText("");
+        txt_return.setText("");
+        
+    }//GEN-LAST:event_btn_bersihkanMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -674,6 +719,7 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -686,6 +732,7 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -696,6 +743,7 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
     public javax.swing.JTextField txt_hargaBeli;
     public javax.swing.JTextField txt_hargaJual;
     public javax.swing.JTextField txt_kodeBarang;
+    public javax.swing.JTextField txt_kodeBarcode;
     public javax.swing.JTextField txt_namaBarang;
     public javax.swing.JTextField txt_return;
     public javax.swing.JTextField txt_stok;

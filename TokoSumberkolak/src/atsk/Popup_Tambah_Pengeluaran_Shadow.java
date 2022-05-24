@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -301,6 +302,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
 
         btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
         btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_bersihkanMouseEntered(evt);
             }
@@ -478,6 +482,17 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         tambah();
         this.dispose();
     }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
+        // TODO add your handling code here:
+        txt_kdPengeluaran.setText("");
+        txt_namaPengeluaran.setText("");
+        Date date = new Date();
+        date_tanggalBayar.setDate(date);
+        bulanCombo.setSelectedItem("Januari");
+        txt_tahun.setText("");
+        txt_total.setText("");
+    }//GEN-LAST:event_btn_bersihkanMouseClicked
 
     /**
      * @param args the command line arguments

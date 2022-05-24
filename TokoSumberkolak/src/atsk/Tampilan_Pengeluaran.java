@@ -6,6 +6,8 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -56,7 +58,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
                     rs.getString("nama"),
                     rs.getString("tgl_bayar"),
                     rs.getString("bulan"),
-                    rs.getString("tahun"),
+                    rs.getInt("tahun"),
                     rs.getString("total"),});
                 pengeluaranTable.setModel(tbl);
 
@@ -66,6 +68,61 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         }
 
     }
+    public void hapus(){
+         try {
+            int row = pengeluaranTable.getSelectedRow();
+            String kodePengeluaran = pengeluaranTable.getModel().getValueAt(row, 0).toString();
+            int confirm = JOptionPane.showConfirmDialog(this, "Kamu yakin akan menghapus pengeluaran ini?", "Peringatan", JOptionPane.OK_CANCEL_OPTION);
+            if (confirm == 0) {
+                Connection c = (Connection) Config.configDB();
+
+                String sql = "Delete From pengeluaran where kd_pengeluaran ='" + kodePengeluaran + "'";
+
+                PreparedStatement pst = c.prepareStatement(sql);
+
+                pst.execute();
+
+                JOptionPane.showMessageDialog(null, "Berhasil Menghapus pengeluaran");
+                table();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error hapus pengeluaran");
+        }
+    }
+        public void search(){
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Pengeluaran");
+        tbl.addColumn("Nama Pengeluaran");
+        tbl.addColumn("Tanggal Bayar");
+        tbl.addColumn("Bulan");
+        tbl.addColumn("Tahun");
+        tbl.addColumn("Total");
+        // Disini Terakhir nulis
+         String cari = txt_cari.getText();
+        try {
+          
+           String sql = "select * from pengeluaran where nama like'%" + cari + "%' OR kd_pengeluaran like '%" + cari + "%'";
+            Connection c = (Connection) Config.configDB();
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_pengeluaran"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_bayar"),
+                    rs.getString("bulan"),
+                    rs.getInt("tahun"),
+                    rs.getString("total"),});
+                pengeluaranTable.setModel(tbl);
+                
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,7 +151,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_tambah = new javax.swing.JLabel();
         btn_ubah = new javax.swing.JLabel();
         btn_hapus = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        btn_refresh = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
         jLabel4 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
@@ -290,8 +347,8 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
         btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_hapusMouseEntered(evt);
@@ -302,12 +359,15 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_hapusMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseReleased(evt);
+            }
         });
         jPanel7.add(btn_hapus);
 
-        jPanel8.setOpaque(false);
-        jPanel8.setPreferredSize(new java.awt.Dimension(831, 60));
-        jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
+        btn_refresh.setOpaque(false);
+        btn_refresh.setPreferredSize(new java.awt.Dimension(831, 60));
+        btn_refresh.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelShadow1.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow1.setPreferredSize(new java.awt.Dimension(725, 52));
@@ -364,11 +424,14 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             .addComponent(cancel_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel8.add(panelShadow1);
+        btn_refresh.add(panelShadow1);
 
         btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
         btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cariMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_cariMouseEntered(evt);
             }
@@ -382,7 +445,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
                 btn_cariMouseReleased(evt);
             }
         });
-        jPanel8.add(btn_cari);
+        btn_refresh.add(btn_cari);
 
         panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
@@ -410,7 +473,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -422,7 +485,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(568, 568, 568)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,14 +685,16 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
         try {
-           int row = pengeluaranTable.getSelectedRow();
+        
+        int row = pengeluaranTable.getSelectedRow();
         String kodePengeluaran = pengeluaranTable.getModel().getValueAt(row, 0).toString() ;
         String namaPengeluaran = pengeluaranTable.getModel().getValueAt(row,1).toString();
         String tanggalBayar = pengeluaranTable.getModel().getValueAt(row,2).toString();
         String bulan = pengeluaranTable.getModel().getValueAt(row, 3).toString() ;
         String tahun = pengeluaranTable.getModel().getValueAt(row, 4).toString() ;
         String total = pengeluaranTable.getModel().getValueAt(row, 5).toString() ;
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tanggalBayar);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(tanggalBayar);
         
         Popup_Ubah_Pengeluaran_Shadow ubahPengeluaran = new Popup_Ubah_Pengeluaran_Shadow();
         ubahPengeluaran.txt_kdPengeluaran.setText(kodePengeluaran);
@@ -733,12 +798,28 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
 
     private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
         // TODO add your handling code here:
+        
+        
         if(txt_cari.getText().equals("")) {
+            table();
             cancel_search.setVisible(false);
         } else {
+            search();
             cancel_search.setVisible(true);
+           
         }
+        
     }//GEN-LAST:event_txt_cariKeyReleased
+
+    private void btn_cariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseClicked
+        // TODO add your handling code here:
+        table();
+    }//GEN-LAST:event_btn_cariMouseClicked
+
+    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
+        // TODO add your handling code here:
+        hapus();
+    }//GEN-LAST:event_btn_hapusMouseClicked
 
     /**
      * @param args the command line arguments
@@ -799,6 +880,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JLabel btn_pemasok;
     private javax.swing.JLabel btn_pengaturan;
     private javax.swing.JLabel btn_pengeluaran;
+    private javax.swing.JPanel btn_refresh;
     private javax.swing.JLabel btn_riwayat;
     private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel btn_transaksi;
@@ -812,7 +894,6 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
