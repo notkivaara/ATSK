@@ -57,7 +57,7 @@ public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             
-            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+            JOptionPane.showMessageDialog(null,"Berhasil ubah pengeluaran");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
