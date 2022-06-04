@@ -708,6 +708,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         String satuan = barangTable.getModel().getValueAt(row, 6).toString();
         String stok = barangTable.getModel().getValueAt(row, 7).toString();
         String retur = barangTable.getModel().getValueAt(row, 8).toString();
+        
 
         Popup_Ubah_Barang_Shadow ubahBarang = new Popup_Ubah_Barang_Shadow();
         ubahBarang.setKodeLama(kodeBarang);
@@ -932,7 +933,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javaswingdev.swing.table.Table barangTable;
+    public javaswingdev.swing.table.Table barangTable;
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_karyawan;

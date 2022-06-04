@@ -43,16 +43,22 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
         String kode_barcode = txt_kodeBarcode.getText();
         String nama = txt_namaBarang.getText();
         String kategori = kategoriCombo.getSelectedItem().toString();
-        String harga_beli = txt_hargaBeli.getText();
-        String harga_jual = txt_hargaJual.getText();
+        int harga_beli = Integer.parseInt(txt_hargaBeli.getText()) ;
+        int harga_jual = Integer.parseInt(txt_hargaJual.getText());
         String satuan = satuanCombo.getSelectedItem().toString();
-        String stock = txt_stok.getText();
-        String retur = txt_return.getText();
+        int stock = Integer.parseInt(txt_stok.getText());
+        int retur = Integer.parseInt(txt_return.getText());
+        int hasil = 0;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String waktu = timestamp.toString();
         
         
-        try {
+            if (harga_jual < harga_beli) {
+               JOptionPane.showMessageDialog(this,"Masukkan harga jual dengan benar");
+            }
+            else{
+              try {
+                 hasil = stock - retur;
             String sql = "insert into barang values('"
                     + kode_barang +"','"
                     + kode_barcode +"','"
@@ -61,23 +67,31 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
                     + harga_beli+"','"
                     + harga_jual+"','"
                     + satuan+"','"
-                    + stock+"','"
+                    + hasil+"','"
                     + retur+"','" 
                     + waktu+"')";
             Connection c = (Connection)Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             
+                  if (retur == 0) {
+                     JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang Tanpa Retur");
+                  }
+                  else{
+                      JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang Dengan Retur "+retur);
+                  }
             
-            JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang");
             
             this.setVisible(false);
-            Tampilan_Barang TB = new Tampilan_Barang();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,e.getMessage());
+            JOptionPane.showMessageDialog(this,"Gagal Memasukkan Data Barang");
         }
+            }
+
+
+            
+
     }
-        
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -36,17 +36,28 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
     }
     public void simpan(){
        
+        
+        
         String kodeBarang = txt_kodeBarang.getText();
         String kodeBarcode = txt_kodeBarcode.getText();
         String namaBarang = txt_namaBarang.getText();
         String kategoriBarang = kategoriCombo.getSelectedItem().toString();
-        String hargaBeli = txt_hargaBeli.getText();
-        String hargaJual = txt_hargaJual.getText();
+        int hargaBeli = Integer.parseInt(txt_hargaBeli.getText()) ;
+        int hargaJual = Integer.parseInt(txt_hargaJual.getText());
         String satuan = satuanCombo.getSelectedItem().toString();
-        String stok = txt_stok.getText();
-        String retur = txt_return.getText();
+        int stok = Integer.parseInt(txt_stok.getText());
+        int retur = Integer.parseInt(txt_return.getText());
+        int hasil = 0;
         
-        try {
+        if (hargaJual<hargaBeli) {
+            JOptionPane.showMessageDialog(this,"Masukkan harga jual dengan benar");
+            
+        }
+        else{
+           
+            try {
+            hasil = stok - retur;
+            
             String sql = "Update barang set kd_brg='"+kodeBarang+"'"
                     +",kd_barcode = '"+ kodeBarcode+"'"
                     +",nama_brg = '"+ namaBarang+"'"
@@ -54,18 +65,27 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
                     +",hrg_beli_brg = '"+ hargaBeli+"'"
                     +",hrg_jual_brg = '"+ hargaJual+"'"
                     +",satuan= '"+ satuan+"'"
-                    +",stock = '"+ stok+"'"
+                    +",stock = '"+ hasil+"'"
                     +",retur ='"+ retur+"'"
                     +" WHERE kd_brg = '" +kodeLama+"'";
-                   
+            
+            
             Connection c = (Connection) Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             
-            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+                if (retur ==0 ) {
+                     JOptionPane.showMessageDialog(null,"Berhasil ubah barang ");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Berhasil ubah barang degan retur menjadi"+retur);
+                }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
+        }
+        
+        
     }
 
     /**

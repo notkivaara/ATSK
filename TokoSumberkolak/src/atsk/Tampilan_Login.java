@@ -133,25 +133,25 @@ public class Tampilan_Login extends javax.swing.JFrame {
 
     private void btn_loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseEntered
         // TODO add your handling code here:
-        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
+        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/Button Login hover.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginHover));
     }//GEN-LAST:event_btn_loginMouseEntered
 
     private void btn_loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseExited
         // TODO add your handling code here:
-        Image iconLoginDefault = new ImageIcon(this.getClass().getResource("/img/button login.png")).getImage();
+        Image iconLoginDefault = new ImageIcon(this.getClass().getResource("/img/Button Login.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginDefault));
     }//GEN-LAST:event_btn_loginMouseExited
 
     private void btn_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMousePressed
         // TODO add your handling code here:
-        Image iconLoginPress = new ImageIcon(this.getClass().getResource("/img/button login press.png")).getImage();
+        Image iconLoginPress = new ImageIcon(this.getClass().getResource("/img/Button Login press.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginPress));
     }//GEN-LAST:event_btn_loginMousePressed
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         // TODO add your handling code here:
-        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
+        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/Button Login hover.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginHover));
     }//GEN-LAST:event_btn_loginMouseReleased
 
