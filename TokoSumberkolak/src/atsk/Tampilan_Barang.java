@@ -4,6 +4,7 @@
  */
 package atsk;
 
+import atsk.laporanBulanan.Tampilan_Laporan;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;

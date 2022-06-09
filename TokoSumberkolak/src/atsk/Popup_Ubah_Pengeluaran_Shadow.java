@@ -40,10 +40,11 @@ public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
         String tanggal_bayar = sdf.format(date_tanggalBayar.getDate());
         String bulan = bulanCombo.getSelectedItem().toString();
         String tahun = txt_tahun.getText();
-        String total = txt_total.getText();
+        int total = Integer.parseInt(txt_total.getText());
         System.out.println(tanggal_bayar);
 
-        try {
+        if (total>0) {
+            try {
             String sql = "Update pengeluaran SET nama= '"+nama+ "'"
                     +",tgl_bayar ='"+tanggal_bayar+"'"
                     +",bulan ='"+bulan+"'"
@@ -61,6 +62,11 @@ public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
+        }else
+        {
+            JOptionPane.showMessageDialog(this,"Harap masukkan total dengan benar");
+        }
+        
     }
 
     /**

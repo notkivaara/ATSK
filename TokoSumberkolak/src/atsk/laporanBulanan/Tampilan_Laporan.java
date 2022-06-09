@@ -2,15 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package atsk;
+package atsk.laporanBulanan;
 
+import atsk.Config;
+import atsk.Tampilan_Barang;
+import atsk.Tampilan_Karyawan;
+import atsk.Tampilan_Pemasok;
+import atsk.Tampilan_Pengaturan;
+import atsk.Tampilan_Pengeluaran;
+import atsk.Tampilan_RiwayatBeli;
+import atsk.Tampilan_TransaksiBeli;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -21,9 +41,46 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     /**
      * Creates new form TampilanBarang
      */
+    private Date tanggal;
+
     public Tampilan_Laporan() {
         initComponents();
-        table1.fixTable(jScrollPane2);
+        pengeluaranTable.fixTable(jScrollPane2);
+
+        table();
+        tanggalDate1.setDateFormatString("yyyy-MM-dd");
+        tanggalDate2.setDateFormatString("yyyy-MM-dd");
+
+    }
+
+    public void table() {
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Pengeluaran");
+        tbl.addColumn("Nama Pengeluaran");
+        tbl.addColumn("Tanggal Bayar");
+        tbl.addColumn("Bulan");
+        tbl.addColumn("Tahun");
+        tbl.addColumn("Total");
+        // Disini Terakhir nulis
+
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select * from pengeluaran");
+
+            while (rs.next()) {
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_pengeluaran"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_bayar"),
+                    rs.getString("bulan"),
+                    rs.getInt("tahun"),
+                    rs.getString("total"),});
+                pengeluaranTable.setModel(tbl);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
 
     }
 
@@ -57,23 +114,24 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txt_pendapatanKotor1 = new javax.swing.JTextField();
+        txt_pendapatanKotor = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txt_pendapatanKotor3 = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txt_pendapatanKotor2 = new javax.swing.JTextField();
+        txt_pengeluaran = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        txt_pendapatanKotor = new javax.swing.JTextField();
-        btn_tinjau = new javax.swing.JLabel();
+        txt_pendapatanBersih = new javax.swing.JTextField();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new javaswingdev.swing.table.Table();
+        pengeluaranTable = new javaswingdev.swing.table.Table();
+        btn_cetak = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
+        tanggalDate1 = new com.toedter.calendar.JDateChooser();
+        tanggalDate2 = new com.toedter.calendar.JDateChooser();
+        btnCari = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -247,9 +305,9 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel3.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel7.add(jLabel3);
 
-        txt_pendapatanKotor1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txt_pendapatanKotor1.setPreferredSize(new java.awt.Dimension(274, 42));
-        jPanel7.add(txt_pendapatanKotor1);
+        txt_pendapatanKotor.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txt_pendapatanKotor.setPreferredSize(new java.awt.Dimension(274, 42));
+        jPanel7.add(txt_pendapatanKotor);
 
         jPanel8.setOpaque(false);
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -272,14 +330,14 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel4.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel9.add(jLabel4);
 
-        txt_pendapatanKotor2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txt_pendapatanKotor2.setPreferredSize(new java.awt.Dimension(274, 42));
-        txt_pendapatanKotor2.addActionListener(new java.awt.event.ActionListener() {
+        txt_pengeluaran.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txt_pengeluaran.setPreferredSize(new java.awt.Dimension(274, 42));
+        txt_pengeluaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pendapatanKotor2ActionPerformed(evt);
+                txt_pengeluaranActionPerformed(evt);
             }
         });
-        jPanel9.add(txt_pendapatanKotor2);
+        jPanel9.add(txt_pengeluaran);
 
         jPanel10.setOpaque(false);
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -289,35 +347,14 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jLabel5.setPreferredSize(new java.awt.Dimension(481, 42));
         jPanel10.add(jLabel5);
 
-        txt_pendapatanKotor.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txt_pendapatanKotor.setPreferredSize(new java.awt.Dimension(274, 42));
-        txt_pendapatanKotor.addActionListener(new java.awt.event.ActionListener() {
+        txt_pendapatanBersih.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txt_pendapatanBersih.setPreferredSize(new java.awt.Dimension(274, 42));
+        txt_pendapatanBersih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pendapatanKotorActionPerformed(evt);
+                txt_pendapatanBersihActionPerformed(evt);
             }
         });
-        jPanel10.add(txt_pendapatanKotor);
-
-        btn_tinjau.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tinjau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tinjau.png"))); // NOI18N
-        btn_tinjau.setMinimumSize(new java.awt.Dimension(124, 22));
-        btn_tinjau.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tinjauMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_tinjauMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_tinjauMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_tinjauMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tinjauMouseReleased(evt);
-            }
-        });
+        jPanel10.add(txt_pendapatanBersih);
 
         panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
@@ -328,7 +365,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         jScrollPane2.setBorder(null);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(730, 240));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        pengeluaranTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -336,10 +373,17 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                 "Kode Pengeluaran", "Nama Pengeluaran", "Tanggal Bayar", "Bulan", "Bulan", "Tahun", "Total"
             }
         ));
-        table1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jScrollPane2.setViewportView(table1);
+        pengeluaranTable.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane2.setViewportView(pengeluaranTable);
 
         panelShadow2.add(jScrollPane2);
+
+        btn_cetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Cetak.png"))); // NOI18N
+        btn_cetak.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cetakMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
         panelShadow1.setLayout(panelShadow1Layout);
@@ -353,10 +397,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_tinjau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
             .addGroup(panelShadow1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,6 +405,10 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                         .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_cetak)
+                .addGap(41, 41, 41))
         );
         panelShadow1Layout.setVerticalGroup(
             panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,27 +427,41 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                 .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_tinjau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_cetak)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow3.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow3.setShadowOpacity(1.0F);
         panelShadow3.setShadowSize(5);
-        panelShadow3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 6));
+        panelShadow3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jMonthChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jMonthChooser1.setOpaque(false);
-        jMonthChooser1.setPreferredSize(new java.awt.Dimension(141, 42));
-        panelShadow3.add(jMonthChooser1);
-        jMonthChooser1.getAccessibleContext().setAccessibleName("");
+        tanggalDate1.setDateFormatString("yyyy MM dd H:i:s");
+        tanggalDate1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tanggalDate1PropertyChange(evt);
+            }
+        });
+        panelShadow3.add(tanggalDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 40));
 
-        jYearChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jYearChooser1.setOpaque(false);
-        jYearChooser1.setPreferredSize(new java.awt.Dimension(63, 42));
-        panelShadow3.add(jYearChooser1);
+        tanggalDate2.setDateFormatString("yyyy MM dd H:i:s");
+        tanggalDate2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tanggalDate2PropertyChange(evt);
+            }
+        });
+        panelShadow3.add(tanggalDate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 150, 40));
+
+        btnCari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
+        btnCari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCariMouseClicked(evt);
+            }
+        });
+        panelShadow3.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 50, 40));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -523,7 +581,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
         karyawan.show();
-        
+
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
@@ -531,7 +589,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
         pengaturan.show();
-        
+
         dispose();
     }//GEN-LAST:event_btn_pengaturanMouseClicked
 
@@ -539,7 +597,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
         riwayatBeli.show();
-        
+
         dispose();
     }//GEN-LAST:event_btn_riwayatMouseClicked
 
@@ -547,54 +605,21 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bulanActionPerformed
 
-    private void txt_pendapatanKotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pendapatanKotorActionPerformed
+    private void txt_pendapatanBersihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pendapatanBersihActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_pendapatanKotorActionPerformed
+    }//GEN-LAST:event_txt_pendapatanBersihActionPerformed
 
-    private void txt_pendapatanKotor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pendapatanKotor2ActionPerformed
+    private void txt_pengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pengeluaranActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_pendapatanKotor2ActionPerformed
-
-    private void btn_tinjauMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tinjauMouseEntered
-        // TODO add your handling code here:
-        Image iconTinjauHover = new ImageIcon(this.getClass().getResource("/img/Button Tinjau hover.png")).getImage();
-        btn_tinjau.setIcon(new ImageIcon(iconTinjauHover));
-    }//GEN-LAST:event_btn_tinjauMouseEntered
-
-    private void btn_tinjauMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tinjauMouseExited
-        // TODO add your handling code here:
-        Image iconTinjauDefault = new ImageIcon(this.getClass().getResource("/img/Button Tinjau.png")).getImage();
-        btn_tinjau.setIcon(new ImageIcon(iconTinjauDefault));
-    }//GEN-LAST:event_btn_tinjauMouseExited
-
-    private void btn_tinjauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tinjauMousePressed
-        // TODO add your handling code here:
-        Image iconTinjauPressed = new ImageIcon(this.getClass().getResource("/img/Button Tinjau press.png")).getImage();
-        btn_tinjau.setIcon(new ImageIcon(iconTinjauPressed));
-    }//GEN-LAST:event_btn_tinjauMousePressed
-
-    private void btn_tinjauMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tinjauMouseReleased
-        // TODO add your handling code here:
-        Image iconTinjauHover = new ImageIcon(this.getClass().getResource("/img/Button Tinjau hover.png")).getImage();
-        btn_tinjau.setIcon(new ImageIcon(iconTinjauHover));
-    }//GEN-LAST:event_btn_tinjauMouseReleased
+    }//GEN-LAST:event_txt_pengeluaranActionPerformed
 
     private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
         // TODO add your handling code here:
         Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
         transaksiBeli.show();
-        
+
         dispose();
     }//GEN-LAST:event_btn_transaksiMouseClicked
-
-    private void btn_tinjauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tinjauMouseClicked
-        // TODO add your handling code here:
-        Popup_Tinjau_Laporan_Shadow tinjauLaporan = new Popup_Tinjau_Laporan_Shadow();
-        tinjauLaporan.setVisible(true);
-        tinjauLaporan.pack();
-        tinjauLaporan.setLocationRelativeTo(null);
-        tinjauLaporan.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_btn_tinjauMouseClicked
 
     private void btn_barangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseEntered
         // TODO add your handling code here:
@@ -615,6 +640,113 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_btn_barangMouseClicked
+
+    private void tanggalDate1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tanggalDate1PropertyChange
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_tanggalDate1PropertyChange
+
+    private void tanggalDate2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tanggalDate2PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tanggalDate2PropertyChange
+
+    private void btnCariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCariMouseClicked
+        // TODO add your handling code here:
+        Date dateFromDateChooser1 = tanggalDate1.getDate();
+        String tanggal1 = String.format("%1$tY-%1$tm-%1$td", dateFromDateChooser1);
+        Date dateFromDateChooser2 = tanggalDate2.getDate();
+        String tanggal2 = String.format("%1$tY-%1$tm-%1$td", dateFromDateChooser2);
+
+        int pendapatan_kotor = 0;
+        int pengeluaran = 0;
+
+        if (tanggalDate2.getDate().getTime() > tanggalDate1.getDate().getTime()) {
+            try {
+
+                String sql;
+                Connection c;
+                PreparedStatement pst;
+                ResultSet rs;
+                sql = "select SUM(harga_total) as pendapatan_kotor from transaksi where tanggal between DATE_FORMAT('" + tanggal1 + "', '%Y-%m-%d 00:00:00') and DATE_FORMAT('" + tanggal2 + "', '%Y-%m-%d 23:59:59')";
+                c = (Connection) Config.configDB();
+                pst = c.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    txt_pendapatanKotor.setText(rs.getString("pendapatan_kotor"));
+                    pendapatan_kotor = Integer.valueOf(rs.getString("pendapatan_kotor"));
+                }
+
+                sql = "select SUM(total) as pengeluaran from pengeluaran where tgl_bayar between DATE_FORMAT('" + tanggal1 + "', '%Y-%m-%d 00:00:00') and DATE_FORMAT('" + tanggal2 + "', '%Y-%m-%d 23:59:59')";
+                pst = c.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    txt_pengeluaran.setText(rs.getString("pengeluaran"));
+                    pengeluaran = Integer.valueOf(rs.getString("pengeluaran"));
+                }
+                int hasil = pendapatan_kotor - pengeluaran;
+
+                txt_pendapatanBersih.setText(String.valueOf(hasil));
+
+                sql = "Select * from pengeluaran where tgl_bayar between DATE_FORMAT('" + tanggal1 + "', '%Y-%m-%d 00:00:00') and DATE_FORMAT('" + tanggal2 + "', '%Y-%m-%d 23:59:59')";
+                pst = c.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                DefaultTableModel tbl = new DefaultTableModel();
+                tbl.addColumn("Kode Pengeluaran");
+                tbl.addColumn("Nama Pengeluaran");
+                tbl.addColumn("Tanggal Bayar");
+                tbl.addColumn("Bulan");
+                tbl.addColumn("Tahun");
+                tbl.addColumn("Total");
+                
+                while(rs.next()){
+                    tbl.addRow(new Object[]{
+                    rs.getString("kd_pengeluaran"),
+                    rs.getString("nama"),
+                    rs.getString("tgl_bayar"),
+                    rs.getString("bulan"),
+                    rs.getInt("tahun"),
+                    rs.getString("total"),});
+                pengeluaranTable.setModel(tbl);
+
+            }
+                
+
+            } catch (Exception e) {
+
+                JOptionPane.showMessageDialog(this, e.getMessage());
+
+            }
+        }
+    }//GEN-LAST:event_btnCariMouseClicked
+
+    private void btn_cetakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cetakMouseClicked
+        // TODO add your handling code here:
+        try {
+            String report = "src/atsk/laporanBulanan/laporanBulanan.jasper";
+                            HashMap hash = new HashMap();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+                            String tanggal1 = sdf.format(tanggalDate1.getDate());
+                            String tanggal2 = sdf.format(tanggalDate2.getDate());
+                            
+                            hash.put("tanggal_awal", tanggal1);
+                            hash.put("tanggal_akhir", tanggal2);
+                            hash.put("pendapatan_kotor", txt_pendapatanKotor.getText());
+                            
+                            
+                            
+                            Connection con = (Connection) Config.configDB();
+                            JasperPrint JPrint = JasperFillManager.fillReport(report, hash,con );
+                            JasperViewer.viewReport(JPrint, false);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_btn_cetakMouseClicked
 
     /**
      * @param args the command line arguments
@@ -655,14 +787,15 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnCari;
     private javax.swing.JLabel btn_barang;
+    private javax.swing.JLabel btn_cetak;
     private javax.swing.JLabel btn_karyawan;
     private javax.swing.JLabel btn_laporan;
     private javax.swing.JLabel btn_pemasok;
     private javax.swing.JLabel btn_pengaturan;
     private javax.swing.JLabel btn_pengeluaran;
     private javax.swing.JLabel btn_riwayat;
-    private javax.swing.JLabel btn_tinjau;
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JTextField bulan;
     private javax.swing.JLabel jLabel1;
@@ -671,7 +804,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -684,14 +816,15 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
-    private javaswingdev.swing.table.Table table1;
+    private javaswingdev.swing.table.Table pengeluaranTable;
+    private com.toedter.calendar.JDateChooser tanggalDate1;
+    private com.toedter.calendar.JDateChooser tanggalDate2;
+    private javax.swing.JTextField txt_pendapatanBersih;
     private javax.swing.JTextField txt_pendapatanKotor;
-    private javax.swing.JTextField txt_pendapatanKotor1;
-    private javax.swing.JTextField txt_pendapatanKotor2;
     private javax.swing.JTextField txt_pendapatanKotor3;
+    private javax.swing.JTextField txt_pengeluaran;
     // End of variables declaration//GEN-END:variables
 }

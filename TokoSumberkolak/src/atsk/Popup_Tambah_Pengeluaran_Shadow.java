@@ -72,10 +72,10 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         String tanggal_bayar = sdf.format(date_tanggalBayar.getDate());
         String bulan = bulanCombo.getSelectedItem().toString();
         String tahun = txt_tahun.getText();
-        String total = txt_total.getText();
+        int total = Integer.parseInt(txt_total.getText());
 
-        
-        try {
+            if (total> 0) {
+                try {
             String sql = "insert into pengeluaran values ('"
                     + kode_pengeluaran +"','"
                     + nama+"','"
@@ -95,6 +95,12 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Harap masukkan total dengan benar");
+            }
+        
         }
     /**
      * This method is called from within the constructor to initialize the form.
