@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -40,14 +41,15 @@ public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
         String bulan = bulanCombo.getSelectedItem().toString();
         String tahun = txt_tahun.getText();
         String total = txt_total.getText();
+        System.out.println(tanggal_bayar);
 
         try {
-            String sql = "Update pengeluaran set"
-                    + "'nama='"+nama
-                    + "',tgl_bayar='"+tanggal_bayar
-                    +"',bulan='"+bulan
-                    +"',tahun = '"+tahun
-                    +"',total = '"+total+"' where kd_pengeluaran = '"+kode_pengeluaran+"','";
+            String sql = "Update pengeluaran SET nama= '"+nama+ "'"
+                    +",tgl_bayar ='"+tanggal_bayar+"'"
+                    +",bulan ='"+bulan+"'"
+                    +",tahun = '"+tahun+"'"
+                    +",total = '"+total+"'"
+                    +"where kd_pengeluaran = '"+kode_pengeluaran+"'";
                 
                    
                    
@@ -55,7 +57,7 @@ public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             
-            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+            JOptionPane.showMessageDialog(null,"Berhasil ubah pengeluaran");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
@@ -456,6 +458,13 @@ public class Popup_Ubah_Pengeluaran_Shadow extends javax.swing.JFrame {
 
     private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
         // TODO add your handling code here:
+        txt_kdPengeluaran.setText("");
+        txt_namaPengeluaran.setText("");
+        Date date = new Date();
+        date_tanggalBayar.setDate(date);
+        bulanCombo.setSelectedItem("Januari");
+        txt_tahun.setText("");
+        txt_total.setText("");
     }//GEN-LAST:event_btn_bersihkanMouseClicked
 
     /**

@@ -39,11 +39,11 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         cancel_search.setVisible(false);
         table();
     }
-    
 
     public void table() {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode Barang");
+        tbl.addColumn("Kode Barcode");
         tbl.addColumn("Nama Barang");
         tbl.addColumn("Kategori");
         tbl.addColumn("Harga Beli");
@@ -57,10 +57,10 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         try {
             Statement st = (Statement) Config.configDB().createStatement();
             ResultSet rs = st.executeQuery("Select * from barang");
-
             while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("kd_brg"),
+                    rs.getString("kd_barcode"),
                     rs.getString("nama_brg"),
                     rs.getString("kategori"),
                     rs.getString("hrg_beli_brg"),
@@ -80,8 +80,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     
     public void search() {
         DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Nama Barang");
+        tbl.addColumn("Kode barang");
+        tbl.addColumn("Kode barcode");
+        tbl.addColumn("Nama barang");
         tbl.addColumn("Kategori");
         tbl.addColumn("Harga Beli");
         tbl.addColumn("Harga Jual");
@@ -91,16 +92,17 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         tbl.addColumn("Waktu Penambahan");
 
         String cari = txt_cari.getText();
-        
+
         try {
-          
-                String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
-                Connection c = (Connection) Config.configDB();
-                Statement st = c.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    tbl.addRow(new Object[]{
+
+            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
+            Connection c = (Connection) Config.configDB();
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                tbl.addRow(new Object[]{
                     rs.getString("kd_brg"),
+                    rs.getString("kd_barcode"),
                     rs.getString("nama_brg"),
                     rs.getString("kategori"),
                     rs.getString("hrg_beli_brg"),
@@ -109,8 +111,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                     rs.getString("stock"),
                     rs.getString("retur"),
                     rs.getString("waktu_penambahan"),});
-                    barangTable.setModel(tbl);
-                
+                barangTable.setModel(tbl);
 
                 }
 
@@ -697,20 +698,22 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
     private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
         // TODO add your handling code here:
-         int row = barangTable.getSelectedRow();
-        String kodeBarang = barangTable.getModel().getValueAt(row, 0).toString() ;
+        int row = barangTable.getSelectedRow();
+        String kodeBarang = barangTable.getModel().getValueAt(row, 0).toString();
+        String kodeBarcode = barangTable.getModel().getValueAt(row, 1).toString();
+        String namaBarang = barangTable.getModel().getValueAt(row, 2).toString();
+        String kategoriBarang = barangTable.getModel().getValueAt(row, 3).toString();
+        String hargaBeli = barangTable.getModel().getValueAt(row, 4).toString();
+        String hargaJual = barangTable.getModel().getValueAt(row, 5).toString();
+        String satuan = barangTable.getModel().getValueAt(row, 6).toString();
+        String stok = barangTable.getModel().getValueAt(row, 7).toString();
+        String retur = barangTable.getModel().getValueAt(row, 8).toString();
         
-        String namaBarang = barangTable.getModel().getValueAt(row,1).toString();
-        String kategoriBarang = barangTable.getModel().getValueAt(row,2).toString();
-        String hargaBeli = barangTable.getModel().getValueAt(row, 3).toString() ;
-        String hargaJual = barangTable.getModel().getValueAt(row, 4).toString() ;
-        String satuan = barangTable.getModel().getValueAt(row, 5).toString() ;
-        String stok = barangTable.getModel().getValueAt(row, 6).toString() ;
-        String retur = barangTable.getModel().getValueAt(row, 7).toString() ;
-        
+
         Popup_Ubah_Barang_Shadow ubahBarang = new Popup_Ubah_Barang_Shadow();
         ubahBarang.setKodeLama(kodeBarang);
         ubahBarang.txt_kodeBarang.setText(kodeBarang);
+        ubahBarang.txt_kodeBarcode.setText(kodeBarcode);
         ubahBarang.txt_namaBarang.setText(namaBarang);
         ubahBarang.kategoriCombo.setSelectedItem(kategoriBarang);
         ubahBarang.txt_hargaBeli.setText(hargaBeli);
@@ -718,7 +721,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         ubahBarang.satuanCombo.setSelectedItem(satuan);
         ubahBarang.txt_stok.setText(stok);
         ubahBarang.txt_return.setText(retur);
-        
+
         ubahBarang.setVisible(true);
         ubahBarang.pack();
         ubahBarang.setLocationRelativeTo(null);
@@ -751,9 +754,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         // TODO add your handling code here:
-        
 
-        Popup_Tambah_Barang_Shadow tambahBarang = new Popup_Tambah_Barang_Shadow(this,true);
+        Popup_Tambah_Barang_Shadow tambahBarang = new Popup_Tambah_Barang_Shadow(this, true);
         tambahBarang.setVisible(true);
         tambahBarang.pack();
         tambahBarang.setLocationRelativeTo(null);
@@ -805,10 +807,10 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
         // TODO add your handling code here:
         if (txt_cari.getText().equals("")) {
-           table();
+            table();
             cancel_search.setVisible(false);
         } else {
-             search();
+            search();
             cancel_search.setVisible(true);
         }
     }//GEN-LAST:event_txt_cariKeyReleased
@@ -833,16 +835,16 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         String cari = txt_cari.getText();
         String kategori = kategoriComboSearch.getSelectedItem().toString();
         String sql = "";
-          try {
-              if (kategori.equals("Kategori")) {
-                  sql = "select * from barang where nama_brg like '%"+cari+"%'";
-              }else{
-                  sql = "select * from barang where kategori like '%"+kategori+"%'";
-              }
+        try {
+            if (kategori.equals("Kategori")) {
+                sql = "select * from barang where nama_brg like '%" + cari + "%'";
+            } else {
+                sql = "select * from barang where kategori like '%" + kategori + "%'";
+            }
             Connection c = (Connection) Config.configDB();
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
+            while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("kd_brg"),
                     rs.getString("nama_brg"),
@@ -852,47 +854,44 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                     rs.getString("satuan"),
                     rs.getString("stock"),
                     rs.getString("retur"),
-                    rs.getString("waktu_penambahan"),
-                  });
+                    rs.getString("waktu_penambahan"),});
                 barangTable.setModel(tbl);
             }
         } catch (Exception e) {
         }
 
-          
-         
-       
+
     }//GEN-LAST:event_kategoriComboSearchActionPerformed
 
     private void kategoriComboSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kategoriComboSearchMouseClicked
         // TODO add your handling code here:
-    
-     
+
+
     }//GEN-LAST:event_kategoriComboSearchMouseClicked
 
     private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
         // TODO add your handling code here:
-         try {
+        try {
             int row = barangTable.getSelectedRow();
-            String kodeItem = barangTable.getModel().getValueAt(row, 0).toString() ;
-             int confirm = JOptionPane.showConfirmDialog(this, "Kamu yakin akan menghapus barang ini?", "Peringatan", JOptionPane.OK_CANCEL_OPTION);
-            if(confirm == 0) {
-             Connection c = (Connection) Config.configDB();
-           
-            String sql = "Delete From barang where kd_brg ='"+kodeItem+"'";
-            
-            PreparedStatement pst = c.prepareStatement(sql);
-            
-            pst.execute();
-            
-            JOptionPane.showMessageDialog(null,"Berhasil Menghapus barang");
-            table();       
-        }
-            
+            String kodeItem = barangTable.getModel().getValueAt(row, 0).toString();
+            int confirm = JOptionPane.showConfirmDialog(this, "Kamu yakin akan menghapus barang ini?", "Peringatan", JOptionPane.OK_CANCEL_OPTION);
+            if (confirm == 0) {
+                Connection c = (Connection) Config.configDB();
+
+                String sql = "Delete From barang where kd_brg ='" + kodeItem + "'";
+
+                PreparedStatement pst = c.prepareStatement(sql);
+
+                pst.execute();
+
+                JOptionPane.showMessageDialog(null, "Berhasil Menghapus barang");
+                table();
+            }
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Tidak bisa menghapus barang yang sudah ada di transaksi");
+            JOptionPane.showMessageDialog(null, "Tidak bisa menghapus barang yang sudah ada di transaksi");
         }
-       
+
     }//GEN-LAST:event_btn_hapusMouseClicked
 
     /**
@@ -934,7 +933,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javaswingdev.swing.table.Table barangTable;
+    public javaswingdev.swing.table.Table barangTable;
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_karyawan;
