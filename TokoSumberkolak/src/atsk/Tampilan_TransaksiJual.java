@@ -68,6 +68,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -104,9 +107,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
         cancel_search = new javax.swing.JLabel();
-        panelShadow7 = new main.PanelShadow();
-        comboBoxSuggestion1 = new combo_suggestion.ComboBoxSuggestion();
-        btn_cari = new javax.swing.JLabel();
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -328,7 +328,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setText("Kode Barang");
+        jLabel4.setText("Kode Bacode");
         jLabel4.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel7.add(jLabel4);
 
@@ -341,7 +341,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setText("Nama Barang");
+        jLabel5.setText("Kode Barang");
         jLabel5.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel8.add(jLabel5);
 
@@ -354,7 +354,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("Harga");
+        jLabel6.setText("Nama Barang");
         jLabel6.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel9.add(jLabel6);
 
@@ -362,12 +362,25 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         jTextField4.setPreferredSize(new java.awt.Dimension(150, 34));
         jPanel9.add(jTextField4);
 
+        jPanel12.setOpaque(false);
+        jPanel12.setPreferredSize(new java.awt.Dimension(336, 34));
+        jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel9.setText("Kuantitas");
+        jLabel9.setPreferredSize(new java.awt.Dimension(145, 34));
+        jPanel12.add(jLabel9);
+
+        jTextField7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jTextField7.setPreferredSize(new java.awt.Dimension(150, 34));
+        jPanel12.add(jTextField7);
+
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(336, 34));
         jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setText("Kuantitas");
+        jLabel7.setText("Harga");
         jLabel7.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel10.add(jLabel7);
 
@@ -400,6 +413,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelShadow8Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(btn_tambahkan)
@@ -418,7 +432,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_tambahkan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -648,10 +664,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         panelShadow4.add(jScrollPane3);
 
         jPanel19.setOpaque(false);
-        jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
         panelShadow6.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow6.setPreferredSize(new java.awt.Dimension(570, 52));
+        panelShadow6.setPreferredSize(new java.awt.Dimension(370, 52));
         panelShadow6.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow6.setShadowOpacity(0.5F);
         panelShadow6.setShadowSize(1);
@@ -692,7 +707,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel15)
                 .addGap(10, 10, 10)
-                .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addComponent(cancel_search, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -705,40 +720,20 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
             .addComponent(cancel_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel19.add(panelShadow6);
-
-        panelShadow7.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow7.setPreferredSize(new java.awt.Dimension(150, 52));
-        panelShadow7.setShadowColor(new java.awt.Color(209, 223, 245));
-        panelShadow7.setShadowOpacity(0.5F);
-        panelShadow7.setShadowSize(1);
-        panelShadow7.setShadowType(main.ShadowType.BOT);
-        panelShadow7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        comboBoxSuggestion1.setBorder(null);
-        comboBoxSuggestion1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        comboBoxSuggestion1.setPreferredSize(new java.awt.Dimension(145, 49));
-        panelShadow7.add(comboBoxSuggestion1);
-
-        jPanel19.add(panelShadow7);
-
-        btn_cari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
-        btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_cariMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_cariMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_cariMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_cariMouseReleased(evt);
-            }
-        });
-        jPanel19.add(btn_cari);
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(panelShadow6, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(panelShadow6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -758,7 +753,9 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                        .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(panelShadow4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(panelShadow8, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
@@ -768,8 +765,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(panelShadow9, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                                            .addComponent(panelShadow3, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)))))))
-                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(panelShadow3, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -777,12 +773,13 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelShadow8, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelShadow8, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1011,30 +1008,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
 
-    private void btn_cariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseEntered
-        // TODO add your handling code here:
-        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
-    }//GEN-LAST:event_btn_cariMouseEntered
-
-    private void btn_cariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseExited
-        // TODO add your handling code here:
-        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconRefreshDefault));
-    }//GEN-LAST:event_btn_cariMouseExited
-
-    private void btn_cariMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMousePressed
-        // TODO add your handling code here:
-        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconRefreshPress));
-    }//GEN-LAST:event_btn_cariMousePressed
-
-    private void btn_cariMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseReleased
-        // TODO add your handling code here:
-        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
-        btn_cari.setIcon(new ImageIcon(iconRefreshHover));
-    }//GEN-LAST:event_btn_cariMouseReleased
-
     private void btn_tambahkanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahkanMouseReleased
         // TODO add your handling code here:
         Image iconTambahkanHover = new ImageIcon(this.getClass().getResource("/img/Button tambahkan hover.png")).getImage();
@@ -1158,7 +1131,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_barang;
-    private javax.swing.JLabel btn_cari;
     private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_karyawan;
     private javax.swing.JLabel btn_konfirmasi;
@@ -1172,7 +1144,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel btn_transaksiBeli;
     private javax.swing.JLabel cancel_search;
-    private combo_suggestion.ComboBoxSuggestion comboBoxSuggestion1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1187,9 +1158,11 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -1213,6 +1186,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private main.PanelShadow panelShadow1;
@@ -1221,7 +1195,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     private main.PanelShadow panelShadow4;
     private main.PanelShadow panelShadow5;
     private main.PanelShadow panelShadow6;
-    private main.PanelShadow panelShadow7;
     private main.PanelShadow panelShadow8;
     private main.PanelShadow panelShadow9;
     private javaswingdev.swing.table.Table table1;
