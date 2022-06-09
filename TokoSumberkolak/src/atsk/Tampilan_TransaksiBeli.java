@@ -5,6 +5,7 @@
 package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
+import atsk.tJual.Tampilan_TransaksiJual;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;

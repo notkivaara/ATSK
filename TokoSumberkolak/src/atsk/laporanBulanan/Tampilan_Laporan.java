@@ -14,6 +14,7 @@ import atsk.Tampilan_RiwayatBeli;
 import atsk.Tampilan_TransaksiBeli;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -726,7 +727,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_cetakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cetakMouseClicked
         // TODO add your handling code here:
         try {
-            String report = "src/atsk/laporanBulanan/laporanBulanan.jasper";
+            InputStream report = getClass().getResourceAsStream("laporanBulanan.jasper");
                             HashMap hash = new HashMap();
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd H:m:s");
                             String tanggal1 = sdf.format(tanggalDate1.getDate());

@@ -58,7 +58,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         try {
             Statement st = (Statement) Config.configDB().createStatement();
             ResultSet rs = st.executeQuery("Select * from barang");
-
             while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("kd_brg"),
@@ -79,7 +78,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         }
 
     }
-
+    
     public void search() {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode barang");
@@ -115,11 +114,12 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                     rs.getString("waktu_penambahan"),});
                 barangTable.setModel(tbl);
 
-            }
+                }
 
         } catch (Exception e) {
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,7 +130,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        evaluatorArc2D1 = new org.jdesktop.swing.animation.timing.evaluators.EvaluatorArc2D();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -948,7 +947,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel btn_ubah;
     private javax.swing.JLabel cancel_search;
-    private org.jdesktop.swing.animation.timing.evaluators.EvaluatorArc2D evaluatorArc2D1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

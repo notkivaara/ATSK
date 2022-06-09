@@ -6,7 +6,10 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,16 +42,16 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodeBarang = new javax.swing.JTextField();
+        txt_kodepemasok = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txt_namaBarang = new javax.swing.JTextField();
+        txt_namapemasok = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_hargaJual = new javax.swing.JTextField();
+        txt_alamat = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_satuan = new javax.swing.JTextField();
+        txt_telp = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
@@ -108,14 +111,14 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
+        txt_kodepemasok.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_kodepemasok.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_kodepemasok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_kodeBarangActionPerformed(evt);
+                txt_kodepemasokActionPerformed(evt);
             }
         });
-        jPanel9.add(txt_kodeBarang);
+        jPanel9.add(txt_kodepemasok);
 
         jPanel8.add(jPanel9);
 
@@ -127,9 +130,9 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel10.add(jLabel7);
 
-        txt_namaBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_namaBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel10.add(txt_namaBarang);
+        txt_namapemasok.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_namapemasok.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel10.add(txt_namapemasok);
 
         jPanel8.add(jPanel10);
 
@@ -141,9 +144,14 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel12.add(txt_hargaJual);
+        txt_alamat.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_alamat.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_alamat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_alamatActionPerformed(evt);
+            }
+        });
+        jPanel12.add(txt_alamat);
 
         jPanel8.add(jPanel12);
 
@@ -155,9 +163,9 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_satuan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(txt_satuan);
+        txt_telp.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_telp.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(txt_telp);
 
         jPanel8.add(jPanel13);
 
@@ -188,6 +196,9 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
 
         btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
         btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_bersihkanMouseEntered(evt);
             }
@@ -205,6 +216,9 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
 
         btn_simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button simpan popup.png"))); // NOI18N
         btn_simpan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_simpanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_simpanMouseEntered(evt);
             }
@@ -253,9 +267,9 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         this.setLocation(xx-x, yy-y);
     }//GEN-LAST:event_formMouseDragged
 
-    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+    private void txt_kodepemasokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodepemasokActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+    }//GEN-LAST:event_txt_kodepemasokActionPerformed
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
@@ -333,6 +347,41 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
         Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
     }//GEN-LAST:event_btn_simpanMouseReleased
+
+    private void txt_alamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_alamatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_alamatActionPerformed
+
+    private void btn_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseClicked
+        String kodePemasok = txt_kodepemasok.getText();
+        String nama = txt_namapemasok.getText();
+        String alamat= txt_alamat.getText();
+        String telp = txt_telp.getText();
+        
+        
+        try {
+            String sql = "Update supplier set nama = '"
+                    + nama+"',alamat ='"
+                    + alamat+"',telp = '"
+                    + telp +"' where kd_supplier= '"
+                    +kodePemasok+"'";
+                   
+            Connection c = (Connection) Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            
+            pst.execute();
+            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+            this.setVisible(false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }//GEN-LAST:event_btn_simpanMouseClicked
+
+    private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
+    txt_namapemasok.setText("");
+    txt_alamat.setText("");
+    txt_telp.setText("");
+    }//GEN-LAST:event_btn_bersihkanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -450,9 +499,9 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private main.PanelShadow panelShadow1;
-    private javax.swing.JTextField txt_hargaJual;
-    private javax.swing.JTextField txt_kodeBarang;
-    private javax.swing.JTextField txt_namaBarang;
-    private javax.swing.JTextField txt_satuan;
+    public javax.swing.JTextField txt_alamat;
+    public javax.swing.JTextField txt_kodepemasok;
+    public javax.swing.JTextField txt_namapemasok;
+    public javax.swing.JTextField txt_telp;
     // End of variables declaration//GEN-END:variables
 }

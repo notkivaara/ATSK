@@ -5,13 +5,22 @@
 package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.JTableHeader;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import textfield.TextPrompt;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -19,14 +28,59 @@ import javax.swing.JTable;
  */
 public class Tampilan_RiwayatJual extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TampilanBarang
-     */
+static DefaultTableModel model;
+
     public Tampilan_RiwayatJual() {
         initComponents();
         table1.fixTable(jScrollPane3);
-
+        table();
+        tampildata();
     }
+    public void table(){
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("Kode Transaksi");
+        tbl.addColumn("Tanggal");
+        tbl.addColumn("Harga Total");
+        tbl.addColumn("Tunai");
+        tbl.addColumn("Kembalian");
+       
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select * from transaksi");
+            
+            while(rs.next()){
+                tbl.addRow(new Object[]{
+                    rs.getString("kd_transaksi"),
+                    rs.getString("tanggal"),
+                    rs.getString("harga_total"),
+                    rs.getString("tunai"),
+                    rs.getString("kembali")
+                        
+                });
+                table1.setModel(tbl);
+                
+                
+            }
+        } catch (Exception e) {
+        }
+     }
+    
+      public void tampildata(){
+        DefaultTableModel tbl = new DefaultTableModel();
+       
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("Select * from transaksi");
+            rs.next();
+                if(rs.last()){
+                int total=rs.getRow();
+                rs.beforeFirst();
+                txt_jumlahtransaksi.setText(Integer.toString(total));
+                }
+        } catch (Exception e) {
+        }
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,7 +116,7 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         panelShadow3 = new main.PanelShadow();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txt_jumlahTransaksi = new javax.swing.JTextField();
+        txt_jumlahtransaksi = new javax.swing.JTextField();
         panelShadow1 = new main.PanelShadow();
         tgl_riwayatBeli = new com.toedter.calendar.JDateChooser();
 
@@ -298,17 +352,17 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         jLabel3.setText("Jumlah Transaksi :");
         jPanel4.add(jLabel3);
 
-        txt_jumlahTransaksi.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txt_jumlahTransaksi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txt_jumlahTransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txt_jumlahTransaksi.setMinimumSize(new java.awt.Dimension(96, 42));
-        txt_jumlahTransaksi.setPreferredSize(new java.awt.Dimension(90, 42));
-        txt_jumlahTransaksi.addActionListener(new java.awt.event.ActionListener() {
+        txt_jumlahtransaksi.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txt_jumlahtransaksi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_jumlahtransaksi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txt_jumlahtransaksi.setMinimumSize(new java.awt.Dimension(96, 42));
+        txt_jumlahtransaksi.setPreferredSize(new java.awt.Dimension(90, 42));
+        txt_jumlahtransaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_jumlahTransaksiActionPerformed(evt);
+                txt_jumlahtransaksiActionPerformed(evt);
             }
         });
-        jPanel4.add(txt_jumlahTransaksi);
+        jPanel4.add(txt_jumlahtransaksi);
 
         panelShadow3.add(jPanel4);
 
@@ -323,6 +377,11 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         tgl_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
         tgl_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tgl_riwayatBeli.setPreferredSize(new java.awt.Dimension(260, 42));
+        tgl_riwayatBeli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tgl_riwayatBeliKeyReleased(evt);
+            }
+        });
         panelShadow1.add(tgl_riwayatBeli);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -466,9 +525,9 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_pengaturanMouseClicked
 
-    private void txt_jumlahTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_jumlahTransaksiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_jumlahTransaksiActionPerformed
+    private void txt_jumlahtransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_jumlahtransaksiActionPerformed
+    
+    }//GEN-LAST:event_txt_jumlahtransaksiActionPerformed
 
     private void btn_barangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseEntered
         // TODO add your handling code here:
@@ -525,6 +584,10 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_btn_transaksiMouseClicked
+
+    private void tgl_riwayatBeliKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tgl_riwayatBeliKeyReleased
+       
+    }//GEN-LAST:event_tgl_riwayatBeliKeyReleased
 
     /**
      * @param args the command line arguments
@@ -603,6 +666,6 @@ public class Tampilan_RiwayatJual extends javax.swing.JFrame {
     private main.PanelShadow panelShadow5;
     private javaswingdev.swing.table.Table table1;
     private com.toedter.calendar.JDateChooser tgl_riwayatBeli;
-    private javax.swing.JTextField txt_jumlahTransaksi;
+    private javax.swing.JTextField txt_jumlahtransaksi;
     // End of variables declaration//GEN-END:variables
 }
