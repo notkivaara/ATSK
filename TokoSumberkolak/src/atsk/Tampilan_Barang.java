@@ -77,11 +77,11 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         }
 
     }
-
+    
     public void search() {
         DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode barang");
-        tbl.addColumn("Nama barang");
+        tbl.addColumn("Kode Barang");
+        tbl.addColumn("Nama Barang");
         tbl.addColumn("Kategori");
         tbl.addColumn("Harga Beli");
         tbl.addColumn("Harga Jual");
@@ -100,23 +100,24 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(sql);
                 while (rs.next()) {
                     tbl.addRow(new Object[]{
-                        rs.getString("kd_brg"),
-                        rs.getString("nama_brg"),
-                        rs.getString("kategori"),
-                        rs.getString("hrg_beli_brg"),
-                        rs.getString("hrg_jual_brg"),
-                        rs.getString("satuan"),
-                        rs.getString("stock"),
-                        rs.getString("retur"),
-                        rs.getString("waktu_penambahan"),});
+                    rs.getString("kd_brg"),
+                    rs.getString("nama_brg"),
+                    rs.getString("kategori"),
+                    rs.getString("hrg_beli_brg"),
+                    rs.getString("hrg_jual_brg"),
+                    rs.getString("satuan"),
+                    rs.getString("stock"),
+                    rs.getString("retur"),
+                    rs.getString("waktu_penambahan"),});
                     barangTable.setModel(tbl);
                 
 
-            }
+                }
 
         } catch (Exception e) {
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
