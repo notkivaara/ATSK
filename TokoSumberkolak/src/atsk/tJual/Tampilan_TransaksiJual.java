@@ -1437,7 +1437,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     try {
-            InputStream report = getClass().getResourceAsStream("notaPenjualan.jasper");
+            InputStream report = getClass().getResourceAsStream("nota.jasper");
                             HashMap hash = new HashMap();
                             
                             hash.put("kode", txt_kodetransaksi.getText());
