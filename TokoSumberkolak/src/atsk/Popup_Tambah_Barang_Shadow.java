@@ -40,42 +40,58 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
 
         public void tambah(){
         String kode_barang = txt_kodeBarang.getText();
+        String kode_barcode = txt_kodeBarcode.getText();
         String nama = txt_namaBarang.getText();
         String kategori = kategoriCombo.getSelectedItem().toString();
-        String harga_beli = txt_hargaBeli.getText();
-        String harga_jual = txt_hargaJual.getText();
+        int harga_beli = Integer.parseInt(txt_hargaBeli.getText()) ;
+        int harga_jual = Integer.parseInt(txt_hargaJual.getText());
         String satuan = satuanCombo.getSelectedItem().toString();
-        String stock = txt_stok.getText();
-        String retur = txt_return.getText();
+        int stock = Integer.parseInt(txt_stok.getText());
+        int retur = Integer.parseInt(txt_return.getText());
+        int hasil = 0;
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String waktu = timestamp.toString();
         
         
-        try {
+            if (harga_jual < harga_beli) {
+               JOptionPane.showMessageDialog(this,"Masukkan harga jual dengan benar");
+            }
+            else{
+              try {
+                 hasil = stock - retur;
             String sql = "insert into barang values('"
                     + kode_barang +"','"
+                    + kode_barcode +"','"
                     + nama+"','"
                     + kategori+"','"
                     + harga_beli+"','"
                     + harga_jual+"','"
                     + satuan+"','"
-                    + stock+"','"
+                    + hasil+"','"
                     + retur+"','" 
                     + waktu+"')";
             Connection c = (Connection)Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             
+                  if (retur == 0) {
+                     JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang Tanpa Retur");
+                  }
+                  else{
+                      JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang Dengan Retur "+retur);
+                  }
             
-            JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Barang");
             
             this.setVisible(false);
-            Tampilan_Barang TB = new Tampilan_Barang();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,e.getMessage());
+            JOptionPane.showMessageDialog(this,"Gagal Memasukkan Data Barang");
         }
+            }
+
+
+            
+
     }
-        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,9 +107,12 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        txt_kodeBarang = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_kodeBarang = new javax.swing.JTextField();
+        txt_kodeBarcode = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txt_namaBarang = new javax.swing.JTextField();
@@ -163,13 +182,13 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel6.setText("Kode Barang");
-        jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
-        jPanel9.add(jLabel6);
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel14.setText("Kode Barang");
+        jLabel14.setPreferredSize(new java.awt.Dimension(230, 25));
+        jPanel17.add(jLabel14);
 
         txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
@@ -178,7 +197,26 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
                 txt_kodeBarangActionPerformed(evt);
             }
         });
-        jPanel9.add(txt_kodeBarang);
+        jPanel17.add(txt_kodeBarang);
+
+        jPanel8.add(jPanel17);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel6.setText("Kode Barcode");
+        jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
+        jPanel9.add(jLabel6);
+
+        txt_kodeBarcode.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_kodeBarcode.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_kodeBarcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_kodeBarcodeActionPerformed(evt);
+            }
+        });
+        jPanel9.add(txt_kodeBarcode);
 
         jPanel8.add(jPanel9);
 
@@ -362,10 +400,11 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         panelShadow1.add(jPanel1);
@@ -378,7 +417,7 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelShadow1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
         );
 
         pack();
@@ -397,9 +436,9 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
         y = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
-    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+    private void txt_kodeBarcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarcodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+    }//GEN-LAST:event_txt_kodeBarcodeActionPerformed
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
@@ -490,6 +529,7 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
 
     private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
         // TODO add your handling code here:
+        txt_kodeBarcode.setText("");
         txt_namaBarang.setText("");
         txt_hargaBeli.setText("");
         kategoriCombo.setSelectedItem("Alat Mandi");
@@ -645,6 +685,10 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_kategoriComboActionPerformed
 
+    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -696,6 +740,7 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -708,6 +753,7 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -718,6 +764,7 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
     private javax.swing.JTextField txt_hargaBeli;
     private javax.swing.JTextField txt_hargaJual;
     private javax.swing.JTextField txt_kodeBarang;
+    private javax.swing.JTextField txt_kodeBarcode;
     private javax.swing.JTextField txt_namaBarang;
     private javax.swing.JTextField txt_return;
     private javax.swing.JTextField txt_stok;

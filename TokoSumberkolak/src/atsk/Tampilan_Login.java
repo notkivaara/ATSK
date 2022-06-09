@@ -4,9 +4,15 @@
  */
 package atsk;
 
+import atsk.tJual.Tampilan_TransaksiJual_kasir;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import textfield.TextPrompt;
 
 /**
@@ -128,38 +134,60 @@ public class Tampilan_Login extends javax.swing.JFrame {
 
     private void btn_loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseEntered
         // TODO add your handling code here:
-        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
+        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/Button Login hover.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginHover));
     }//GEN-LAST:event_btn_loginMouseEntered
 
     private void btn_loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseExited
         // TODO add your handling code here:
-        Image iconLoginDefault = new ImageIcon(this.getClass().getResource("/img/button login.png")).getImage();
+        Image iconLoginDefault = new ImageIcon(this.getClass().getResource("/img/Button Login.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginDefault));
     }//GEN-LAST:event_btn_loginMouseExited
 
     private void btn_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMousePressed
         // TODO add your handling code here:
-        Image iconLoginPress = new ImageIcon(this.getClass().getResource("/img/button login press.png")).getImage();
+        Image iconLoginPress = new ImageIcon(this.getClass().getResource("/img/Button Login press.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginPress));
     }//GEN-LAST:event_btn_loginMousePressed
 
     private void btn_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseReleased
         // TODO add your handling code here:
-        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/button login hover.png")).getImage();
+        Image iconLoginHover = new ImageIcon(this.getClass().getResource("/img/Button Login hover.png")).getImage();
         btn_login.setIcon(new ImageIcon(iconLoginHover));
     }//GEN-LAST:event_btn_loginMouseReleased
 
     private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
         // TODO add your handling code here:
-        Tampilan_TransaksiJual_kasir jual = new Tampilan_TransaksiJual_kasir();
-        Tampilan_Barang barang = new Tampilan_Barang();
-        if (txt_username.getText().equals("admin") && txt_password.getText().equals("123")) {
-        barang.show();
-        } else if (txt_username.getText().equals("kasir") && txt_password.getText().equals("123")){
-            jual.show();
+        
+        try {
+           String sql =
+                    "SELECT username,password,role FROM akun WHERE username= '"+txt_username.getText()+"'AND password ='"+txt_password.getText()+"'";
+            Connection c = (Connection)Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+         if (rs.next()) {
+               String role = rs.getString("role");
+               Tampilan_TransaksiJual_kasir jual = new Tampilan_TransaksiJual_kasir();
+               Tampilan_Barang barang = new Tampilan_Barang();
+              
+               if(role.equals("Owner")){
+                  barang.show();
+                  JOptionPane.showMessageDialog(null, "Welcome Owner");
+                   dispose();
+               }else if(role.equals("Kasir")){
+                   jual.show();
+                   JOptionPane.showMessageDialog(null, "Welcome Kasir");
+                    dispose();
+               } 
+               } else {
+                JOptionPane.showMessageDialog(null, "User ID atau Password salah");
+                txt_username.setText("");
+                txt_password.setText("");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            
         }
-        dispose();
     }//GEN-LAST:event_btn_loginMouseClicked
 
     /**

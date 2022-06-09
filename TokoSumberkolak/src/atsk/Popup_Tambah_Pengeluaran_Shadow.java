@@ -6,7 +6,15 @@ package atsk;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,8 +29,73 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
     public Popup_Tambah_Pengeluaran_Shadow() {
         initComponents();
         setBackground(new Color(0,0,0,0));
+        autonumber();
+        txt_kdPengeluaran.setBackground(Color.gray);
+        txt_kdPengeluaran.setEditable(false);
+        date_tanggalBayar.setDateFormatString("yyyy-MM-dd");
     }
 
+        private void autonumber(){
+        try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_pengeluaran) as kd_pengeluaran FROM pengeluaran";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoFaktur = r.getString("kd_pengeluaran").substring(2);
+                String TR = "" +(Integer.parseInt(NoFaktur)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                txt_kdPengeluaran.setText("PE" + Nol + TR);
+            } else {
+                txt_kdPengeluaran.setText("PE0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+        public void tambah(){
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String kode_pengeluaran = txt_kdPengeluaran.getText();
+        String nama = txt_namaPengeluaran.getText();
+        String tanggal_bayar = sdf.format(date_tanggalBayar.getDate());
+        String bulan = bulanCombo.getSelectedItem().toString();
+        String tahun = txt_tahun.getText();
+        String total = txt_total.getText();
+
+        
+        try {
+            String sql = "insert into pengeluaran values ('"
+                    + kode_pengeluaran +"','"
+                    + nama+"','"
+                    + tanggal_bayar+"','"
+                    + bulan+"','"
+                    + tahun+"','"
+                    + total+"')";
+                    
+            Connection c = (Connection)Config.configDB();
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.execute();
+            
+            
+            JOptionPane.showMessageDialog(null,"Berhasil Menambahkan Pengeluaran");
+            
+          
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,22 +112,22 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txt_namaBarang1 = new javax.swing.JTextField();
+        txt_kdPengeluaran = new javax.swing.JTextField();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        txt_kodeBarang = new javax.swing.JTextField();
+        txt_namaPengeluaran = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        date_tanggalBayar = new com.toedter.calendar.JDateChooser();
         jPanel12 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txt_hargaJual = new javax.swing.JTextField();
+        bulanCombo = new combo_suggestion.ComboBoxSuggestion();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txt_satuan = new javax.swing.JTextField();
+        txt_tahun = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        txt_stok = new javax.swing.JTextField();
+        txt_total = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
@@ -111,9 +184,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel9.add(jLabel6);
 
-        txt_namaBarang1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_namaBarang1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel9.add(txt_namaBarang1);
+        txt_kdPengeluaran.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_kdPengeluaran.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel9.add(txt_kdPengeluaran);
 
         jPanel8.add(jPanel9);
 
@@ -125,14 +198,14 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jLabel13.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel16.add(jLabel13);
 
-        txt_kodeBarang.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_kodeBarang.setPreferredSize(new java.awt.Dimension(198, 34));
-        txt_kodeBarang.addActionListener(new java.awt.event.ActionListener() {
+        txt_namaPengeluaran.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_namaPengeluaran.setPreferredSize(new java.awt.Dimension(198, 34));
+        txt_namaPengeluaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_kodeBarangActionPerformed(evt);
+                txt_namaPengeluaranActionPerformed(evt);
             }
         });
-        jPanel16.add(txt_kodeBarang);
+        jPanel16.add(txt_namaPengeluaran);
 
         jPanel8.add(jPanel16);
 
@@ -144,10 +217,15 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jLabel8.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel11.add(jLabel8);
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jDateChooser1.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel11.add(jDateChooser1);
+        date_tanggalBayar.setBackground(new java.awt.Color(255, 255, 255));
+        date_tanggalBayar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        date_tanggalBayar.setPreferredSize(new java.awt.Dimension(198, 34));
+        date_tanggalBayar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                date_tanggalBayarMouseClicked(evt);
+            }
+        });
+        jPanel11.add(date_tanggalBayar);
 
         jPanel8.add(jPanel11);
 
@@ -159,9 +237,15 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jLabel9.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel12.add(jLabel9);
 
-        txt_hargaJual.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_hargaJual.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel12.add(txt_hargaJual);
+        bulanCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Pebruari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        bulanCombo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bulanCombo.setPreferredSize(new java.awt.Dimension(198, 34));
+        bulanCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bulanComboActionPerformed(evt);
+            }
+        });
+        jPanel12.add(bulanCombo);
 
         jPanel8.add(jPanel12);
 
@@ -173,9 +257,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
-        txt_satuan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_satuan.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel13.add(txt_satuan);
+        txt_tahun.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_tahun.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel13.add(txt_tahun);
 
         jPanel8.add(jPanel13);
 
@@ -187,9 +271,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         jLabel11.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel14.add(jLabel11);
 
-        txt_stok.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txt_stok.setPreferredSize(new java.awt.Dimension(198, 34));
-        jPanel14.add(txt_stok);
+        txt_total.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txt_total.setPreferredSize(new java.awt.Dimension(198, 34));
+        jPanel14.add(txt_total);
 
         jPanel8.add(jPanel14);
 
@@ -218,6 +302,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
 
         btn_bersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/button bersihkan popup.png"))); // NOI18N
         btn_bersihkan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_bersihkanMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_bersihkanMouseEntered(evt);
             }
@@ -235,6 +322,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
 
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button tambah popup.png"))); // NOI18N
         btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_tambahMouseEntered(evt);
             }
@@ -297,9 +387,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         this.setLocation(xx-x, yy-y);
     }//GEN-LAST:event_formMouseDragged
 
-    private void txt_kodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodeBarangActionPerformed
+    private void txt_namaPengeluaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_namaPengeluaranActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_kodeBarangActionPerformed
+    }//GEN-LAST:event_txt_namaPengeluaranActionPerformed
 
     private void btn_batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_batalMouseClicked
         // TODO add your handling code here:
@@ -378,6 +468,32 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
         btn_tambah.setIcon(new ImageIcon(iconTambahHover));
     }//GEN-LAST:event_btn_tambahMouseReleased
 
+    private void bulanComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulanComboActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bulanComboActionPerformed
+
+    private void date_tanggalBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_date_tanggalBayarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_date_tanggalBayarMouseClicked
+
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        // TODO add your handling code here:
+        tambah();
+        this.dispose();
+    }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
+        // TODO add your handling code here:
+        txt_kdPengeluaran.setText("");
+        txt_namaPengeluaran.setText("");
+        Date date = new Date();
+        date_tanggalBayar.setDate(date);
+        bulanCombo.setSelectedItem("Januari");
+        txt_tahun.setText("");
+        txt_total.setText("");
+    }//GEN-LAST:event_btn_bersihkanMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -432,7 +548,8 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
     private javax.swing.JLabel btn_batal;
     private javax.swing.JLabel btn_bersihkan;
     private javax.swing.JLabel btn_tambah;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private combo_suggestion.ComboBoxSuggestion bulanCombo;
+    private com.toedter.calendar.JDateChooser date_tanggalBayar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -451,10 +568,9 @@ public class Popup_Tambah_Pengeluaran_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private main.PanelShadow panelShadow1;
-    private javax.swing.JTextField txt_hargaJual;
-    private javax.swing.JTextField txt_kodeBarang;
-    private javax.swing.JTextField txt_namaBarang1;
-    private javax.swing.JTextField txt_satuan;
-    private javax.swing.JTextField txt_stok;
+    private javax.swing.JTextField txt_kdPengeluaran;
+    private javax.swing.JTextField txt_namaPengeluaran;
+    private javax.swing.JTextField txt_tahun;
+    private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }
