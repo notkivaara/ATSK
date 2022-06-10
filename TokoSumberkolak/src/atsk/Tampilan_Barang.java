@@ -157,7 +157,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_hapus = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        barangTable = new javaswingdev.swing.table.Table();
+        barangTable = new atsk.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -933,7 +933,7 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javaswingdev.swing.table.Table barangTable;
+    public atsk.Table barangTable;
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_karyawan;

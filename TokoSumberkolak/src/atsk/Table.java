@@ -1,8 +1,10 @@
-package javaswingdev.swing.table;
+package atsk;
 
 import java.awt.Color;
 import java.awt.Component;
 import javaswingdev.swing.scroll.ScrollBar;
+import javaswingdev.swing.table.TableHeader;
+import javaswingdev.swing.table.TableHeader;
 import javaswingdev.system.SystemColor;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;

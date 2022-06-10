@@ -3,11 +3,10 @@ package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
 
-package atsk.tJual;
 
 import atsk.Tampilan_Barang;
 import atsk.Tampilan_Karyawan;
-import atsk.Tampilan_Laporan;
+import atsk.laporanBulanan.Tampilan_Laporan;
 import atsk.Tampilan_Pemasok;
 import atsk.Tampilan_Pengaturan_kasir;
 import atsk.Tampilan_Pengeluaran;
@@ -105,14 +104,14 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         btn_konfirmasi = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane5 = new javax.swing.JScrollPane();
-        table3 = new javaswingdev.swing.table.Table();
+        table3 = new atsk.Table();
         panelShadow1 = new main.PanelShadow();
         jLabel13 = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         jLabel14 = new javax.swing.JLabel();
         panelShadow4 = new main.PanelShadow();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table2 = new javaswingdev.swing.table.Table();
+        table2 = new atsk.Table();
         jPanel19 = new javax.swing.JPanel();
         panelShadow6 = new main.PanelShadow();
         jLabel15 = new javax.swing.JLabel();
@@ -1211,8 +1210,8 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
     private main.PanelShadow panelShadow7;
     private main.PanelShadow panelShadow8;
     private main.PanelShadow panelShadow9;
-    private javaswingdev.swing.table.Table table2;
-    private javaswingdev.swing.table.Table table3;
+    private atsk.Table table2;
+    private atsk.Table table3;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

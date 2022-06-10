@@ -127,7 +127,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         txt_pendapatanBersih = new javax.swing.JTextField();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        pengeluaranTable = new javaswingdev.swing.table.Table();
+        pengeluaranTable = new atsk.Table();
         btn_cetak = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         tanggalDate1 = new com.toedter.calendar.JDateChooser();
@@ -820,7 +820,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
-    private javaswingdev.swing.table.Table pengeluaranTable;
+    private atsk.Table pengeluaranTable;
     private com.toedter.calendar.JDateChooser tanggalDate1;
     private com.toedter.calendar.JDateChooser tanggalDate2;
     private javax.swing.JTextField txt_pendapatanBersih;

@@ -55,7 +55,7 @@ public class Popup_Tinjau_Laporan_Shadow extends javax.swing.JFrame {
         btn_cancel = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new javaswingdev.swing.table.Table();
+        table1 = new atsk.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -398,7 +398,7 @@ public class Popup_Tinjau_Laporan_Shadow extends javax.swing.JFrame {
     private atsk.panelRound panelRound2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    private javaswingdev.swing.table.Table table1;
+    private atsk.Table table1;
     private javax.swing.JTextField txt_pendapatanKotor;
     private javax.swing.JTextField txt_pendapatanKotor1;
     private javax.swing.JTextField txt_pendapatanKotor2;

@@ -4,7 +4,7 @@
  */
 package atsk;
 
-import atsk.tJual.Tampilan_TransaksiJual_kasir;
+import atsk.Tampilan_TransaksiJual_kasir;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;

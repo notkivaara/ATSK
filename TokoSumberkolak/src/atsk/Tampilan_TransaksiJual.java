@@ -3,12 +3,10 @@ package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
 
-package atsk.tJual;
-
 import atsk.Config;
 import atsk.Tampilan_Barang;
 import atsk.Tampilan_Karyawan;
-import atsk.Tampilan_Laporan;
+import atsk.laporanBulanan.Tampilan_Laporan;
 import atsk.Tampilan_Pemasok;
 import atsk.Tampilan_Pengaturan;
 import atsk.Tampilan_Pengeluaran;
@@ -209,7 +207,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     }
 
     public void subtotal() {
-        int kuantitas, harga, subtotal;
+         int kuantitas, harga, subtotal;
 
         kuantitas = Integer.valueOf(txt_kuantitas.getText());
         harga = Integer.valueOf(txt_harga.getText());
@@ -317,14 +315,14 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         btn_konfirmasi = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabletransaksi = new javaswingdev.swing.table.Table();
+        Tabletransaksi = new atsk.Table();
         panelShadow1 = new main.PanelShadow();
         jLabel13 = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         jLabel14 = new javax.swing.JLabel();
         panelShadow4 = new main.PanelShadow();
         jScrollPane3 = new javax.swing.JScrollPane();
-        Tablebarang = new javaswingdev.swing.table.Table();
+        Tablebarang = new atsk.Table();
         jPanel19 = new javax.swing.JPanel();
         panelShadow6 = new main.PanelShadow();
         jLabel15 = new javax.swing.JLabel();
@@ -1394,28 +1392,28 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
 
     private void btn_konfirmasiMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_konfirmasiMouseEntered
         // TODO add your handling code here:
-        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/Button konfirmasi hover.png"))
+        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi hover.png"))
                 .getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiHover));
     }// GEN-LAST:event_btn_konfirmasiMouseEntered
 
     private void btn_konfirmasiMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_konfirmasiMouseExited
         // TODO add your handling code here:
-        Image iconKonfirmasiDefault = new ImageIcon(this.getClass().getResource("/img/Button konfirmasi.png"))
+        Image iconKonfirmasiDefault = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi.png"))
                 .getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiDefault));
     }// GEN-LAST:event_btn_konfirmasiMouseExited
 
     private void btn_konfirmasiMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_konfirmasiMousePressed
         // TODO add your handling code here:
-        Image iconKonfirmasiPressed = new ImageIcon(this.getClass().getResource("/img/Button konfirmasi press.png"))
+        Image iconKonfirmasiPressed = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi press.png"))
                 .getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiPressed));
     }// GEN-LAST:event_btn_konfirmasiMousePressed
 
     private void btn_konfirmasiMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_konfirmasiMouseReleased
         // TODO add your handling code here:
-        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/Button konfirmasi hover.png"))
+        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi hover.png"))
                 .getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiHover));
     }// GEN-LAST:event_btn_konfirmasiMouseReleased
@@ -1430,27 +1428,27 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
 
     private void btn_tambahkanMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_tambahkanMouseReleased
         // TODO add your handling code here:
-        Image iconTambahkanHover = new ImageIcon(this.getClass().getResource("/img/Button tambahkan hover.png"))
+        Image iconTambahkanHover = new ImageIcon(this.getClass().getResource("/img/Button Tambahkan hover.png"))
                 .getImage();
         btn_tambahkan.setIcon(new ImageIcon(iconTambahkanHover));
     }// GEN-LAST:event_btn_tambahkanMouseReleased
 
     private void btn_tambahkanMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_tambahkanMousePressed
         // TODO add your handling code here:
-        Image iconTambahkanPressed = new ImageIcon(this.getClass().getResource("/img/Button tambahkan press.png"))
+        Image iconTambahkanPressed = new ImageIcon(this.getClass().getResource("/img/Button Tambahkan press.png"))
                 .getImage();
         btn_tambahkan.setIcon(new ImageIcon(iconTambahkanPressed));
     }// GEN-LAST:event_btn_tambahkanMousePressed
 
     private void btn_tambahkanMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_tambahkanMouseExited
         // TODO add your handling code here:
-        Image iconTambahkanDefault = new ImageIcon(this.getClass().getResource("/img/Button tambahkan.png")).getImage();
+        Image iconTambahkanDefault = new ImageIcon(this.getClass().getResource("/img/Button Tambahkan.png")).getImage();
         btn_tambahkan.setIcon(new ImageIcon(iconTambahkanDefault));
     }// GEN-LAST:event_btn_tambahkanMouseExited
 
     private void btn_tambahkanMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btn_tambahkanMouseEntered
         // TODO add your handling code here:
-        Image iconTambahkanHover = new ImageIcon(this.getClass().getResource("/img/Button tambahkan hover.png"))
+        Image iconTambahkanHover = new ImageIcon(this.getClass().getResource("/img/Button Tambahkan hover.png"))
                 .getImage();
         btn_tambahkan.setIcon(new ImageIcon(iconTambahkanHover));
     }// GEN-LAST:event_btn_tambahkanMouseEntered
@@ -1711,8 +1709,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javaswingdev.swing.table.Table Tablebarang;
-    private javaswingdev.swing.table.Table Tabletransaksi;
+    private atsk.Table Tablebarang;
+    private atsk.Table Tabletransaksi;
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_karyawan;

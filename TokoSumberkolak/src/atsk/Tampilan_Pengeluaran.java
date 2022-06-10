@@ -160,7 +160,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         btn_cari = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        pengeluaranTable = new javaswingdev.swing.table.Table();
+        pengeluaranTable = new atsk.Table();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -898,7 +898,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    private javaswingdev.swing.table.Table pengeluaranTable;
+    private atsk.Table pengeluaranTable;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

@@ -129,7 +129,7 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
         btn_refresh = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javaswingdev.swing.table.Table();
+        jTable2 = new atsk.Table();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -867,7 +867,7 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
-    private javaswingdev.swing.table.Table jTable2;
+    private atsk.Table jTable2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private javax.swing.JTextField txt_cari;

@@ -5,7 +5,7 @@
 package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
-import atsk.tJual.Tampilan_TransaksiJual;
+import atsk.Tampilan_TransaksiJual;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -88,7 +88,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         btn_cari = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new javaswingdev.swing.table.Table();
+        table1 = new atsk.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -864,7 +864,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private main.PanelShadow panelShadow3;
     private main.PanelShadow panelShadow4;
     private main.PanelShadow panelShadow5;
-    private javaswingdev.swing.table.Table table1;
+    private atsk.Table table1;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

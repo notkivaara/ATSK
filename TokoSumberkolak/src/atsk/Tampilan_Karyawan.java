@@ -122,7 +122,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         btn_hapus = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tb_karyawan = new javaswingdev.swing.table.Table();
+        tb_karyawan = new atsk.Table();
         jPanel8 = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
         jLabel4 = new javax.swing.JLabel();
@@ -870,7 +870,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
-    public javaswingdev.swing.table.Table tb_karyawan;
+    public atsk.Table tb_karyawan;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

@@ -112,7 +112,7 @@ static DefaultTableModel model;
         btn_riwayatJual = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table1 = new javaswingdev.swing.table.Table();
+        table1 = new atsk.Table();
         panelShadow3 = new main.PanelShadow();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -664,7 +664,7 @@ static DefaultTableModel model;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
     private main.PanelShadow panelShadow5;
-    private javaswingdev.swing.table.Table table1;
+    private atsk.Table table1;
     private com.toedter.calendar.JDateChooser tgl_riwayatBeli;
     private javax.swing.JTextField txt_jumlahtransaksi;
     // End of variables declaration//GEN-END:variables
