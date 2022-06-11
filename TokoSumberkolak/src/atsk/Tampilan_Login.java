@@ -161,7 +161,7 @@ public class Tampilan_Login extends javax.swing.JFrame {
         
         try {
            String sql =
-                    "SELECT username,password,role FROM akun WHERE username= '"+txt_username.getText()+"'AND password ='"+txt_password.getText()+"'";
+                    "SELECT * FROM akun WHERE username= '"+txt_username.getText()+"'AND password ='"+txt_password.getText()+"'";
             Connection c = (Connection)Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
@@ -169,8 +169,10 @@ public class Tampilan_Login extends javax.swing.JFrame {
                String role = rs.getString("role");
                Tampilan_TransaksiJual_kasir jual = new Tampilan_TransaksiJual_kasir();
                Tampilan_Barang barang = new Tampilan_Barang();
-              
+               
                if(role.equals("Owner")){
+                   
+                  barang.passData(rs.getString("kd_akun"));
                   barang.show();
                   JOptionPane.showMessageDialog(null, "Welcome Owner");
                    dispose();
@@ -180,7 +182,7 @@ public class Tampilan_Login extends javax.swing.JFrame {
                     dispose();
                } 
                } else {
-                JOptionPane.showMessageDialog(null, "User ID atau Password salah");
+                JOptionPane.showMessageDialog(null, "Username atau Password Salah");
                 txt_username.setText("");
                 txt_password.setText("");
             }

@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -36,6 +37,9 @@ static DefaultTableModel model;
         table();
         tampildata();
     }
+    
+    
+    
     public void table(){
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode Transaksi");
@@ -581,7 +585,7 @@ static DefaultTableModel model;
         // TODO add your handling code here:
         Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
         transaksiBeli.show();
-        
+       
         dispose();
     }//GEN-LAST:event_btn_transaksiMouseClicked
 

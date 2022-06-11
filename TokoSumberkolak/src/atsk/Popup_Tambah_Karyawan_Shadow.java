@@ -7,6 +7,8 @@ package atsk;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -22,9 +24,40 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
     int x,y;
     public Popup_Tambah_Karyawan_Shadow() {
         initComponents();
+        autonumber();
+        kodeakun.setBackground(Color.gray);
         setBackground(new Color(0,0,0,0));
     }   
     
+    private void autonumber(){
+        try {
+            Connection c = (Connection) Config.configDB();
+            Statement s = c.createStatement();
+            String sql = "SELECT MAX(kd_akun) as kd_akun FROM akun";
+            ResultSet r = s.executeQuery(sql);
+            if (r.next()) {
+                String NoFaktur = r.getString("kd_akun").substring(2);
+                String TR = "" +(Integer.parseInt(NoFaktur)+1);
+                String Nol = "";
+
+                if(TR.length()==1)
+                {Nol = "000";}
+                else if(TR.length()==2)
+                {Nol = "00";}
+                else if(TR.length()==3)
+                {Nol = "0";}
+                else if(TR.length()==4)
+                {Nol = "";}
+                kodeakun.setText("KA" + Nol + TR);
+            } else {
+                kodeakun.setText("KA0001");
+            }
+            r.close();
+            s.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -353,7 +386,7 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_tambahMouseReleased
 
     private void btn_bersihkanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bersihkanMouseClicked
-        kodeakun.setText("");
+        
         namakaryawan.setText("");
         username.setText("");
         password.setText("");
@@ -364,7 +397,7 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
         try {
            
        String sql =
-                   "INSERT into akun VALUES ('"+kodeakun.getText() +"','"+namakaryawan.getText()+"','"+username.getText()+
+                   "INSERT into akun VALUES ('"+namakaryawan.getText()+"','"+username.getText()+
                    "','"+password.getText()+"','"+jabatan.getText()+"')";
        java.sql.Connection conn = (Connection) Config.configDB();
        java.sql.PreparedStatement pst = conn.prepareStatement(sql);

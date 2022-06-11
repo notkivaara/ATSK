@@ -244,6 +244,8 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         model.addColumn("Subtotal");
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1213,6 +1215,7 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
         pengaturan.show();
+        
 
         dispose();
     }// GEN-LAST:event_btn_pengaturanMouseClicked

@@ -14,7 +14,9 @@ import atsk.Tampilan_RiwayatBeli;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -48,196 +50,198 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         btn_pengeluaran.setVisible(false);
         btn_riwayat.setVisible(false);
         btn_laporan.setVisible(false);
+    }
 
+    
         
-        public void tanggal() {
-        long millis = System.currentTimeMillis();
-        Timestamp timestamp = new Timestamp(millis);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        String formatedStrDate = sdf.format(timestamp);
-        txt_tanggal.setText(formatedStrDate);
-    }
-
-    public void tablebarang() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Kode Barcode");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Harga Jual");
-
-        try {
-            Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select * from barang");
-
-            while (rs.next()) {
-                tbl.addRow(new Object[] {
-                        rs.getString("kd_brg"),
-                        rs.getString("kd_barcode"),
-                        rs.getString("nama_brg"),
-                        rs.getString("stock"),
-                        rs.getString("Satuan"),
-                        rs.getString("hrg_jual_brg")
-                });
-                Tablebarang.setModel(tbl);
-
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-
-    public void search() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Kode Barcode");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Harga Jual");
-
-        String cari = txt_cari.getText();
-
-        try {
-
-            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
-            Connection c = (Connection) Config.configDB();
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                tbl.addRow(new Object[] {
-                        rs.getString("kd_brg"),
-                        rs.getString("kd_barcode"),
-                        rs.getString("nama_brg"),
-                        rs.getString("stock"),
-                        rs.getString("Satuan"),
-                        rs.getString("hrg_jual_brg"), });
-                Tablebarang.setModel(tbl);
-
-            }
-
-        } catch (Exception e) {
-        }
-    }
-
-    private void autonumber() {
-        try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT * FROM transaksi ORDER BY kd_transaksi DESC";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String kd_transaksi = r.getString("kd_transaksi").substring(2);
-                String KD = "" + (Integer.parseInt(kd_transaksi) + 1);
-                String Nol = "";
-
-                if (KD.length() == 1) {
-                    Nol = "000";
-                } else if (KD.length() == 2) {
-                    Nol = "00";
-                } else if (KD.length() == 3) {
-                    Nol = "0";
-                } else if (KD.length() == 4) {
-                    Nol = "";
-                }
-                txt_kodetransaksi.setText("TR" + Nol + KD);
-            } else {
-                txt_kodetransaksi.setText("TR0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            System.out.println("autonumber error");
-        }
-    }
-
-    public void loadData() {
-        DefaultTableModel model = (DefaultTableModel) Tabletransaksi.getModel();
-        model.addRow(new Object[] {
-                txt_kodetransaksi.getText(),
-                txt_kodebarang.getText(),
-                txt_namabarang.getText(),
-                txt_kuantitas.getText(),
-                txt_subtotal.getText()
-
-        });
-    }
-
-    public void tabletransaksi() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Transaksi");
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Harga");
-        tbl.addColumn("Kuantitas");
-        tbl.addColumn("subtotal");
-    }
-
-    public void clear() {
-        txt_total.setText("0");
-        txt_tunai.setText("0");
-        txt_kembalian.setText("0");
-    }
-
-    public void clear2() {
-        txt_kodebarang.setText("");
-        txt_kodebarcode.setText("");
-        txt_namabarang.setText("");
-        txt_harga.setText("");
-        txt_kuantitas.setText("");
-    }
-
-    public void table_clear() {
-        DefaultTableModel model = (DefaultTableModel) Tabletransaksi.getModel();
-        model.setRowCount(0);
-    }
-
-    public void total() {
-        int total = 0;
-        for (int i = 0; i < Tabletransaksi.getRowCount(); i++) {
-            int subtotal = Integer.parseInt(Tabletransaksi.getValueAt(i, 4).toString());
-            total = total + subtotal;
-        }
-        txt_total.setText(String.valueOf(total));
-    }
-
-    public void subtotal() {
-         int kuantitas, harga, subtotal;
-
-        kuantitas = Integer.valueOf(txt_kuantitas.getText());
-        harga = Integer.valueOf(txt_harga.getText());
-
-        subtotal = kuantitas * harga;
-
-        txt_subtotal.setText(String.valueOf(subtotal));
-
-        loadData();
-        total();
-    }
-
-    public Tampilan_TransaksiJual() {
-        initComponents();
-        txt_subtotal.setVisible(false);
-        loadData();
-        tablebarang();
-        autonumber();
-        tanggal();
-        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        Tabletransaksi.fixTable(jScrollPane3);
-        Tablebarang.fixTable(jScrollPane1);
-
-        model = new DefaultTableModel();
-
-        Tabletransaksi.setModel(model);
-
-        model.addColumn("Kode Transaksi");
-        model.addColumn("Kode Barang");
-        model.addColumn("Nama Barang");
-        model.addColumn("Kuantitas");
-        model.addColumn("Subtotal");
-    }
+//        public void tanggal() {
+//        long millis = System.currentTimeMillis();
+//        Timestamp timestamp = new Timestamp(millis);
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//        String formatedStrDate = sdf.format(timestamp);
+//        txt_tanggal.setText(formatedStrDate);
+//    }
+//
+//    public void tablebarang() {
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Kode Barcode");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Stock");
+//        tbl.addColumn("Satuan");
+//        tbl.addColumn("Harga Jual");
+//
+//        try {
+//            Statement st = (Statement) Config.configDB().createStatement();
+//            ResultSet rs = st.executeQuery("Select * from barang");
+//
+//            while (rs.next()) {
+//                tbl.addRow(new Object[] {
+//                        rs.getString("kd_brg"),
+//                        rs.getString("kd_barcode"),
+//                        rs.getString("nama_brg"),
+//                        rs.getString("stock"),
+//                        rs.getString("Satuan"),
+//                        rs.getString("hrg_jual_brg")
+//                });
+//                Tablebarang.setModel(tbl);
+//
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+//    }
+//
+//    public void search() {
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Kode Barcode");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Stock");
+//        tbl.addColumn("Satuan");
+//        tbl.addColumn("Harga Jual");
+//
+//        String cari = txt_cari.getText();
+//
+//        try {
+//
+//            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
+//            Connection c = (Connection) Config.configDB();
+//            Statement st = c.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            while (rs.next()) {
+//                tbl.addRow(new Object[] {
+//                        rs.getString("kd_brg"),
+//                        rs.getString("kd_barcode"),
+//                        rs.getString("nama_brg"),
+//                        rs.getString("stock"),
+//                        rs.getString("Satuan"),
+//                        rs.getString("hrg_jual_brg"), });
+//                Tablebarang.setModel(tbl);
+//
+//            }
+//
+//        } catch (Exception e) {
+//        }
+//    }
+//
+//    private void autonumber() {
+//        try {
+//            Connection c = (Connection) Config.configDB();
+//            Statement s = c.createStatement();
+//            String sql = "SELECT * FROM transaksi ORDER BY kd_transaksi DESC";
+//            ResultSet r = s.executeQuery(sql);
+//            if (r.next()) {
+//                String kd_transaksi = r.getString("kd_transaksi").substring(2);
+//                String KD = "" + (Integer.parseInt(kd_transaksi) + 1);
+//                String Nol = "";
+//
+//                if (KD.length() == 1) {
+//                    Nol = "000";
+//                } else if (KD.length() == 2) {
+//                    Nol = "00";
+//                } else if (KD.length() == 3) {
+//                    Nol = "0";
+//                } else if (KD.length() == 4) {
+//                    Nol = "";
+//                }
+//                txt_kodetransaksi.setText("TR" + Nol + KD);
+//            } else {
+//                txt_kodetransaksi.setText("TR0001");
+//            }
+//            r.close();
+//            s.close();
+//        } catch (Exception e) {
+//            System.out.println("autonumber error");
+//        }
+//    }
+//
+//    public void loadData() {
+//        DefaultTableModel model = (DefaultTableModel) Tabletransaksi.getModel();
+//        model.addRow(new Object[] {
+//                txt_kodetransaksi.getText(),
+//                txt_kodebarang.getText(),
+//                txt_namabarang.getText(),
+//                txt_kuantitas.getText(),
+//                txt_subtotal.getText()
+//
+//        });
+//    }
+//
+//    public void tabletransaksi() {
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Transaksi");
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Harga");
+//        tbl.addColumn("Kuantitas");
+//        tbl.addColumn("subtotal");
+//    }
+//
+//    public void clear() {
+//        txt_total.setText("0");
+//        txt_tunai.setText("0");
+//        txt_kembalian.setText("0");
+//    }
+//
+//    public void clear2() {
+//        txt_kodebarang.setText("");
+//        txt_kodebarcode.setText("");
+//        txt_namabarang.setText("");
+//        txt_harga.setText("");
+//        txt_kuantitas.setText("");
+//    }
+//
+//    public void table_clear() {
+//        DefaultTableModel model = (DefaultTableModel) Tabletransaksi.getModel();
+//        model.setRowCount(0);
+//    }
+//
+//    public void total() {
+//        int total = 0;
+//        for (int i = 0; i < Tabletransaksi.getRowCount(); i++) {
+//            int subtotal = Integer.parseInt(Tabletransaksi.getValueAt(i, 4).toString());
+//            total = total + subtotal;
+//        }
+//        txt_total.setText(String.valueOf(total));
+//    }
+//
+//    public void subtotal() {
+//         int kuantitas, harga, subtotal;
+//
+//        kuantitas = Integer.valueOf(txt_kuantitas.getText());
+//        harga = Integer.valueOf(txt_harga.getText());
+//
+//        subtotal = kuantitas * harga;
+//
+//        txt_subtotal.setText(String.valueOf(subtotal));
+//
+//        loadData();
+//        total();
+//    }
+//
+//    public Tampilan_TransaksiJual() {
+//        initComponents();
+//        txt_subtotal.setVisible(false);
+//        loadData();
+//        tablebarang();
+//        autonumber();
+//        tanggal();
+//        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
+//        Tabletransaksi.fixTable(jScrollPane3);
+//        Tablebarang.fixTable(jScrollPane1);
+//
+//        model = new DefaultTableModel();
+//
+//        Tabletransaksi.setModel(model);
+//
+//        model.addColumn("Kode Transaksi");
+//        model.addColumn("Kode Barang");
+//        model.addColumn("Nama Barang");
+//        model.addColumn("Kuantitas");
+//        model.addColumn("Subtotal");
+//    }
     
 
 

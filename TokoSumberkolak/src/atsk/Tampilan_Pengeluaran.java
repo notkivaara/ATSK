@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +40,8 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         table();
 
     }
+    
+    
    public void table() {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode Pengeluaran");
@@ -724,7 +727,7 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
     private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
-        // TODO add your handling code here:
+       
         Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
         pengaturan.show();
         

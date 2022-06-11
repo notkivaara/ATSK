@@ -41,16 +41,16 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         String kodeAkun = kodeakun.getText();
         String namaKaryawan = namakaryawan.getText();
         String Username = username.getText();
-        String Password = password.getText();
+        
         String Jabatan = jabatan.getText();
         
     try {
-        String sql = "UPDATE akun SET kd_akun='"+kodeAkun+"'"+ ",nama='"+namaKaryawan+"',username ='"+Username+"',password ='"+Password+"',role ='"+Jabatan+"' WHERE kd_akun ='"+kodeLama+"'";
+        String sql = "UPDATE akun SET kd_akun='"+kodeAkun+"'"+ ",nama='"+namaKaryawan+"',username ='"+Username+"',role ='"+Jabatan+"' WHERE kd_akun ='"+kodeLama+"'";
             Connection c = (Connection) Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
     
-            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+            JOptionPane.showMessageDialog(null,"Berhasil ubah data karyawan");
     } catch (Exception e){
         JOptionPane.showMessageDialog(null, e.getMessage());
     }
@@ -387,7 +387,7 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         
         namakaryawan.setText("");
         username.setText("");
-        password.setText("");
+       
         jabatan.setText("");
     }//GEN-LAST:event_btn_bersihkanMouseClicked
 
