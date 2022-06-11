@@ -39,8 +39,8 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
     public Tampilan_TransaksiJual_kasir() {
         initComponents();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        table2.fixTable(jScrollPane3);
-        table3.fixTable(jScrollPane5);
+        Tablebarang.fixTable(jScrollPane3);
+        Tabletransaksi.fixTable(jScrollPane5);
         cancel_search.setVisible(false);
         btn_barang.setVisible(false);
         btn_pemasok.setVisible(false);
@@ -48,197 +48,197 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         btn_pengeluaran.setVisible(false);
         btn_riwayat.setVisible(false);
         btn_laporan.setVisible(false);
-
-        
-        public void tanggal() {
-        long millis = System.currentTimeMillis();
-        Timestamp timestamp = new Timestamp(millis);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        String formatedStrDate = sdf.format(timestamp);
-        txt_tanggal.setText(formatedStrDate);
     }
-
-    public void tablebarang() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Kode Barcode");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Harga Jual");
-
-        try {
-            Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select * from barang");
-
-            while (rs.next()) {
-                tbl.addRow(new Object[] {
-                        rs.getString("kd_brg"),
-                        rs.getString("kd_barcode"),
-                        rs.getString("nama_brg"),
-                        rs.getString("stock"),
-                        rs.getString("Satuan"),
-                        rs.getString("hrg_jual_brg")
-                });
-                Tablebarang.setModel(tbl);
-
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }
-
-    public void search() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Kode Barcode");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Harga Jual");
-
-        String cari = txt_cari.getText();
-
-        try {
-
-            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
-            Connection c = (Connection) Config.configDB();
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                tbl.addRow(new Object[] {
-                        rs.getString("kd_brg"),
-                        rs.getString("kd_barcode"),
-                        rs.getString("nama_brg"),
-                        rs.getString("stock"),
-                        rs.getString("Satuan"),
-                        rs.getString("hrg_jual_brg"), });
-                Tablebarang.setModel(tbl);
-
-            }
-
-        } catch (Exception e) {
-        }
-    }
-
-    private void autonumber() {
-        try {
-            Connection c = (Connection) Config.configDB();
-            Statement s = c.createStatement();
-            String sql = "SELECT * FROM transaksi ORDER BY kd_transaksi DESC";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                String kd_transaksi = r.getString("kd_transaksi").substring(2);
-                String KD = "" + (Integer.parseInt(kd_transaksi) + 1);
-                String Nol = "";
-
-                if (KD.length() == 1) {
-                    Nol = "000";
-                } else if (KD.length() == 2) {
-                    Nol = "00";
-                } else if (KD.length() == 3) {
-                    Nol = "0";
-                } else if (KD.length() == 4) {
-                    Nol = "";
-                }
-                txt_kodetransaksi.setText("TR" + Nol + KD);
-            } else {
-                txt_kodetransaksi.setText("TR0001");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            System.out.println("autonumber error");
-        }
-    }
-
-    public void loadData() {
-        DefaultTableModel model = (DefaultTableModel) Tabletransaksi.getModel();
-        model.addRow(new Object[] {
-                txt_kodetransaksi.getText(),
-                txt_kodebarang.getText(),
-                txt_namabarang.getText(),
-                txt_kuantitas.getText(),
-                txt_subtotal.getText()
-
-        });
-    }
-
-    public void tabletransaksi() {
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Transaksi");
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Nama Barang");
-        tbl.addColumn("Harga");
-        tbl.addColumn("Kuantitas");
-        tbl.addColumn("subtotal");
-    }
-
-    public void clear() {
-        txt_total.setText("0");
-        txt_tunai.setText("0");
-        txt_kembalian.setText("0");
-    }
-
-    public void clear2() {
-        txt_kodebarang.setText("");
-        txt_kodebarcode.setText("");
-        txt_namabarang.setText("");
-        txt_harga.setText("");
-        txt_kuantitas.setText("");
-    }
-
-    public void table_clear() {
-        DefaultTableModel model = (DefaultTableModel) Tabletransaksi.getModel();
-        model.setRowCount(0);
-    }
-
-    public void total() {
-        int total = 0;
-        for (int i = 0; i < Tabletransaksi.getRowCount(); i++) {
-            int subtotal = Integer.parseInt(Tabletransaksi.getValueAt(i, 4).toString());
-            total = total + subtotal;
-        }
-        txt_total.setText(String.valueOf(total));
-    }
-
-    public void subtotal() {
-         int kuantitas, harga, subtotal;
-
-        kuantitas = Integer.valueOf(txt_kuantitas.getText());
-        harga = Integer.valueOf(txt_harga.getText());
-
-        subtotal = kuantitas * harga;
-
-        txt_subtotal.setText(String.valueOf(subtotal));
-
-        loadData();
-        total();
-    }
-
-    public Tampilan_TransaksiJual() {
-        initComponents();
-        txt_subtotal.setVisible(false);
-        loadData();
-        tablebarang();
-        autonumber();
-        tanggal();
-        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        Tabletransaksi.fixTable(jScrollPane3);
-        Tablebarang.fixTable(jScrollPane1);
-
-        model = new DefaultTableModel();
-
-        Tabletransaksi.setModel(model);
-
-        model.addColumn("Kode Transaksi");
-        model.addColumn("Kode Barang");
-        model.addColumn("Nama Barang");
-        model.addColumn("Kuantitas");
-        model.addColumn("Subtotal");
-    }
-    
+//        
+//        public void tanggal() {
+//        long millis = System.currentTimeMillis();
+//        Timestamp timestamp = new Timestamp(millis);
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+//        String formatedStrDate = sdf.format(timestamp);
+//        txt_tanggal.setText(formatedStrDate);
+//    }
+//
+//    public void tablebarang() {
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Kode Barcode");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Stock");
+//        tbl.addColumn("Satuan");
+//        tbl.addColumn("Harga Jual");
+//
+//        try {
+//            Statement st = (Statement) Config.configDB().createStatement();
+//            ResultSet rs = st.executeQuery("Select * from barang");
+//
+//            while (rs.next()) {
+//                tbl.addRow(new Object[] {
+//                        rs.getString("kd_brg"),
+//                        rs.getString("kd_barcode"),
+//                        rs.getString("nama_brg"),
+//                        rs.getString("stock"),
+//                        rs.getString("Satuan"),
+//                        rs.getString("hrg_jual_brg")
+//                });
+//                Tablebarang.setModel(tbl);
+//
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+//    }
+//
+//    public void search() {
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Kode Barcode");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Stock");
+//        tbl.addColumn("Satuan");
+//        tbl.addColumn("Harga Jual");
+//
+//        String cari = txt_cari.getText();
+//
+//        try {
+//
+//            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
+//            Connection c = (Connection) Config.configDB();
+//            Statement st = c.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            while (rs.next()) {
+//                tbl.addRow(new Object[] {
+//                        rs.getString("kd_brg"),
+//                        rs.getString("kd_barcode"),
+//                        rs.getString("nama_brg"),
+//                        rs.getString("stock"),
+//                        rs.getString("Satuan"),
+//                        rs.getString("hrg_jual_brg"), });
+//                Tablebarang.setModel(tbl);
+//
+//            }
+//
+//        } catch (Exception e) {
+//        }
+//    }
+//
+//    private void autonumber() {
+//        try {
+//            Connection c = (Connection) Config.configDB();
+//            Statement s = c.createStatement();
+//            String sql = "SELECT * FROM transaksi ORDER BY kd_transaksi DESC";
+//            ResultSet r = s.executeQuery(sql);
+//            if (r.next()) {
+//                String kd_transaksi = r.getString("kd_transaksi").substring(2);
+//                String KD = "" + (Integer.parseInt(kd_transaksi) + 1);
+//                String Nol = "";
+//
+//                if (KD.length() == 1) {
+//                    Nol = "000";
+//                } else if (KD.length() == 2) {
+//                    Nol = "00";
+//                } else if (KD.length() == 3) {
+//                    Nol = "0";
+//                } else if (KD.length() == 4) {
+//                    Nol = "";
+//                }
+//                txt_kodetransaksi.setText("TR" + Nol + KD);
+//            } else {
+//                txt_kodetransaksi.setText("TR0001");
+//            }
+//            r.close();
+//            s.close();
+//        } catch (Exception e) {
+//            System.out.println("autonumber error");
+//        }
+//    }
+//
+//    public void loadData() {
+//        DefaultTableModel model = (DefaultTableModel) Tablebarang.getModel();
+//        model.addRow(new Object[] {
+//                txt_kodetransaksi.getText(),
+//                txt_kodebarang.getText(),
+//                txt_namabarang.getText(),
+//                txt_kuantitas.getText(),
+//                txt_subtotal.getText()
+//
+//        });
+//    }
+//
+//    public void tabletransaksi() {
+//        DefaultTableModel tbl = new DefaultTableModel();
+//        tbl.addColumn("Kode Transaksi");
+//        tbl.addColumn("Kode Barang");
+//        tbl.addColumn("Nama Barang");
+//        tbl.addColumn("Harga");
+//        tbl.addColumn("Kuantitas");
+//        tbl.addColumn("subtotal");
+//    }
+//
+//    public void clear() {
+//        txt_total.setText("0");
+//        txt_tunai.setText("0");
+//        txt_kembalian.setText("0");
+//    }
+//
+//    public void clear2() {
+//        txt_kodebarang.setText("");
+//        txt_kodebarcode.setText("");
+//        txt_namabarang.setText("");
+//        txt_harga.setText("");
+//        txt_kuantitas.setText("");
+//    }
+//
+//    public void table_clear() {
+//        DefaultTableModel model = (DefaultTableModel) Tablebarang.getModel();
+//        model.setRowCount(0);
+//    }
+//
+//    public void total() {
+//        int total = 0;
+//        for (int i = 0; i < Tablebarang.getRowCount(); i++) {
+//            int subtotal = Integer.parseInt(Tablebarang.getValueAt(i, 4).toString());
+//            total = total + subtotal;
+//        }
+//        txt_total.setText(String.valueOf(total));
+//    }
+//
+//    public void subtotal() {
+//         int kuantitas, harga, subtotal;
+//
+//        kuantitas = Integer.valueOf(txt_kuantitas.getText());
+//        harga = Integer.valueOf(txt_harga.getText());
+//
+//        subtotal = kuantitas * harga;
+//
+//        txt_subtotal.setText(String.valueOf(subtotal));
+//
+//        loadData();
+//        total();
+//    }
+//
+//    public Tampilan_TransaksiJual() {
+//        initComponents();
+//        txt_subtotal.setVisible(false);
+//        loadData();
+//        tablebarang();
+//        autonumber();
+//        tanggal();
+//        TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
+//        Tablebarang.fixTable(jScrollPane3);
+//        Tablebarang.fixTable(jScrollPane1);
+//
+//        DefaultTableModel model = new DefaultTableModel();
+//
+//        Tablebarang.setModel(model);
+//
+//        model.addColumn("Kode Transaksi");
+//        model.addColumn("Kode Barang");
+//        model.addColumn("Nama Barang");
+//        model.addColumn("Kuantitas");
+//        model.addColumn("Subtotal");
+//    }
+//    
 
 
     /**
@@ -304,14 +304,14 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         btn_konfirmasi = new javax.swing.JLabel();
         panelShadow2 = new main.PanelShadow();
         jScrollPane5 = new javax.swing.JScrollPane();
-        table3 = new atsk.Table();
+        Tabletransaksi = new atsk.Table();
         panelShadow1 = new main.PanelShadow();
         jLabel13 = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         jLabel14 = new javax.swing.JLabel();
         panelShadow4 = new main.PanelShadow();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table2 = new atsk.Table();
+        Tablebarang = new atsk.Table();
         jPanel19 = new javax.swing.JPanel();
         panelShadow6 = new main.PanelShadow();
         jLabel15 = new javax.swing.JLabel();
@@ -523,7 +523,7 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         jPanel12.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel9.setText("Kode Barang");
+        jLabel9.setText("Kode  Barcode");
         jLabel9.setPreferredSize(new java.awt.Dimension(145, 34));
         jPanel12.add(jLabel9);
 
@@ -591,19 +591,19 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         panelShadow8Layout.setHorizontalGroup(
             panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelShadow8Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btn_tambahkan)
+                .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelShadow8Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btn_tambahkan))
+                    .addGroup(panelShadow8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelShadow8Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panelShadow8Layout.setVerticalGroup(
             panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,19 +613,16 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_tambahkan)
                 .addContainerGap())
-            .addGroup(panelShadow8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelShadow8Layout.createSequentialGroup()
-                    .addGap(0, 139, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 139, Short.MAX_VALUE)))
         );
 
         panelShadow9.setBackground(new java.awt.Color(255, 255, 255));
@@ -773,7 +770,7 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
 
         jScrollPane5.setPreferredSize(new java.awt.Dimension(502, 225));
 
-        table3.setModel(new javax.swing.table.DefaultTableModel(
+        Tabletransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -781,8 +778,8 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
                 "Kode Transaksi", "Kode Barang", "Nama Barang", "Kuantitas", "Subtotal"
             }
         ));
-        table3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jScrollPane5.setViewportView(table3);
+        Tabletransaksi.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane5.setViewportView(Tabletransaksi);
 
         panelShadow2.add(jScrollPane5);
 
@@ -843,7 +840,7 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
         jScrollPane3.setBorder(null);
         jScrollPane3.setPreferredSize(new java.awt.Dimension(422, 254));
 
-        table2.setModel(new javax.swing.table.DefaultTableModel(
+        Tablebarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -851,8 +848,8 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Stok", "Satuan", "Harga"
             }
         ));
-        table2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jScrollPane3.setViewportView(table2);
+        Tablebarang.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane3.setViewportView(Tablebarang);
 
         panelShadow4.add(jScrollPane3);
 
@@ -968,7 +965,7 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                                         .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(panelShadow8, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
+                                        .addComponent(panelShadow8, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(panelShadow2, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
@@ -1379,6 +1376,8 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private atsk.Table Tablebarang;
+    private atsk.Table Tabletransaksi;
     private javax.swing.JLabel btn_barang;
     private javax.swing.JLabel btn_cari;
     private javax.swing.JLabel btn_hapus;
@@ -1435,8 +1434,6 @@ public class Tampilan_TransaksiJual_kasir extends javax.swing.JFrame {
     private main.PanelShadow panelShadow7;
     private main.PanelShadow panelShadow8;
     private main.PanelShadow panelShadow9;
-    private atsk.Table table2;
-    private atsk.Table table3;
     private javax.swing.JTextField txt_cari;
     public javax.swing.JTextField txt_harga;
     public javax.swing.JTextField txt_kembalian;
