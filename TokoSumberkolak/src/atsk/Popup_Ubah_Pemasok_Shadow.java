@@ -370,7 +370,7 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
             PreparedStatement pst = c.prepareStatement(sql);
             
             pst.execute();
-            JOptionPane.showMessageDialog(null,"Berhasil ubah barang");
+            JOptionPane.showMessageDialog(null,"Berhasil ubah pemasok");
             this.setVisible(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
