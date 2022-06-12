@@ -974,6 +974,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
 
     private void btn_cetakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cetakMouseClicked
         // TODO add your handling code here:
+        
         try {
             InputStream report = getClass().getResourceAsStream("laporanBulanan.jasper");
                             HashMap hash = new HashMap();
@@ -984,6 +985,8 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                             hash.put("tanggal_awal", tanggal1);
                             hash.put("tanggal_akhir", tanggal2);
                             hash.put("pendapatan_kotor", txt_pendapatanKotor.getText());
+                            hash.put("pengeluaran", txt_pengeluaran.getText());
+                            hash.put("pendapatan_bersih",txt_pendapatanBersih.getText());
                             
                             
                             
