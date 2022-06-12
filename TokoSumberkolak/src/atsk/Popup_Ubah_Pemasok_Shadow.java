@@ -24,6 +24,8 @@ public class Popup_Ubah_Pemasok_Shadow extends javax.swing.JFrame {
     public Popup_Ubah_Pemasok_Shadow() {
         initComponents();
         setBackground(new Color(0,0,0,0));
+        txt_kodepemasok.setBackground(Color.GRAY);
+        txt_kodepemasok.setEditable(false);
     }
 
     /**
