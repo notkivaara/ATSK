@@ -33,7 +33,8 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     
      public Tampilan_Karyawan() {
         initComponents();
-        table();
+        table tabel = new table();
+        tabel.table();
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Karyawan", txt_cari);
         tb_karyawan.fixTable(jScrollPane2);
         cancel_search.setVisible(false);
@@ -59,8 +60,11 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         }
     }
      
-    public void table() {
-    DefaultTableModel tbl = new DefaultTableModel();
+    public class table extends Tampilan_Barang{
+        
+        @Override    
+        public void table() {
+        DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode Akun");
         tbl.addColumn("Nama Karyawan");
         tbl.addColumn("Username");
@@ -84,6 +88,8 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, e.getMessage());
         }
         }
+    }
+    
     
     public void search() {
         DefaultTableModel tbl = new DefaultTableModel();
@@ -725,7 +731,6 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         String Jabatan = tb_karyawan.getModel().getValueAt(row, 3).toString() ;
         
         Popup_Ubah_Karyawan_Shadow ubahKaryawan = new Popup_Ubah_Karyawan_Shadow();
-        ubahKaryawan.setKodeLama(Kodeakun);
         ubahKaryawan.kodeakun.setText(Kodeakun);
         ubahKaryawan.namakaryawan.setText(namaKaryawan);
         ubahKaryawan.username.setText(username);
@@ -1008,7 +1013,8 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
         // TODO add your handling code here:
         if(txt_cari.getText().equals("")) {
-            table();
+            table tabel = new table();
+            tabel.table();
             cancel_search.setVisible(false);
         } else {
             search();
@@ -1030,7 +1036,8 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Berhasil Menghapus Karyawan");
-            table();
+            table tabel = new table();
+        tabel.table();
             }
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -1038,7 +1045,8 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_hapusMouseClicked
     
     private void btn_refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseClicked
-       table();
+      table tabel = new table();
+        tabel.table();
     }//GEN-LAST:event_btn_refreshMouseClicked
 
     /**

@@ -61,7 +61,6 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         }
     }
     
-
     public void table() {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode Barang");

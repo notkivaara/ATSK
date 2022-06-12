@@ -31,11 +31,7 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         kodeakun.setEditable(false);
         password.setBackground(Color.gray);
     }
-    public static String kodeLama;
 
-    public static void setKodeLama(String kodeLama) {
-        Popup_Ubah_Barang_Shadow.kodeLama = kodeLama;
-    }
     public void simpan() {
         
         String kodeAkun = kodeakun.getText();
@@ -45,7 +41,7 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         String Jabatan = jabatan.getSelectedItem().toString();
         
     try {
-        String sql = "UPDATE akun SET kd_akun='"+kodeAkun+"'"+ ",nama='"+namaKaryawan+"',username ='"+Username+"',role ='"+Jabatan+"' WHERE kd_akun ='"+kodeLama+"'";
+        String sql = "UPDATE akun SET nama='"+namaKaryawan+"',username ='"+Username+"',role ='"+Jabatan+"' WHERE kd_akun ='"+kodeAkun+"'";
             Connection c = (Connection) Config.configDB();
             PreparedStatement pst = c.prepareStatement(sql);
             pst.execute();

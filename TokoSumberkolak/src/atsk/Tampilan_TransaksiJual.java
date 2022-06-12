@@ -204,7 +204,6 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
         txt_tunai.setText("0");
         txt_kembalian.setText("0");
     }
-
     public void clear2() {
         txt_kodebarang.setText("");
         txt_kodebarcode.setText("");

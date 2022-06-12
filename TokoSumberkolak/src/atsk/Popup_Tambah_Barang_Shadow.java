@@ -520,7 +520,6 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         // TODO add your handling code here:
         tambah();
-        brg.table();
         brg.getContentPane().invalidate();
         brg.getContentPane().validate();
         brg.getContentPane().repaint();
