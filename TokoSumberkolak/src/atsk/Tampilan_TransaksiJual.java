@@ -1747,10 +1747,12 @@ public class Tampilan_TransaksiJual extends javax.swing.JFrame {
                         + Tabletransaksi.getValueAt(i, 3) + "')";
                 PreparedStatement p = c.prepareStatement(sql);
                 p.executeUpdate();
+                
                 p.close();
 
-                JOptionPane.showMessageDialog(this, "Transaksi Berhasil Disimpan");
+                
             }
+            JOptionPane.showMessageDialog(this, "Transaksi Berhasil Disimpan");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

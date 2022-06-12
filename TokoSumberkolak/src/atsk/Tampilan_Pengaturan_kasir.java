@@ -283,6 +283,9 @@ public class Tampilan_Pengaturan_kasir extends javax.swing.JFrame {
         btn_konfirmasi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_konfirmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Konfirmasi Setting.png"))); // NOI18N
         btn_konfirmasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_konfirmasiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_konfirmasiMouseEntered(evt);
             }
@@ -445,6 +448,24 @@ public class Tampilan_Pengaturan_kasir extends javax.swing.JFrame {
     private void kodeAkunKarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeAkunKarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kodeAkunKarActionPerformed
+
+    private void btn_konfirmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseClicked
+        // TODO add your handling code here:
+        try {
+              String newpass = txt_passwordNew.getText();
+        String conpass = txt_passwordNew2.getText();
+        if (newpass.equals(conpass)) {
+                 String sql = "UPDATE akun set password = '"+conpass+"' Where kd_akun ='"+kodeAkun+"'";
+                 Connection con = (Connection) Config.configDB();
+                 PreparedStatement pst = con.prepareStatement(sql);
+                 pst.execute();
+                 JOptionPane.showMessageDialog(null,"Berhasil ubah password");
+        } else {
+            JOptionPane.showMessageDialog(null,"Password yang dimasukkan berbeda !");
+        }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btn_konfirmasiMouseClicked
 
     /**
      * @param args the command line arguments

@@ -42,7 +42,7 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         String namaKaryawan = namakaryawan.getText();
         String Username = username.getText();
         
-        String Jabatan = jabatan.getText();
+        String Jabatan = jabatan.getSelectedItem().toString();
         
     try {
         String sql = "UPDATE akun SET kd_akun='"+kodeAkun+"'"+ ",nama='"+namaKaryawan+"',username ='"+Username+"',role ='"+Jabatan+"' WHERE kd_akun ='"+kodeLama+"'";
@@ -79,7 +79,7 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         password = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jabatan = new javax.swing.JTextField();
+        jabatan = new combo_suggestion.ComboBoxSuggestion();
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
@@ -200,8 +200,14 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
+        jabatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
         jabatan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jabatan.setPreferredSize(new java.awt.Dimension(198, 34));
+        jabatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jabatanActionPerformed(evt);
+            }
+        });
         jPanel13.add(jabatan);
 
         jPanel8.add(jPanel13);
@@ -388,13 +394,18 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
         namakaryawan.setText("");
         username.setText("");
        
-        jabatan.setText("");
+        jabatan.setSelectedItem("");
     }//GEN-LAST:event_btn_bersihkanMouseClicked
 
     private void btn_simpanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseClicked
        simpan();
        this.dispose();
     }//GEN-LAST:event_btn_simpanMouseClicked
+
+    private void jabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabatanActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jabatanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -481,7 +492,7 @@ public class Popup_Ubah_Karyawan_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    public javax.swing.JTextField jabatan;
+    public combo_suggestion.ComboBoxSuggestion jabatan;
     public javax.swing.JTextField kodeakun;
     public javax.swing.JTextField namakaryawan;
     private main.PanelShadow panelShadow1;

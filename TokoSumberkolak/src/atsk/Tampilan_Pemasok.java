@@ -1028,10 +1028,10 @@ public class Tampilan_Pemasok extends javax.swing.JFrame {
 
             pst.execute();
         
-            JOptionPane.showConfirmDialog(null,"Apakah anda yakin ingin menghapus ?");
+            JOptionPane.showConfirmDialog(null,"Apakah anda yakin ingin menghapus ?","Peringatan",JOptionPane.OK_CANCEL_OPTION);
             table();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+            JOptionPane.showMessageDialog(null,"Tidak bisa menghapus pemasok yang terdaftar dalam data transaksi beli");
         }
     
     }//GEN-LAST:event_btn_hapusMouseClicked

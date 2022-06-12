@@ -290,8 +290,17 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jabatan">
+                    <Component class="combo_suggestion.ComboBoxSuggestion" name="jabatan">
                       <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="5">
+                            <StringItem index="0" value="Alat Mandi"/>
+                            <StringItem index="1" value="Makanan Ringan"/>
+                            <StringItem index="2" value="Alat Cuci"/>
+                            <StringItem index="3" value="Alat Makan"/>
+                            <StringItem index="4" value="Sembako"/>
+                          </StringArray>
+                        </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="18" style="0"/>
                         </Property>
@@ -299,6 +308,12 @@
                           <Dimension value="[198, 34]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jabatanActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

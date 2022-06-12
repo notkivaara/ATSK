@@ -729,7 +729,7 @@ public class Tampilan_Karyawan extends javax.swing.JFrame {
         ubahKaryawan.kodeakun.setText(Kodeakun);
         ubahKaryawan.namakaryawan.setText(namaKaryawan);
         ubahKaryawan.username.setText(username);
-        ubahKaryawan.jabatan.setText(Jabatan);
+        ubahKaryawan.jabatan.setSelectedItem(Jabatan);
         
         
         ubahKaryawan.setVisible(true);

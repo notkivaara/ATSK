@@ -7,6 +7,7 @@ package atsk;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
@@ -25,10 +26,26 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
     public Popup_Tambah_Karyawan_Shadow() {
         initComponents();
         autonumber();
+        jabatan();
         kodeakun.setBackground(Color.gray);
         setBackground(new Color(0,0,0,0));
     }   
     
+       public void jabatan(){
+	
+	jabatan.removeAllItems();
+	    try{
+		    String sql = "select role from akun order by role asc";
+                   Connection conn = (Connection) Config.configDB();
+		    PreparedStatement pst=conn.prepareStatement(sql);
+		    ResultSet rs=pst.executeQuery();
+		    while(rs.next()){
+			
+			jabatan.addItem(rs.getString(1));
+		    }
+	    }catch(Exception e){
+	    }
+    }
     private void autonumber(){
         try {
             Connection c = (Connection) Config.configDB();
@@ -81,7 +98,7 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
         password = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jabatan = new javax.swing.JTextField();
+        jabatan = new combo_suggestion.ComboBoxSuggestion();
         jPanel3 = new javax.swing.JPanel();
         btn_batal = new javax.swing.JLabel();
         btn_bersihkan = new javax.swing.JLabel();
@@ -202,8 +219,14 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
         jLabel10.setPreferredSize(new java.awt.Dimension(230, 25));
         jPanel13.add(jLabel10);
 
+        jabatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
         jabatan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jabatan.setPreferredSize(new java.awt.Dimension(198, 34));
+        jabatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jabatanActionPerformed(evt);
+            }
+        });
         jPanel13.add(jabatan);
 
         jPanel8.add(jPanel13);
@@ -390,15 +413,15 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
         namakaryawan.setText("");
         username.setText("");
         password.setText("");
-        jabatan.setText("");
+        jabatan.setSelectedItem("");
     }//GEN-LAST:event_btn_bersihkanMouseClicked
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         try {
            
        String sql =
-                   "INSERT into akun VALUES ('"+namakaryawan.getText()+"','"+username.getText()+
-                   "','"+password.getText()+"','"+jabatan.getText()+"')";
+                   "INSERT into akun VALUES ('"+kodeakun.getText()+"','"+namakaryawan.getText()+"','"+username.getText()+
+                   "','"+password.getText()+"','"+jabatan.getSelectedItem()+"')";
        java.sql.Connection conn = (Connection) Config.configDB();
        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
        pst.execute();
@@ -409,6 +432,11 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
            
        }
     }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void jabatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabatanActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jabatanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -527,7 +555,7 @@ public class Popup_Tambah_Karyawan_Shadow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jabatan;
+    public combo_suggestion.ComboBoxSuggestion jabatan;
     private javax.swing.JTextField kodeakun;
     private javax.swing.JTextField namakaryawan;
     private main.PanelShadow panelShadow1;
