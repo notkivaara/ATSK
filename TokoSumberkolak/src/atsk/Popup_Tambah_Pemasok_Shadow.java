@@ -29,6 +29,8 @@ public class Popup_Tambah_Pemasok_Shadow extends javax.swing.JFrame {
         initComponents();
         autonumber();
         setBackground(new Color(0,0,0,0));
+        txt_kodepemasok.setBackground(Color.gray);
+        txt_kodepemasok.setEditable(false);
     }
     
     private void autonumber() {
@@ -372,7 +374,7 @@ public class Popup_Tambah_Pemasok_Shadow extends javax.swing.JFrame {
         String kode_pemasok = txt_kodepemasok.getText();
         String nama = txt_namapemasok.getText();
         String alamat = txt_alamat.getText();
-        String telp = txt_telp.getText();
+        int telp = Integer.parseInt(txt_telp.getText());
 
         try {
             String sql = "insert into supplier values('"+ kode_pemasok+"','"+ nama+"','"+ alamat+"','"+ telp+"')";

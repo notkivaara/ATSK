@@ -1,0 +1,71 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/poi-3.10.1-20140818.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/poi-3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/swing-worker-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/filters-2.0.235.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/barcode4j-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/barbecue-1.5-beta1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/RojeruSan.parte1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/servlet-api-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/poi-ooxml-schemas-3.10.1-20140818.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-lang-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-javaflow-20060411.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/KabitaLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-email-1.5-tests.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jasperreports-6.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcalendar-1.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcommon-1.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jasperreports-5.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jasperreports-fonts-5.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/TimingFramework-0.55.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-email-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/poi-ooxml-3.10.1-20140818.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-digester-1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-collections-3.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-beanutils-1.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jasperreports-javaflow-5.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/cglib-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/barcode.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jasperreports-applet-5.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jl1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jxl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-logging-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-beanutils-1.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-collections-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jdt-compiler-3.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/RSCalendar.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-email-1.5-test-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/AbsoluteLayout-RELEASE130.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-email-1.5-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/groovy-all-1.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcalendar-1.3.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jcalendar-1.3.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/miglayout-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/groovy-all-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-email-1.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/OnBarcode.AndroidBarcode.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/mysql-connector-java-5.1.23-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/swingx-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/iText-2.1.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/mysql-connector-java-5.1.34.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/avalon-framework-impl-4.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/jfreechart-1.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/mail-1.4.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/table-custom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/lib/commons-dbcp-1.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

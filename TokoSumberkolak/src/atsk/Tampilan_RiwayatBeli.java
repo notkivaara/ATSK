@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -26,7 +27,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
 
-    static DefaultTableModel tbl = new DefaultTableModel();
     public Tampilan_RiwayatBeli() {
         initComponents();
         table();
@@ -34,21 +34,40 @@ public class Tampilan_RiwayatBeli extends javax.swing.JFrame {
         table_RiwayatBeli.fixTable(jScrollPane3);
 
     }
-    
-    
-public void table() {
-        
+    private String kodeAkun = "";
+
+    public void passData(String kode) {
+        try {
+            String sql = "Select kd_akun, nama from akun where kd_akun = '" + kode + "'";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+            if (rs.next()) {
+                String akun = rs.getString("kd_akun");
+                if (akun.equals(kode)) {
+                    kodeAkun = kode;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, null);
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    private void table() {
+        DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Kode Beli");
         tbl.addColumn("Kode Pemasok");
         tbl.addColumn("Tanggal");
         tbl.addColumn("Harga Total");
         tbl.addColumn("Tunai");
         tbl.addColumn("Kembali");
-        
+
         try {
             Statement st = (Statement) Config.configDB().createStatement();
             ResultSet rs = st.executeQuery("SELECT * from transaksi_beli");
-            
+
             while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("kd_beli"),
@@ -56,30 +75,30 @@ public void table() {
                     rs.getString("tgl"),
                     rs.getString("total_harga_beli"),
                     rs.getString("tunai_beli"),
-                    rs.getString("kembali"),
-                });
+                    rs.getString("kembali"),});
                 table_RiwayatBeli.setModel(tbl);
-         }
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
-        }       
-               
-}
-    public void tampildata(){
-       
-       
+        }
+
+    }
+
+    public void tampildata() {
+
         try {
             Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select kd_transaksi from transaksi_beli");
+            ResultSet rs = st.executeQuery("Select kd_beli from transaksi_beli");
             rs.next();
-                if(rs.last()){
-                int total=rs.getRow();
+            if (rs.last()) {
+                int total = rs.getRow();
                 rs.beforeFirst();
                 txt_jumlahTransaksi.setText(Integer.toString(total));
-                }
+            }
         } catch (Exception e) {
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -107,7 +126,10 @@ public void table() {
         jScrollPane3 = new javax.swing.JScrollPane();
         table_RiwayatBeli = new atsk.Table();
         panelShadow1 = new main.PanelShadow();
-        tgl_riwayatBeli = new com.toedter.calendar.JDateChooser();
+        tanggalDate1 = new com.toedter.calendar.JDateChooser();
+        tanggalDate2 = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        btn_cari = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -335,12 +357,54 @@ public void table() {
         panelShadow1.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow1.setShadowOpacity(1.0F);
         panelShadow1.setShadowSize(5);
-        panelShadow1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
 
-        tgl_riwayatBeli.setBackground(new java.awt.Color(255, 255, 255));
-        tgl_riwayatBeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        tgl_riwayatBeli.setPreferredSize(new java.awt.Dimension(260, 42));
-        panelShadow1.add(tgl_riwayatBeli);
+        tanggalDate1.setBackground(new java.awt.Color(255, 255, 255));
+        tanggalDate1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tanggalDate1.setPreferredSize(new java.awt.Dimension(260, 42));
+
+        tanggalDate2.setBackground(new java.awt.Color(255, 255, 255));
+        tanggalDate2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        tanggalDate2.setPreferredSize(new java.awt.Dimension(260, 42));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setText("-");
+
+        btn_cari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
+        btn_cari.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cariMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelShadow1Layout = new javax.swing.GroupLayout(panelShadow1);
+        panelShadow1.setLayout(panelShadow1Layout);
+        panelShadow1Layout.setHorizontalGroup(
+            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tanggalDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tanggalDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_cari)
+                .addGap(15, 15, 15))
+        );
+        panelShadow1Layout.setVerticalGroup(
+            panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(panelShadow1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(tanggalDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tanggalDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_cari)
+                .addContainerGap())
+        );
 
         panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
         panelShadow3.setMinimumSize(new java.awt.Dimension(356, 54));
@@ -377,8 +441,8 @@ public void table() {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -478,7 +542,36 @@ public void table() {
     private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
         // TODO add your handling code here:
         Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
-        pengeluaran.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_pengeluaranMouseClicked
@@ -486,7 +579,36 @@ public void table() {
     private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
         // TODO add your handling code here:
         Tampilan_Pemasok pemasok = new Tampilan_Pemasok();
-        pemasok.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    pemasok.passData(kd_akun);
+                    pemasok.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    pemasok.passData(kd_akun);
+                    pemasok.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_pemasokMouseClicked
@@ -494,16 +616,79 @@ public void table() {
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
         // TODO add your handling code here:
         Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
-        karyawan.show();
-       
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    karyawan.passData(kd_akun);
+                    karyawan.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    karyawan.passData(kd_akun);
+                    karyawan.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        };
+
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
     private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
         // TODO add your handling code here:
-        Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
-        pengaturan.show();
-        
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    tp.kodeakunKar.setText(kd_akun);
+                    tp.namaKar.setText(nama);
+                    tp.passData(kd_akun);
+                    tp.setVisible(true);
+                    this.setVisible(false);
+                    System.out.println(kodeAkun);
+
+                } else if (role.equals("Kasir")) {
+                    tp.kodeakunKar.setText(kd_akun);
+                    tp.namaKar.setText(nama);
+                    tp.passData(kd_akun);
+                    tp.setVisible(true);
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
         dispose();
     }//GEN-LAST:event_btn_pengaturanMouseClicked
 
@@ -522,8 +707,37 @@ public void table() {
     private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
         // TODO add your handling code here:
         Tampilan_Barang barang = new Tampilan_Barang();
-        barang.show();
-        
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    barang.passData(kd_akun);
+                    barang.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    barang.passData(kd_akun);
+                    barang.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
         dispose();
     }//GEN-LAST:event_btn_barangMouseClicked
 
@@ -542,26 +756,173 @@ public void table() {
     private void btn_riwayatJualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatJualMouseClicked
         // TODO add your handling code here:
         Tampilan_RiwayatJual riwayatJual = new Tampilan_RiwayatJual();
-        riwayatJual.show();
-        
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    riwayatJual.passData(kd_akun);
+                    riwayatJual.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    riwayatJual.passData(kd_akun);
+                    riwayatJual.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
         dispose();
     }//GEN-LAST:event_btn_riwayatJualMouseClicked
 
     private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
         // TODO add your handling code here:
         Tampilan_Laporan laporan = new Tampilan_Laporan();
-        laporan.show();
-        
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    laporan.passData(kd_akun);
+                    laporan.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    laporan.passData(kd_akun);
+                    laporan.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
 
     private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
         // TODO add your handling code here:
         Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
-        transaksiBeli.show();
-        
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")) {
+                    transaksiBeli.passData(kd_akun);
+                    transaksiBeli.show();
+                    this.setVisible(false);
+
+                } else if (role.equals("Kasir")) {
+                    transaksiBeli.passData(kd_akun);
+                    transaksiBeli.show();;
+                    this.setVisible(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
         dispose();
     }//GEN-LAST:event_btn_transaksiMouseClicked
+
+    private void btn_cariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cariMouseClicked
+        // TODO add your handling code here:
+        Date dateFromDateChooser1 = tanggalDate1.getDate();
+        String tanggal1 = String.format("%1$tY-%1$tm-%1$td", dateFromDateChooser1);
+        Date dateFromDateChooser2 = tanggalDate2.getDate();
+        String tanggal2 = String.format("%1$tY-%1$tm-%1$td", dateFromDateChooser2);
+
+
+        if (tanggalDate2.getDate().getTime() > tanggalDate1.getDate().getTime()) {
+            try {
+
+                String sql;
+                Connection c;
+                PreparedStatement pst;
+                ResultSet rs;
+                sql = "Select kd_beli from transaksi_beli where tgl between DATE_FORMAT('" + tanggal1 + "', '%Y-%m-%d 00:00:00') and DATE_FORMAT('" + tanggal2 + "', '%Y-%m-%d 23:59:59')";
+                c = (Connection) Config.configDB();
+                pst = c.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    if (rs.last()) {
+                        int total = rs.getRow();
+                        rs.beforeFirst();
+                        txt_jumlahTransaksi.setText(Integer.toString(total));
+                    }
+                }
+
+                sql = "Select * from transaksi_beli where tgl between DATE_FORMAT('" + tanggal1 + "', '%Y-%m-%d 00:00:00') and DATE_FORMAT('" + tanggal2 + "', '%Y-%m-%d 23:59:59')";
+                pst = c.prepareStatement(sql);
+                rs = pst.executeQuery();
+
+                DefaultTableModel tbl = new DefaultTableModel();
+                tbl.addColumn("Kode Beli");
+                tbl.addColumn("Kode Pemasok");
+                tbl.addColumn("Tanggal");
+                tbl.addColumn("Harga Total");
+                tbl.addColumn("Tunai");
+                tbl.addColumn("Kembali");
+
+                while (rs.next()) {
+                    tbl.addRow(new Object[]{
+                    rs.getString("kd_beli"),
+                    rs.getString("kd_supplier"),
+                    rs.getString("tgl"),
+                    rs.getString("total_harga_beli"),
+                    rs.getString("tunai_beli"),
+                    rs.getString("kembali"),});
+                table_RiwayatBeli.setModel(tbl);
+
+                }
+
+            } catch (Exception e) {
+
+                JOptionPane.showMessageDialog(this, e.getMessage());
+
+            }
+        }
+    }//GEN-LAST:event_btn_cariMouseClicked
 
     /**
      * @param args the command line arguments
@@ -607,6 +968,7 @@ public void table() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_barang;
+    private javax.swing.JLabel btn_cari;
     private javax.swing.JLabel btn_karyawan;
     private javax.swing.JLabel btn_laporan;
     private javax.swing.JLabel btn_pemasok;
@@ -616,6 +978,7 @@ public void table() {
     private javax.swing.JLabel btn_riwayatJual;
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -631,7 +994,8 @@ public void table() {
     private main.PanelShadow panelShadow3;
     private main.PanelShadow panelShadow5;
     public atsk.Table table_RiwayatBeli;
-    private com.toedter.calendar.JDateChooser tgl_riwayatBeli;
+    private com.toedter.calendar.JDateChooser tanggalDate1;
+    private com.toedter.calendar.JDateChooser tanggalDate2;
     private javax.swing.JTextField txt_jumlahTransaksi;
     // End of variables declaration//GEN-END:variables
 }

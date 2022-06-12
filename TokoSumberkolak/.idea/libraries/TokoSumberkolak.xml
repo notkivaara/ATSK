@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="TokoSumberkolak">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AbsoluteLayout-RELEASE130.jar!/" />
+      <root url="jar://$PROJECT_DIR$/miglayout-4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/RojeruSan.parte1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/RSCalendar.jar!/" />
+      <root url="jar://$PROJECT_DIR$/swingx-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TimingFramework-0.55.jar!/" />
+      <root url="jar://$PROJECT_DIR$/table-custom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-java-5.1.34.jar!/" />
+      <root url="jar://$PROJECT_DIR$/swing-worker-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/filters-2.0.235.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

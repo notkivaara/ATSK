@@ -45,7 +45,25 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         cancel_search.setVisible(false);
 
     }
-    
+    private String kodeAkun="";
+    public void passData(String kode){
+        try {
+            String sql = "Select kd_akun, nama from akun where kd_akun = '"+kode+"'";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                if (rs.next()) {
+                String akun = rs.getString("kd_akun");
+                if (akun.equals(kode)){
+                   kodeAkun= kode;    
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, null);
+            }
+        } catch (Exception e) {
+        }
+    }
     
 
     public void kdPemasok(){
@@ -63,7 +81,15 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
 	    }catch(Exception e){
 	    }
     }
-    
+    public void reset(){
+        kodepemasokcomboBox.setSelectedItem("SP0001");
+        namabrg.setText("");
+        kodebrg.setText("");
+        kuantitas.setText("");
+        total_harga.setText("");
+        Tunai.setText("");
+        kembali.setText("");
+    }
     public void tanggal() {
         long millis = System.currentTimeMillis();
         Timestamp timestamp = new Timestamp(millis);
@@ -251,8 +277,6 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         kodebeli = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        kodepemasokcomboBox = new combo_suggestion.ComboBoxSuggestion();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -271,6 +295,8 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         kuantitas = new javax.swing.JTextField();
         tanggal = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        kodepemasokcomboBox = new combo_suggestion.ComboBoxSuggestion();
         btn_tambah = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
@@ -448,12 +474,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
         panelShadow4.setShadowSize(5);
 
         jPanel4.setOpaque(false);
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel6.setText("Kode Beli");
         jLabel6.setPreferredSize(new java.awt.Dimension(397, 34));
-        jPanel4.add(jLabel6);
 
         kodebeli.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         kodebeli.setPreferredSize(new java.awt.Dimension(200, 34));
@@ -462,19 +486,37 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                 kodebeliActionPerformed(evt);
             }
         });
-        jPanel4.add(kodebeli);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kodebeli, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(kodebeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jPanel7.setOpaque(false);
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setText("Kode Pemasok");
-        jLabel7.setPreferredSize(new java.awt.Dimension(397, 34));
-        jPanel7.add(jLabel7);
-
-        kodepemasokcomboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        kodepemasokcomboBox.setPreferredSize(new java.awt.Dimension(200, 34));
-        jPanel7.add(kodepemasokcomboBox);
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 619, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
+        );
 
         jPanel8.setOpaque(false);
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -536,6 +578,11 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
 
         kodebrg.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         kodebrg.setPreferredSize(new java.awt.Dimension(200, 34));
+        kodebrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kodebrgActionPerformed(evt);
+            }
+        });
         kodebrg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 kodebrgKeyReleased(evt);
@@ -562,48 +609,62 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel7.setText("Kode Pemasok");
+        jLabel7.setPreferredSize(new java.awt.Dimension(397, 34));
+
+        kodepemasokcomboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        kodepemasokcomboBox.setPreferredSize(new java.awt.Dimension(200, 34));
+
         javax.swing.GroupLayout panelShadow4Layout = new javax.swing.GroupLayout(panelShadow4);
         panelShadow4.setLayout(panelShadow4Layout);
         panelShadow4Layout.setHorizontalGroup(
             panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadow4Layout.createSequentialGroup()
-                .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelShadow4Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(kode, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelShadow4Layout.createSequentialGroup()
+                                    .addGap(22, 22, 22)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelShadow4Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(kode, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(kodebrg, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelShadow4Layout.createSequentialGroup()
                             .addGap(22, 22, 22)
-                            .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(panelShadow4Layout.createSequentialGroup()
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(kuantitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelShadow4Layout.createSequentialGroup()
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addGap(73, 73, 73)
-                                    .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelShadow4Layout.createSequentialGroup()
-                                    .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(Tunai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(panelShadow4Layout.createSequentialGroup()
-                                            .addComponent(total_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addGap(1, 1, 1))))
-                                .addComponent(namabrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelShadow4Layout.createSequentialGroup()
-                                    .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(1, 1, 1)))))
-                    .addGroup(panelShadow4Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(kodepemasokcomboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelShadow4Layout.createSequentialGroup()
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(kuantitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelShadow4Layout.createSequentialGroup()
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                        .addGap(73, 73, 73)
+                                        .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelShadow4Layout.createSequentialGroup()
+                                        .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Tunai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(panelShadow4Layout.createSequentialGroup()
+                                                .addComponent(total_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                .addGap(1, 1, 1))))
+                                    .addComponent(namabrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelShadow4Layout.createSequentialGroup()
+                                        .addComponent(tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelShadow4Layout.createSequentialGroup()
@@ -613,7 +674,7 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         panelShadow4Layout.setVerticalGroup(
@@ -623,22 +684,26 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelShadow4Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kodepemasokcomboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelShadow4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(namabrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelShadow4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(kode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kodebrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 18, Short.MAX_VALUE)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(panelShadow4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(kodebrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(kuantitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)))
                 .addGroup(panelShadow4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -871,13 +936,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
                     .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(panelShadow4, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(btn_tambah))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_bersihkann))))))
+                            .addComponent(btn_bersihkann)
+                            .addComponent(btn_tambah)))))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -976,7 +1038,40 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
         // TODO add your handling code here:
         Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
-        pengeluaran.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        };
 
         dispose();
     }//GEN-LAST:event_btn_pengeluaranMouseClicked
@@ -984,7 +1079,40 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
         // TODO add your handling code here:
         Tampilan_Pemasok pemasok = new Tampilan_Pemasok();
-        pemasok.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    pemasok.passData(kd_akun);
+                    pemasok.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    pemasok.passData(kd_akun);
+                    pemasok.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_pemasokMouseClicked
@@ -992,15 +1120,84 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
         // TODO add your handling code here:
         Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
-        karyawan.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    karyawan.passData(kd_akun);
+                    karyawan.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    karyawan.passData(kd_akun);
+                    karyawan.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
     private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
         // TODO add your handling code here:
-        Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
-        pengaturan.show();
+         try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    tp.kodeakunKar.setText(kd_akun);
+                    tp.namaKar.setText(nama);
+                    tp.passData(kd_akun);
+                    tp.setVisible(true);
+                    this.setVisible(false);
+                    System.out.println(kodeAkun);
+
+                }
+                else if(role.equals("Kasir")){
+                    tp.kodeakunKar.setText(kd_akun);
+                    tp.namaKar.setText(nama);
+                    tp.passData(kd_akun);
+                    tp.setVisible(true);
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
         dispose();
     }//GEN-LAST:event_btn_pengaturanMouseClicked
@@ -1020,7 +1217,40 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
         // TODO add your handling code here:
         Tampilan_Barang barang = new Tampilan_Barang();
-        barang.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    barang.passData(kd_akun);
+                    barang.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    barang.passData(kd_akun);
+                    barang.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
         dispose();
     }//GEN-LAST:event_btn_barangMouseClicked
@@ -1040,7 +1270,40 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_riwayatJualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatJualMouseClicked
         // TODO add your handling code here:
         Tampilan_TransaksiJual transaksiJual = new Tampilan_TransaksiJual();
-        transaksiJual.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    transaksiJual.passData(kd_akun);
+                    transaksiJual.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    transaksiJual.passData(kd_akun);
+                    transaksiJual.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
         dispose();
     }//GEN-LAST:event_btn_riwayatJualMouseClicked
@@ -1084,7 +1347,39 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
         // TODO add your handling code here:
         Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
-        riwayatBeli.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    riwayatBeli.passData(kd_akun);
+                    riwayatBeli.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    riwayatBeli.passData(kd_akun);
+                    riwayatBeli.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
         dispose();
     }//GEN-LAST:event_btn_riwayatMouseClicked
@@ -1092,7 +1387,40 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
         // TODO add your handling code here:
         Tampilan_Laporan laporan = new Tampilan_Laporan();
-        laporan.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    laporan.passData(kd_akun);
+                    laporan.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    laporan.passData(kd_akun);
+                    laporan.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
         
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
@@ -1273,7 +1601,11 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
     }//GEN-LAST:event_kategoriComboSearchActionPerformed
 
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        
         tambah();
+        reset();
+        autonumber();
+        
     }//GEN-LAST:event_btn_tambahMouseClicked
 
     private void TunaiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TunaiKeyReleased
@@ -1292,6 +1624,10 @@ public class Tampilan_TransaksiBeli extends javax.swing.JFrame {
        kodebrg.setText(tb_transaksibeli.getValueAt(tb_transaksibeli.getSelectedRow(),0).toString());
        namabrg.setText(tb_transaksibeli.getValueAt(tb_transaksibeli.getSelectedRow(),1).toString());
     }//GEN-LAST:event_tb_transaksibeliMouseClicked
+
+    private void kodebrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodebrgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kodebrgActionPerformed
 
     /**
      * @param args the command line arguments

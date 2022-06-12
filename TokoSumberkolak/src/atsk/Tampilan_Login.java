@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package atsk;
+package atsk;   
 
-import atsk.Tampilan_TransaksiJual_kasir;
 import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
@@ -13,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import textfield.TextPrompt;
+import textfield.*;
 
 /**
  *
@@ -174,12 +173,13 @@ public class Tampilan_Login extends javax.swing.JFrame {
                    
                   barang.passData(rs.getString("kd_akun"));
                   barang.show();
-                  JOptionPane.showMessageDialog(null, "Welcome Owner");
                    dispose();
+                   JOptionPane.showMessageDialog(null, "Welcome Owner");
                }else if(role.equals("Kasir")){
                    jual.show();
-                   JOptionPane.showMessageDialog(null, "Welcome Kasir");
+                   jual.passData(rs.getString("kd_akun"));
                     dispose();
+                    JOptionPane.showMessageDialog(null, "Welcome Kasir");
                } 
                } else {
                 JOptionPane.showMessageDialog(null, "Username atau Password Salah");

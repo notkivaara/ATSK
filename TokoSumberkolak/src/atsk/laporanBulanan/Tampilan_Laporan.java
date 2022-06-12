@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,6 +53,25 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         tanggalDate1.setDateFormatString("yyyy-MM-dd");
         tanggalDate2.setDateFormatString("yyyy-MM-dd");
 
+    }
+        private String kodeAkun="";
+    public void passData(String kode){
+        try {
+            String sql = "Select kd_akun, nama from akun where kd_akun = '"+kode+"'";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                if (rs.next()) {
+                String akun = rs.getString("kd_akun");
+                if (akun.equals(kode)){
+                   kodeAkun= kode;    
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, null);
+            }
+        } catch (Exception e) {
+        }
     }
 
     public void table() {
@@ -565,7 +585,39 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
         // TODO add your handling code here:
         Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
-        pengeluaran.show();
+                try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_pengeluaranMouseClicked
@@ -573,7 +625,39 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
         // TODO add your handling code here:
         Tampilan_Pemasok pemasok = new Tampilan_Pemasok();
-        pemasok.show();
+                try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    pemasok.passData(kd_akun);
+                    pemasok.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    pemasok.passData(kd_akun);
+                    pemasok.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_pemasokMouseClicked
@@ -581,15 +665,83 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
         // TODO add your handling code here:
         Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
-        karyawan.show();
+                try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    karyawan.passData(kd_akun);
+                    karyawan.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    karyawan.passData(kd_akun);
+                    karyawan.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_karyawanMouseClicked
 
     private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
         // TODO add your handling code here:
-        Tampilan_Pengaturan pengaturan = new Tampilan_Pengaturan();
-        pengaturan.show();
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                String kd_akun = rs.getString("kd_akun");
+                String nama = rs.getString("nama");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    tp.kodeakunKar.setText(kd_akun);
+                    tp.namaKar.setText(nama);
+                    tp.passData(kd_akun);
+                    tp.setVisible(true);
+                    this.setVisible(false);
+                    System.out.println(kodeAkun);
+
+                }
+                else if(role.equals("Kasir")){
+                    tp.kodeakunKar.setText(kd_akun);
+                    tp.namaKar.setText(nama);
+                    tp.passData(kd_akun);
+                    tp.setVisible(true);
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_pengaturanMouseClicked
@@ -597,7 +749,39 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
         // TODO add your handling code here:
         Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
-        riwayatBeli.show();
+                try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    riwayatBeli.passData(kd_akun);
+                    riwayatBeli.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    riwayatBeli.passData(kd_akun);
+                    riwayatBeli.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_riwayatMouseClicked
@@ -617,7 +801,39 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
         // TODO add your handling code here:
         Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
-        transaksiBeli.show();
+                try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    transaksiBeli.passData(kd_akun);
+                    transaksiBeli.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    transaksiBeli.passData(kd_akun);
+                    transaksiBeli.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_transaksiMouseClicked
@@ -637,7 +853,39 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
         // TODO add your handling code here:
         Tampilan_Barang barang = new Tampilan_Barang();
-        barang.show();
+                try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            Connection conn = (Connection) Config.configDB();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                
+                String kd_akun = rs.getString("kd_akun");
+                String role = rs.getString("role");
+                if (role.equals("Owner")){
+                    barang.passData(kd_akun);
+                    barang.show();
+                    this.setVisible(false);
+
+
+                }
+                else if(role.equals("Kasir")){
+                    barang.passData(kd_akun);
+                    barang.show();;
+                    this.setVisible(false);
+            
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Invalid1");
+               
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid2");
+              
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btn_barangMouseClicked

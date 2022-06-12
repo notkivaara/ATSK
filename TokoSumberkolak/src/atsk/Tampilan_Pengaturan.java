@@ -36,19 +36,19 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
 
     }
 
-    
-    private String kodeAkun="";
-    public void passData(String kode){
+    private String kodeAkun = "";
+
+    public void passData(String kode) {
         try {
-            String sql = "Select kd_akun, nama from akun where kd_akun = '"+kode+"'";
+            String sql = "Select kd_akun, nama from akun where kd_akun = '" + kode + "'";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
-                if (rs.next()) {
+            if (rs.next()) {
                 String akun = rs.getString("kd_akun");
-                if (akun.equals(kode)){
-                   kodeAkun= kode;    
+                if (akun.equals(kode)) {
+                    kodeAkun = kode;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, null);
@@ -56,6 +56,7 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -476,40 +477,35 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_transaksiMouseEntered
 
     private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
-            // TODO add your handling code here:
-        
-     
+        // TODO add your handling code here:
+
+        Tampilan_Barang barang = new Tampilan_Barang();
+
         try {
-            Tampilan_Barang barang = new Tampilan_Barang();
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
                 String kd_akun = rs.getString("kd_akun");
-                String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
-                    System.out.println(kd_akun);
+                if (role.equals("Owner")) {
                     barang.passData(kd_akun);
                     barang.show();
                     this.setVisible(false);
 
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     barang.passData(kd_akun);
-                    barang.show();
+                    barang.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-                
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -522,8 +518,8 @@ public class Tampilan_Pengaturan extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tampilan_Pemasok pemasok = new Tampilan_Pemasok();
         pemasok.show();
-try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
@@ -532,28 +528,26 @@ try {
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     tp.kodeakunKar.setText(kd_akun);
                     tp.namaKar.setText(nama);
                     tp.setVisible(true);
                     this.setVisible(false);
                     System.out.println(kodeAkun);
 
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     tp.kodeakunKar.setText(kd_akun);
                     tp.namaKar.setText(nama);
                     tp.setVisible(true);
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -563,30 +557,27 @@ try {
 
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
         // TODO add your handling code here:
-        Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
-        karyawan.show();
-try {
+                Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
+         try {
             String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
                 if (role.equals("Owner")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    karyawan.passData(kd_akun);
+                    karyawan.show();
                     this.setVisible(false);
-                    System.out.println(kodeAkun);
+
 
                 }
                 else if(role.equals("Kasir")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    karyawan.passData(kd_akun);
+                    karyawan.show();;
                     this.setVisible(false);
             
                 }
@@ -656,7 +647,7 @@ try {
         // TODO add your handling code here:
         Tampilan_Login login = new Tampilan_Login();
         login.show();
-        
+
         dispose();
     }//GEN-LAST:event_btn_logoutMouseClicked
 
@@ -675,29 +666,25 @@ try {
     private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
         // TODO add your handling code here:
         Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
-        pengeluaran.show();
-        try {
+                try {
             String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                
                 String kd_akun = rs.getString("kd_akun");
-                String nama = rs.getString("nama");
                 String role = rs.getString("role");
                 if (role.equals("Owner")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();
                     this.setVisible(false);
-                    System.out.println(kodeAkun);
+
 
                 }
                 else if(role.equals("Kasir")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    pengeluaran.passData(kd_akun);
+                    pengeluaran.show();;
                     this.setVisible(false);
             
                 }
@@ -718,29 +705,25 @@ try {
     private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
         // TODO add your handling code here:
         Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
-        riwayatBeli.show();
-        try {
+                try {
             String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                
                 String kd_akun = rs.getString("kd_akun");
-                String nama = rs.getString("nama");
                 String role = rs.getString("role");
                 if (role.equals("Owner")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    riwayatBeli.passData(kd_akun);
+                    riwayatBeli.show();
                     this.setVisible(false);
-                    System.out.println(kodeAkun);
+
 
                 }
                 else if(role.equals("Kasir")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    riwayatBeli.passData(kd_akun);
+                    riwayatBeli.show();;
                     this.setVisible(false);
             
                 }
@@ -761,29 +744,26 @@ try {
     private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
         // TODO add your handling code here:
         Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
-        transaksiBeli.show();
-        try {
+         try {
             String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
                 if (role.equals("Owner")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    transaksiBeli.passData(kd_akun);
+                    transaksiBeli.show();
                     this.setVisible(false);
-                    System.out.println(kodeAkun);
+
 
                 }
                 else if(role.equals("Kasir")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    transaksiBeli.passData(kd_akun);
+                    transaksiBeli.show();;
                     this.setVisible(false);
             
                 }
@@ -804,29 +784,25 @@ try {
     private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
         // TODO add your handling code here:
         Tampilan_Laporan laporan = new Tampilan_Laporan();
-        laporan.show();
         try {
             String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
+                
                 String kd_akun = rs.getString("kd_akun");
-                String nama = rs.getString("nama");
                 String role = rs.getString("role");
                 if (role.equals("Owner")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    laporan.passData(kd_akun);
+                    laporan.show();
                     this.setVisible(false);
-                    System.out.println(kodeAkun);
+
 
                 }
                 else if(role.equals("Kasir")){
-                    tp.kodeakunKar.setText(kd_akun);
-                    tp.namaKar.setText(nama);
-                    tp.setVisible(true);
+                    laporan.passData(kd_akun);
+                    laporan.show();;
                     this.setVisible(false);
             
                 }
@@ -849,15 +825,21 @@ try {
     }//GEN-LAST:event_txt_passwordNewActionPerformed
 
     private void btn_konfirmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseClicked
-        
-        String newpass = txt_passwordNew.getText();
+        try {
+              String newpass = txt_passwordNew.getText();
         String conpass = txt_passwordNew2.getText();
-        if (newpass == conpass) {
-       //     String sql = "UPDATE akun set password = '"+conpass+"' Where 
+        if (newpass.equals(conpass)) {
+                 String sql = "UPDATE akun set password = '"+conpass+"' Where kd_akun ='"+kodeAkun+"'";
+                 Connection con = (Connection) Config.configDB();
+                 PreparedStatement pst = con.prepareStatement(sql);
+                 pst.execute();
+                 JOptionPane.showMessageDialog(null,"Berhasil ubah password");
+        } else {
+            JOptionPane.showMessageDialog(null,"Password yang dimasukkan berbeda !");
         }
-        else {
-            
+        } catch (Exception e) {
         }
+      
     }//GEN-LAST:event_btn_konfirmasiMouseClicked
 
     private void namaKarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaKarActionPerformed
