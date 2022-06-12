@@ -6,25 +6,28 @@
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Pengaturan_kasir.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield_suggestion/TextFieldSuggestion.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield/TextPrompt.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Karyawan.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/laporanBulanan/Tampilan_Laporan.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/main/GraphicsUtilities.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Ubah_Pemasok_Shadow.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield/Main.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Tambah_Barang_Shadow.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Barang.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Tambah_Pemasok_Shadow.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield/TextField.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield_suggestion/TextFieldSuggestionUI.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_TransaksiBeli.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Pengeluaran.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/nota.jrxml</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Ubah_Barang_Shadow.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_TransaksiJual_kasir.java</file>
-            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Pemasok.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_RiwayatJual.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Pengaturan.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Login.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_RiwayatBeli.java</file>
             <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_TransaksiJual.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Karyawan.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/laporanBulanan/Tampilan_Laporan.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/main/GraphicsUtilities.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Tambah_Barang_Shadow.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Tambah_Pemasok_Shadow.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield/TextField.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/textfield_suggestion/TextFieldSuggestionUI.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Tambah_Karyawan_Shadow.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Popup_Ubah_Karyawan_Shadow.java</file>
+            <file>file:/E:/ATSK13/ATSK/TokoSumberkolak/src/atsk/Tampilan_Pemasok.java</file>
         </group>
     </open-files>
 </project-private>

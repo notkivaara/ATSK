@@ -347,49 +347,49 @@ public class Tampilan_Pengaturan_kasir extends javax.swing.JFrame {
 
     private void btn_konfirmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseEntered
         // TODO add your handling code here:
-        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting hover.png")).getImage();
+        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi Setting hover.png")).getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiHover));
     }//GEN-LAST:event_btn_konfirmasiMouseEntered
 
     private void btn_konfirmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseExited
         // TODO add your handling code here:
-        Image iconKonfirmasiDefault = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting.png")).getImage();
+        Image iconKonfirmasiDefault = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi Setting.png")).getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiDefault));
     }//GEN-LAST:event_btn_konfirmasiMouseExited
 
     private void btn_konfirmasiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMousePressed
         // TODO add your handling code here:
-        Image iconKonfirmasiPressed = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting press.png")).getImage();
+        Image iconKonfirmasiPressed = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi Setting press.png")).getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiPressed));
     }//GEN-LAST:event_btn_konfirmasiMousePressed
 
     private void btn_konfirmasiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseReleased
         // TODO add your handling code here:
-        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/button konfirmasi setting hover.png")).getImage();
+        Image iconKonfirmasiHover = new ImageIcon(this.getClass().getResource("/img/Button Konfirmasi Setting hover.png")).getImage();
         btn_konfirmasi.setIcon(new ImageIcon(iconKonfirmasiHover));
     }//GEN-LAST:event_btn_konfirmasiMouseReleased
 
     private void btn_logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseEntered
         // TODO add your handling code here:
-        Image iconLogoutHover = new ImageIcon(this.getClass().getResource("/img/button logout hover.png")).getImage();
+        Image iconLogoutHover = new ImageIcon(this.getClass().getResource("/img/Button Logout hover.png")).getImage();
         btn_logout.setIcon(new ImageIcon(iconLogoutHover));
     }//GEN-LAST:event_btn_logoutMouseEntered
 
     private void btn_logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseExited
         // TODO add your handling code here:
-        Image iconLogoutDefault = new ImageIcon(this.getClass().getResource("/img/button logout.png")).getImage();
+        Image iconLogoutDefault = new ImageIcon(this.getClass().getResource("/img/Button Logout.png")).getImage();
         btn_logout.setIcon(new ImageIcon(iconLogoutDefault));
     }//GEN-LAST:event_btn_logoutMouseExited
 
     private void btn_logoutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMousePressed
         // TODO add your handling code here:
-        Image iconLogoutPressed = new ImageIcon(this.getClass().getResource("/img/button logout press.png")).getImage();
+        Image iconLogoutPressed = new ImageIcon(this.getClass().getResource("/img/Button Logout press.png")).getImage();
         btn_logout.setIcon(new ImageIcon(iconLogoutPressed));
     }//GEN-LAST:event_btn_logoutMousePressed
 
     private void btn_logoutMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logoutMouseReleased
         // TODO add your handling code here:
-        Image iconLogoutHover = new ImageIcon(this.getClass().getResource("/img/button logout hover.png")).getImage();
+        Image iconLogoutHover = new ImageIcon(this.getClass().getResource("/img/Button Logout hover.png")).getImage();
         btn_logout.setIcon(new ImageIcon(iconLogoutHover));
     }//GEN-LAST:event_btn_logoutMouseReleased
 
@@ -452,15 +452,19 @@ public class Tampilan_Pengaturan_kasir extends javax.swing.JFrame {
     private void btn_konfirmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_konfirmasiMouseClicked
         // TODO add your handling code here:
         try {
-              String newpass = txt_passwordNew.getText();
+        String newpass = txt_passwordNew.getText();
         String conpass = txt_passwordNew2.getText();
-        if (newpass.equals(conpass)) {
-                 String sql = "UPDATE akun set password = '"+conpass+"' Where kd_akun ='"+kodeAkun+"'";
+        if (newpass.equals("") && conpass.equals("")) {
+                 JOptionPane.showMessageDialog(null,"Harap masukkan password baru");
+        }else if(newpass.equals(conpass)){
+            String sql = "UPDATE akun set password = '"+conpass+"' Where kd_akun ='"+kodeAkun+"'";
                  Connection con = (Connection) Config.configDB();
                  PreparedStatement pst = con.prepareStatement(sql);
                  pst.execute();
                  JOptionPane.showMessageDialog(null,"Berhasil ubah password");
-        } else {
+            
+        } 
+        else {
             JOptionPane.showMessageDialog(null,"Password yang dimasukkan berbeda !");
         }
         } catch (Exception e) {
