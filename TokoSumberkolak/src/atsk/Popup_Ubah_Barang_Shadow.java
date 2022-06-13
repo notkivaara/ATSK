@@ -489,25 +489,25 @@ public class Popup_Ubah_Barang_Shadow extends javax.swing.JFrame {
 
     private void btn_simpanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseEntered
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/Button simpan popup hover.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
     }//GEN-LAST:event_btn_simpanMouseEntered
 
     private void btn_simpanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseExited
         // TODO add your handling code here:
-        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/button simpan popup.png")).getImage();
+        Image iconSimpanDefault = new ImageIcon(this.getClass().getResource("/img/Button simpan popup.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanDefault));
     }//GEN-LAST:event_btn_simpanMouseExited
 
     private void btn_simpanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMousePressed
         // TODO add your handling code here:
-        Image iconSimpanPressed = new ImageIcon(this.getClass().getResource("/img/button simpan popup press.png")).getImage();
+        Image iconSimpanPressed = new ImageIcon(this.getClass().getResource("/img/Button simpan popup press.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanPressed));
     }//GEN-LAST:event_btn_simpanMousePressed
 
     private void btn_simpanMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_simpanMouseReleased
         // TODO add your handling code here:
-        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/button simpan popup hover.png")).getImage();
+        Image iconSimpanHover = new ImageIcon(this.getClass().getResource("/img/Button simpan popup hover.png")).getImage();
         btn_simpan.setIcon(new ImageIcon(iconSimpanHover));
     }//GEN-LAST:event_btn_simpanMouseReleased
 

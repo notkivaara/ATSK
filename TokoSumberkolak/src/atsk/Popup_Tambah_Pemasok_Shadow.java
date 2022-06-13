@@ -348,25 +348,25 @@ public class Popup_Tambah_Pemasok_Shadow extends javax.swing.JFrame {
 
     private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
         // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button tambah popup hover.png")).getImage();
         btn_tambah.setIcon(new ImageIcon(iconTambahHover));
     }//GEN-LAST:event_btn_tambahMouseEntered
 
     private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
         // TODO add your handling code here:
-        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/button tambah popup.png")).getImage();
+        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/Button tambah popup.png")).getImage();
         btn_tambah.setIcon(new ImageIcon(iconTambahDefault));
     }//GEN-LAST:event_btn_tambahMouseExited
 
     private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
         // TODO add your handling code here:
-        Image iconTambahPressed = new ImageIcon(this.getClass().getResource("/img/button tambah popup press.png")).getImage();
+        Image iconTambahPressed = new ImageIcon(this.getClass().getResource("/img/Button tambah popup press.png")).getImage();
         btn_tambah.setIcon(new ImageIcon(iconTambahPressed));
     }//GEN-LAST:event_btn_tambahMousePressed
 
     private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
         // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/button tambah popup hover.png")).getImage();
+        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button tambah popup hover.png")).getImage();
         btn_tambah.setIcon(new ImageIcon(iconTambahHover));
     }//GEN-LAST:event_btn_tambahMouseReleased
 
