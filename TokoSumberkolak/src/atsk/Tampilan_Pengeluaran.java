@@ -479,6 +479,11 @@ public class Tampilan_Pengeluaran extends javax.swing.JFrame {
         jScrollPane2.setBorder(null);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 530));
 
+        pengeluaranTable = new atsk.Table(){
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
         pengeluaranTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

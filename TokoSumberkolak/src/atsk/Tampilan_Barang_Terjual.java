@@ -5,6 +5,7 @@
 package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
+import com.raven.chart.ModelChart;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -28,15 +29,16 @@ import textfield.TextPrompt;
  *
  * @author ACER
  */
-public class Tampilan_Barang extends javax.swing.JFrame {
+public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
 
     /**
      * Creates new form TampilanBarang
      */
-    public Tampilan_Barang() {
+    public Tampilan_Barang_Terjual() {
         initComponents();
+        getContentPane().setBackground(new Color(250, 250, 250));
         TextPrompt cari = new TextPrompt("Cari Berdasarkan Nama Barang", txt_cari);
-        barangTable.fixTable(jScrollPane2);
+        terjualTable.fixTable(jScrollPane2);
         cancel_search.setVisible(false);
         table();
 
@@ -63,34 +65,20 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     
     public void table() {
         DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode Barang");
-        tbl.addColumn("Kode Barcode");
         tbl.addColumn("Nama Barang");
-        tbl.addColumn("Kategori");
-        tbl.addColumn("Harga Beli");
-        tbl.addColumn("Harga Jual");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Return");
-        tbl.addColumn("Waktu Penambahan");
+        tbl.addColumn("Terjual");
+
         // Disini Terakhir nulis
 
         try {
             Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("Select * from barang");
+            ResultSet rs = st.executeQuery("SELECT nama_brg,(SELECT SUM(kuantitas)FROM detail_transaksi WHERE kd_brg =m.kd_brg)AS terjual FROM barang as m order by terjual desc");
             while (rs.next()) {
                 tbl.addRow(new Object[]{
-                    rs.getString("kd_brg"),
-                    rs.getString("kd_barcode"),
                     rs.getString("nama_brg"),
-                    rs.getString("kategori"),
-                    rs.getString("hrg_beli_brg"),
-                    rs.getString("hrg_jual_brg"),
-                    rs.getString("satuan"),
-                    rs.getString("stock"),
-                    rs.getString("retur"),
-                    rs.getString("waktu_penambahan"),});
-                barangTable.setModel(tbl);
+                    rs.getString("terjual"),});
+                
+                terjualTable.setModel(tbl);
 
             }
         } catch (Exception e) {
@@ -101,43 +89,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     
     public void search() {
         DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode barang");
-        tbl.addColumn("Kode barcode");
-        tbl.addColumn("Nama barang");
-        tbl.addColumn("Kategori");
-        tbl.addColumn("Harga Beli");
-        tbl.addColumn("Harga Jual");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Return");
-        tbl.addColumn("Waktu Penambahan");
-
-        String cari = txt_cari.getText();
-
-        try {
-
-            String sql = "SELECT * FROM `barang` WHERE nama_brg LIKE '%" + cari + "%'";
-            Connection c = (Connection) Config.configDB();
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                tbl.addRow(new Object[]{
-                    rs.getString("kd_brg"),
-                    rs.getString("kd_barcode"),
-                    rs.getString("nama_brg"),
-                    rs.getString("kategori"),
-                    rs.getString("hrg_beli_brg"),
-                    rs.getString("hrg_jual_brg"),
-                    rs.getString("satuan"),
-                    rs.getString("stock"),
-                    rs.getString("retur"),
-                    rs.getString("waktu_penambahan"),});
-                barangTable.setModel(tbl);
-
-                }
-
-        } catch (Exception e) {
-        }
+        tbl.addColumn("Nama Barang");
+        tbl.addColumn("Terjual");
     }
 
 
@@ -163,6 +116,9 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         btn_karyawan = new javax.swing.JLabel();
         btn_pengaturan = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        panelShadow2 = new main.PanelShadow();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        terjualTable = new atsk.Table();
         jPanel6 = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
         jLabel3 = new javax.swing.JLabel();
@@ -170,15 +126,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         cancel_search = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
         kategoriComboSearch = new combo_suggestion.ComboBoxSuggestion();
-        jButton1 = new javax.swing.JButton();
+        kembali = new javax.swing.JButton();
         btn_refresh = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        btn_tambah = new javax.swing.JLabel();
-        btn_ubah = new javax.swing.JLabel();
-        btn_hapus = new javax.swing.JLabel();
-        panelShadow2 = new main.PanelShadow();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        barangTable = new atsk.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -306,6 +255,36 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(245, 246, 250));
 
+        panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
+        panelShadow2.setShadowOpacity(1.0F);
+        panelShadow2.setShadowSize(5);
+        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 600));
+
+        terjualTable = new atsk.Table(){
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+        terjualTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nama Barang", "Terjual"
+            }
+        ));
+        terjualTable.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        terjualTable.setRequestFocusEnabled(false);
+        jScrollPane2.setViewportView(terjualTable);
+        if (terjualTable.getColumnModel().getColumnCount() > 0) {
+            terjualTable.getColumnModel().getColumn(1).setPreferredWidth(1);
+        }
+
+        panelShadow2.add(jScrollPane2);
+
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
 
@@ -393,15 +372,15 @@ public class Tampilan_Barang extends javax.swing.JFrame {
 
         jPanel6.add(panelShadow3);
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("Terjual");
-        jButton1.setPreferredSize(new java.awt.Dimension(145, 49));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        kembali.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        kembali.setText("Kembali");
+        kembali.setPreferredSize(new java.awt.Dimension(145, 49));
+        kembali.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                kembaliMouseClicked(evt);
             }
         });
-        jPanel6.add(jButton1);
+        jPanel6.add(kembali);
 
         btn_refresh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
@@ -424,120 +403,26 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         });
         jPanel6.add(btn_refresh);
 
-        jPanel7.setOpaque(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(800, 52));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 33, 0));
-
-        btn_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Tambah.png"))); // NOI18N
-        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_tambahMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseReleased(evt);
-            }
-        });
-        jPanel7.add(btn_tambah);
-
-        btn_ubah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button Ubah.png"))); // NOI18N
-        btn_ubah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_ubahMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_ubahMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_ubahMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_ubahMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_ubahMouseReleased(evt);
-            }
-        });
-        jPanel7.add(btn_ubah);
-
-        btn_hapus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button hapus.png"))); // NOI18N
-        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_hapusMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_hapusMouseReleased(evt);
-            }
-        });
-        jPanel7.add(btn_hapus);
-
-        panelShadow2.setBackground(new java.awt.Color(255, 255, 255));
-        panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
-        panelShadow2.setShadowOpacity(1.0F);
-        panelShadow2.setShadowSize(5);
-        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
-
-        jScrollPane2.setBorder(null);
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 530));
-
-        barangTable = new atsk.Table(){
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return false;
-            }
-        };
-        barangTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        barangTable.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        barangTable.setRequestFocusEnabled(false);
-        jScrollPane2.setViewportView(barangTable);
-
-        panelShadow2.add(jScrollPane2);
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 720));
@@ -922,143 +807,16 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_laporanMouseClicked
 
-    private void btn_hapusMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseReleased
+    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
         // TODO add your handling code here:
-        Image iconHapusHover = new ImageIcon(this.getClass().getResource("/img/Button hapus Hover.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusHover));
-    }//GEN-LAST:event_btn_hapusMouseReleased
-
-    private void btn_hapusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMousePressed
-        // TODO add your handling code here:
-        Image iconHapusPress = new ImageIcon(this.getClass().getResource("/img/Button hapus Press.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusPress));
-    }//GEN-LAST:event_btn_hapusMousePressed
-
-    private void btn_hapusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseExited
-        // TODO add your handling code here:
-        Image iconHapusDefault = new ImageIcon(this.getClass().getResource("/img/Button hapus.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusDefault));
-    }//GEN-LAST:event_btn_hapusMouseExited
-
-    private void btn_hapusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseEntered
-        // TODO add your handling code here:
-        Image iconHapusHover = new ImageIcon(this.getClass().getResource("/img/Button hapus Hover.png")).getImage();
-        btn_hapus.setIcon(new ImageIcon(iconHapusHover));
-    }//GEN-LAST:event_btn_hapusMouseEntered
-
-    private void btn_ubahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseReleased
-        // TODO add your handling code here:
-        Image iconUbahHover = new ImageIcon(this.getClass().getResource("/img/Button Ubah Hover.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahHover));
-    }//GEN-LAST:event_btn_ubahMouseReleased
-
-    private void btn_ubahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMousePressed
-        // TODO add your handling code here:
-        Image iconUbahPress = new ImageIcon(this.getClass().getResource("/img/Button Ubah Press.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahPress));
-    }//GEN-LAST:event_btn_ubahMousePressed
-
-    private void btn_ubahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseExited
-        // TODO add your handling code here:
-        Image iconUbahDefault = new ImageIcon(this.getClass().getResource("/img/Button Ubah.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahDefault));
-    }//GEN-LAST:event_btn_ubahMouseExited
-
-    private void btn_ubahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseEntered
-        // TODO add your handling code here:
-        Image iconUbahHover = new ImageIcon(this.getClass().getResource("/img/Button Ubah Hover.png")).getImage();
-        btn_ubah.setIcon(new ImageIcon(iconUbahHover));
-    }//GEN-LAST:event_btn_ubahMouseEntered
-
-    private void btn_ubahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ubahMouseClicked
-        // TODO add your handling code here:
-        int row = barangTable.getSelectedRow();
-        String kodeBarang = barangTable.getModel().getValueAt(row, 0).toString();
-        String kodeBarcode = barangTable.getModel().getValueAt(row, 1).toString();
-        String namaBarang = barangTable.getModel().getValueAt(row, 2).toString();
-        String kategoriBarang = barangTable.getModel().getValueAt(row, 3).toString();
-        String hargaBeli = barangTable.getModel().getValueAt(row, 4).toString();
-        String hargaJual = barangTable.getModel().getValueAt(row, 5).toString();
-        String satuan = barangTable.getModel().getValueAt(row, 6).toString();
-        String stok = barangTable.getModel().getValueAt(row, 7).toString();
-        String retur = barangTable.getModel().getValueAt(row, 8).toString();
-        
-
-        Popup_Ubah_Barang_Shadow ubahBarang = new Popup_Ubah_Barang_Shadow();
-        ubahBarang.setKodeLama(kodeBarang);
-        ubahBarang.txt_kodeBarang.setText(kodeBarang);
-        ubahBarang.txt_kodeBarcode.setText(kodeBarcode);
-        ubahBarang.txt_namaBarang.setText(namaBarang);
-        ubahBarang.kategoriCombo.setSelectedItem(kategoriBarang);
-        ubahBarang.txt_hargaBeli.setText(hargaBeli);
-        ubahBarang.txt_hargaJual.setText(hargaJual);
-        ubahBarang.satuanCombo.setSelectedItem(satuan);
-        ubahBarang.txt_stok.setText(stok);
-        ubahBarang.txt_return.setText(retur);
-
-        ubahBarang.setVisible(true);
-        ubahBarang.pack();
-        ubahBarang.setLocationRelativeTo(null);
-        ubahBarang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_btn_ubahMouseClicked
-
-    private void btn_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseReleased
-        // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button Tambah hover.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-    }//GEN-LAST:event_btn_tambahMouseReleased
-
-    private void btn_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMousePressed
-        // TODO add your handling code here:
-        Image iconTambahPress = new ImageIcon(this.getClass().getResource("/img/Button Tambah press.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahPress));
-    }//GEN-LAST:event_btn_tambahMousePressed
-
-    private void btn_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseExited
-        // TODO add your handling code here:
-        Image iconTambahDefault = new ImageIcon(this.getClass().getResource("/img/Button Tambah.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahDefault));
-    }//GEN-LAST:event_btn_tambahMouseExited
-
-    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
-        // TODO add your handling code here:
-        Image iconTambahHover = new ImageIcon(this.getClass().getResource("/img/Button Tambah hover.png")).getImage();
-        btn_tambah.setIcon(new ImageIcon(iconTambahHover));
-    }//GEN-LAST:event_btn_tambahMouseEntered
-
-    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
-        // TODO add your handling code here:
-
-        Popup_Tambah_Barang_Shadow tambahBarang = new Popup_Tambah_Barang_Shadow(this, true);
-        tambahBarang.setVisible(true);
-        tambahBarang.pack();
-        tambahBarang.setLocationRelativeTo(null);
-        tambahBarang.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_btn_tambahMouseClicked
-
-    private void btn_refreshMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseReleased
-        // TODO add your handling code here:
-        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshHover));
-    }//GEN-LAST:event_btn_refreshMouseReleased
-
-    private void btn_refreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMousePressed
-        // TODO add your handling code here:
-        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshPress));
-    }//GEN-LAST:event_btn_refreshMousePressed
-
-    private void btn_refreshMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseExited
-        // TODO add your handling code here:
-        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshDefault));
-    }//GEN-LAST:event_btn_refreshMouseExited
-
-    private void btn_refreshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseEntered
-        // TODO add your handling code here:
-        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshHover));
-    }//GEN-LAST:event_btn_refreshMouseEntered
+        if (txt_cari.getText().equals("")) {
+            table();
+            cancel_search.setVisible(false);
+        } else {
+            search();
+            cancel_search.setVisible(true);
+        }
+    }//GEN-LAST:event_txt_cariKeyReleased
 
     private void cancel_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel_searchMouseClicked
         // TODO add your handling code here:
@@ -1078,21 +836,10 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         cancel_search.setIcon(new ImageIcon(iconCancelSearch));
     }//GEN-LAST:event_cancel_searchMouseExited
 
-    private void txt_cariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cariKeyReleased
+    private void kategoriComboSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kategoriComboSearchMouseClicked
         // TODO add your handling code here:
-        if (txt_cari.getText().equals("")) {
-            table();
-            cancel_search.setVisible(false);
-        } else {
-            search();
-            cancel_search.setVisible(true);
-        }
-    }//GEN-LAST:event_txt_cariKeyReleased
 
-    private void btn_refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseClicked
-        // TODO add your handling code here:
-        table();
-    }//GEN-LAST:event_btn_refreshMouseClicked
+    }//GEN-LAST:event_kategoriComboSearchMouseClicked
 
     private void kategoriComboSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriComboSearchActionPerformed
         // TODO add your handling code here:
@@ -1129,84 +876,80 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                     rs.getString("stock"),
                     rs.getString("retur"),
                     rs.getString("waktu_penambahan"),});
-                barangTable.setModel(tbl);
-            }
+            terjualTable.setModel(tbl);
+        }
         } catch (Exception e) {
         }
-
 
     }//GEN-LAST:event_kategoriComboSearchActionPerformed
 
-    private void kategoriComboSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kategoriComboSearchMouseClicked
+    private void kembaliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kembaliMouseClicked
         // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_kategoriComboSearchMouseClicked
-
-    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
-        // TODO add your handling code here:
+        Tampilan_Barang barang = new Tampilan_Barang();
         try {
-            int row = barangTable.getSelectedRow();
-            String kodeItem = barangTable.getModel().getValueAt(row, 0).toString();
-            int confirm = JOptionPane.showConfirmDialog(this, "Kamu yakin akan menghapus barang ini?", "Peringatan", JOptionPane.OK_CANCEL_OPTION);
-            if (confirm == 0) {
-                Connection c = (Connection) Config.configDB();
-
-                String sql = "Delete From barang where kd_brg ='" + kodeItem + "'";
-
-                PreparedStatement pst = c.prepareStatement(sql);
-
-                pst.execute();
-
-                JOptionPane.showMessageDialog(null, "Berhasil Menghapus barang");
-                table();
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Tidak bisa menghapus barang yang sudah ada di transaksi");
-        }
-
-    }//GEN-LAST:event_btn_hapusMouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        Tampilan_Barang_Terjual terjual = new Tampilan_Barang_Terjual();
-                try {
             String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String role = rs.getString("role");
                 if (role.equals("Owner")){
-                    terjual.passData(kd_akun);
-                    terjual.show();
+                    barang.passData(kd_akun);
+                    barang.show();
                     this.setVisible(false);
-
 
                 }
                 else if(role.equals("Kasir")){
-                    terjual.passData(kd_akun);
-                    terjual.show();;
+                    barang.passData(kd_akun);
+                    barang.show();;
                     this.setVisible(false);
-            
+
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
+
         dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_kembaliMouseClicked
+
+    private void btn_refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseClicked
+        // TODO add your handling code here:
+        table();
+    }//GEN-LAST:event_btn_refreshMouseClicked
+
+    private void btn_refreshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseEntered
+        // TODO add your handling code here:
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_refresh.setIcon(new ImageIcon(iconRefreshHover));
+    }//GEN-LAST:event_btn_refreshMouseEntered
+
+    private void btn_refreshMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseExited
+        // TODO add your handling code here:
+        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
+        btn_refresh.setIcon(new ImageIcon(iconRefreshDefault));
+    }//GEN-LAST:event_btn_refreshMouseExited
+
+    private void btn_refreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMousePressed
+        // TODO add your handling code here:
+        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
+        btn_refresh.setIcon(new ImageIcon(iconRefreshPress));
+    }//GEN-LAST:event_btn_refreshMousePressed
+
+    private void btn_refreshMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseReleased
+        // TODO add your handling code here:
+        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
+        btn_refresh.setIcon(new ImageIcon(iconRefreshHover));
+    }//GEN-LAST:event_btn_refreshMouseReleased
 
     /**
      * @param args the command line arguments
@@ -1225,14 +968,26 @@ public class Tampilan_Barang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang_Terjual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang_Terjual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang_Terjual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tampilan_Barang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tampilan_Barang_Terjual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1241,15 +996,13 @@ public class Tampilan_Barang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tampilan_Barang().setVisible(true);
+                new Tampilan_Barang_Terjual().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public atsk.Table barangTable;
     private javax.swing.JLabel btn_barang;
-    private javax.swing.JLabel btn_hapus;
     private javax.swing.JLabel btn_karyawan;
     private javax.swing.JLabel btn_laporan;
     private javax.swing.JLabel btn_pemasok;
@@ -1257,11 +1010,8 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JLabel btn_pengeluaran;
     private javax.swing.JLabel btn_refresh;
     private javax.swing.JLabel btn_riwayat;
-    private javax.swing.JLabel btn_tambah;
     private javax.swing.JLabel btn_transaksi;
-    private javax.swing.JLabel btn_ubah;
     private javax.swing.JLabel cancel_search;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -1269,12 +1019,13 @@ public class Tampilan_Barang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private combo_suggestion.ComboBoxSuggestion kategoriComboSearch;
+    private javax.swing.JButton kembali;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
+    public atsk.Table terjualTable;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
 }

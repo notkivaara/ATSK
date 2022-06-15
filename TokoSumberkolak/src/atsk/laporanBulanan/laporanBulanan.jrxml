@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ccb1216-e9e1-4268-8cc3-3a20ec0439eb">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -26,25 +26,22 @@
 	<title>
 		<band height="154" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="75" width="84" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="75" width="84" height="20" uuid="c63643da-1802-496c-a524-e4a234567d0f"/>
 				<textFieldExpression><![CDATA[$P{tanggal_awal}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="196" y="0" width="204" height="75"/>
+				<reportElement x="196" y="0" width="204" height="75" uuid="9d0c8b34-1fc5-4a2a-80a4-fecfc0303505"/>
 				<textElement>
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[Laporan Bulanan]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="121" y="75" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="121" y="75" width="100" height="20" uuid="50f9c7bd-b07a-4ba7-9bf1-f31e55a4b577"/>
 				<textFieldExpression><![CDATA[$P{tanggal_akhir}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="84" y="75" width="22" height="20"/>
-				<textElement/>
+				<reportElement x="84" y="75" width="22" height="20" uuid="3201f7f0-c2e1-45d1-bbcf-6bd9f36eee1f"/>
 				<text><![CDATA[-]]></text>
 			</staticText>
 		</band>
@@ -52,23 +49,19 @@
 	<pageHeader>
 		<band height="72" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="0" width="100" height="20" uuid="da15718a-c729-430c-b76c-a9a0340871f5"/>
 				<text><![CDATA[Pendapatan Kotor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="30" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="30" width="100" height="20" uuid="08039529-3aed-4936-b619-cdee1e3d3b1a"/>
 				<text><![CDATA[Total Pengeluaran]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="455" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="455" y="0" width="100" height="20" uuid="e1696d50-dd83-446b-8270-3c1329b1d753"/>
 				<textFieldExpression><![CDATA[$P{pendapatan_kotor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="30" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="455" y="30" width="100" height="20" uuid="ec7dbee6-ae65-4b21-a964-73a5ee5829ab"/>
 				<textFieldExpression><![CDATA[$P{pengeluaran}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -76,33 +69,27 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="100" y="2" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="100" y="2" width="100" height="20" uuid="4c702e9f-08c0-4a00-97bb-cc773d2d5f37"/>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="2" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="200" y="2" width="100" height="20" uuid="61b507d8-a516-4926-b72c-edc999799cab"/>
 				<text><![CDATA[Tanggal Bayar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="2" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="2" width="100" height="20" uuid="ff8e67de-bf01-4112-b70c-d2b4a4f662e8"/>
 				<text><![CDATA[Kode Pengeluaran]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="2" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="300" y="2" width="100" height="20" uuid="c8d19787-6c26-4134-88eb-8f6d4943b45d"/>
 				<text><![CDATA[Bulan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="2" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="400" y="2" width="100" height="20" uuid="2bd0f46f-81a4-458d-90d7-6a56618acf6f"/>
 				<text><![CDATA[Tahun]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="500" y="2" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="500" y="2" width="100" height="20" uuid="6ddd02e8-c564-4cc9-aa96-5b9e2e86e1ee"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 		</band>
@@ -110,33 +97,27 @@
 	<detail>
 		<band height="28" splitType="Stretch">
 			<textField>
-				<reportElement x="100" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="100" y="0" width="100" height="20" uuid="bdaf24dd-0327-4ae2-982e-e9c81d982276"/>
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="200" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="200" y="0" width="100" height="20" uuid="3bb41133-f0c7-4ec4-96fe-26efe10a7af3"/>
 				<textFieldExpression><![CDATA[$F{tgl_bayar}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a2363822-ce29-4805-91ba-f12d3bc67cb3"/>
 				<textFieldExpression><![CDATA[$F{kd_pengeluaran}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="300" y="0" width="100" height="20" uuid="601c02e6-4574-464d-bff0-9c2d6e5e071b"/>
 				<textFieldExpression><![CDATA[$F{bulan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="400" y="0" width="100" height="20" uuid="1d2143c7-f066-4748-b33e-950000b45c2b"/>
 				<textFieldExpression><![CDATA[$F{tahun}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="500" y="0" width="100" height="20" uuid="b231b470-4d00-4038-99aa-96b974ecc9b6"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -144,13 +125,11 @@
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="20" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="0" y="20" width="100" height="20" uuid="2dc63382-4878-48b6-af03-5cfbc8116d80"/>
 				<text><![CDATA[Pendapatan Bersih]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="455" y="20" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="455" y="20" width="100" height="20" uuid="042190e9-91d9-43c1-b9b5-50ad8679a82b"/>
 				<textFieldExpression><![CDATA[$P{pendapatan_bersih}]]></textFieldExpression>
 			</textField>
 		</band>

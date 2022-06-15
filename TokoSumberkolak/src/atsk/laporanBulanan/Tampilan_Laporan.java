@@ -5,12 +5,20 @@
 package atsk.laporanBulanan;
 
 import atsk.Config;
+import atsk.Config;
+import atsk.Tampilan_Barang;
 import atsk.Tampilan_Barang;
 import atsk.Tampilan_Karyawan;
+import atsk.Tampilan_Karyawan;
+import atsk.Tampilan_Pemasok;
 import atsk.Tampilan_Pemasok;
 import atsk.Tampilan_Pengaturan;
+import atsk.Tampilan_Pengaturan;
+import atsk.Tampilan_Pengeluaran;
 import atsk.Tampilan_Pengeluaran;
 import atsk.Tampilan_RiwayatBeli;
+import atsk.Tampilan_RiwayatBeli;
+import atsk.Tampilan_TransaksiBeli;
 import atsk.Tampilan_TransaksiBeli;
 import java.awt.Color;
 import java.awt.Image;
@@ -153,6 +161,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         tanggalDate1 = new com.toedter.calendar.JDateChooser();
         tanggalDate2 = new com.toedter.calendar.JDateChooser();
         btnCari = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -454,18 +463,18 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
         );
 
         panelShadow3.setBackground(new java.awt.Color(255, 255, 255));
+        panelShadow3.setPreferredSize(new java.awt.Dimension(430, 54));
         panelShadow3.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow3.setShadowOpacity(1.0F);
         panelShadow3.setShadowSize(5);
-        panelShadow3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tanggalDate1.setDateFormatString("yyyy MM dd H:i:s");
+        tanggalDate1.setPreferredSize(new java.awt.Dimension(119, 42));
         tanggalDate1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 tanggalDate1PropertyChange(evt);
             }
         });
-        panelShadow3.add(tanggalDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 40));
 
         tanggalDate2.setDateFormatString("yyyy MM dd H:i:s");
         tanggalDate2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -473,7 +482,6 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                 tanggalDate2PropertyChange(evt);
             }
         });
-        panelShadow3.add(tanggalDate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 150, 40));
 
         btnCari.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCari(1080).png"))); // NOI18N
@@ -482,7 +490,39 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                 btnCariMouseClicked(evt);
             }
         });
-        panelShadow3.add(btnCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 50, 40));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel7.setText("-");
+
+        javax.swing.GroupLayout panelShadow3Layout = new javax.swing.GroupLayout(panelShadow3);
+        panelShadow3.setLayout(panelShadow3Layout);
+        panelShadow3Layout.setHorizontalGroup(
+            panelShadow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(tanggalDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel7)
+                .addGap(15, 15, 15)
+                .addComponent(tanggalDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(btnCari)
+                .addContainerGap())
+        );
+        panelShadow3Layout.setVerticalGroup(
+            panelShadow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow3Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(panelShadow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelShadow3Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelShadow3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tanggalDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tanggalDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7))
+                .addGap(6, 6, 6))
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -492,15 +532,15 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 20, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(22, 22, 22)
+                .addComponent(panelShadow3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelShadow1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1056,6 +1096,7 @@ public class Tampilan_Laporan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
