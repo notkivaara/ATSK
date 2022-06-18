@@ -5,7 +5,6 @@
 package atsk;
 
 import atsk.laporanBulanan.Tampilan_Laporan;
-import com.raven.chart.ModelChart;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -43,18 +42,19 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         table();
 
     }
-    private String kodeAkun="";
-    public void passData(String kode){
+    private String kodeAkun = "";
+
+    public void passData(String kode) {
         try {
-            String sql = "Select kd_akun, nama from akun where kd_akun = '"+kode+"'";
+            String sql = "Select kd_akun, nama from akun where kd_akun = '" + kode + "'";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             Tampilan_Pengaturan tp = new Tampilan_Pengaturan();
-                if (rs.next()) {
+            if (rs.next()) {
                 String akun = rs.getString("kd_akun");
-                if (akun.equals(kode)){
-                   kodeAkun= kode;    
+                if (akun.equals(kode)) {
+                    kodeAkun = kode;
                 }
             } else {
                 JOptionPane.showMessageDialog(null, null);
@@ -62,22 +62,40 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    
+
     public void table() {
+        String sortir = "terjual DESC";
+        if (sort.getSelectedItem().equals("Terlaku")) {
+            sortir = "terjual DESC";
+        } else if (sort.getSelectedItem().equals("Kurang laku")) {
+            sortir = "terjual ASC";
+        } else if (sort.getSelectedItem().equals("Stok terendah")) {
+            sortir = "m.stock ASC";
+        }  else if (sort.getSelectedItem().equals("Nama Barang")) {
+            sortir = "m.nama_brg ASC";
+        }
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Nama Barang");
         tbl.addColumn("Terjual");
+        tbl.addColumn("Satuan");
+        tbl.addColumn("Sisa Stock");
+        tbl.addColumn("Saran");
 
         // Disini Terakhir nulis
-
         try {
             Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("SELECT nama_brg,(SELECT SUM(kuantitas)FROM detail_transaksi WHERE kd_brg =m.kd_brg)AS terjual FROM barang as m order by terjual desc");
+            ResultSet rs = st.executeQuery("SELECT nama_brg,(SELECT SUM(kuantitas) FROM detail_transaksi WHERE kd_brg=m.kd_brg )as terjual,m.satuan as satuan,m.stock as sisa_stock,IF(dt.kuantitas >=3 AND m.stock <=10 ,\"Tambah stock\" ,\"Tidak usah tambah stock\") as saran\n"
+                    + "FROM barang as m JOIN detail_transaksi as dt ON dt.kd_brg = m.kd_brg JOIN transaksi as t on dt.kd_transaksi = t.kd_transaksi GROUP BY m.kd_brg order by " + sortir + ""
+            );
             while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("nama_brg"),
-                    rs.getString("terjual"),});
-                
+                    rs.getString("terjual"),
+                    rs.getString("satuan"),
+                    rs.getString("sisa_stock"),
+                    rs.getString("saran"),
+                });
+
                 terjualTable.setModel(tbl);
 
             }
@@ -86,13 +104,51 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         }
 
     }
-    
+
     public void search() {
+
+        String sortir = "terjual DESC";
+        if (sort.getSelectedItem().equals("Terlaku")) {
+            sortir = "terjual DESC";
+        } else if (sort.getSelectedItem().equals("Kurang laku")) {
+            sortir = "terjual ASC";
+        } else if (sort.getSelectedItem().equals("Stok terendah")) {
+            sortir = "m.stock ASC";
+        } else if (sort.getSelectedItem().equals("Nama Barang")) {
+            sortir = "m.nama_brg ASC";
+        }
+
+        String cari = txt_cari.getText();
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Nama Barang");
         tbl.addColumn("Terjual");
-    }
+        tbl.addColumn("Satuan");
+        tbl.addColumn("Sisa Stock");
+        tbl.addColumn("Saran");
 
+        // Disini Terakhir nulis
+        try {
+            Statement st = (Statement) Config.configDB().createStatement();
+            ResultSet rs = st.executeQuery("SELECT nama_brg,(SELECT SUM(kuantitas) FROM detail_transaksi WHERE kd_brg=m.kd_brg )as terjual,m.satuan as satuan,m.stock as sisa_stock,IF(dt.kuantitas >=3 AND m.stock <=10 ,\"Tambah stock\" ,\"Tidak usah tambah stock\") as saran\n" +
+"FROM barang as m JOIN detail_transaksi as dt ON dt.kd_brg = m.kd_brg JOIN transaksi as t on dt.kd_transaksi = t.kd_transaksi where nama_brg like '%"+cari+"%' GROUP BY m.kd_brg order by '%"+sortir+"%'"
+            );
+            while (rs.next()) {
+                tbl.addRow(new Object[]{
+                    rs.getString("nama_brg"),
+                    rs.getString("terjual"),
+                    rs.getString("satuan"),
+                    rs.getString("sisa_stock"),
+                    rs.getString("saran"),
+                });
+
+                terjualTable.setModel(tbl);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,15 +175,14 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         panelShadow2 = new main.PanelShadow();
         jScrollPane2 = new javax.swing.JScrollPane();
         terjualTable = new atsk.Table();
+        sort = new combo_suggestion.ComboBoxSuggestion();
         jPanel6 = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
         jLabel3 = new javax.swing.JLabel();
         txt_cari = new javax.swing.JTextField();
         cancel_search = new javax.swing.JLabel();
         panelShadow3 = new main.PanelShadow();
-        kategoriComboSearch = new combo_suggestion.ComboBoxSuggestion();
         kembali = new javax.swing.JButton();
-        btn_refresh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -259,7 +314,6 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         panelShadow2.setShadowColor(new java.awt.Color(209, 223, 245));
         panelShadow2.setShadowOpacity(1.0F);
         panelShadow2.setShadowSize(5);
-        panelShadow2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(770, 600));
 
@@ -283,7 +337,41 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
             terjualTable.getColumnModel().getColumn(1).setPreferredWidth(1);
         }
 
-        panelShadow2.add(jScrollPane2);
+        sort.setBorder(null);
+        sort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Terlaku", "Kurang laku", "Stok terendah ", "Nama Barang" }));
+        sort.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        sort.setPreferredSize(new java.awt.Dimension(145, 49));
+        sort.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sortMouseClicked(evt);
+            }
+        });
+        sort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelShadow2Layout = new javax.swing.GroupLayout(panelShadow2);
+        panelShadow2.setLayout(panelShadow2Layout);
+        panelShadow2Layout.setHorizontalGroup(
+            panelShadow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelShadow2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelShadow2Layout.setVerticalGroup(
+            panelShadow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelShadow2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 0));
@@ -354,24 +442,6 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         panelShadow3.setShadowType(main.ShadowType.BOT);
         panelShadow3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        kategoriComboSearch.setBorder(null);
-        kategoriComboSearch.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kategori", "Alat Mandi", "Makanan Ringan", "Alat Cuci", "Alat Makan", "Sembako" }));
-        kategoriComboSearch.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        kategoriComboSearch.setPreferredSize(new java.awt.Dimension(145, 49));
-        kategoriComboSearch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                kategoriComboSearchMouseClicked(evt);
-            }
-        });
-        kategoriComboSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kategoriComboSearchActionPerformed(evt);
-            }
-        });
-        panelShadow3.add(kategoriComboSearch);
-
-        jPanel6.add(panelShadow3);
-
         kembali.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         kembali.setText("Kembali");
         kembali.setPreferredSize(new java.awt.Dimension(145, 49));
@@ -380,28 +450,9 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
                 kembaliMouseClicked(evt);
             }
         });
-        jPanel6.add(kembali);
+        panelShadow3.add(kembali);
 
-        btn_refresh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Button refresh.png"))); // NOI18N
-        btn_refresh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_refreshMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_refreshMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_refreshMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btn_refreshMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btn_refreshMouseReleased(evt);
-            }
-        });
-        jPanel6.add(btn_refresh);
+        jPanel6.add(panelShadow3);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -409,7 +460,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,7 +472,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelShadow2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                .addComponent(panelShadow2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -518,36 +569,33 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private void btn_pengeluaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengeluaranMouseClicked
         // TODO add your handling code here:
         Tampilan_Pengeluaran pengeluaran = new Tampilan_Pengeluaran();
-         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     pengeluaran.passData(kd_akun);
                     pengeluaran.show();
                     this.setVisible(false);
 
-
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     pengeluaran.passData(kd_akun);
                     pengeluaran.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -559,36 +607,33 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
         // TODO add your handling code here:
         Tampilan_Pemasok pemasok = new Tampilan_Pemasok();
- try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     pemasok.passData(kd_akun);
                     pemasok.show();
                     this.setVisible(false);
 
-
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     pemasok.passData(kd_akun);
                     pemasok.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -597,38 +642,35 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pemasokMouseClicked
 
     private void btn_karyawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karyawanMouseClicked
-        
+
         Tampilan_Karyawan karyawan = new Tampilan_Karyawan();
-         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     karyawan.passData(kd_akun);
                     karyawan.show();
                     this.setVisible(false);
 
-
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     karyawan.passData(kd_akun);
                     karyawan.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -640,7 +682,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private void btn_pengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengaturanMouseClicked
         // TODO add your handling code here:
         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
@@ -649,7 +691,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     tp.kodeakunKar.setText(kd_akun);
                     tp.namaKar.setText(nama);
                     tp.passData(kd_akun);
@@ -657,67 +699,59 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
                     this.setVisible(false);
                     System.out.println(kodeAkun);
 
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     tp.kodeakunKar.setText(kd_akun);
                     tp.namaKar.setText(nama);
                     tp.passData(kd_akun);
                     tp.setVisible(true);
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
-        
-        
-        
+
         dispose();
     }//GEN-LAST:event_btn_pengaturanMouseClicked
 
     private void btn_riwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_riwayatMouseClicked
-        
+
         Tampilan_RiwayatBeli riwayatBeli = new Tampilan_RiwayatBeli();
 
         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     riwayatBeli.passData(kd_akun);
                     riwayatBeli.show();
                     this.setVisible(false);
 
-
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     riwayatBeli.passData(kd_akun);
                     riwayatBeli.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -728,37 +762,34 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private void btn_transaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_transaksiMouseClicked
         // TODO add your handling code here:
         Tampilan_TransaksiBeli transaksiBeli = new Tampilan_TransaksiBeli();
-        
+
         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     transaksiBeli.passData(kd_akun);
                     transaksiBeli.show();
                     this.setVisible(false);
 
-
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     transaksiBeli.passData(kd_akun);
                     transaksiBeli.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -767,38 +798,35 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_transaksiMouseClicked
 
     private void btn_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporanMouseClicked
-       
+
         Tampilan_Laporan laporan = new Tampilan_Laporan();
-         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+        try {
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
             if (rs.next()) {
-                
+
                 String kd_akun = rs.getString("kd_akun");
                 String nama = rs.getString("nama");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     laporan.passData(kd_akun);
                     laporan.show();
                     this.setVisible(false);
 
-
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     laporan.passData(kd_akun);
                     laporan.show();;
                     this.setVisible(false);
-            
-                }
-                else {
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
-               
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid2");
-              
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -836,58 +864,22 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         cancel_search.setIcon(new ImageIcon(iconCancelSearch));
     }//GEN-LAST:event_cancel_searchMouseExited
 
-    private void kategoriComboSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kategoriComboSearchMouseClicked
+    private void sortMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sortMouseClicked
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_kategoriComboSearchMouseClicked
+    }//GEN-LAST:event_sortMouseClicked
 
-    private void kategoriComboSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kategoriComboSearchActionPerformed
+    private void sortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tbl = new DefaultTableModel();
-        tbl.addColumn("Kode barang");
-        tbl.addColumn("Nama barang");
-        tbl.addColumn("Kategori");
-        tbl.addColumn("Harga Beli");
-        tbl.addColumn("Harga Jual");
-        tbl.addColumn("Satuan");
-        tbl.addColumn("Stock");
-        tbl.addColumn("Return");
-        tbl.addColumn("Waktu Penambahan");
-        String cari = txt_cari.getText();
-        String kategori = kategoriComboSearch.getSelectedItem().toString();
-        String sql = "";
-        try {
-            if (kategori.equals("Kategori")) {
-                sql = "select * from barang where nama_brg like '%" + cari + "%'";
-            } else {
-                sql = "select * from barang where kategori like '%" + kategori + "%'";
-            }
-            Connection c = (Connection) Config.configDB();
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                tbl.addRow(new Object[]{
-                    rs.getString("kd_brg"),
-                    rs.getString("nama_brg"),
-                    rs.getString("kategori"),
-                    rs.getString("hrg_beli_brg"),
-                    rs.getString("hrg_jual_brg"),
-                    rs.getString("satuan"),
-                    rs.getString("stock"),
-                    rs.getString("retur"),
-                    rs.getString("waktu_penambahan"),});
-            terjualTable.setModel(tbl);
-        }
-        } catch (Exception e) {
-        }
+        table();
 
-    }//GEN-LAST:event_kategoriComboSearchActionPerformed
+    }//GEN-LAST:event_sortActionPerformed
 
     private void kembaliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kembaliMouseClicked
         // TODO add your handling code here:
         Tampilan_Barang barang = new Tampilan_Barang();
         try {
-            String sql = "SELECT * FROM `akun` WHERE kd_akun = '"+ kodeAkun +"';";
+            String sql = "SELECT * FROM `akun` WHERE kd_akun = '" + kodeAkun + "';";
             Connection conn = (Connection) Config.configDB();
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery(sql);
@@ -895,19 +887,17 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
 
                 String kd_akun = rs.getString("kd_akun");
                 String role = rs.getString("role");
-                if (role.equals("Owner")){
+                if (role.equals("Owner")) {
                     barang.passData(kd_akun);
                     barang.show();
                     this.setVisible(false);
 
-                }
-                else if(role.equals("Kasir")){
+                } else if (role.equals("Kasir")) {
                     barang.passData(kd_akun);
                     barang.show();;
                     this.setVisible(false);
 
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Invalid1");
 
                 }
@@ -921,35 +911,6 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_kembaliMouseClicked
-
-    private void btn_refreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseClicked
-        // TODO add your handling code here:
-        table();
-    }//GEN-LAST:event_btn_refreshMouseClicked
-
-    private void btn_refreshMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseEntered
-        // TODO add your handling code here:
-        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshHover));
-    }//GEN-LAST:event_btn_refreshMouseEntered
-
-    private void btn_refreshMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseExited
-        // TODO add your handling code here:
-        Image iconRefreshDefault = new ImageIcon(this.getClass().getResource("/img/Button refresh.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshDefault));
-    }//GEN-LAST:event_btn_refreshMouseExited
-
-    private void btn_refreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMousePressed
-        // TODO add your handling code here:
-        Image iconRefreshPress = new ImageIcon(this.getClass().getResource("/img/Button refresh press.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshPress));
-    }//GEN-LAST:event_btn_refreshMousePressed
-
-    private void btn_refreshMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_refreshMouseReleased
-        // TODO add your handling code here:
-        Image iconRefreshHover = new ImageIcon(this.getClass().getResource("/img/Button refresh hover.png")).getImage();
-        btn_refresh.setIcon(new ImageIcon(iconRefreshHover));
-    }//GEN-LAST:event_btn_refreshMouseReleased
 
     /**
      * @param args the command line arguments
@@ -1008,7 +969,6 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private javax.swing.JLabel btn_pemasok;
     private javax.swing.JLabel btn_pengaturan;
     private javax.swing.JLabel btn_pengeluaran;
-    private javax.swing.JLabel btn_refresh;
     private javax.swing.JLabel btn_riwayat;
     private javax.swing.JLabel btn_transaksi;
     private javax.swing.JLabel cancel_search;
@@ -1020,11 +980,11 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
-    private combo_suggestion.ComboBoxSuggestion kategoriComboSearch;
     private javax.swing.JButton kembali;
     private main.PanelShadow panelShadow1;
     private main.PanelShadow panelShadow2;
     private main.PanelShadow panelShadow3;
+    private combo_suggestion.ComboBoxSuggestion sort;
     public atsk.Table terjualTable;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
