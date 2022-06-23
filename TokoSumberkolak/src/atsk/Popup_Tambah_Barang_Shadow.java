@@ -53,8 +53,8 @@ public class Popup_Tambah_Barang_Shadow extends javax.swing.JFrame {
         String waktu = timestamp.toString();
         
         
-            if (harga_jual < harga_beli) {
-               JOptionPane.showMessageDialog(this,"Masukkan harga jual dengan benar");
+            if (harga_jual <= harga_beli) {
+               JOptionPane.showMessageDialog(this,"Harga jual tidak boleh sama atau kurang dari harga beli");
             }
             else{
               try {

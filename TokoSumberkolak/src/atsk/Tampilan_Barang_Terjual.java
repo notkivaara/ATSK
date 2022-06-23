@@ -74,8 +74,37 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         }  else if (sort.getSelectedItem().equals("Nama Barang")) {
             sortir = "m.nama_brg ASC";
         }
+        
+        String month = "1";
+        if (bulan.getSelectedItem().equals("1")) {
+            month = "1";
+        } else if (bulan.getSelectedItem().equals("2")) {
+            month = "2";
+        } else if (bulan.getSelectedItem().equals("3")) {
+            month = "3";
+        } else if (bulan.getSelectedItem().equals("4")) {
+            month = "4";
+        } else if (bulan.getSelectedItem().equals("5")) {
+            month = "5";
+        } else if (bulan.getSelectedItem().equals("6")) {
+            month = "6";
+        } else if (bulan.getSelectedItem().equals("7")) {
+            month = "7";
+        } else if (bulan.getSelectedItem().equals("8")) {
+            month = "8";
+        }else if (bulan.getSelectedItem().equals("9")) {
+            month = "9";
+        }else if (bulan.getSelectedItem().equals("10")) {
+            month = "10";
+        }else if (bulan.getSelectedItem().equals("11")) {
+            month = "11";
+        }else if (bulan.getSelectedItem().equals("12")) {
+            month = "12";
+        }
+        
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Nama Barang");
+        tbl.addColumn("Bulan");
         tbl.addColumn("Terjual");
         tbl.addColumn("Satuan");
         tbl.addColumn("Sisa Stock");
@@ -84,12 +113,12 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         // Disini Terakhir nulis
         try {
             Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("SELECT nama_brg,(SELECT SUM(kuantitas) FROM detail_transaksi WHERE kd_brg=m.kd_brg )as terjual,m.satuan as satuan,m.stock as sisa_stock,IF(dt.kuantitas >=3 AND m.stock <=10 ,\"Tambah stock\" ,\"Tidak usah tambah stock\") as saran\n"
-                    + "FROM barang as m JOIN detail_transaksi as dt ON dt.kd_brg = m.kd_brg JOIN transaksi as t on dt.kd_transaksi = t.kd_transaksi GROUP BY m.kd_brg order by " + sortir + ""
+            ResultSet rs = st.executeQuery("SELECT nama_brg,MONTH(t.tanggal) as bulan,(SELECT SUM(kuantitas) FROM detail_transaksi WHERE kd_brg=m.kd_brg )as terjual,m.satuan as satuan,m.stock as sisa_stock,IF(dt.kuantitas>=m.stock ,\"Tambah stock\" ,\"Stock masih ada\") as saran FROM barang as m JOIN detail_transaksi as dt ON dt.kd_brg = m.kd_brg JOIN transaksi as t on dt.kd_transaksi = t.kd_transaksi WHERE MONTH(t.tanggal) = "+month+" GROUP BY m.kd_brg order by  " + sortir + ""
             );
             while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("nama_brg"),
+                    rs.getString("bulan"),
                     rs.getString("terjual"),
                     rs.getString("satuan"),
                     rs.getString("sisa_stock"),
@@ -121,6 +150,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         String cari = txt_cari.getText();
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("Nama Barang");
+        tbl.addColumn("Bulan");
         tbl.addColumn("Terjual");
         tbl.addColumn("Satuan");
         tbl.addColumn("Sisa Stock");
@@ -129,12 +159,13 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         // Disini Terakhir nulis
         try {
             Statement st = (Statement) Config.configDB().createStatement();
-            ResultSet rs = st.executeQuery("SELECT nama_brg,(SELECT SUM(kuantitas) FROM detail_transaksi WHERE kd_brg=m.kd_brg )as terjual,m.satuan as satuan,m.stock as sisa_stock,IF(dt.kuantitas >=3 AND m.stock <=10 ,\"Tambah stock\" ,\"Tidak usah tambah stock\") as saran\n" +
+            ResultSet rs = st.executeQuery("SELECT nama_brg,MONTH(t.tanggal) as bulan,(SELECT SUM(kuantitas) FROM detail_transaksi WHERE kd_brg=m.kd_brg )as terjual,m.satuan as satuan,m.stock as sisa_stock,IF(dt.kuantitas >=3 AND m.stock <=10 ,\"Tambah stock\" ,\"Tidak usah tambah stock\") as saran\n" +
 "FROM barang as m JOIN detail_transaksi as dt ON dt.kd_brg = m.kd_brg JOIN transaksi as t on dt.kd_transaksi = t.kd_transaksi where nama_brg like '%"+cari+"%' GROUP BY m.kd_brg order by '%"+sortir+"%'"
             );
             while (rs.next()) {
                 tbl.addRow(new Object[]{
                     rs.getString("nama_brg"),
+                    rs.getString("bulan"),
                     rs.getString("terjual"),
                     rs.getString("satuan"),
                     rs.getString("sisa_stock"),
@@ -176,6 +207,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         terjualTable = new atsk.Table();
         sort = new combo_suggestion.ComboBoxSuggestion();
+        bulan = new combo_suggestion.ComboBoxSuggestion();
         jPanel6 = new javax.swing.JPanel();
         panelShadow1 = new main.PanelShadow();
         jLabel3 = new javax.swing.JLabel();
@@ -352,6 +384,21 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
             }
         });
 
+        bulan.setBorder(null);
+        bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        bulan.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bulan.setPreferredSize(new java.awt.Dimension(145, 49));
+        bulan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bulanMouseClicked(evt);
+            }
+        });
+        bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bulanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelShadow2Layout = new javax.swing.GroupLayout(panelShadow2);
         panelShadow2.setLayout(panelShadow2Layout);
         panelShadow2Layout.setHorizontalGroup(
@@ -361,13 +408,17 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(panelShadow2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelShadow2Layout.setVerticalGroup(
             panelShadow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelShadow2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelShadow2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -912,6 +963,15 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_kembaliMouseClicked
 
+    private void bulanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bulanMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bulanMouseClicked
+
+    private void bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bulanActionPerformed
+        // TODO add your handling code here:
+        table();
+    }//GEN-LAST:event_bulanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -971,6 +1031,7 @@ public class Tampilan_Barang_Terjual extends javax.swing.JFrame {
     private javax.swing.JLabel btn_pengeluaran;
     private javax.swing.JLabel btn_riwayat;
     private javax.swing.JLabel btn_transaksi;
+    private combo_suggestion.ComboBoxSuggestion bulan;
     private javax.swing.JLabel cancel_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
